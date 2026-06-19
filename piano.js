@@ -1,6 +1,8 @@
 /* ==================================================================
    Inversionen am Klavier — KAC Music Academy
    Vanilla JS. Engine (Musiktheorie) sauber getrennt vom Rendering.
+   Modus 1 "Raster": Übersicht 7×3.  Modus 2 "Training": MIDI-Drill
+   mit Stimmführung. Web-MIDI optional (Chrome/Edge/Android).
    ================================================================== */
 
 (function () {
@@ -75,6 +77,73 @@
     return rootName;
   }
 
+  /* --- Stimmführung: wähle pro Akkord die Umkehrung mit der wenigsten
+         Bewegung zum vorigen Akkord ("wenig Finger"). --------------- */
+
+  // Absolute Halbton-Lage einer Umkehrung, Bass nahe `refLow` platziert.
+  function voicingPitches(key, i, inv, refLow) {
+    const ch = computeChord(key, i, inv);
+    let oct = 0;
+    if (typeof refLow === 'number') oct = Math.round((refLow - ch.positions[0]) / 12) * 12;
+    return { pitches: ch.positions.map(function (p) { return p + oct; }), ch: ch };
+  }
+
+  // Minimaler Gesamt-Bewegungsaufwand zwischen zwei Dreiklängen (3! Zuordnungen).
+  const PERMS = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+  function vlCost(a, b) {
+    let best = Infinity;
+    for (let x = 0; x < PERMS.length; x++) {
+      let s = 0;
+      for (let k = 0; k < 3; k++) s += Math.abs(a[k] - b[PERMS[x][k]]);
+      if (s < best) best = s;
+    }
+    return best;
+  }
+
+  function makeStep(key, ch, inv) {
+    return {
+      key: key, i: null, inv: inv,
+      positions: ch.positions, names: ch.names,
+      rootIndex: ch.rootIndex, rootPos: ch.rootPos,
+      quality: ch.quality, label: chordLabel(ch.rootName, ch.quality)
+    };
+  }
+
+  // degrees: Array von Stufen-Indizes (0..6) → Schritte mit smarter Umkehrung.
+  function smartSteps(key, degrees) {
+    const steps = [];
+    let prev = null;
+    for (let n = 0; n < degrees.length; n++) {
+      const i = degrees[n];
+      if (prev === null) {
+        const v = voicingPitches(key, i, 0, 60);   // Start: Grundstellung mittig
+        const st = makeStep(key, v.ch, 0); st.i = i; steps.push(st); prev = v.pitches;
+      } else {
+        let bestInv = 0, bestCost = Infinity, bestPitches = null, bestCh = null;
+        for (let inv = 0; inv < 3; inv++) {
+          const v = voicingPitches(key, i, inv, prev[0]);
+          const c = vlCost(prev, v.pitches);
+          if (c < bestCost) { bestCost = c; bestInv = inv; bestPitches = v.pitches; bestCh = v.ch; }
+        }
+        const st = makeStep(key, bestCh, bestInv); st.i = i; steps.push(st); prev = bestPitches;
+      }
+    }
+    return steps;
+  }
+
+  // Klassische Folgen + diatonische Stufenreihen (Stufen-Indizes 0..6).
+  const PROGS_CLASSIC = [
+    { name: 'I–IV–V–I', degs: [0, 3, 4, 0] },
+    { name: 'ii–V–I', degs: [1, 4, 0] },
+    { name: 'I–V–vi–IV', degs: [0, 4, 5, 3] },
+    { name: 'vi–IV–I–V', degs: [5, 3, 0, 4] },
+    { name: 'I–vi–IV–V', degs: [0, 5, 3, 4] }
+  ];
+  const PROGS_WALK = [
+    { name: 'I→VII (Stufenreihe)', degs: [0, 1, 2, 3, 4, 5, 6, 0] },
+    { name: 'Terzen-Reihe', degs: [0, 2, 4, 6, 1, 3, 5, 0] }
+  ];
+
   /* ----------------------------------------------------------------
      2) UI-TEXTE
      ---------------------------------------------------------------- */
@@ -95,17 +164,42 @@
         return 'Praktisch spielen wir die 7. Stufe als 5-Akkord (' + five + ') mit dem 7. Ton (' + seven + ') im Bass → ' + slash + '. Im Raster zeigen wir den reinen verminderten Dreiklang.';
       },
       notation: 'Internationale Schreibweise (B statt deutschem H).',
+      // Modus
+      modeGrid: 'Raster',
+      modeDrill: 'Training',
       // Modal
       practice: 'Üben',
       targetNotes: 'Zieltöne',
-      tapHint: 'Tippe die Tasten, die du spielen würdest — dann „Prüfen".',
+      tapHint: 'Tippe die Tasten (oder spiel sie am MIDI-Keyboard) — wird automatisch grün, wenn richtig.',
       check: 'Prüfen',
       clear: 'Tasten leeren',
       close: 'Schließen',
       correct: 'Richtig gespielt!',
       missingLbl: 'fehlt noch',
       extraLbl: 'zu viel',
-      none: '—'
+      none: '—',
+      // MIDI
+      midiOn: function (n) { return 'MIDI verbunden' + (n ? ': ' + n : ''); },
+      midiOff: 'Kein MIDI-Gerät — du kannst auch tippen.',
+      midiNo: 'Dieser Browser kann kein Web-MIDI (am besten Chrome/Edge). Tippen geht trotzdem.',
+      bassHint: function (note) { return 'Richtige Töne — aber der tiefste Ton muss ' + note + ' sein.'; },
+      // Drill
+      drillIntro: 'Spiel die geforderte Umkehrung — am MIDI-Keyboard oder per Tippen. Richtig = grün, dann geht\'s automatisch weiter. Die Umkehrungen sind so gewählt, dass du möglichst wenig Finger bewegst (Stimmführung).',
+      drillType: 'Übungstyp',
+      typeMixed: 'Gemischt',
+      typeWalk: 'Stufenreihen',
+      typeClassic: 'Klassiker',
+      drillKey: 'Tonart',
+      keyRandom: 'Zufall',
+      start: 'Training starten',
+      stop: 'Stopp',
+      playPrompt: 'Spiele',
+      step: 'Schritt',
+      waiting: 'Spiel den Akkord…',
+      drillCorrect: 'Richtig! Weiter …',
+      timeUp: 'Zeit um — so geht\'s:',
+      hits: 'Treffer',
+      seconds: 'Sek.'
     },
     en: {
       back: 'Overview',
@@ -123,39 +217,71 @@
         return 'In practice we play the 7th degree as the 5 chord (' + five + ') with the 7th note (' + seven + ') in the bass → ' + slash + '. In the grid we show the pure diminished triad.';
       },
       notation: 'International notation (B, not the German H).',
+      modeGrid: 'Grid',
+      modeDrill: 'Training',
       practice: 'Practise',
       targetNotes: 'Target notes',
-      tapHint: 'Tap the keys you would play — then “Check”.',
+      tapHint: 'Tap the keys (or play them on a MIDI keyboard) — turns green automatically when correct.',
       check: 'Check',
       clear: 'Clear keys',
       close: 'Close',
       correct: 'Played correctly!',
       missingLbl: 'still missing',
       extraLbl: 'too many',
-      none: '—'
+      none: '—',
+      midiOn: function (n) { return 'MIDI connected' + (n ? ': ' + n : ''); },
+      midiOff: 'No MIDI device — you can also tap.',
+      midiNo: 'This browser has no Web MIDI (use Chrome/Edge). Tapping still works.',
+      bassHint: function (note) { return 'Right notes — but the lowest note must be ' + note + '.'; },
+      drillIntro: 'Play the requested inversion — on a MIDI keyboard or by tapping. Correct = green, then it advances automatically. Inversions are chosen so you move as few fingers as possible (voice leading).',
+      drillType: 'Exercise',
+      typeMixed: 'Mixed',
+      typeWalk: 'Scale-step series',
+      typeClassic: 'Classics',
+      drillKey: 'Key',
+      keyRandom: 'Random',
+      start: 'Start training',
+      stop: 'Stop',
+      playPrompt: 'Play',
+      step: 'Step',
+      waiting: 'Play the chord…',
+      drillCorrect: 'Correct! Next …',
+      timeUp: 'Time\'s up — like this:',
+      hits: 'Hits',
+      seconds: 'sec'
     }
   };
 
   /* ----------------------------------------------------------------
      3) ZUSTAND
      ---------------------------------------------------------------- */
+  const DRILL_SECONDS = 15;
   const state = {
     lang: 'de',
     keyId: 'C',
     showHint: true,
-    modal: null   // { i, inv, positions:[], names:[], played:Set, feedback:null }
+    mode: 'grid',         // 'grid' | 'drill'
+    modal: null,          // { i, inv, positions, names, played:Set, feedback, midiPlayed:Set, midiMsg }
+    midi: { supported: typeof navigator !== 'undefined' && !!navigator.requestMIDIAccess, requested: false, deviceName: '', active: new Set() },
+    drill: {
+      running: false, type: 'mixed', keyMode: 'random',
+      steps: [], index: 0, progName: '',
+      deadline: 0, secondsLeft: DRILL_SECONDS,
+      timerId: null, advanceId: null,
+      revealing: false, locked: false, tap: new Set(), msg: null, hits: 0
+    }
   };
 
   function t() { return I18N[state.lang]; }
   function getKey() { return KEYS.find(function (k) { return k.id === state.keyId; }); }
-
   const $ = function (id) { return document.getElementById(id); };
+  function rnd() { return Math.random(); }
+  function pick(arr) { return arr[Math.floor(rnd() * arr.length)]; }
+  function now() { return Date.now(); }
 
   /* ----------------------------------------------------------------
-     4) KLAVIATUR-BAUSTEIN  (wiederverwendbar: Mini + groß)
+     4) KLAVIATUR-BAUSTEIN  (wiederverwendbar: Mini + groß + Drill)
      ---------------------------------------------------------------- */
-  // targetPositions: Array<number 0..23>. opts: { whiteW, interactive, played:Set,
-  //   feedback:{correct,missing,extra}, nameMap:{pos:name} }
   function buildKeyboard(targetPositions, opts) {
     opts = opts || {};
     const whiteW = opts.whiteW || 14;
@@ -180,6 +306,7 @@
         if (fb.correct.has(p)) el.classList.add('is-correct');
         else if (fb.missing.has(p)) el.classList.add('is-missing');
         else if (fb.extra.has(p)) el.classList.add('is-extra');
+        else if (opts.showTargetUnderFb && targetSet.has(p)) el.classList.add('is-target');
       } else {
         if (targetSet.has(p)) el.classList.add('is-target');
         if (played.has(p)) el.classList.add('is-played');
@@ -193,22 +320,18 @@
       }
       if (opts.interactive) {
         el.type = 'button';
-        el.addEventListener('click', function () { onKeyTap(p); });
+        var tap = opts.onTap || onKeyTap;
+        el.addEventListener('click', function () { tap(p); });
       }
       return el;
     }
 
-    // weiße Tasten zuerst (Fluss), schwarze danach absolut positioniert
     let w = 0;
     const blacks = [];
     for (let p = 0; p < 24; p++) {
       const isBlack = BLACK_PC.indexOf(p % 12) !== -1;
-      if (!isBlack) {
-        wrap.appendChild(makeKey(p, 'w', whiteW, whiteH));
-        w++;
-      } else {
-        blacks.push({ p: p, left: w * whiteW - blackW / 2 });
-      }
+      if (!isBlack) { wrap.appendChild(makeKey(p, 'w', whiteW, whiteH)); w++; }
+      else { blacks.push({ p: p, left: w * whiteW - blackW / 2 }); }
     }
     wrap.style.width = (w * whiteW) + 'px';
     wrap.style.height = whiteH + 'px';
@@ -227,9 +350,9 @@
     const key = getKey();
     const L = t();
     const grid = $('grid');
+    if (!grid) return;
     grid.innerHTML = '';
 
-    // Kopfzeile
     grid.appendChild(cell('ghead corner', ''));
     L.columns.forEach(function (c) {
       const h = cell('ghead', '');
@@ -241,7 +364,6 @@
       const quality = QUAL[i];
       const label = chordLabel(key.scale[i], quality);
 
-      // Zeilen-Label
       const rl = cell('rowlabel q-' + quality, '');
       let rlHtml =
         '<span class="stage-num mono">' + L.stage + ' ' + (i + 1) + '</span>' +
@@ -256,7 +378,6 @@
       rl.innerHTML = rlHtml;
       grid.appendChild(rl);
 
-      // drei Umkehrungen
       for (let inv = 0; inv < 3; inv++) {
         const ch = computeChord(key, i, inv);
         const c = document.createElement('button');
@@ -291,11 +412,12 @@
   }
 
   /* ----------------------------------------------------------------
-     6) CONTROLS + LEGENDE
+     6) CONTROLS + LEGENDE  (Raster-Modus)
      ---------------------------------------------------------------- */
   function renderControls() {
     const L = t();
     const c = $('controls');
+    if (!c) return;
     c.innerHTML = '';
 
     const keyBlock = document.createElement('div');
@@ -309,9 +431,7 @@
       b.className = 'keybtn mono' + (k.id === state.keyId ? ' is-active' : '');
       b.textContent = k.id;
       b.addEventListener('click', function () {
-        state.keyId = k.id;
-        renderControls();
-        renderGrid();
+        state.keyId = k.id; renderControls(); renderGrid();
       });
       keyRow.appendChild(b);
     });
@@ -326,14 +446,14 @@
       '<span class="switch-text mono">' + esc(L.hintToggle) + '</span>';
     c.appendChild(hintBlock);
     $('hintChk').addEventListener('change', function () {
-      state.showHint = this.checked;
-      renderGrid();
+      state.showHint = this.checked; renderGrid();
     });
   }
 
   function renderLegend() {
     const L = t();
     const el = $('legend');
+    if (!el) return;
     el.innerHTML =
       '<span class="legend-title mono">' + esc(L.legendTitle) + ':</span>' +
       ['maj', 'min', 'dim'].map(function (q) {
@@ -343,39 +463,118 @@
   }
 
   /* ----------------------------------------------------------------
-     7) MODAL  (große Klaviatur, antippen, prüfen)
+     7) OKTAV-UNABHÄNGIGE PRÜFUNG  (Akkordtöne + Basston)
+     ---------------------------------------------------------------- */
+  function pcOf(n) { return ((n % 12) + 12) % 12; }
+  function targetInfo(positions) {
+    return { pcs: positions.map(pcOf), bassPc: pcOf(positions[0]) };
+  }
+  // notes: aufsteigend sortierte Liste (MIDI-Noten ODER Tastatur-Positionen).
+  // → 'correct' | 'bass' (richtige Töne, falscher Bass) | 'partial' | 'none'
+  function matchInversion(notes, positions) {
+    if (!notes || notes.length === 0) return 'none';
+    const tgt = targetInfo(positions);
+    const heldPcs = [];
+    notes.forEach(function (n) { const pc = pcOf(n); if (heldPcs.indexOf(pc) < 0) heldPcs.push(pc); });
+    const tgtSet = new Set(tgt.pcs);
+    const allPresent = tgt.pcs.every(function (pc) { return heldPcs.indexOf(pc) >= 0; });
+    const noExtra = heldPcs.every(function (pc) { return tgtSet.has(pc); });
+    if (allPresent && noExtra) {
+      return pcOf(notes[0]) === tgt.bassPc ? 'correct' : 'bass';
+    }
+    return 'partial';
+  }
+  // Gespielte Töne → Anzeige-Positionen (0..23) zum Hervorheben.
+  function playedDisplayPositions(notes, positions) {
+    const byPc = {};
+    positions.forEach(function (p) { byPc[pcOf(p)] = p; });
+    const set = new Set();
+    notes.forEach(function (n) {
+      const pc = pcOf(n);
+      set.add(byPc[pc] !== undefined ? byPc[pc] : pc);
+    });
+    return set;
+  }
+  function heldNotes() {
+    return Array.from(state.midi.active).sort(function (a, b) { return a - b; });
+  }
+
+  /* ----------------------------------------------------------------
+     8) WEB-MIDI
+     ---------------------------------------------------------------- */
+  function initMidi() {
+    const m = state.midi;
+    if (m.requested) return;
+    m.requested = true;
+    if (!navigator.requestMIDIAccess) { m.supported = false; updateMidiStatus(); return; }
+    navigator.requestMIDIAccess().then(function (access) {
+      bindMidiInputs(access);
+      access.onstatechange = function () { bindMidiInputs(access); };
+      updateMidiStatus();
+    }).catch(function () { m.supported = false; updateMidiStatus(); });
+  }
+  function bindMidiInputs(access) {
+    const names = [];
+    access.inputs.forEach(function (input) {
+      input.onmidimessage = handleMidi;
+      if (input.name) names.push(input.name);
+    });
+    state.midi.deviceName = names.join(', ');
+    updateMidiStatus();
+  }
+  function handleMidi(msg) {
+    const cmd = msg.data[0] & 0xf0, note = msg.data[1], vel = msg.data[2];
+    if (cmd === 0x90 && vel > 0) state.midi.active.add(note);
+    else if (cmd === 0x80 || (cmd === 0x90 && vel === 0)) state.midi.active.delete(note);
+    else return;
+    onMidiChange();
+  }
+  function onMidiChange() {
+    if (state.modal) midiUpdateModal();
+    else if (state.mode === 'drill' && state.drill.running) checkDrill();
+  }
+  function midiStatusText() {
+    const L = t(), m = state.midi;
+    if (!m.supported) return L.midiNo;
+    if (m.deviceName) return L.midiOn(m.deviceName);
+    return L.midiOff;
+  }
+  function updateMidiStatus() {
+    const L = t(), m = state.midi;
+    const cls = !m.supported ? 'is-no' : (m.deviceName ? 'is-on' : 'is-off');
+    document.querySelectorAll('.midi-status').forEach(function (el) {
+      el.textContent = (m.deviceName && m.supported ? '🎹 ' : '') + midiStatusText();
+      el.className = 'midi-status mono ' + cls;
+    });
+  }
+
+  /* ----------------------------------------------------------------
+     9) MODAL  (große Klaviatur, antippen ODER MIDI → automatisch grün)
      ---------------------------------------------------------------- */
   function openModal(i, inv) {
     const key = getKey();
     const ch = computeChord(key, i, inv);
     state.modal = {
       i: i, inv: inv,
-      positions: ch.positions,
-      names: ch.names,
-      rootName: ch.rootName,
-      rootIndex: ch.rootIndex,
-      rootPos: ch.rootPos,
+      positions: ch.positions, names: ch.names,
+      rootName: ch.rootName, rootIndex: ch.rootIndex, rootPos: ch.rootPos,
       quality: ch.quality,
-      played: new Set(),
-      feedback: null
+      played: new Set(), feedback: null, midiPlayed: new Set(), midiMsg: null
     };
+    initMidi();
     renderModal();
   }
-
   function closeModal() {
     state.modal = null;
-    $('modalRoot').innerHTML = '';
+    const r = $('modalRoot'); if (r) r.innerHTML = '';
   }
-
   function onKeyTap(pos) {
     const m = state.modal;
     if (!m) return;
-    if (m.played.has(pos)) m.played.delete(pos);
-    else m.played.add(pos);
-    m.feedback = null;   // Eingabe ändert sich → alte Prüfung verwerfen
+    if (m.played.has(pos)) m.played.delete(pos); else m.played.add(pos);
+    m.feedback = null; m.midiMsg = null;
     renderModal();
   }
-
   function checkModal() {
     const m = state.modal;
     if (!m) return;
@@ -383,16 +582,31 @@
     const correct = new Set(), missing = new Set(), extra = new Set();
     target.forEach(function (p) { (m.played.has(p) ? correct : missing).add(p); });
     m.played.forEach(function (p) { if (!target.has(p)) extra.add(p); });
-    m.feedback = {
-      correct: correct, missing: missing, extra: extra,
-      ok: missing.size === 0 && extra.size === 0
-    };
+    m.feedback = { correct: correct, missing: missing, extra: extra, ok: missing.size === 0 && extra.size === 0 };
+    renderModal();
+  }
+  // MIDI-Eingang live im Modal: hervorheben + automatisch prüfen.
+  function midiUpdateModal() {
+    const m = state.modal;
+    if (!m) return;
+    const notes = heldNotes();
+    m.midiPlayed = playedDisplayPositions(notes, m.positions);
+    const verdict = matchInversion(notes, m.positions);
+    if (verdict === 'correct') {
+      m.feedback = { correct: new Set(m.positions), missing: new Set(), extra: new Set(), ok: true };
+      m.midiMsg = null;
+    } else if (verdict === 'bass') {
+      m.feedback = null; m.midiMsg = t().bassHint(m.names[0]);
+    } else {
+      m.feedback = null; m.midiMsg = null;
+    }
     renderModal();
   }
 
   function renderModal() {
     const m = state.modal;
     const root = $('modalRoot');
+    if (!root) return;
     if (!m) { root.innerHTML = ''; return; }
     const L = t();
     const key = getKey();
@@ -409,7 +623,6 @@
     const panel = document.createElement('div');
     panel.className = 'modal-panel q-' + m.quality;
 
-    // Kopf
     const head = document.createElement('div');
     head.className = 'modal-head';
     head.innerHTML =
@@ -421,7 +634,6 @@
     panel.appendChild(head);
     head.querySelector('.modal-x').addEventListener('click', closeModal);
 
-    // Zieltöne
     const tn = document.createElement('div');
     tn.className = 'mh-target mono';
     tn.innerHTML = '<span class="mh-target-lbl">' + esc(L.targetNotes) + ':</span> ' +
@@ -430,7 +642,6 @@
       }).join(' <span class="sep">–</span> ');
     panel.appendChild(tn);
 
-    // 7.-Stufe-Hinweis im Modal
     if (m.i === 6 && state.showHint) {
       const five = key.scale[4], seven = key.scale[6], slash = five + '/' + seven;
       const note = document.createElement('div');
@@ -439,37 +650,40 @@
       panel.appendChild(note);
     }
 
-    // große Klaviatur
     const kbWrap = document.createElement('div');
     kbWrap.className = 'modal-kbd';
+    const playedSet = new Set();
+    m.played.forEach(function (p) { playedSet.add(p); });
+    (m.midiPlayed || new Set()).forEach(function (p) { playedSet.add(p); });
     const kb = buildKeyboard(m.positions, {
       whiteW: 40, interactive: true, labels: true,
-      played: m.played, feedback: m.feedback, nameMap: nameMap,
-      rootPos: m.rootPos
+      played: playedSet, feedback: m.feedback, nameMap: nameMap, rootPos: m.rootPos
     });
     kbWrap.appendChild(kb);
     panel.appendChild(kbWrap);
 
-    // Hinweis / Feedback
+    const status = document.createElement('div');
+    status.className = 'midi-status mono';
+    panel.appendChild(status);
+
     const msg = document.createElement('div');
     msg.className = 'modal-msg';
     if (m.feedback) {
-      if (m.feedback.ok) {
-        msg.className += ' is-ok';
-        msg.textContent = '✓ ' + L.correct;
-      } else {
+      if (m.feedback.ok) { msg.className += ' is-ok'; msg.textContent = '✓ ' + L.correct; }
+      else {
         msg.className += ' is-bad';
         const parts = [];
-        if (m.feedback.missing.size) parts.push(namesOf(m.feedback.missing, nameMap, m) + ' ' + L.missingLbl);
+        if (m.feedback.missing.size) parts.push(namesOf(m.feedback.missing, nameMap) + ' ' + L.missingLbl);
         if (m.feedback.extra.size) parts.push(m.feedback.extra.size + '× ' + L.extraLbl);
         msg.textContent = parts.join(' · ');
       }
+    } else if (m.midiMsg) {
+      msg.className += ' is-bad'; msg.textContent = m.midiMsg;
     } else {
       msg.textContent = L.tapHint;
     }
     panel.appendChild(msg);
 
-    // Buttons
     const actions = document.createElement('div');
     actions.className = 'modal-actions';
     actions.innerHTML =
@@ -478,21 +692,280 @@
     panel.appendChild(actions);
     actions.querySelector('#mCheck').addEventListener('click', checkModal);
     actions.querySelector('#mClear').addEventListener('click', function () {
-      m.played.clear(); m.feedback = null; renderModal();
+      m.played.clear(); m.midiPlayed = new Set(); m.feedback = null; m.midiMsg = null; renderModal();
     });
 
     back.appendChild(panel);
     root.appendChild(back);
+    updateMidiStatus();
   }
 
-  // Namen einer Positions-Menge (für Zieltöne: aus nameMap; sortiert)
   function namesOf(set, nameMap) {
     return Array.from(set).sort(function (a, b) { return a - b; })
       .map(function (p) { return nameMap[p] || ('#' + p); }).join(', ');
   }
 
   /* ----------------------------------------------------------------
-     8) SPRACHE + STATISCHE TEXTE
+     10) DRILL  (Training: getaktet, Stimmführung, auto-weiter)
+     ---------------------------------------------------------------- */
+  function buildProgression() {
+    const d = state.drill;
+    const key = d.keyMode === 'random' ? pick(KEYS) : (KEYS.find(function (k) { return k.id === d.keyMode; }) || KEYS[0]);
+    let type = d.type;
+    if (type === 'mixed') type = rnd() < 0.5 ? 'walk' : 'classic';
+    const prog = type === 'walk' ? pick(PROGS_WALK) : pick(PROGS_CLASSIC);
+    d.progName = key.id + ' · ' + prog.name;
+    return smartSteps(key, prog.degs);
+  }
+
+  function startDrill() {
+    const d = state.drill;
+    stopDrillTimers();
+    d.running = true; d.hits = 0;
+    d.steps = buildProgression(); d.index = 0;
+    newPrompt(false);
+  }
+  function stopDrill() {
+    const d = state.drill;
+    d.running = false; d.revealing = false; d.locked = false;
+    stopDrillTimers();
+    if (state.mode === 'drill') renderDrill();
+  }
+  function stopDrillTimers() {
+    const d = state.drill;
+    if (d.timerId) { clearInterval(d.timerId); d.timerId = null; }
+    if (d.advanceId) { clearTimeout(d.advanceId); d.advanceId = null; }
+  }
+  function newPrompt(advance) {
+    const d = state.drill;
+    stopDrillTimers();
+    if (advance) {
+      d.index++;
+      if (d.index >= d.steps.length) { d.steps = buildProgression(); d.index = 0; }
+    }
+    d.revealing = false; d.locked = false; d.tap = new Set(); d.msg = null;
+    d.secondsLeft = DRILL_SECONDS; d.deadline = now() + DRILL_SECONDS * 1000;
+    d.timerId = setInterval(tickDrill, 100);
+    renderDrill();
+  }
+  function tickDrill() {
+    const d = state.drill;
+    if (!$('drillView') || !d.running) { stopDrillTimers(); return; }
+    const left = Math.max(0, d.deadline - now());
+    d.secondsLeft = Math.ceil(left / 1000);
+    const bar = $('drillBar'); if (bar) { bar.style.width = (left / (DRILL_SECONDS * 1000) * 100) + '%'; bar.classList.toggle('is-urgent', left <= 5000); }
+    const secs = $('drillSecs'); if (secs) secs.textContent = d.secondsLeft + ' ' + t().seconds;
+    if (left <= 0 && !d.locked) onDrillTimeout();
+  }
+  function currentInput() {
+    if (state.midi.active.size) return heldNotes();
+    return Array.from(state.drill.tap).sort(function (a, b) { return a - b; });
+  }
+  function onDrillTap(pos) {
+    const d = state.drill;
+    if (!d.running || d.revealing || d.locked) return;
+    if (d.tap.has(pos)) d.tap.delete(pos); else d.tap.add(pos);
+    checkDrill();
+  }
+  function checkDrill() {
+    const d = state.drill;
+    if (!d.running || d.revealing || d.locked) return;
+    const step = d.steps[d.index];
+    if (!step) return;
+    const notes = currentInput();
+    const verdict = matchInversion(notes, step.positions);
+    if (verdict === 'correct') { onDrillCorrect(); return; }
+    if (verdict === 'bass') d.msg = t().bassHint(step.names[0]);
+    else d.msg = null;
+    updateDrillBoard();
+  }
+  function onDrillCorrect() {
+    const d = state.drill;
+    d.locked = true; d.hits++;
+    d.msg = t().drillCorrect;
+    stopDrillTimers();
+    updateDrillBoard(true);
+    d.advanceId = setTimeout(function () { newPrompt(true); }, 950);
+  }
+  function onDrillTimeout() {
+    const d = state.drill;
+    d.locked = true; d.revealing = true;
+    d.msg = t().timeUp;
+    stopDrillTimers();
+    updateDrillBoard();
+    d.advanceId = setTimeout(function () { newPrompt(false); }, 2400); // gleiche Aufgabe nochmal
+  }
+
+  function renderDrill() {
+    const host = $('drillView');
+    if (!host) return;
+    const L = t(), d = state.drill;
+    host.innerHTML = '';
+
+    // --- Steuerleiste ---
+    const ctr = document.createElement('div');
+    ctr.className = 'drill-controls';
+    const types = [['mixed', L.typeMixed], ['walk', L.typeWalk], ['classic', L.typeClassic]];
+    const typeSeg = document.createElement('div');
+    typeSeg.className = 'seg-block';
+    typeSeg.innerHTML = '<div class="ctrl-label mono">' + esc(L.drillType) + '</div>';
+    const segRow = document.createElement('div'); segRow.className = 'seg';
+    types.forEach(function (tp) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'segbtn mono' + (d.type === tp[0] ? ' is-active' : '');
+      b.textContent = tp[1];
+      b.addEventListener('click', function () { d.type = tp[0]; if (d.running) startDrill(); else renderDrill(); });
+      segRow.appendChild(b);
+    });
+    typeSeg.appendChild(segRow);
+    ctr.appendChild(typeSeg);
+
+    // Tonart
+    const keySeg = document.createElement('div');
+    keySeg.className = 'seg-block';
+    keySeg.innerHTML = '<div class="ctrl-label mono">' + esc(L.drillKey) + '</div>';
+    const sel = document.createElement('select');
+    sel.className = 'drill-select mono';
+    const optR = document.createElement('option'); optR.value = 'random'; optR.textContent = L.keyRandom; sel.appendChild(optR);
+    KEYS.forEach(function (k) { const o = document.createElement('option'); o.value = k.id; o.textContent = k.id; sel.appendChild(o); });
+    sel.value = d.keyMode;
+    sel.addEventListener('change', function () { d.keyMode = this.value; if (d.running) startDrill(); });
+    keySeg.appendChild(sel);
+    ctr.appendChild(keySeg);
+
+    // Start/Stop
+    const action = document.createElement('div');
+    action.className = 'seg-block seg-action';
+    const startBtn = document.createElement('button');
+    startBtn.type = 'button';
+    startBtn.className = 'btn ' + (d.running ? 'btn-ghost' : 'btn-primary');
+    startBtn.textContent = d.running ? L.stop : L.start;
+    startBtn.addEventListener('click', function () { if (d.running) stopDrill(); else { initMidi(); startDrill(); } });
+    action.appendChild(startBtn);
+    ctr.appendChild(action);
+
+    host.appendChild(ctr);
+
+    // --- MIDI-Status ---
+    const status = document.createElement('div');
+    status.className = 'midi-status mono';
+    host.appendChild(status);
+
+    if (!d.running) {
+      const intro = document.createElement('p');
+      intro.className = 'drill-intro';
+      intro.textContent = L.drillIntro;
+      host.appendChild(intro);
+      updateMidiStatus();
+      return;
+    }
+
+    // --- Aufgabe ---
+    const step = d.steps[d.index];
+    const card = document.createElement('div');
+    card.className = 'drill-prompt';
+    card.innerHTML =
+      '<div class="dp-top mono"><span>' + esc(step.key.id) + ' · ' + esc(d.progName) + '</span>' +
+      '<span class="dp-step">' + esc(L.step) + ' ' + (d.index + 1) + '/' + d.steps.length + ' · ' + esc(L.hits) + ' ' + d.hits + '</span></div>' +
+      '<div class="dp-main"><span class="dp-lbl mono">' + esc(L.playPrompt) + '</span> ' +
+      '<span class="dp-chord">' + esc(step.label) + '</span> ' +
+      '<span class="dp-inv">' + esc(L.columns[step.inv]) + '</span></div>';
+    host.appendChild(card);
+
+    // Timer
+    const timer = document.createElement('div');
+    timer.className = 'drill-timer';
+    timer.innerHTML = '<div class="dt-track"><div id="drillBar" class="dt-bar"></div></div><span id="drillSecs" class="dt-secs mono">' + d.secondsLeft + ' ' + esc(L.seconds) + '</span>';
+    host.appendChild(timer);
+
+    // Board
+    const board = document.createElement('div');
+    board.className = 'drill-board'; board.id = 'drillBoard';
+    host.appendChild(board);
+
+    // Nachricht
+    const msg = document.createElement('div');
+    msg.className = 'drill-msg'; msg.id = 'drillMsg';
+    host.appendChild(msg);
+
+    updateDrillBoard();
+    updateMidiStatus();
+    const bar = $('drillBar');
+    if (bar) bar.style.width = (Math.max(0, d.deadline - now()) / (DRILL_SECONDS * 1000) * 100) + '%';
+  }
+
+  // Nur Board + Nachricht aktualisieren (ohne Steuerleiste/Timer neu zu bauen).
+  function updateDrillBoard(correct) {
+    const d = state.drill;
+    const board = $('drillBoard');
+    if (!board) return;
+    const step = d.steps[d.index];
+    const notes = currentInput();
+    let feedback = null, showTarget = false;
+    if (correct) {
+      feedback = { correct: new Set(step.positions), missing: new Set(), extra: new Set(), ok: true };
+    } else if (d.revealing) {
+      // Antwort zeigen (Zieltasten markiert)
+      showTarget = true;
+    }
+    const played = showTarget ? new Set() : playedDisplayPositions(notes, step.positions);
+    board.innerHTML = '';
+    const kb = buildKeyboard(showTarget ? step.positions : [], {
+      whiteW: 38, interactive: true, onTap: onDrillTap,
+      played: played, feedback: feedback, rootPos: d.revealing ? step.rootPos : undefined
+    });
+    board.appendChild(kb);
+
+    const msg = $('drillMsg');
+    if (msg) {
+      let cls = 'drill-msg', text = d.msg || t().waiting;
+      if (correct) cls += ' is-ok';
+      else if (d.revealing) cls += ' is-reveal';
+      else if (d.msg) cls += ' is-bad';
+      msg.className = cls; msg.textContent = (correct ? '✓ ' : '') + text;
+    }
+  }
+
+  /* ----------------------------------------------------------------
+     11) MODUS-UMSCHALTER
+     ---------------------------------------------------------------- */
+  function renderModeSwitch() {
+    const el = $('modeswitch');
+    if (!el) return;
+    const L = t();
+    el.innerHTML = '';
+    [['grid', L.modeGrid], ['drill', L.modeDrill]].forEach(function (mo) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'modebtn mono' + (state.mode === mo[0] ? ' is-active' : '');
+      b.textContent = mo[1];
+      b.addEventListener('click', function () { setMode(mo[0]); });
+      el.appendChild(b);
+    });
+  }
+  function setMode(mode) {
+    if (state.mode === mode) return;
+    state.mode = mode;
+    if (mode !== 'drill') stopDrill();
+    applyMode();
+    renderModeSwitch();
+  }
+  function applyMode() {
+    const gv = $('gridView'), dv = $('drillView');
+    if (!gv || !dv) return;
+    if (state.mode === 'drill') {
+      gv.hidden = true; dv.hidden = false;
+      initMidi();
+      renderDrill();
+    } else {
+      dv.hidden = true; gv.hidden = false;
+      stopDrillTimers();
+    }
+  }
+
+  /* ----------------------------------------------------------------
+     12) SPRACHE + STATISCHE TEXTE
      ---------------------------------------------------------------- */
   function applyStaticTexts() {
     const L = t();
@@ -501,23 +974,26 @@
       const k = el.getAttribute('data-i');
       if (L[k]) el.textContent = L[k];
     });
-    $('title').textContent = L.title;
-    $('subtitle').textContent = L.subtitle;
-    $('notation').textContent = L.notation;
+    if ($('title')) $('title').textContent = L.title;
+    if ($('subtitle')) $('subtitle').textContent = L.subtitle;
+    if ($('notation')) $('notation').textContent = L.notation;
   }
 
   function setLang(lang) {
     state.lang = lang;
     try { localStorage.setItem('tt_lang', lang); } catch (e) {}
     applyStaticTexts();
+    renderModeSwitch();
     renderControls();
     renderLegend();
     renderGrid();
+    if (state.mode === 'drill') renderDrill();
     if (state.modal) renderModal();
+    updateMidiStatus();
   }
 
   /* ----------------------------------------------------------------
-     9) HELFER
+     13) HELFER
      ---------------------------------------------------------------- */
   function esc(s) {
     return String(s == null ? '' : s)
@@ -525,7 +1001,7 @@
   }
 
   /* ----------------------------------------------------------------
-     10) START
+     14) START
      ---------------------------------------------------------------- */
   let escWired = false;
   function mount(root) {
@@ -533,66 +1009,46 @@
       const saved = localStorage.getItem('tt_lang');
       if (saved === 'de' || saved === 'en') state.lang = saved;
     } catch (e) {}
+    // Transient-State bei (Re-)Mount sauber zurücksetzen — aber den gewählten
+    // Modus (Raster/Training) behalten, damit ein Sprachwechsel den Tab nicht
+    // wegreißt. Ein laufender Drill wird gestoppt (frischer Start-Screen).
+    stopDrillTimers();
+    state.modal = null;
+    state.drill.running = false; state.drill.revealing = false; state.drill.locked = false;
+
     root.classList.add('invtrainer');
     root.innerHTML =
       '<div class="kicker" data-i="kicker"></div>' +
       '<h1 id="title" class="title"></h1>' +
       '<p id="subtitle" class="sub"></p>' +
-      '<div id="controls" class="controls"></div>' +
-      '<div id="legend" class="legend"></div>' +
-      '<div class="gridwrap"><div id="grid" class="grid"></div></div>' +
-      '<p id="notation" class="notation"></p>' +
+      '<div id="modeswitch" class="modeswitch"></div>' +
+      '<div id="gridView">' +
+        '<div id="controls" class="controls"></div>' +
+        '<div id="legend" class="legend"></div>' +
+        '<div class="gridwrap"><div id="grid" class="grid"></div></div>' +
+        '<p id="notation" class="notation"></p>' +
+      '</div>' +
+      '<div id="drillView" hidden></div>' +
       '<div id="modalRoot"></div>';
+
     if (!escWired) {
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && state.modal) closeModal(); });
       escWired = true;
     }
     applyStaticTexts();
+    renderModeSwitch();
     renderControls();
     renderLegend();
     renderGrid();
+    applyMode();
   }
 
-  /* ==================================================================
-     11) VORBEREITET FÜR SPÄTER  (noch nicht aktiv)
-     ------------------------------------------------------------------
-     A) Web-MIDI-Eingang:
-        Echte USB-Keyboard-Tasten sollen dieselben „gespielt"-Markierungen
-        und denselben Live-Abgleich auslösen wie das Antippen. Andockpunkt
-        ist onKeyTap(pos) bzw. state.modal.played — eine MIDI-Note muss nur
-        in eine Tastatur-Position (0..23) übersetzt werden.
-
-     function midiToPosition(midiNote) {
-       // unteres C der aktuellen 2-Oktav-Ansicht bestimmen und mappen
-       // return 0..23 oder null, wenn außerhalb
-     }
-     function initMidi() {
-       if (!navigator.requestMIDIAccess) return;
-       navigator.requestMIDIAccess().then(function (access) {
-         access.inputs.forEach(function (input) {
-           input.onmidimessage = function (msg) {
-             const cmd = msg.data[0] & 0xf0, note = msg.data[1], vel = msg.data[2];
-             const pos = midiToPosition(note);
-             if (pos == null) return;
-             if (cmd === 0x90 && vel > 0) { if (state.modal && !state.modal.played.has(pos)) onKeyTap(pos); }
-             // Note-Off optional: live-Markierung wieder entfernen
-           };
-         });
-       });
-     }
-
-     B) Akkord-Progressionen-Modus:
-        Eine Folge von Schritten, die nacheinander in der richtigen Umkehrung
-        gespielt werden müssen. Jeder Schritt nutzt computeChord(key,i,inv);
-        die Prüf-Logik (checkModal) lässt sich pro Schritt wiederverwenden.
-
-     const progression = { active: false, steps: [], index: 0 };
-     // steps: [{ i, inv }, ...]  →  computeChord(getKey(), step.i, step.inv)
-     ================================================================== */
-
-  // Exportiert für spätere Erweiterungen / Tests:
+  // Exportiert für App-Einbettung + Tests:
   window.InversionTrainer = {
     mount: mount, setLang: setLang,
-    KEYS: KEYS, computeChord: computeChord, chordLabel: chordLabel, state: state
+    KEYS: KEYS, computeChord: computeChord, chordLabel: chordLabel,
+    smartSteps: smartSteps, matchInversion: matchInversion, state: state,
+    // Test-Hook: MIDI-Eingang simulieren (Array von MIDI-Noten = gerade gedrückt).
+    _simMidi: function (arr) { state.midi.active = new Set(arr || []); onMidiChange(); }
   };
 })();
