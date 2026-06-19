@@ -25,7 +25,7 @@ const CONFIG = {
 
   QUESTIONS_FILE_LEARN: 'learn.json',
 
-  // Guide-ID, die zusätzlich als eigener "Checkliste"-Eintrag auf der Startseite erscheint.
+  // Guide-ID, die zusätzlich als eigener "Checkliste"-Eintrag auf der Production-Startseite erscheint.
   CHECKLIST_GUIDE: 'rollen-ablauf',
 
   STORAGE_KEY_LANG: 'tt_lang',
@@ -39,6 +39,28 @@ const CONFIG = {
 const I18N = {
   de: {
     brand: 'KAC Production Team',
+    brand_academy: 'KAC Music Academy',
+    brand_portal: 'KAC · Music Academy & Production Team',
+    area_kicker: 'Lern- & Test-Portal',
+    area_title: 'KAC',
+    area_intro: 'Wähle deinen Bereich.',
+    area_academy_name: 'Music Academy',
+    area_academy_sub: 'Musiktheorie lernen & üben — Tonleitern, Nashville, Inversionen',
+    area_academy_go: 'Zum Lernbereich',
+    area_production_name: 'Production Team',
+    area_production_sub: 'Sound & Projection — Lernbereich und Wissens-Test',
+    area_production_go: 'Lernen & Test',
+    back_areas: 'Übersicht',
+    learn_academy_kicker: 'Music Academy · Lernbereich',
+    learn_academy_title: 'Lernen',
+    learn_academy_intro: 'Theorie und Übungen zum Selbstlernen. Lies von oben nach unten und spiel die Beispiele am Klavier mit.',
+    show_solutions: 'Lösungen anzeigen',
+    hide_solutions: 'Lösungen ausblenden',
+    ws_check: 'Prüfen',
+    ws_solve: 'Lösung zeigen',
+    ws_reset: 'Leeren',
+    ws_print: 'Drucken',
+    ws_result: (x, y) => `${x} von ${y} richtig`,
     home_kicker: 'Production Team · Sound & Projection',
     home_intro: 'Lerne die Abläufe und teste dein Wissen.',
     home_learn: 'Lernen',
@@ -100,6 +122,28 @@ const I18N = {
   },
   en: {
     brand: 'KAC Production Team',
+    brand_academy: 'KAC Music Academy',
+    brand_portal: 'KAC · Music Academy & Production Team',
+    area_kicker: 'Learning & Test Portal',
+    area_title: 'KAC',
+    area_intro: 'Choose your area.',
+    area_academy_name: 'Music Academy',
+    area_academy_sub: 'Learn & practise music theory — scales, Nashville, inversions',
+    area_academy_go: 'To the learning area',
+    area_production_name: 'Production Team',
+    area_production_sub: 'Sound & Projection — learning area and knowledge test',
+    area_production_go: 'Learn & test',
+    back_areas: 'Overview',
+    learn_academy_kicker: 'Music Academy · Learning area',
+    learn_academy_title: 'Learn',
+    learn_academy_intro: 'Theory and exercises for self-study. Read top to bottom and play the examples along on the piano.',
+    show_solutions: 'Show solutions',
+    hide_solutions: 'Hide solutions',
+    ws_check: 'Check',
+    ws_solve: 'Show solution',
+    ws_reset: 'Clear',
+    ws_print: 'Print',
+    ws_result: (x, y) => `${x} of ${y} correct`,
     home_kicker: 'Production Team · Sound & Projection',
     home_intro: 'Learn the workflows and test your knowledge.',
     home_learn: 'Learn',
@@ -167,6 +211,7 @@ const I18N = {
 const state = {
   data: null,
   learn: null,
+  area: null,
   currentGuide: null,
   guideFrom: 'learn',  // 'home' (über Checkliste) | 'learn' (über Lernbereich)
   rules: null,        // effective bewertung
@@ -246,7 +291,8 @@ langToggle.addEventListener('click', () => {
 /* Re-render the current screen live (used by language switch) */
 let currentScreen = 'boot';
 function rerenderCurrent() {
-  if (currentScreen === 'home') renderHome();
+  if (currentScreen === 'area') renderArea();
+  else if (currentScreen === 'home') renderHome();
   else if (currentScreen === 'learn') renderLearnHome();
   else if (currentScreen === 'guide') renderGuide(state.currentGuide, true);
   else if (currentScreen === 'login') renderLogin(true);
@@ -292,25 +338,60 @@ async function boot() {
     if (lr.ok) state.learn = await lr.json();
   } catch (e) { state.learn = null; }
 
-  renderHome();
+  renderArea();
 }
 
 /* ------------------------------------------------------------------
-   6b) SCREEN: HOME  ·  zwei Wege: Lernen / Test
+   6a) SCREEN: AREA  ·  Music Academy | Production Team
+   ------------------------------------------------------------------ */
+function renderArea() {
+  currentScreen = 'area';
+  state.area = null;
+  const L = t();
+
+  app.innerHTML = `
+    <section class="screen">
+      <div class="kicker">${escapeHTML(L.area_kicker)}</div>
+      <h1 class="display">${escapeHTML(L.area_title)}</h1>
+      <p style="margin:18px 0 0;color:var(--ink-soft)">${escapeHTML(L.area_intro)}</p>
+      <div class="area-grid">
+        <button class="area-tile" id="areaAcademy" type="button">
+          <span class="area-idx mono">01</span>
+          <span class="area-name">${escapeHTML(L.area_academy_name)}</span>
+          <span class="area-sub">${escapeHTML(L.area_academy_sub)}</span>
+          <span class="area-go mono">${escapeHTML(L.area_academy_go)} <span class="arrow">→</span></span>
+        </button>
+        <button class="area-tile" id="areaProduction" type="button">
+          <span class="area-idx mono">02</span>
+          <span class="area-name">${escapeHTML(L.area_production_name)}</span>
+          <span class="area-sub">${escapeHTML(L.area_production_sub)}</span>
+          <span class="area-go mono">${escapeHTML(L.area_production_go)} <span class="arrow">→</span></span>
+        </button>
+      </div>
+      <div class="spacer"></div>
+      <div class="brandline mono">${escapeHTML(L.brand_portal)}</div>
+    </section>`;
+
+  document.getElementById('areaAcademy').addEventListener('click', () => { state.area = 'academy'; renderLearnHome(); });
+  document.getElementById('areaProduction').addEventListener('click', () => renderHome());
+}
+
+/* ------------------------------------------------------------------
+   6b) SCREEN: HOME  ·  Production-Hub: Lernen / Test
    ------------------------------------------------------------------ */
 function renderHome() {
   currentScreen = 'home';
   const L = t();
   const guides = (state.learn && state.learn.guides) || [];
-  const hasLearn = guides.length > 0;
-  const hasCheck = hasLearn && guides.some(g => g.id === CONFIG.CHECKLIST_GUIDE);
+  const prodGuides = guides.filter(g => (g.area || 'production') === 'production');
+  const hasLearn = prodGuides.length > 0;
+  const hasCheck = prodGuides.some(g => g.id === CONFIG.CHECKLIST_GUIDE);
 
-  // Reihenfolge: 01 Checkliste · 02 Lernen · 03 Test (Einträge fallen weg, wenn nicht vorhanden)
+  // 01 Checkliste · 02 Lernen · 03 Test
   const rows = [];
   if (hasCheck) rows.push({ id: 'goCheck', name: L.home_check, sub: L.home_check_sub });
   if (hasLearn) rows.push({ id: 'goLearn', name: L.home_learn, sub: L.home_learn_sub });
   rows.push({ id: 'goTest', name: L.home_test, sub: L.home_test_sub });
-
   const rowsHTML = rows.map((r, i) => `
         <button class="test-row" type="button" id="${r.id}">
           <span class="idx mono">${String(i + 1).padStart(2, '0')}</span>
@@ -323,6 +404,7 @@ function renderHome() {
 
   app.innerHTML = `
     <section class="screen">
+      <button class="backlink" id="homeBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_areas)}</button>
       <div class="kicker">${escapeHTML(L.home_kicker)}</div>
       <h1 class="display">Projection<br>&amp; Sound</h1>
       <p style="margin:20px 0 0;color:var(--ink-soft)">${escapeHTML(L.home_intro)}</p>
@@ -332,10 +414,11 @@ function renderHome() {
       <div class="brandline mono">${escapeHTML(L.brand)}</div>
     </section>`;
 
+  document.getElementById('homeBack').addEventListener('click', () => renderArea());
   const gc = document.getElementById('goCheck');
-  if (gc) gc.addEventListener('click', () => { state.guideFrom = 'home'; renderGuide(CONFIG.CHECKLIST_GUIDE); });
+  if (gc) gc.addEventListener('click', () => { state.area = 'production'; state.guideFrom = 'home'; renderGuide(CONFIG.CHECKLIST_GUIDE); });
   const gl = document.getElementById('goLearn');
-  if (gl) gl.addEventListener('click', () => renderLearnHome());
+  if (gl) gl.addEventListener('click', () => { state.area = 'production'; renderLearnHome(); });
   document.getElementById('goTest').addEventListener('click', () => {
     state.participant ? renderSelect() : renderLogin();
   });
@@ -465,7 +548,8 @@ function tagLabel(tag) {
 function renderLearnHome() {
   currentScreen = 'learn';
   const L = t();
-  const guides = (state.learn && state.learn.guides) || [];
+  const isAcademy = state.area === 'academy';
+  const guides = ((state.learn && state.learn.guides) || []).filter(g => (g.area || 'production') === state.area);
   const lang = state.lang;
   const tx = (o) => o ? (o[lang] ?? o.de ?? '') : '';
 
@@ -474,13 +558,13 @@ function renderLearnHome() {
     rows = `<p class="notice" style="animation:none">${escapeHTML(L.learn_empty)}</p>`;
   } else {
     rows = '<div class="test-list">' + guides.map((g, i) => {
-      const tags = (g.bereiche || []).map(tagLabel).filter(Boolean).join(' · ');
+      const meta = g.meta ? tx(g.meta) : (g.bereiche || []).map(tagLabel).filter(Boolean).join(' · ');
       return `
         <button class="test-row" type="button" data-guide="${escapeHTML(g.id)}">
           <span class="idx mono">${String(i + 1).padStart(2, '0')}</span>
           <span>
             <span class="name name--sm">${escapeHTML(tx(g.title))}</span><br>
-            <span class="meta">${escapeHTML(tags)}</span>
+            <span class="meta">${escapeHTML(meta)}</span>
           </span>
           <span class="arrow">→</span>
         </button>`;
@@ -489,16 +573,16 @@ function renderLearnHome() {
 
   app.innerHTML = `
     <section class="screen">
-      <button class="backlink" id="learnBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_home)}</button>
-      <div class="kicker">${escapeHTML(L.learn_kicker)}</div>
-      <h1 class="display">${escapeHTML(L.learn_title)}</h1>
-      <p style="margin:20px 0 0;color:var(--ink-soft);max-width:40ch">${escapeHTML(L.learn_intro)}</p>
+      <button class="backlink" id="learnBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_areas)}</button>
+      <div class="kicker">${escapeHTML(isAcademy ? L.learn_academy_kicker : L.learn_kicker)}</div>
+      <h1 class="display">${escapeHTML(isAcademy ? L.learn_academy_title : L.learn_title)}</h1>
+      <p style="margin:20px 0 0;color:var(--ink-soft);max-width:42ch">${escapeHTML(isAcademy ? L.learn_academy_intro : L.learn_intro)}</p>
       ${rows}
       <div class="spacer"></div>
-      <div class="brandline mono">${escapeHTML(L.brand)}</div>
+      <div class="brandline mono">${escapeHTML(isAcademy ? L.brand_academy : L.brand)}</div>
     </section>`;
 
-  document.getElementById('learnBack').addEventListener('click', () => renderHome());
+  document.getElementById('learnBack').addEventListener('click', () => isAcademy ? renderArea() : renderHome());
   app.querySelectorAll('.test-row[data-guide]').forEach(b =>
     b.addEventListener('click', () => { state.guideFrom = 'learn'; renderGuide(b.dataset.guide); }));
 }
@@ -538,7 +622,7 @@ function makeCheck(id, label, checks) {
 
 /* --- render one content block to HTML --- */
 function renderBlock(b, ctx) {
-  const { tx, checks, guideId, path } = ctx;
+  const { tx, checks, guideId, path, L } = ctx;
   switch (b.type) {
     case 'text':
       return `<p class="g-text">${escapeHTML(tx(b.text))}</p>`;
@@ -593,8 +677,7 @@ function renderBlock(b, ctx) {
       const sid = 'fig-' + guideId + '-' + path;
       const cap = escapeHTML(tx(b.caption));
       const ar = b.aspect || '16 / 10';
-      // Echtes Bild: figure-Feld "image" (+ optional "image_en" für EN-Version).
-      // "fit" = contain | cover (Default cover). Fehlt das Bild, bleibt der Platzhalter.
+      // Echtes Bild: figure-Feld "image" (+ optional "image_en"). "fit" = contain|cover.
       const chosen = (state.lang === 'en' && b.image_en) ? b.image_en : b.image;
       const imgSrc = chosen ? ` src="${escapeHTML(chosen)}"` : '';
       const fit = b.fit ? ` fit="${escapeHTML(b.fit)}"` : '';
@@ -605,6 +688,14 @@ function renderBlock(b, ctx) {
     }
     case 'note':
       return `<div class="callout"><span class="callout-mark mono">!</span><span>${escapeHTML(tx(b.text))}</span></div>`;
+    case 'solution': {
+      const label = tx(b.label) || (L ? L.show_solutions : 'Lösungen');
+      const inner = (b.blocks || []).map((bb, bi) => renderBlock(bb, Object.assign({}, ctx, { path: path + 'x' + bi }))).join('');
+      return `<div class="solution">
+          <button class="sol-toggle" type="button" data-soltoggle><span class="sol-ic mono">+</span><span data-soltext>${escapeHTML(label)}</span></button>
+          <div class="sol-body" hidden>${inner}</div>
+        </div>`;
+    }
     case 'closing':
       return `<p class="sec-closing">${escapeHTML(tx(b.text))}</p>`;
     default:
@@ -612,11 +703,85 @@ function renderBlock(b, ctx) {
   }
 }
 
-function guideShell(g, tags, L, tx, bodyHTML) {
+/* ------------------------------------------------------------------
+   8c) INTERAKTIVES ARBEITSBLATT  ·  worksheet (table) + solution
+   Leere Zellen werden Eingabefelder; die Lösungstabelle ist der
+   Antwortschlüssel. Prüfen (grün/rot), Lösung zeigen, Leeren, Drucken.
+   ------------------------------------------------------------------ */
+// Antwort tolerant vergleichen: Reihenfolge-unabhängige Token (für "C, E"),
+// Gross/Klein egal, ♯/♭ -> #/b, Leerzeichen raus.
+function wsTokens(s) {
+  return (s == null ? '' : String(s)).toLowerCase()
+    .replace(/♯/g, '#').replace(/♭/g, 'b')
+    .split(/[,/]+/).map(x => x.replace(/\s+/g, '')).filter(Boolean).sort();
+}
+function wsMatch(input, answer) {
+  const a = wsTokens(input), b = wsTokens(answer);
+  return a.length > 0 && a.length === b.length && a.every((v, i) => v === b[i]);
+}
+// Erkennt ein Worksheet-Paar: table direkt gefolgt von solution{table} gleicher Spaltenzahl.
+function isWorksheetPair(b, next) {
+  return b && b.type === 'table' && next && next.type === 'solution'
+    && next.blocks && next.blocks[0] && next.blocks[0].type === 'table'
+    && (next.blocks[0].head || []).length === (b.head || []).length;
+}
+function renderWorksheet(table, solTable, ctx) {
+  const { tx, L } = ctx;
+  const head = (table.head || []).map(h => `<th>${escapeHTML(tx(h))}</th>`).join('');
+  let body = '';
+  (table.rows || []).forEach((row, r) => {
+    let cells = '';
+    row.forEach((cell, c) => {
+      const given = tx(cell);
+      const ans = tx(((solTable.rows || [])[r] || [])[c]);
+      if (given !== '') cells += `<td class="ws-given">${escapeHTML(given)}</td>`;
+      else if (ans !== '') cells += `<td class="ws-cell"><input class="ws-inp" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" data-ans="${escapeHTML(ans)}"></td>`;
+      else cells += `<td></td>`;
+    });
+    body += `<tr>${cells}</tr>`;
+  });
+  return `<div class="ws" data-ws>
+      <div class="g-tablewrap"><table class="g-table ws-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>
+      <div class="ws-controls">
+        <button class="ws-btn" type="button" data-ws-check>${escapeHTML(L.ws_check)}</button>
+        <button class="ws-btn ws-btn--ghost" type="button" data-ws-solve>${escapeHTML(L.ws_solve)}</button>
+        <button class="ws-btn ws-btn--ghost" type="button" data-ws-reset>${escapeHTML(L.ws_reset)}</button>
+        <span class="ws-result mono" data-ws-result></span>
+      </div>
+    </div>`;
+}
+function wireWorksheets(root) {
+  root.querySelectorAll('[data-ws]').forEach(ws => {
+    const inps = [...ws.querySelectorAll('.ws-inp')];
+    const result = ws.querySelector('[data-ws-result]');
+    const clear = inp => inp.classList.remove('ok', 'bad', 'revealed');
+    ws.querySelector('[data-ws-check]').addEventListener('click', () => {
+      let ok = 0;
+      inps.forEach(inp => {
+        clear(inp);
+        if (inp.value.trim() === '') return;
+        if (wsMatch(inp.value, inp.dataset.ans)) { inp.classList.add('ok'); ok++; }
+        else inp.classList.add('bad');
+      });
+      result.textContent = t().ws_result(ok, inps.length);
+    });
+    ws.querySelector('[data-ws-solve]').addEventListener('click', () => {
+      inps.forEach(inp => { inp.value = inp.dataset.ans; clear(inp); inp.classList.add('revealed'); });
+      result.textContent = '';
+    });
+    ws.querySelector('[data-ws-reset]').addEventListener('click', () => {
+      inps.forEach(inp => { inp.value = ''; clear(inp); });
+      result.textContent = '';
+    });
+    inps.forEach(inp => inp.addEventListener('input', () => clear(inp)));
+  });
+}
+
+function guideShell(g, kicker, L, tx, bodyHTML, showTest, brand) {
   return `
     <section class="screen guide">
       <button class="backlink" id="guideBack" type="button"><span class="backarrow">←</span> ${escapeHTML(state.guideFrom === 'home' ? L.back_home : L.back_learn)}</button>
-      <div class="kicker">${escapeHTML(tags)}</div>
+      <div class="kicker">${escapeHTML(kicker)}</div>
       <h1 class="display guide-title">${escapeHTML(tx(g.title))}</h1>
       <p class="guide-sub">${escapeHTML(tx(g.subtitle))}</p>
       ${g.updated ? `<div class="guide-meta mono">${escapeHTML(L.updated)}: ${escapeHTML(g.updated)}</div>` : ''}
@@ -625,10 +790,11 @@ function guideShell(g, tags, L, tx, bodyHTML) {
       <div id="guideBody">${bodyHTML}</div>
       <div class="guide-foot">
         <button class="linkbtn" id="resetChecks" type="button">${escapeHTML(L.reset_checks)}</button>
-        <button class="btn" id="guideToTest" type="button"><span>${escapeHTML(L.to_test)}</span><span class="arrow">→</span></button>
+        <button class="linkbtn" id="guidePrint" type="button">${escapeHTML(L.ws_print)}</button>
+        ${showTest ? `<button class="btn" id="guideToTest" type="button"><span>${escapeHTML(L.to_test)}</span><span class="arrow">→</span></button>` : ''}
       </div>
       <div class="spacer"></div>
-      <div class="brandline mono">${escapeHTML(L.brand)}</div>
+      <div class="brandline mono">${escapeHTML(brand)}</div>
     </section>`;
 }
 
@@ -638,15 +804,19 @@ async function renderGuide(guideId, keepScroll = false) {
   if (!g) { renderLearnHome(); return; }
   currentScreen = 'guide';
   state.currentGuide = guideId;
+  state.area = g.area || 'production';
+  const isAcademy = state.area === 'academy';
   const L = t();
   const lang = state.lang;
   const tx = (o) => o ? (o[lang] ?? o.de ?? '') : '';
   const scrollY = keepScroll ? window.scrollY : 0;
-  const tags = (g.bereiche || []).map(tagLabel).filter(Boolean).join(' · ');
+  const kicker = g.kicker ? tx(g.kicker) : (g.bereiche || []).map(tagLabel).filter(Boolean).join(' · ');
+  const brand = isAcademy ? L.brand_academy : L.brand;
+  const showTest = !isAcademy;
   const hasChecks = () => app.querySelector('.check');
 
   // 1) paint header immediately with a loading line
-  app.innerHTML = guideShell(g, tags, L, tx, `<div class="g-loading mono">…</div>`);
+  app.innerHTML = guideShell(g, kicker, L, tx, `<div class="g-loading mono">…</div>`, showTest, brand);
   wireGuideChrome(guideId);
 
   // 2) load sections (inline or lazily from file) and render the body
@@ -664,18 +834,41 @@ async function renderGuide(guideId, keepScroll = false) {
         ${tagBadge}
       </div>`;
     if (sec.intro) html += `<p class="sec-intro">${escapeHTML(tx(sec.intro))}</p>`;
-    (sec.blocks || []).forEach((b, bi) => {
-      html += renderBlock(b, { tx, checks, guideId, path: 's' + si + 'b' + bi });
-    });
+    const blks = sec.blocks || [];
+    for (let bi = 0; bi < blks.length; bi++) {
+      const b = blks[bi];
+      if (isWorksheetPair(b, blks[bi + 1])) {
+        html += renderWorksheet(b, blks[bi + 1].blocks[0], { tx, L });
+        bi++; // Lösungs-Block überspringen — er ist jetzt der Antwortschlüssel der Eingabefelder
+        continue;
+      }
+      html += renderBlock(b, { tx, checks, guideId, path: 's' + si + 'b' + bi, L });
+    }
     html += '</div>';
   });
 
   const body = document.getElementById('guideBody');
   if (body) body.innerHTML = html || `<p class="g-text">${escapeHTML(L.learn_empty)}</p>`;
 
+  // interaktive Arbeitsblätter aktivieren (Prüfen / Lösung / Leeren)
+  wireWorksheets(app);
+
   // hide reset button if this guide has no checklists
   const resetBtn = document.getElementById('resetChecks');
   if (resetBtn && !hasChecks()) resetBtn.style.display = 'none';
+
+  // wire solution reveals
+  app.querySelectorAll('[data-soltoggle]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sol = btn.parentElement;
+      const sbody = sol.querySelector('.sol-body');
+      const txt = btn.querySelector('[data-soltext]');
+      const ic = btn.querySelector('.sol-ic');
+      const open = !sbody.hasAttribute('hidden');
+      if (open) { sbody.setAttribute('hidden', ''); txt.textContent = t().show_solutions; ic.textContent = '+'; btn.classList.remove('is-open'); }
+      else { sbody.removeAttribute('hidden'); txt.textContent = t().hide_solutions; ic.textContent = '–'; btn.classList.add('is-open'); }
+    });
+  });
 
   // wire checklist toggles
   app.querySelectorAll('.check').forEach(btn => {
@@ -696,13 +889,16 @@ function wireGuideChrome(guideId) {
   document.getElementById('guideBack').addEventListener('click', () => {
     state.guideFrom === 'home' ? renderHome() : renderLearnHome();
   });
-  document.getElementById('guideToTest').addEventListener('click', () => {
+  const toTest = document.getElementById('guideToTest');
+  if (toTest) toTest.addEventListener('click', () => {
     state.participant ? renderSelect() : renderLogin();
   });
   document.getElementById('resetChecks').addEventListener('click', () => {
     saveChecks(guideId, {});
     renderGuide(guideId, true);
   });
+  const pr = document.getElementById('guidePrint');
+  if (pr) pr.addEventListener('click', () => window.print());
 }
 
 /* ------------------------------------------------------------------

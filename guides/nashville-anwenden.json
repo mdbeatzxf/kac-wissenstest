@@ -1,0 +1,184 @@
+{
+  "sections": [
+    {
+      "title": { "de": "Kurze Wiederholung: in Stufen denken", "en": "Quick recap: thinking in numbers" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Im Nashville-System denken wir nicht in festen Akkordnamen, sondern in Stufen (1–7). Der Clou: Ein und derselbe Ton ist je nach Tonart eine andere Stufe — und damit auch Dur oder Moll.",
+            "en": "In the Nashville system we don't think in fixed chord names but in numbers (1–7). The trick: one and the same note is a different number depending on the key — and therefore major or minor."
+          }
+        },
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Jede Tonart hat 7 Stufen. In C-Dur: 1=C, 2=D, 3=E, 4=F, 5=G, 6=A, 7=B.", "en": "Every key has 7 numbers. In C major: 1=C, 2=D, 3=E, 4=F, 5=G, 6=A, 7=B." },
+            { "de": "1, 4, 5 sind immer Dur. 2, 3, 6 sind Moll.", "en": "1, 4, 5 are always major. 2, 3, 6 are minor." },
+            { "de": "7 ist unser Sonderfall: der 5-Dur-Akkord mit dem 7. Ton im Bass (in C also G/B).", "en": "7 is our special case: the 5-major chord with the 7th note in the bass (in C that's G/B)." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Die Reihenfolge der Klangfarben ist in jeder Tonart gleich: Dur – Moll – Moll – Dur – Dur – Moll – (Sonderfall).",
+            "en": "Remember: the order of qualities is the same in every key: major – minor – minor – major – major – minor – (special case)."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Beispiel: der Ton D", "en": "Example: the note D" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Derselbe Ton D — aber je nach Tonart eine völlig andere Rolle:",
+            "en": "The same note D — but a completely different role depending on the key:"
+          }
+        },
+        {
+          "type": "table",
+          "head": [
+            { "de": "Tonart", "en": "Key" },
+            { "de": "D ist die…", "en": "D is the…" },
+            { "de": "Klang", "en": "Sound" },
+            { "de": "Rolle", "en": "Role" }
+          ],
+          "rows": [
+            [ {"de":"D-Dur","en":"D major"}, {"de":"1","en":"1"}, {"de":"Dur","en":"Major"}, {"de":"Tonika — das Zuhause","en":"Tonic — home"} ],
+            [ {"de":"G-Dur","en":"G major"}, {"de":"5","en":"5"}, {"de":"Dur","en":"Major"}, {"de":"Dominante — Spannung, will zur 1","en":"Dominant — tension, wants to the 1"} ],
+            [ {"de":"C-Dur","en":"C major"}, {"de":"2","en":"2"}, {"de":"Moll","en":"Minor"}, {"de":"zweite Stufe — klingt weicher","en":"second number — sounds softer"} ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "So findest du es heraus: Zähl von der 1 der Tonart (dem Grundton) in der Tonleiter hoch, bis du beim gesuchten Ton bist — das ist die Stufe. Dann sagt dir die feste Regel (1/4/5 = Dur, 2/3/6 = Moll), wie sie klingt.",
+            "en": "How to work it out: count up from the 1 of the key (the root) in the scale until you reach the note you're after — that's the number. Then the fixed rule (1/4/5 = major, 2/3/6 = minor) tells you how it sounds."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Das Stufen-Raster", "en": "The number grid" },
+      "intro": {
+        "de": "Hier siehst du die 7 Stufen-Akkorde für die gängigsten Tonarten. Lies eine Zeile als „In dieser Tonart sind das die Akkorde“ und eine Spalte als „diese Stufe in den verschiedenen Tonarten“.",
+        "en": "Here you see the 7 number-chords for the most common keys. Read a row as “in this key these are the chords” and a column as “this number across the different keys”."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            { "de": "Tonart", "en": "Key" },
+            { "de": "1 Dur", "en": "1 maj" }, { "de": "2 Moll", "en": "2 min" }, { "de": "3 Moll", "en": "3 min" },
+            { "de": "4 Dur", "en": "4 maj" }, { "de": "5 Dur", "en": "5 maj" }, { "de": "6 Moll", "en": "6 min" }, { "de": "7 (5/7)", "en": "7 (5/7)" }
+          ],
+          "rows": [
+            [ {"de":"C","en":"C"}, {"de":"C","en":"C"},{"de":"Dm","en":"Dm"},{"de":"Em","en":"Em"},{"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"Am","en":"Am"},{"de":"G/B","en":"G/B"} ],
+            [ {"de":"G","en":"G"}, {"de":"G","en":"G"},{"de":"Am","en":"Am"},{"de":"Bm","en":"Bm"},{"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"Em","en":"Em"},{"de":"D/F#","en":"D/F#"} ],
+            [ {"de":"D","en":"D"}, {"de":"D","en":"D"},{"de":"Em","en":"Em"},{"de":"F#m","en":"F#m"},{"de":"G","en":"G"},{"de":"A","en":"A"},{"de":"Bm","en":"Bm"},{"de":"A/C#","en":"A/C#"} ],
+            [ {"de":"A","en":"A"}, {"de":"A","en":"A"},{"de":"Bm","en":"Bm"},{"de":"C#m","en":"C#m"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F#m","en":"F#m"},{"de":"E/G#","en":"E/G#"} ],
+            [ {"de":"E","en":"E"}, {"de":"E","en":"E"},{"de":"F#m","en":"F#m"},{"de":"G#m","en":"G#m"},{"de":"A","en":"A"},{"de":"B","en":"B"},{"de":"C#m","en":"C#m"},{"de":"B/D#","en":"B/D#"} ],
+            [ {"de":"B","en":"B"}, {"de":"B","en":"B"},{"de":"C#m","en":"C#m"},{"de":"D#m","en":"D#m"},{"de":"E","en":"E"},{"de":"F#","en":"F#"},{"de":"G#m","en":"G#m"},{"de":"F#/A#","en":"F#/A#"} ],
+            [ {"de":"F","en":"F"}, {"de":"F","en":"F"},{"de":"Gm","en":"Gm"},{"de":"Am","en":"Am"},{"de":"Bb","en":"Bb"},{"de":"C","en":"C"},{"de":"Dm","en":"Dm"},{"de":"C/E","en":"C/E"} ],
+            [ {"de":"Bb","en":"Bb"}, {"de":"Bb","en":"Bb"},{"de":"Cm","en":"Cm"},{"de":"Dm","en":"Dm"},{"de":"Eb","en":"Eb"},{"de":"F","en":"F"},{"de":"Gm","en":"Gm"},{"de":"F/A","en":"F/A"} ],
+            [ {"de":"Eb","en":"Eb"}, {"de":"Eb","en":"Eb"},{"de":"Fm","en":"Fm"},{"de":"Gm","en":"Gm"},{"de":"Ab","en":"Ab"},{"de":"Bb","en":"Bb"},{"de":"Cm","en":"Cm"},{"de":"Bb/D","en":"Bb/D"} ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Lies das D-Beispiel im Raster nach: Zeile D → Spalte 1 = D. Zeile G → Spalte 5 = D. Zeile C → Spalte 2 = Dm. Genau wie oben.",
+            "en": "Look up the D example in the grid: row D → column 1 = D. Row G → column 5 = D. Row C → column 2 = Dm. Exactly as above."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung A: Welche Stufe? Welcher Klang?", "en": "Exercise A: which number? which sound?" },
+      "intro": {
+        "de": "Gegeben sind ein Ton und eine Tonart. Welche Stufe ist der Ton, und klingt er Dur oder Moll? Die ersten drei Zeilen (das D-Beispiel) sind schon ausgefüllt.",
+        "en": "Given a note and a key. Which number is the note, and does it sound major or minor? The first three rows (the D example) are filled in."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Ton","en":"Note"}, {"de":"Tonart","en":"Key"}, {"de":"Stufe","en":"Number"}, {"de":"Klang","en":"Sound"} ],
+          "rows": [
+            [ {"de":"D","en":"D"},{"de":"D-Dur","en":"D major"},{"de":"1","en":"1"},{"de":"Dur","en":"Major"} ],
+            [ {"de":"D","en":"D"},{"de":"G-Dur","en":"G major"},{"de":"5","en":"5"},{"de":"Dur","en":"Major"} ],
+            [ {"de":"D","en":"D"},{"de":"C-Dur","en":"C major"},{"de":"2","en":"2"},{"de":"Moll","en":"Minor"} ],
+            [ {"de":"G","en":"G"},{"de":"C-Dur","en":"C major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A","en":"A"},{"de":"C-Dur","en":"C major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"E","en":"E"},{"de":"C-Dur","en":"C major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"C","en":"C"},{"de":"G-Dur","en":"G major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A","en":"A"},{"de":"D-Dur","en":"D major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"F","en":"F"},{"de":"C-Dur","en":"C major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"B","en":"B"},{"de":"C-Dur","en":"C major"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution",
+          "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [
+            {
+              "type": "table",
+              "head": [ {"de":"Ton","en":"Note"}, {"de":"Tonart","en":"Key"}, {"de":"Stufe","en":"Number"}, {"de":"Klang","en":"Sound"} ],
+              "rows": [
+                [ {"de":"G","en":"G"},{"de":"C-Dur","en":"C major"},{"de":"5","en":"5"},{"de":"Dur","en":"Major"} ],
+                [ {"de":"A","en":"A"},{"de":"C-Dur","en":"C major"},{"de":"6","en":"6"},{"de":"Moll","en":"Minor"} ],
+                [ {"de":"E","en":"E"},{"de":"C-Dur","en":"C major"},{"de":"3","en":"3"},{"de":"Moll","en":"Minor"} ],
+                [ {"de":"C","en":"C"},{"de":"G-Dur","en":"G major"},{"de":"4","en":"4"},{"de":"Dur","en":"Major"} ],
+                [ {"de":"A","en":"A"},{"de":"D-Dur","en":"D major"},{"de":"5","en":"5"},{"de":"Dur","en":"Major"} ],
+                [ {"de":"F","en":"F"},{"de":"C-Dur","en":"C major"},{"de":"4","en":"4"},{"de":"Dur","en":"Major"} ],
+                [ {"de":"B","en":"B"},{"de":"C-Dur","en":"C major"},{"de":"7","en":"7"},{"de":"Sonderfall (5/7)","en":"Special case (5/7)"} ]
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung B: Welcher Akkord ist das?", "en": "Exercise B: which chord is it?" },
+      "intro": {
+        "de": "Diesmal umgekehrt: Gegeben sind Tonart und Stufe. Welcher Akkord ist das, und welcher Klang? (Tipp: Stufe in der Tonleiter abzählen, dann die Dur/Moll-Regel.)",
+        "en": "This time in reverse: given key and number. Which chord is it, and which sound? (Tip: count the number in the scale, then the major/minor rule.)"
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Tonart","en":"Key"}, {"de":"Stufe","en":"Number"}, {"de":"Akkord","en":"Chord"}, {"de":"Klang","en":"Sound"} ],
+          "rows": [
+            [ {"de":"C-Dur","en":"C major"},{"de":"5","en":"5"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"C-Dur","en":"C major"},{"de":"6","en":"6"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"G-Dur","en":"G major"},{"de":"4","en":"4"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"D-Dur","en":"D major"},{"de":"2","en":"2"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A-Dur","en":"A major"},{"de":"1","en":"1"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"E-Dur","en":"E major"},{"de":"6","en":"6"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"F-Dur","en":"F major"},{"de":"5","en":"5"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution",
+          "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [
+            {
+              "type": "table",
+              "head": [ {"de":"Tonart","en":"Key"}, {"de":"Stufe","en":"Number"}, {"de":"Akkord","en":"Chord"}, {"de":"Klang","en":"Sound"} ],
+              "rows": [
+                [ {"de":"C-Dur","en":"C major"},{"de":"5","en":"5"},{"de":"G","en":"G"},{"de":"Dur","en":"Major"} ],
+                [ {"de":"C-Dur","en":"C major"},{"de":"6","en":"6"},{"de":"Am","en":"Am"},{"de":"Moll","en":"Minor"} ],
+                [ {"de":"G-Dur","en":"G major"},{"de":"4","en":"4"},{"de":"C","en":"C"},{"de":"Dur","en":"Major"} ],
+                [ {"de":"D-Dur","en":"D major"},{"de":"2","en":"2"},{"de":"Em","en":"Em"},{"de":"Moll","en":"Minor"} ],
+                [ {"de":"A-Dur","en":"A major"},{"de":"1","en":"1"},{"de":"A","en":"A"},{"de":"Dur","en":"Major"} ],
+                [ {"de":"E-Dur","en":"E major"},{"de":"6","en":"6"},{"de":"C#m","en":"C#m"},{"de":"Moll","en":"Minor"} ],
+                [ {"de":"F-Dur","en":"F major"},{"de":"5","en":"5"},{"de":"C","en":"C"},{"de":"Dur","en":"Major"} ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

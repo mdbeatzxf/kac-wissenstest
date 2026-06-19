@@ -1,0 +1,272 @@
+{
+  "sections": [
+    {
+      "title": { "de": "Spickzettel", "en": "Cheat sheet" },
+      "blocks": [
+        {
+          "type": "note",
+          "text": {
+            "de": "Stufen-Klang in jeder Tonart gleich: 1 Dur · 2 Moll · 3 Moll · 4 Dur · 5 Dur · 6 Moll · 7 Sonderfall (5/7). Die erste Zeile jeder Übung ist als Beispiel ausgefüllt.",
+            "en": "Number quality is the same in every key: 1 maj · 2 min · 3 min · 4 maj · 5 maj · 6 min · 7 special case (5/7). The first row of each exercise is filled in as an example."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "1 · Ton → Stufe und Klang", "en": "1 · Note → number and sound" },
+      "intro": { "de": "Gegeben: ein Ton und eine Tonart. Trag Stufe und Klang ein.", "en": "Given: a note and a key. Fill in number and sound." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Ton","en":"Note"},{"de":"Tonart","en":"Key"},{"de":"Stufe","en":"Number"},{"de":"Klang","en":"Sound"} ],
+          "rows": [
+            [ {"de":"E","en":"E"},{"de":"C-Dur","en":"C major"},{"de":"3","en":"3"},{"de":"Moll","en":"Minor"} ],
+            [ {"de":"G","en":"G"},{"de":"C-Dur","en":"C major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"C","en":"C"},{"de":"G-Dur","en":"G major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"D","en":"D"},{"de":"A-Dur","en":"A major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"B","en":"B"},{"de":"E-Dur","en":"E major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A","en":"A"},{"de":"F-Dur","en":"F major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"D","en":"D"},{"de":"Bb-Dur","en":"Bb major"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"C#","en":"C#"},{"de":"D-Dur","en":"D major"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Ton","en":"Note"},{"de":"Tonart","en":"Key"},{"de":"Stufe","en":"Number"},{"de":"Klang","en":"Sound"} ],
+            "rows": [
+              [ {"de":"G","en":"G"},{"de":"C-Dur","en":"C major"},{"de":"5","en":"5"},{"de":"Dur","en":"Major"} ],
+              [ {"de":"C","en":"C"},{"de":"G-Dur","en":"G major"},{"de":"4","en":"4"},{"de":"Dur","en":"Major"} ],
+              [ {"de":"D","en":"D"},{"de":"A-Dur","en":"A major"},{"de":"4","en":"4"},{"de":"Dur","en":"Major"} ],
+              [ {"de":"B","en":"B"},{"de":"E-Dur","en":"E major"},{"de":"5","en":"5"},{"de":"Dur","en":"Major"} ],
+              [ {"de":"A","en":"A"},{"de":"F-Dur","en":"F major"},{"de":"3","en":"3"},{"de":"Moll","en":"Minor"} ],
+              [ {"de":"D","en":"D"},{"de":"Bb-Dur","en":"Bb major"},{"de":"3","en":"3"},{"de":"Moll","en":"Minor"} ],
+              [ {"de":"C#","en":"C#"},{"de":"D-Dur","en":"D major"},{"de":"7","en":"7"},{"de":"Sonderfall (5/7)","en":"Special case (5/7)"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "2 · Stufe → Akkord und Klang", "en": "2 · Number → chord and sound" },
+      "intro": { "de": "Umgekehrt: Gegeben sind Tonart und Stufe. Welcher Akkord, welcher Klang?", "en": "In reverse: given key and number. Which chord, which sound?" },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Tonart","en":"Key"},{"de":"Stufe","en":"Number"},{"de":"Akkord","en":"Chord"},{"de":"Klang","en":"Sound"} ],
+          "rows": [
+            [ {"de":"C-Dur","en":"C major"},{"de":"6","en":"6"},{"de":"Am","en":"Am"},{"de":"Moll","en":"Minor"} ],
+            [ {"de":"G-Dur","en":"G major"},{"de":"5","en":"5"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"D-Dur","en":"D major"},{"de":"4","en":"4"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A-Dur","en":"A major"},{"de":"2","en":"2"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"E-Dur","en":"E major"},{"de":"1","en":"1"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"F-Dur","en":"F major"},{"de":"6","en":"6"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"Bb-Dur","en":"Bb major"},{"de":"5","en":"5"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"D-Dur","en":"D major"},{"de":"3","en":"3"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Tonart","en":"Key"},{"de":"Stufe","en":"Number"},{"de":"Akkord","en":"Chord"},{"de":"Klang","en":"Sound"} ],
+            "rows": [
+              [ {"de":"G-Dur","en":"G major"},{"de":"5","en":"5"},{"de":"D","en":"D"},{"de":"Dur","en":"Major"} ],
+              [ {"de":"D-Dur","en":"D major"},{"de":"4","en":"4"},{"de":"G","en":"G"},{"de":"Dur","en":"Major"} ],
+              [ {"de":"A-Dur","en":"A major"},{"de":"2","en":"2"},{"de":"Bm","en":"Bm"},{"de":"Moll","en":"Minor"} ],
+              [ {"de":"E-Dur","en":"E major"},{"de":"1","en":"1"},{"de":"E","en":"E"},{"de":"Dur","en":"Major"} ],
+              [ {"de":"F-Dur","en":"F major"},{"de":"6","en":"6"},{"de":"Dm","en":"Dm"},{"de":"Moll","en":"Minor"} ],
+              [ {"de":"Bb-Dur","en":"Bb major"},{"de":"5","en":"5"},{"de":"F","en":"F"},{"de":"Dur","en":"Major"} ],
+              [ {"de":"D-Dur","en":"D major"},{"de":"3","en":"3"},{"de":"F#m","en":"F#m"},{"de":"Moll","en":"Minor"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "3 · Stufen-Folge → echte Akkorde", "en": "3 · Number sequence → real chords" },
+      "intro": { "de": "Eine Folge ist in Stufen notiert. Schreib die echten Akkorde für die jeweilige Tonart auf.", "en": "A progression is written in numbers. Write the real chords for the given key." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Tonart","en":"Key"},{"de":"Folge (Stufen)","en":"Progression (numbers)"},{"de":"Akkorde","en":"Chords"} ],
+          "rows": [
+            [ {"de":"G-Dur","en":"G major"},{"de":"1 – 5 – 6 – 4","en":"1 – 5 – 6 – 4"},{"de":"G – D – Em – C","en":"G – D – Em – C"} ],
+            [ {"de":"D-Dur","en":"D major"},{"de":"1 – 4 – 5","en":"1 – 4 – 5"},{"de":"","en":""} ],
+            [ {"de":"C-Dur","en":"C major"},{"de":"6 – 4 – 1 – 5","en":"6 – 4 – 1 – 5"},{"de":"","en":""} ],
+            [ {"de":"A-Dur","en":"A major"},{"de":"1 – 6 – 4 – 5","en":"1 – 6 – 4 – 5"},{"de":"","en":""} ],
+            [ {"de":"E-Dur","en":"E major"},{"de":"2 – 5 – 1","en":"2 – 5 – 1"},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Tonart","en":"Key"},{"de":"Folge (Stufen)","en":"Progression (numbers)"},{"de":"Akkorde","en":"Chords"} ],
+            "rows": [
+              [ {"de":"D-Dur","en":"D major"},{"de":"1 – 4 – 5","en":"1 – 4 – 5"},{"de":"D – G – A","en":"D – G – A"} ],
+              [ {"de":"C-Dur","en":"C major"},{"de":"6 – 4 – 1 – 5","en":"6 – 4 – 1 – 5"},{"de":"Am – F – C – G","en":"Am – F – C – G"} ],
+              [ {"de":"A-Dur","en":"A major"},{"de":"1 – 6 – 4 – 5","en":"1 – 6 – 4 – 5"},{"de":"A – F#m – D – E","en":"A – F#m – D – E"} ],
+              [ {"de":"E-Dur","en":"E major"},{"de":"2 – 5 – 1","en":"2 – 5 – 1"},{"de":"F#m – B – E","en":"F#m – B – E"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "4 · echte Akkorde → Stufen", "en": "4 · Real chords → numbers" },
+      "intro": { "de": "Andersherum: Lies die Akkorde und schreib die Stufen-Zahlen dazu.", "en": "The other way: read the chords and write the numbers." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Tonart","en":"Key"},{"de":"Akkorde","en":"Chords"},{"de":"Stufen","en":"Numbers"} ],
+          "rows": [
+            [ {"de":"C-Dur","en":"C major"},{"de":"C – G – Am – F","en":"C – G – Am – F"},{"de":"1 – 5 – 6 – 4","en":"1 – 5 – 6 – 4"} ],
+            [ {"de":"G-Dur","en":"G major"},{"de":"Em – C – G – D","en":"Em – C – G – D"},{"de":"","en":""} ],
+            [ {"de":"D-Dur","en":"D major"},{"de":"D – A – Bm – G","en":"D – A – Bm – G"},{"de":"","en":""} ],
+            [ {"de":"A-Dur","en":"A major"},{"de":"A – E – F#m – D","en":"A – E – F#m – D"},{"de":"","en":""} ],
+            [ {"de":"F-Dur","en":"F major"},{"de":"Dm – Bb – F – C","en":"Dm – Bb – F – C"},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Tonart","en":"Key"},{"de":"Akkorde","en":"Chords"},{"de":"Stufen","en":"Numbers"} ],
+            "rows": [
+              [ {"de":"G-Dur","en":"G major"},{"de":"Em – C – G – D","en":"Em – C – G – D"},{"de":"6 – 4 – 1 – 5","en":"6 – 4 – 1 – 5"} ],
+              [ {"de":"D-Dur","en":"D major"},{"de":"D – A – Bm – G","en":"D – A – Bm – G"},{"de":"1 – 5 – 6 – 4","en":"1 – 5 – 6 – 4"} ],
+              [ {"de":"A-Dur","en":"A major"},{"de":"A – E – F#m – D","en":"A – E – F#m – D"},{"de":"1 – 5 – 6 – 4","en":"1 – 5 – 6 – 4"} ],
+              [ {"de":"F-Dur","en":"F major"},{"de":"Dm – Bb – F – C","en":"Dm – Bb – F – C"},{"de":"6 – 4 – 1 – 5","en":"6 – 4 – 1 – 5"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "5 · Transponieren", "en": "5 · Transposing" },
+      "intro": { "de": "Schreib jede Folge in die neue Tonart um. Trick: erst die Stufen bestimmen, dann in der neuen Tonart einsetzen.", "en": "Rewrite each progression into the new key. Trick: first work out the numbers, then plug them into the new key." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Folge (Ausgangstonart)","en":"Progression (source key)"},{"de":"nach","en":"to"},{"de":"neue Folge","en":"new progression"} ],
+          "rows": [
+            [ {"de":"C – Am – F – G (in C)","en":"C – Am – F – G (in C)"},{"de":"G-Dur","en":"G major"},{"de":"G – Em – C – D","en":"G – Em – C – D"} ],
+            [ {"de":"G – D – Em – C (in G)","en":"G – D – Em – C (in G)"},{"de":"D-Dur","en":"D major"},{"de":"","en":""} ],
+            [ {"de":"D – A – G (in D)","en":"D – A – G (in D)"},{"de":"A-Dur","en":"A major"},{"de":"","en":""} ],
+            [ {"de":"C – F – G – C (in C)","en":"C – F – G – C (in C)"},{"de":"F-Dur","en":"F major"},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Folge (Ausgangstonart)","en":"Progression (source key)"},{"de":"nach","en":"to"},{"de":"neue Folge","en":"new progression"} ],
+            "rows": [
+              [ {"de":"G – D – Em – C (in G)","en":"G – D – Em – C (in G)"},{"de":"D-Dur","en":"D major"},{"de":"D – A – Bm – G","en":"D – A – Bm – G"} ],
+              [ {"de":"D – A – G (in D)","en":"D – A – G (in D)"},{"de":"A-Dur","en":"A major"},{"de":"A – E – D","en":"A – E – D"} ],
+              [ {"de":"C – F – G – C (in C)","en":"C – F – G – C (in C)"},{"de":"F-Dur","en":"F major"},{"de":"F – Bb – C – F","en":"F – Bb – C – F"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "6 · ganze Stufenreihe ausfüllen", "en": "6 · Fill the whole number row" },
+      "intro": { "de": "Trag für jede Tonart alle 7 Stufen-Akkorde ein (1/4/5 Dur, 2/3/6 Moll, 7 = 5-Dur mit 7. Ton im Bass).", "en": "Fill in all 7 number-chords for each key (1/4/5 major, 2/3/6 minor, 7 = 5-major with the 7th in the bass)." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Tonart","en":"Key"},{"de":"1","en":"1"},{"de":"2","en":"2"},{"de":"3","en":"3"},{"de":"4","en":"4"},{"de":"5","en":"5"},{"de":"6","en":"6"},{"de":"7","en":"7"} ],
+          "rows": [
+            [ {"de":"G","en":"G"},{"de":"G","en":"G"},{"de":"Am","en":"Am"},{"de":"Bm","en":"Bm"},{"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"Em","en":"Em"},{"de":"D/F#","en":"D/F#"} ],
+            [ {"de":"F","en":"F"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A","en":"A"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Tonart","en":"Key"},{"de":"1","en":"1"},{"de":"2","en":"2"},{"de":"3","en":"3"},{"de":"4","en":"4"},{"de":"5","en":"5"},{"de":"6","en":"6"},{"de":"7","en":"7"} ],
+            "rows": [
+              [ {"de":"F","en":"F"},{"de":"F","en":"F"},{"de":"Gm","en":"Gm"},{"de":"Am","en":"Am"},{"de":"Bb","en":"Bb"},{"de":"C","en":"C"},{"de":"Dm","en":"Dm"},{"de":"C/E","en":"C/E"} ],
+              [ {"de":"A","en":"A"},{"de":"A","en":"A"},{"de":"Bm","en":"Bm"},{"de":"C#m","en":"C#m"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F#m","en":"F#m"},{"de":"E/G#","en":"E/G#"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "7 · Funktion → Akkord", "en": "7 · Function → chord" },
+      "intro": { "de": "Welcher Akkord übernimmt die Funktion in der Tonart? (Tonika = 1, Subdominante = 4, Dominante = 5.)", "en": "Which chord takes the function in the key? (Tonic = 1, subdominant = 4, dominant = 5.)" },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Tonart","en":"Key"},{"de":"Funktion","en":"Function"},{"de":"Akkord","en":"Chord"} ],
+          "rows": [
+            [ {"de":"C-Dur","en":"C major"},{"de":"Tonika (1)","en":"Tonic (1)"},{"de":"C","en":"C"} ],
+            [ {"de":"C-Dur","en":"C major"},{"de":"Subdominante (4)","en":"Subdominant (4)"},{"de":"","en":""} ],
+            [ {"de":"C-Dur","en":"C major"},{"de":"Dominante (5)","en":"Dominant (5)"},{"de":"","en":""} ],
+            [ {"de":"G-Dur","en":"G major"},{"de":"Dominante (5)","en":"Dominant (5)"},{"de":"","en":""} ],
+            [ {"de":"D-Dur","en":"D major"},{"de":"Subdominante (4)","en":"Subdominant (4)"},{"de":"","en":""} ],
+            [ {"de":"A-Dur","en":"A major"},{"de":"Tonika (1)","en":"Tonic (1)"},{"de":"","en":""} ],
+            [ {"de":"F-Dur","en":"F major"},{"de":"Dominante (5)","en":"Dominant (5)"},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Tonart","en":"Key"},{"de":"Funktion","en":"Function"},{"de":"Akkord","en":"Chord"} ],
+            "rows": [
+              [ {"de":"C-Dur","en":"C major"},{"de":"Subdominante (4)","en":"Subdominant (4)"},{"de":"F","en":"F"} ],
+              [ {"de":"C-Dur","en":"C major"},{"de":"Dominante (5)","en":"Dominant (5)"},{"de":"G","en":"G"} ],
+              [ {"de":"G-Dur","en":"G major"},{"de":"Dominante (5)","en":"Dominant (5)"},{"de":"D","en":"D"} ],
+              [ {"de":"D-Dur","en":"D major"},{"de":"Subdominante (4)","en":"Subdominant (4)"},{"de":"G","en":"G"} ],
+              [ {"de":"A-Dur","en":"A major"},{"de":"Tonika (1)","en":"Tonic (1)"},{"de":"A","en":"A"} ],
+              [ {"de":"F-Dur","en":"F major"},{"de":"Dominante (5)","en":"Dominant (5)"},{"de":"C","en":"C"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "8 · richtig oder falsch?", "en": "8 · True or false?" },
+      "intro": { "de": "Stimmt die Aussage? Bei „falsch“ steht die richtige Antwort in der Lösung.", "en": "Is the statement correct? For “false” the right answer is in the solution." },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "In C-Dur ist die 6 = Am.", "en": "In C major the 6 = Am." },
+            { "de": "In G-Dur ist die 4 = D.", "en": "In G major the 4 = D." },
+            { "de": "Die 5 klingt immer Moll.", "en": "The 5 always sounds minor." },
+            { "de": "In D-Dur ist die 2 = Em.", "en": "In D major the 2 = Em." },
+            { "de": "In A-Dur ist die 3 = C#m.", "en": "In A major the 3 = C#m." },
+            { "de": "Die 4 ist die Dominante.", "en": "The 4 is the dominant." },
+            { "de": "In F-Dur ist die 6 = Dm.", "en": "In F major the 6 = Dm." },
+            { "de": "In E-Dur ist die 5 = B.", "en": "In E major the 5 = B." }
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Aussage","en":"Statement"},{"de":"richtig / falsch","en":"true / false"},{"de":"richtig ist…","en":"correct is…"} ],
+            "rows": [
+              [ {"de":"6 = Am (C-Dur)","en":"6 = Am (C major)"},{"de":"richtig","en":"true"},{"de":"–","en":"–"} ],
+              [ {"de":"4 = D (G-Dur)","en":"4 = D (G major)"},{"de":"falsch","en":"false"},{"de":"4 = C (D ist die 5)","en":"4 = C (D is the 5)"} ],
+              [ {"de":"Die 5 ist Moll","en":"The 5 is minor"},{"de":"falsch","en":"false"},{"de":"die 5 ist immer Dur","en":"the 5 is always major"} ],
+              [ {"de":"2 = Em (D-Dur)","en":"2 = Em (D major)"},{"de":"richtig","en":"true"},{"de":"–","en":"–"} ],
+              [ {"de":"3 = C#m (A-Dur)","en":"3 = C#m (A major)"},{"de":"richtig","en":"true"},{"de":"–","en":"–"} ],
+              [ {"de":"Die 4 ist die Dominante","en":"The 4 is the dominant"},{"de":"falsch","en":"false"},{"de":"die 4 ist die Subdominante","en":"the 4 is the subdominant"} ],
+              [ {"de":"6 = Dm (F-Dur)","en":"6 = Dm (F major)"},{"de":"richtig","en":"true"},{"de":"–","en":"–"} ],
+              [ {"de":"5 = B (E-Dur)","en":"5 = B (E major)"},{"de":"richtig","en":"true"},{"de":"–","en":"–"} ]
+            ]
+          }]
+        }
+      ]
+    }
+  ]
+}

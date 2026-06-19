@@ -1,0 +1,305 @@
+{
+  "sections": [
+    {
+      "title": { "de": "Die Tonnamen", "en": "The note names" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Es gibt nur 12 verschiedene Töne. Danach fangen die Namen wieder von vorne an. Auf dem Klavier hat jede Taste einen Namen: Die 7 weißen Tasten heißen C – D – E – F – G – A – B. Die 5 schwarzen Tasten liegen dazwischen und haben jeweils zwei Namen — z. B. C# (von unten, höher) ist derselbe Ton wie Db (von oben, tiefer).",
+            "en": "There are only 12 different notes. After that the names start again from the beginning. On the piano every key has a name: the 7 white keys are C – D – E – F – G – A – B. The 5 black keys sit between them and each have two names — e.g. C# (from below, higher) is the same note as Db (from above, lower)."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 6", "caption": { "de": "Eine Oktave am Klavier — alle 12 Tasten mit ihren Namen (weiß: C D E F G A B · schwarz: C#/Db, D#/Eb, F#/Gb, G#/Ab, A#/Bb)", "en": "One octave on the piano — all 12 keys with their names (white: C D E F G A B · black: C#/Db, D#/Eb, F#/Gb, G#/Ab, A#/Bb)" } },
+        {
+          "type": "sub",
+          "title": { "de": "Die Oktave", "en": "The octave" },
+          "text": {
+            "de": "Eine Oktave ist der Abstand von einem Ton bis zum nächsten gleichnamigen Ton (z. B. von einem C bis zum nächsten C). Sie umfasst genau 12 Halbtonschritte — danach wiederholen sich alle Namen.",
+            "en": "An octave is the distance from one note to the next note of the same name (e.g. from one C to the next C). It spans exactly 12 semitone steps — after that all the names repeat."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: 12 Töne, dann fängt alles wieder von vorne an. Schwarze Tasten haben zwei Namen: mit # wird der Ton höher benannt, mit b tiefer.",
+            "en": "Remember: 12 notes, then everything starts over. Black keys have two names: with # the note is named higher, with b lower."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Schreibweise", "en": "Notation" },
+          "text": {
+            "de": "Wir nutzen die internationale Schreibweise — also B (nicht das deutsche „H“) und Bb statt des deutschen „B“. Das ist in Band- und Worship-Kontexten Standard und passt zum Nashville-Denken.",
+            "en": "We use the international notation — so B (not the German “H”) and Bb instead of the German “B”. That is standard in band and worship contexts and fits Nashville thinking."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Tonleitern bauen", "en": "Building scales" },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Halbton- und Ganztonschritt", "en": "Semitone and whole-tone step" },
+          "text": {
+            "de": "Ein Halbtonschritt ist der kleinste Abstand: von einer Taste zur direkt benachbarten — egal ob weiß oder schwarz. Ein Ganztonschritt sind zwei Halbtonschritte.",
+            "en": "A semitone step is the smallest distance: from one key to the directly neighbouring one — white or black. A whole-tone step is two semitone steps."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Die Dur-Formel", "en": "The major formula" },
+          "text": {
+            "de": "Eine Dur-Tonleiter folgt immer demselben Muster aus Ganz- (G) und Halbtonschritten (H): G – G – H – G – G – G – H.",
+            "en": "A major scale always follows the same pattern of whole (W) and half (H) steps: W – W – H – W – W – W – H."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 6", "caption": { "de": "C-Dur-Tonleiter: C D E F G A B C — die kleinen (½-)Schritte liegen zwischen 3–4 (E–F) und 7–8 (B–C)", "en": "C major scale: C D E F G A B C — the small (½) steps are between 3–4 (E–F) and 7–8 (B–C)" } },
+        {
+          "type": "text",
+          "text": {
+            "de": "Wenn du die Formel kennst, kannst du von jedem Startton aus eine Dur-Tonleiter bauen — du bildest einfach die Schritte ab. Beispiel C: C D E F G A B C — ganz ohne schwarze Tasten.",
+            "en": "Once you know the formula you can build a major scale from any starting note — you just follow the steps. Example C: C D E F G A B C — without any black keys at all."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Zu 4 und 8 ein kleiner Schritt, sonst immer groß. (Der Schritt hin zum 4. Ton und hin zur 8. = Oktave ist ein Halbton, alle anderen sind Ganztonschritte.)",
+            "en": "Remember: a small step to 4 and to 8, otherwise always large. (The step up to the 4th note and up to the 8th = octave is a semitone, all the others are whole-tone steps.)"
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Den Grundton finden", "en": "Finding the root" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Der Grundton ist der Ton, der über das ganze Lied hinweg passt und konstant bleibt. Er fühlt sich an wie „zu Hause“ — der Punkt, an dem der Song zur Ruhe kommt. Dieser Grundton bestimmt die Tonart (den Key) des Songs.",
+            "en": "The root is the note that fits throughout the whole song and stays constant. It feels like “home” — the point where the song comes to rest. This root determines the key of the song."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "So findest du ihn", "en": "How to find it" },
+          "items": [
+            { "de": "Sing oder summe zum Lied mit und suche den Ton, der durchgehend passt.", "en": "Sing or hum along and look for the note that fits throughout." },
+            { "de": "Achte darauf, wo die Melodie zur Ruhe kommt oder immer wieder hinkehrt — meist ist das der Grundton (oft der letzte Ton einer Zeile oder des Liedes).", "en": "Notice where the melody comes to rest or keeps returning — that's usually the root (often the last note of a line or of the song)." },
+            { "de": "Prüfe am Klavier: Klingt dieser Ton über den ganzen Song stabil und „fertig“? Dann hast du ihn.", "en": "Check at the piano: does this note sound stable and “finished” across the whole song? Then you've got it." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Der Grundton ist der Ton, auf dem das Lied „nach Hause“ kommt. Er ist die Tonart (der Key) des Songs.",
+            "en": "Remember: the root is the note the song comes “home” to. It is the key of the song."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Auf C transponieren", "en": "Transposing to C" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Wenn wir den Grundton kennen, stellen wir die Transpose-Funktion (am Keyboard oder in der App) so ein, dass dieser Grundton auf dem C liegt. Dann können wir alles „in C denken“ und müssen die Akkorde nicht für jede Tonart neu lernen — wir arbeiten mit den Stufen (Nashville-System).",
+            "en": "Once we know the root, we set the transpose function (on the keyboard or in the app) so that this root sits on C. Then we can “think in C” and don't have to relearn the chords for every key — we work with the numbers (Nashville system)."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "So stellst du Transpose ein", "en": "How to set transpose" }
+        },
+        {
+          "type": "steps",
+          "items": [
+            { "de": "Hab den Grundton im Kopf und sing ihn.", "en": "Keep the root in your head and sing it." },
+            { "de": "Drück am Keyboard die Taste C und höre: Ist dein gesungener Grundton höher oder tiefer als dieses C?", "en": "Press the key C on the keyboard and listen: is your sung root higher or lower than this C?" },
+            { "de": "Passe mit Transpose schrittweise an: +1, +2, … (höher) bzw. −1, −2, … (tiefer). Drück nach jedem Schritt wieder C und vergleiche.", "en": "Adjust with transpose step by step: +1, +2, … (higher) or −1, −2, … (lower). Press C again after each step and compare." },
+            { "de": "Wiederhole, bis das gedrückte C genau wie dein gesungener Grundton klingt. Jetzt liegt der Grundton auf C.", "en": "Repeat until the pressed C sounds exactly like your sung root. Now the root sits on C." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Transpose so einstellen, dass beim Drücken von C dein gesungener Grundton erklingt. Dann ist der Song „in C“ — und wir denken in Stufen.",
+            "en": "Remember: set transpose so that pressing C produces your sung root. Then the song is “in C” — and we think in numbers."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Akkorde bauen", "en": "Building chords" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Ein Akkord besteht (zunächst) aus drei Tönen, die zusammen klingen: Grundton – Terz – Quinte. Ob er Dur oder Moll klingt, entscheidet nur der mittlere Ton (die Terz).",
+            "en": "A chord consists (to begin with) of three notes that sound together: root – third – fifth. Whether it sounds major or minor is decided only by the middle note (the third)."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Dur und Moll — nur die Reihenfolge dreht sich um", "en": "Major and minor — only the order flips" },
+          "items": [
+            { "de": "Dur-Akkord: vom Grundton 4 Halbtöne hoch (große Terz), dann 3 Halbtöne hoch (Quinte). Also 4 + 3. → klingt hell/fröhlich.", "en": "Major chord: from the root 4 semitones up (major third), then 3 semitones up (fifth). So 4 + 3. → sounds bright/happy." },
+            { "de": "Moll-Akkord: genau umgekehrt — erst 3, dann 4. Also 3 + 4. → klingt dunkler/weicher.", "en": "Minor chord: exactly the other way round — first 3, then 4. So 3 + 4. → sounds darker/softer." }
+          ]
+        },
+        { "type": "figure", "aspect": "16 / 7", "caption": { "de": "C-Dur: C → E (+4) → G (+3) · C-Moll: C → Eb (+3) → G (+4)", "en": "C major: C → E (+4) → G (+3) · C minor: C → Eb (+3) → G (+4)" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Dur = 4 + 3 Halbtöne. Moll = 3 + 4 Halbtöne. Nur die Reihenfolge der beiden Terzen dreht sich um.",
+            "en": "Remember: major = 4 + 3 semitones. Minor = 3 + 4 semitones. Only the order of the two thirds flips."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Das Nashville-System", "en": "The Nashville system" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Statt fester Tonnamen denken wir in Stufen (1–7) der Tonleiter. Der Vorteil: Die Stufen funktionieren in jeder Tonart gleich. Genau deshalb transponieren wir auf C — dann sind die Stufen am einfachsten: 1=C, 2=D, 3=E, 4=F, 5=G, 6=A, 7=B.",
+            "en": "Instead of fixed note names we think in numbers (1–7) of the scale. The advantage: the numbers work the same in every key. That's exactly why we transpose to C — then the numbers are easiest: 1=C, 2=D, 3=E, 4=F, 5=G, 6=A, 7=B."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Welche Stufe ist Dur, welche Moll?", "en": "Which number is major, which minor?" },
+          "items": [
+            { "de": "1, 4, 5 → immer Dur", "en": "1, 4, 5 → always major" },
+            { "de": "2, 3, 6 → Moll (die 3 in den allermeisten Fällen)", "en": "2, 3, 6 → minor (the 3 in the vast majority of cases)" },
+            { "de": "7 → Sonderfall (unsere praktische Variante — siehe unten)", "en": "7 → special case (our practical variant — see below)" }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Die drei Hauptfunktionen: 1, 4, 5", "en": "The three main functions: 1, 4, 5" },
+          "items": [
+            { "de": "1 = Tonika (das Zuhause). Hier fühlt sich alles ruhig und „angekommen“ an. Lieder starten und enden meist auf der 1.", "en": "1 = tonic (home). Here everything feels calm and “arrived”. Songs usually start and end on the 1." },
+            { "de": "5 = Dominante (die Spannung). Sie erzeugt den stärksten Zug und will zurück zur 1. In ihr steckt der 7. Ton (der Leitton), der wie ein Magnet einen Halbton hoch zur 1 strebt.", "en": "5 = dominant (the tension). It creates the strongest pull and wants back to the 1. It contains the 7th note (the leading tone), which strives up a semitone to the 1 like a magnet." },
+            { "de": "4 = Subdominante (die Bewegung). Sie führt vom Zuhause weg, baut sanft Spannung auf und zieht weiter — oft hoch zur 5 oder zurück zur 1.", "en": "4 = subdominant (the movement). It leads away from home, gently builds tension and pulls onward — often up to the 5 or back to the 1." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Die 5 will immer zur 1 (nach Hause). Die 4 zieht hoch zur 5. So bewegt sich Musik: vom Zuhause weg (4), Spannung (5), wieder nach Hause (1).",
+            "en": "Remember: the 5 always wants to the 1 (home). The 4 pulls up to the 5. That's how music moves: away from home (4), tension (5), back home (1)."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Die übrigen Stufen: 2, 3, 6 und 7", "en": "The remaining numbers: 2, 3, 6 and 7" },
+          "items": [
+            { "de": "6 = Moll (Tonika-Parallele). Eng verwandt mit der 1, klingt aber weicher/melancholischer. Sehr beliebt: die Folge 1 – 5 – 6 – 4.", "en": "6 = minor (relative of the tonic). Closely related to the 1 but softer/more melancholic. Very popular: the progression 1 – 5 – 6 – 4." },
+            { "de": "2 = Moll. Führt oft schön weiter zur 5.", "en": "2 = minor. Often leads nicely on to the 5." },
+            { "de": "3 = Moll (in den allermeisten Fällen). Verwandt mit 1 und 5.", "en": "3 = minor (in the vast majority of cases). Related to 1 and 5." },
+            { "de": "7 = unsere praktische Variante: Wir spielen den 5-Dur-Akkord, aber mit dem 7. Ton im Bass. In C also G-Dur mit B im Bass (G/B). Ein toller Durchgangs-Akkord, z. B. zwischen 1 und 6.", "en": "7 = our practical variant: we play the 5-major chord, but with the 7th note in the bass. In C that's G major with B in the bass (G/B). A great passing chord, e.g. between 1 and 6." }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Überblick: Die Stufen in C-Dur", "en": "Overview: the numbers in C major" }
+        },
+        {
+          "type": "table",
+          "head": [
+            { "de": "Stufe", "en": "Number" },
+            { "de": "Ton in C", "en": "Note in C" },
+            { "de": "Klang", "en": "Sound" },
+            { "de": "Funktion / Hinweis", "en": "Function / note" }
+          ],
+          "rows": [
+            [ { "de": "1", "en": "1" }, { "de": "C", "en": "C" }, { "de": "Dur", "en": "Major" }, { "de": "Tonika — das Zuhause, Ruhepol", "en": "Tonic — home, point of rest" } ],
+            [ { "de": "2", "en": "2" }, { "de": "D", "en": "D" }, { "de": "Moll", "en": "Minor" }, { "de": "führt gern zur 5", "en": "likes to lead to the 5" } ],
+            [ { "de": "3", "en": "3" }, { "de": "E", "en": "E" }, { "de": "Moll", "en": "Minor" }, { "de": "verwandt mit 1 und 5", "en": "related to 1 and 5" } ],
+            [ { "de": "4", "en": "4" }, { "de": "F", "en": "F" }, { "de": "Dur", "en": "Major" }, { "de": "Subdominante — Bewegung, zieht zur 5", "en": "Subdominant — movement, pulls to the 5" } ],
+            [ { "de": "5", "en": "5" }, { "de": "G", "en": "G" }, { "de": "Dur", "en": "Major" }, { "de": "Dominante — Spannung, will zur 1", "en": "Dominant — tension, wants to the 1" } ],
+            [ { "de": "6", "en": "6" }, { "de": "A", "en": "A" }, { "de": "Moll", "en": "Minor" }, { "de": "Tonika-Parallele — weicher, sehr beliebt", "en": "Relative of tonic — softer, very popular" } ],
+            [ { "de": "7", "en": "7" }, { "de": "B (G/B)", "en": "B (G/B)" }, { "de": "5/7", "en": "5/7" }, { "de": "praktisch: 5-Dur mit 7. Ton im Bass", "en": "practical: 5-major with the 7th note in the bass" } ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: 1 – 4 – 5 sind Dur. 2 – 3 – 6 sind Moll. Die 7 spielen wir als 5-Dur mit dem 7. Ton im Bass (G/B).",
+            "en": "Remember: 1 – 4 – 5 are major. 2 – 3 – 6 are minor. The 7 we play as 5-major with the 7th note in the bass (G/B)."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Inversionen / Umkehrungen", "en": "Inversions" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Bei einer Umkehrung spielst du dieselben drei Töne eines Akkords, aber in anderer Reihenfolge — also mit einem anderen tiefsten Ton. C-Dur (C–E–G) hat drei Lagen: Grundstellung C–E–G (Grundton unten), 1. Umkehrung E–G–C (Terz unten), 2. Umkehrung G–C–E (Quinte unten).",
+            "en": "In an inversion you play the same three notes of a chord but in a different order — so with a different lowest note. C major (C–E–G) has three positions: root position C–E–G (root at the bottom), 1st inversion E–G–C (third at the bottom), 2nd inversion G–C–E (fifth at the bottom)."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 6", "caption": { "de": "C-Dur in drei Lagen: Grundstellung (C–E–G) · 1. Umkehrung (E–G–C) · 2. Umkehrung (G–C–E)", "en": "C major in three positions: root (C–E–G) · 1st inversion (E–G–C) · 2nd inversion (G–C–E)" } },
+        {
+          "type": "sub",
+          "title": { "de": "Warum das so wichtig ist: der kürzeste Weg", "en": "Why it matters: the shortest path" },
+          "text": {
+            "de": "Beim Wechsel zwischen Akkorden willst du möglichst wenig bewegen. Statt die ganze Hand zu versetzen, nutzt du eine Umkehrung, bei der gemeinsame Töne liegen bleiben und sich nur ein bis zwei Finger bewegen.",
+            "en": "When changing between chords you want to move as little as possible. Instead of shifting the whole hand, you use an inversion where common notes stay put and only one or two fingers move."
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Beispiel C-Dur → F-Dur: Statt C–E–G komplett zu F–A–C zu verschieben, spielst du F-Dur als 2. Umkehrung: C–F–A. Das C bleibt liegen. Nur E→F (ein Halbton) und G→A (ein Ganzton) bewegen sich — nur zwei Finger statt der ganzen Hand.",
+            "en": "Example C major → F major: instead of shifting C–E–G entirely to F–A–C, you play F major as the 2nd inversion: C–F–A. The C stays put. Only E→F (a semitone) and G→A (a whole tone) move — just two fingers instead of the whole hand."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 7", "caption": { "de": "C-Dur (C–E–G) → F-Dur als 2. Umkehrung (C–F–A) · grün = bleibt liegen, rot = bewegt sich", "en": "C major (C–E–G) → F major as 2nd inversion (C–F–A) · green = stays, red = moves" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Beim Akkordwechsel: gemeinsame Töne liegen lassen, nur die nötigen Finger bewegen. Der kürzeste Weg klingt am besten.",
+            "en": "Remember: when changing chords, leave common notes in place, move only the necessary fingers. The shortest path sounds best."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Auf einen Blick: unser Weg bisher", "en": "At a glance: our journey so far" },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            { "de": "#", "en": "#" },
+            { "de": "Thema", "en": "Topic" },
+            { "de": "Darum geht's", "en": "What it's about" }
+          ],
+          "rows": [
+            [ { "de": "1", "en": "1" }, { "de": "Tonnamen", "en": "Note names" }, { "de": "Die 12 Töne und ihre Tasten am Klavier; die Oktave", "en": "The 12 notes and their keys on the piano; the octave" } ],
+            [ { "de": "2", "en": "2" }, { "de": "Tonleitern", "en": "Scales" }, { "de": "Halb-/Ganztonschritte; Dur-Formel (zu 4 und 8 ein kleiner Schritt)", "en": "Half/whole steps; major formula (a small step to 4 and 8)" } ],
+            [ { "de": "3", "en": "3" }, { "de": "Grundton finden", "en": "Finding the root" }, { "de": "Den „Zuhause“-Ton = die Tonart des Songs heraushören", "en": "Hearing out the “home” note = the key of the song" } ],
+            [ { "de": "4", "en": "4" }, { "de": "Auf C transponieren", "en": "Transposing to C" }, { "de": "Grundton auf C legen, damit wir in Stufen denken können", "en": "Put the root on C so we can think in numbers" } ],
+            [ { "de": "5", "en": "5" }, { "de": "Akkorde bauen", "en": "Building chords" }, { "de": "Dur = 4+3, Moll = 3+4 Halbtöne", "en": "Major = 4+3, minor = 3+4 semitones" } ],
+            [ { "de": "6", "en": "6" }, { "de": "Nashville-System", "en": "Nashville system" }, { "de": "In Stufen denken: 1-4-5 Dur, 2-3-6 Moll, 7 als G/B", "en": "Thinking in numbers: 1-4-5 major, 2-3-6 minor, 7 as G/B" } ],
+            [ { "de": "7", "en": "7" }, { "de": "Inversionen", "en": "Inversions" }, { "de": "Akkorde umstapeln und den kürzesten Weg wählen", "en": "Restack chords and choose the shortest path" } ]
+          ]
+        },
+        {
+          "type": "closing",
+          "text": {
+            "de": "Wiederhole am besten Punkt für Punkt — und spiel die Beispiele direkt am Klavier (am liebsten in C) mit.",
+            "en": "Best to revise point by point — and play the examples along right at the piano (ideally in C)."
+          }
+        }
+      ]
+    }
+  ]
+}

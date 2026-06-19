@@ -1,0 +1,108 @@
+{
+  "sections": [
+    {
+      "title": { "de": "Die Formel: Ganz- und Halbtonschritte", "en": "The formula: whole and half steps" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Ein Halbtonschritt (½) ist der Sprung zur direkt benachbarten Taste (egal ob weiß oder schwarz). Ein Ganztonschritt (1) sind zwei Halbtonschritte. Jede Dur-Tonleiter folgt immer demselben Muster: 1 – 1 – ½ – 1 – 1 – 1 – ½.",
+            "en": "A semitone step (½) is the jump to the directly neighbouring key (white or black). A whole-tone step (1) is two semitones. Every major scale always follows the same pattern: 1 – 1 – ½ – 1 – 1 – 1 – ½."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Zu 4 und 8 ein kleiner Schritt, sonst immer groß. (Der Schritt hin zum 4. Ton und hin zur 8. = Oktave ist ein Halbton — alle anderen sind Ganztonschritte.)",
+            "en": "Remember: a small step to 4 and to 8, otherwise always large. (The step up to the 4th note and up to the 8th = octave is a semitone — all the others are whole-tone steps.)"
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Beispiel 1: C-Dur", "en": "Example 1: C major" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "C-Dur ist die einfachste Tonleiter — nur weiße Tasten. Du startest auf C und gehst nach der Formel weiter: C→D (Ganzton), D→E (Ganzton), E→F (Halbton, der Schritt zur 4), F→G, G→A, A→B (Ganztöne), B→C (Halbton, der Schritt zur 8).",
+            "en": "C major is the simplest scale — only white keys. You start on C and follow the formula: C→D (whole), D→E (whole), E→F (half, the step to the 4), F→G, G→A, A→B (whole), B→C (half, the step to the 8)."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 6", "caption": { "de": "C-Dur: C D E F G A B C — die ½-Schritte liegen zwischen 3–4 und 7–8", "en": "C major: C D E F G A B C — the ½ steps are between 3–4 and 7–8" } }
+      ]
+    },
+    {
+      "title": { "de": "Beispiel 2: E-Dur", "en": "Example 2: E major" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Jetzt von E aus, mit derselben Formel. Sobald du der Reihe 1–1–½–1–1–1–½ folgst, landest du automatisch auf den richtigen schwarzen Tasten: E – F# – G# – A – B – C# – D# – E. Auch hier sitzen die Halbtonschritte zwischen 3–4 (G#→A) und 7–8 (D#→E).",
+            "en": "Now from E, with the same formula. As soon as you follow the sequence 1–1–½–1–1–1–½ you automatically land on the right black keys: E – F# – G# – A – B – C# – D# – E. Here too the semitones sit between 3–4 (G#→A) and 7–8 (D#→E)."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 6", "caption": { "de": "E-Dur: dieselbe Formel — nur ein anderer Startton", "en": "E major: the same formula — just a different starting note" } }
+      ]
+    },
+    {
+      "title": { "de": "Jetzt du: alle Tonleitern", "en": "Now you: all the scales" },
+      "intro": {
+        "de": "Bau jede Tonleiter mit der Formel. Die Halbtonschritte liegen immer zwischen 3–4 und 7–8. C und E sind als Beispiele schon ausgefüllt. Tipp: Schreib jeden Buchstaben (A–G) nur einmal pro Tonleiter — käme ein Ton doppelt vor, nimm seinen zweiten Namen (z. B. F# statt Gb).",
+        "en": "Build each scale with the formula. The semitones are always between 3–4 and 7–8. C and E are filled in as examples. Tip: write each letter (A–G) only once per scale — if a note would appear twice, use its second name (e.g. F# instead of Gb)."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            { "de": "Tonart", "en": "Key" },
+            { "de": "1", "en": "1" }, { "de": "2", "en": "2" }, { "de": "3", "en": "3" }, { "de": "4", "en": "4" },
+            { "de": "5", "en": "5" }, { "de": "6", "en": "6" }, { "de": "7", "en": "7" }, { "de": "8", "en": "8" }
+          ],
+          "rows": [
+            [ { "de": "C-Dur", "en": "C major" }, {"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"A","en":"A"},{"de":"B","en":"B"},{"de":"C","en":"C"} ],
+            [ { "de": "Db-Dur", "en": "Db major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "D-Dur", "en": "D major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "Eb-Dur", "en": "Eb major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "E-Dur", "en": "E major" }, {"de":"E","en":"E"},{"de":"F#","en":"F#"},{"de":"G#","en":"G#"},{"de":"A","en":"A"},{"de":"B","en":"B"},{"de":"C#","en":"C#"},{"de":"D#","en":"D#"},{"de":"E","en":"E"} ],
+            [ { "de": "F-Dur", "en": "F major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "F#-Dur", "en": "F# major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "G-Dur", "en": "G major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "Ab-Dur", "en": "Ab major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "A-Dur", "en": "A major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "Bb-Dur", "en": "Bb major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ { "de": "B-Dur", "en": "B major" }, {"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution",
+          "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [
+            {
+              "type": "table",
+              "head": [
+                { "de": "Tonart", "en": "Key" },
+                { "de": "1", "en": "1" }, { "de": "2", "en": "2" }, { "de": "3", "en": "3" }, { "de": "4", "en": "4" },
+                { "de": "5", "en": "5" }, { "de": "6", "en": "6" }, { "de": "7", "en": "7" }, { "de": "8", "en": "8" }
+              ],
+              "rows": [
+                [ {"de":"C-Dur","en":"C major"},{"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"A","en":"A"},{"de":"B","en":"B"},{"de":"C","en":"C"} ],
+                [ {"de":"Db-Dur","en":"Db major"},{"de":"Db","en":"Db"},{"de":"Eb","en":"Eb"},{"de":"F","en":"F"},{"de":"Gb","en":"Gb"},{"de":"Ab","en":"Ab"},{"de":"Bb","en":"Bb"},{"de":"C","en":"C"},{"de":"Db","en":"Db"} ],
+                [ {"de":"D-Dur","en":"D major"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F#","en":"F#"},{"de":"G","en":"G"},{"de":"A","en":"A"},{"de":"B","en":"B"},{"de":"C#","en":"C#"},{"de":"D","en":"D"} ],
+                [ {"de":"Eb-Dur","en":"Eb major"},{"de":"Eb","en":"Eb"},{"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"Ab","en":"Ab"},{"de":"Bb","en":"Bb"},{"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"Eb","en":"Eb"} ],
+                [ {"de":"E-Dur","en":"E major"},{"de":"E","en":"E"},{"de":"F#","en":"F#"},{"de":"G#","en":"G#"},{"de":"A","en":"A"},{"de":"B","en":"B"},{"de":"C#","en":"C#"},{"de":"D#","en":"D#"},{"de":"E","en":"E"} ],
+                [ {"de":"F-Dur","en":"F major"},{"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"A","en":"A"},{"de":"Bb","en":"Bb"},{"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F","en":"F"} ],
+                [ {"de":"F#-Dur","en":"F# major"},{"de":"F#","en":"F#"},{"de":"G#","en":"G#"},{"de":"A#","en":"A#"},{"de":"B","en":"B"},{"de":"C#","en":"C#"},{"de":"D#","en":"D#"},{"de":"E#","en":"E#"},{"de":"F#","en":"F#"} ],
+                [ {"de":"G-Dur","en":"G major"},{"de":"G","en":"G"},{"de":"A","en":"A"},{"de":"B","en":"B"},{"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F#","en":"F#"},{"de":"G","en":"G"} ],
+                [ {"de":"Ab-Dur","en":"Ab major"},{"de":"Ab","en":"Ab"},{"de":"Bb","en":"Bb"},{"de":"C","en":"C"},{"de":"Db","en":"Db"},{"de":"Eb","en":"Eb"},{"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"Ab","en":"Ab"} ],
+                [ {"de":"A-Dur","en":"A major"},{"de":"A","en":"A"},{"de":"B","en":"B"},{"de":"C#","en":"C#"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F#","en":"F#"},{"de":"G#","en":"G#"},{"de":"A","en":"A"} ],
+                [ {"de":"Bb-Dur","en":"Bb major"},{"de":"Bb","en":"Bb"},{"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"Eb","en":"Eb"},{"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"A","en":"A"},{"de":"Bb","en":"Bb"} ],
+                [ {"de":"B-Dur","en":"B major"},{"de":"B","en":"B"},{"de":"C#","en":"C#"},{"de":"D#","en":"D#"},{"de":"E","en":"E"},{"de":"F#","en":"F#"},{"de":"G#","en":"G#"},{"de":"A#","en":"A#"},{"de":"B","en":"B"} ]
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

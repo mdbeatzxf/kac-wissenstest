@@ -1,0 +1,283 @@
+{
+  "sections": [
+    {
+      "title": { "de": "Überblick: alle Umkehrungen in C", "en": "Overview: all inversions in C" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Jeder Akkord hat dieselben drei Töne — du kannst sie nur unterschiedlich stapeln. Daraus ergeben sich drei Lagen. Am Beispiel von C-Dur (C–E–G): Grundstellung C–E–G, 1. Umkehrung E–G–C, 2. Umkehrung G–C–E.",
+            "en": "Every chord has the same three notes — you can only stack them differently. That gives three positions. Take C major (C–E–G): root C–E–G, 1st inversion E–G–C, 2nd inversion G–C–E."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 6", "caption": { "de": "C-Dur in drei Lagen: Grundstellung · 1. Umkehrung · 2. Umkehrung", "en": "C major in three positions: root · 1st inversion · 2nd inversion" } },
+        {
+          "type": "text",
+          "text": {
+            "de": "Und so sehen die Umkehrungen für alle Stufen in C aus (immer dieselben drei Töne, nur anders gestapelt):",
+            "en": "And here are the inversions for all the numbers in C (always the same three notes, just stacked differently):"
+          }
+        },
+        {
+          "type": "table",
+          "head": [ {"de":"Stufe","en":"No."},{"de":"Akkord","en":"Chord"},{"de":"Grundstellung","en":"Root"},{"de":"1. Umkehrung","en":"1st inv."},{"de":"2. Umkehrung","en":"2nd inv."} ],
+          "rows": [
+            [ {"de":"1","en":"1"},{"de":"C","en":"C"},{"de":"C – E – G","en":"C – E – G"},{"de":"E – G – C","en":"E – G – C"},{"de":"G – C – E","en":"G – C – E"} ],
+            [ {"de":"2","en":"2"},{"de":"Dm","en":"Dm"},{"de":"D – F – A","en":"D – F – A"},{"de":"F – A – D","en":"F – A – D"},{"de":"A – D – F","en":"A – D – F"} ],
+            [ {"de":"3","en":"3"},{"de":"Em","en":"Em"},{"de":"E – G – B","en":"E – G – B"},{"de":"G – B – E","en":"G – B – E"},{"de":"B – E – G","en":"B – E – G"} ],
+            [ {"de":"4","en":"4"},{"de":"F","en":"F"},{"de":"F – A – C","en":"F – A – C"},{"de":"A – C – F","en":"A – C – F"},{"de":"C – F – A","en":"C – F – A"} ],
+            [ {"de":"5","en":"5"},{"de":"G","en":"G"},{"de":"G – B – D","en":"G – B – D"},{"de":"B – D – G","en":"B – D – G"},{"de":"D – G – B","en":"D – G – B"} ],
+            [ {"de":"6","en":"6"},{"de":"Am","en":"Am"},{"de":"A – C – E","en":"A – C – E"},{"de":"C – E – A","en":"C – E – A"},{"de":"E – A – C","en":"E – A – C"} ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Aha: Die 7 (G/B), die wir spielen, ist nichts anderes als der 5-Akkord (G) in der 1. Umkehrung (B – D – G) — eine Umkehrung, die du also längst benutzt.",
+            "en": "Aha: the 7 (G/B) we play is nothing other than the 5 chord (G) in 1st inversion (B – D – G) — an inversion you've been using all along."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Der kürzeste Weg beim Wechsel", "en": "The shortest path when changing" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Beim Wechsel zwischen zwei Akkorden gilt: Lass gemeinsame Töne liegen und bewege so wenige Finger wie möglich. Wähle dazu immer die Umkehrung des Zielakkords, bei der die gemeinsamen Töne an Ort und Stelle bleiben.",
+            "en": "When changing between two chords: leave common notes in place and move as few fingers as possible. To do that, always choose the inversion of the target chord where the common notes stay put."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Die Merkregel", "en": "The rule" }
+        },
+        {
+          "type": "table",
+          "head": [ {"de":"Abstand der Stufen","en":"Number distance"},{"de":"Beispiele","en":"Examples"},{"de":"bleiben","en":"stay"},{"de":"Finger bewegen","en":"fingers move"} ],
+          "rows": [
+            [ {"de":"Terz oder Sexte","en":"Third or sixth"},{"de":"1↔3, 1↔6, 2↔4, 4↔6","en":"1↔3, 1↔6, 2↔4, 4↔6"},{"de":"2 Töne","en":"2 notes"},{"de":"nur 1","en":"only 1"} ],
+            [ {"de":"Quarte oder Quinte","en":"Fourth or fifth"},{"de":"1↔4, 1↔5, 2↔5","en":"1↔4, 1↔5, 2↔5"},{"de":"1 Ton","en":"1 note"},{"de":"2","en":"2"} ],
+            [ {"de":"Schritt (nebeneinander)","en":"Step (adjacent)"},{"de":"1↔2, 4↔5, 5↔6","en":"1↔2, 4↔5, 5↔6"},{"de":"0","en":"0"},{"de":"alle 3 (ganze Hand)","en":"all 3 (whole hand)"} ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Terz/Sexte → 2 Töne bleiben, 1 Finger bewegt sich. Quarte/Quinte → 1 Ton bleibt, 2 Finger. Direkt nebeneinander → kein Ton bleibt, die ganze Hand rutscht (meist einen Schritt).",
+            "en": "Remember: third/sixth → 2 notes stay, 1 finger moves. Fourth/fifth → 1 note stays, 2 fingers. Directly adjacent → no note stays, the whole hand slides (usually one step)."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Nur 1 Finger bewegt sich (Terz/Sexte)", "en": "Only 1 finger moves (third/sixth)" },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Wechsel","en":"Change"},{"de":"vorher","en":"before"},{"de":"nachher","en":"after"},{"de":"Bewegung","en":"Movement"} ],
+          "rows": [
+            [ {"de":"1 → 6 (C → Am)","en":"1 → 6 (C → Am)"},{"de":"C – E – G","en":"C – E – G"},{"de":"C – E – A","en":"C – E – A"},{"de":"C, E bleiben; nur G → A","en":"C, E stay; only G → A"} ],
+            [ {"de":"2 → 4 (Dm → F)","en":"2 → 4 (Dm → F)"},{"de":"D – F – A","en":"D – F – A"},{"de":"C – F – A","en":"C – F – A"},{"de":"F, A bleiben; nur D → C","en":"F, A stay; only D → C"} ],
+            [ {"de":"1 → 3 (C → Em)","en":"1 → 3 (C → Em)"},{"de":"C – E – G","en":"C – E – G"},{"de":"B – E – G","en":"B – E – G"},{"de":"E, G bleiben; nur C → B","en":"E, G stay; only C → B"} ]
+          ]
+        },
+        { "type": "figure", "aspect": "16 / 6", "caption": { "de": "1 → 6: C–E–G → C–E–A · grün = bleibt liegen, rot = bewegt sich", "en": "1 → 6: C–E–G → C–E–A · green = stays, red = moves" } }
+      ]
+    },
+    {
+      "title": { "de": "2 Finger bewegen sich (Quarte/Quinte)", "en": "2 fingers move (fourth/fifth)" },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Wechsel","en":"Change"},{"de":"vorher","en":"before"},{"de":"nachher","en":"after"},{"de":"Bewegung","en":"Movement"} ],
+          "rows": [
+            [ {"de":"1 → 4 (C → F)","en":"1 → 4 (C → F)"},{"de":"C – E – G","en":"C – E – G"},{"de":"C – F – A","en":"C – F – A"},{"de":"C bleibt; E → F, G → A","en":"C stays; E → F, G → A"} ],
+            [ {"de":"1 → 5 (C → G)","en":"1 → 5 (C → G)"},{"de":"C – E – G","en":"C – E – G"},{"de":"B – D – G","en":"B – D – G"},{"de":"G bleibt; C → B, E → D","en":"G stays; C → B, E → D"} ],
+            [ {"de":"5 → 1 (G → C)","en":"5 → 1 (G → C)"},{"de":"B – D – G","en":"B – D – G"},{"de":"C – E – G","en":"C – E – G"},{"de":"G bleibt; B → C, D → E","en":"G stays; B → C, D → E"} ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "5 → 1 ist der wichtigste Schluss: G bleibt liegen, B → C und D → E. So löst sich die Spannung sauber auf.",
+            "en": "5 → 1 is the most important cadence: G stays, B → C and D → E. That resolves the tension cleanly."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 6", "caption": { "de": "5 → 1: B–D–G → C–E–G · der klassische Schluss", "en": "5 → 1: B–D–G → C–E–G · the classic cadence" } }
+      ]
+    },
+    {
+      "title": { "de": "Ganze Hand (Stufen nebeneinander)", "en": "Whole hand (adjacent numbers)" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "1 → 2 (C → Dm): C–E–G → D–F–A. Kein gemeinsamer Ton — alle 3 Finger bewegen sich. Aber meist rutscht einfach die ganze Hand einen Schritt hoch, das ist gut machbar.",
+            "en": "1 → 2 (C → Dm): C–E–G → D–F–A. No common note — all 3 fingers move. But usually the whole hand just slides up a step, which is easy to do."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 1: Welche Umkehrung ist das?", "en": "Exercise 1: which inversion is it?" },
+      "intro": { "de": "Gegeben sind drei Töne (von unten nach oben). Welcher Akkord (welche Stufe), und welche Umkehrung?", "en": "Given three notes (bottom to top). Which chord (which number), and which inversion?" },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Töne (von unten)","en":"Notes (from below)"},{"de":"Akkord (Stufe)","en":"Chord (number)"},{"de":"Umkehrung","en":"Inversion"} ],
+          "rows": [
+            [ {"de":"E – G – C","en":"E – G – C"},{"de":"C (Stufe 1)","en":"C (no. 1)"},{"de":"1. Umkehrung","en":"1st inversion"} ],
+            [ {"de":"A – C – E","en":"A – C – E"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"C – F – A","en":"C – F – A"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"D – G – B","en":"D – G – B"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"G – B – E","en":"G – B – E"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"F – A – D","en":"F – A – D"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Töne (von unten)","en":"Notes (from below)"},{"de":"Akkord (Stufe)","en":"Chord (number)"},{"de":"Umkehrung","en":"Inversion"} ],
+            "rows": [
+              [ {"de":"A – C – E","en":"A – C – E"},{"de":"Am (Stufe 6)","en":"Am (no. 6)"},{"de":"Grundstellung","en":"Root position"} ],
+              [ {"de":"C – F – A","en":"C – F – A"},{"de":"F (Stufe 4)","en":"F (no. 4)"},{"de":"2. Umkehrung","en":"2nd inversion"} ],
+              [ {"de":"D – G – B","en":"D – G – B"},{"de":"G (Stufe 5)","en":"G (no. 5)"},{"de":"2. Umkehrung","en":"2nd inversion"} ],
+              [ {"de":"G – B – E","en":"G – B – E"},{"de":"Em (Stufe 3)","en":"Em (no. 3)"},{"de":"1. Umkehrung","en":"1st inversion"} ],
+              [ {"de":"F – A – D","en":"F – A – D"},{"de":"Dm (Stufe 2)","en":"Dm (no. 2)"},{"de":"1. Umkehrung","en":"1st inversion"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 2: Schreib die Umkehrungen", "en": "Exercise 2: write the inversions" },
+      "intro": { "de": "Schreib für jede Stufe alle drei Lagen auf (von unten nach oben).", "en": "Write all three positions for each number (bottom to top)." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Stufe","en":"No."},{"de":"Grundstellung","en":"Root"},{"de":"1. Umkehrung","en":"1st inv."},{"de":"2. Umkehrung","en":"2nd inv."} ],
+          "rows": [
+            [ {"de":"4 (F)","en":"4 (F)"},{"de":"F – A – C","en":"F – A – C"},{"de":"A – C – F","en":"A – C – F"},{"de":"C – F – A","en":"C – F – A"} ],
+            [ {"de":"2 (Dm)","en":"2 (Dm)"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"5 (G)","en":"5 (G)"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"6 (Am)","en":"6 (Am)"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"3 (Em)","en":"3 (Em)"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Stufe","en":"No."},{"de":"Grundstellung","en":"Root"},{"de":"1. Umkehrung","en":"1st inv."},{"de":"2. Umkehrung","en":"2nd inv."} ],
+            "rows": [
+              [ {"de":"2 (Dm)","en":"2 (Dm)"},{"de":"D – F – A","en":"D – F – A"},{"de":"F – A – D","en":"F – A – D"},{"de":"A – D – F","en":"A – D – F"} ],
+              [ {"de":"5 (G)","en":"5 (G)"},{"de":"G – B – D","en":"G – B – D"},{"de":"B – D – G","en":"B – D – G"},{"de":"D – G – B","en":"D – G – B"} ],
+              [ {"de":"6 (Am)","en":"6 (Am)"},{"de":"A – C – E","en":"A – C – E"},{"de":"C – E – A","en":"C – E – A"},{"de":"E – A – C","en":"E – A – C"} ],
+              [ {"de":"3 (Em)","en":"3 (Em)"},{"de":"E – G – B","en":"E – G – B"},{"de":"G – B – E","en":"G – B – E"},{"de":"B – E – G","en":"B – E – G"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 3: Der kürzeste Weg", "en": "Exercise 3: the shortest path" },
+      "intro": { "de": "Welche Töne bleiben beim Wechsel liegen, und wie sieht die Ziel-Lage mit der geringsten Bewegung aus?", "en": "Which notes stay put during the change, and what's the target position with the least movement?" },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Wechsel","en":"Change"},{"de":"Start-Lage","en":"Start"},{"de":"bleibt liegen","en":"stays"},{"de":"Ziel-Lage (minimal)","en":"Target (minimal)"} ],
+          "rows": [
+            [ {"de":"1 → 6","en":"1 → 6"},{"de":"C – E – G","en":"C – E – G"},{"de":"C, E","en":"C, E"},{"de":"C – E – A","en":"C – E – A"} ],
+            [ {"de":"2 → 4","en":"2 → 4"},{"de":"D – F – A","en":"D – F – A"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"1 → 3","en":"1 → 3"},{"de":"C – E – G","en":"C – E – G"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"1 → 4","en":"1 → 4"},{"de":"C – E – G","en":"C – E – G"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"1 → 5","en":"1 → 5"},{"de":"C – E – G","en":"C – E – G"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"5 → 1","en":"5 → 1"},{"de":"B – D – G","en":"B – D – G"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Wechsel","en":"Change"},{"de":"bleibt liegen","en":"stays"},{"de":"Ziel-Lage (minimal)","en":"Target (minimal)"} ],
+            "rows": [
+              [ {"de":"2 → 4","en":"2 → 4"},{"de":"F, A","en":"F, A"},{"de":"C – F – A","en":"C – F – A"} ],
+              [ {"de":"1 → 3","en":"1 → 3"},{"de":"E, G","en":"E, G"},{"de":"B – E – G","en":"B – E – G"} ],
+              [ {"de":"1 → 4","en":"1 → 4"},{"de":"C","en":"C"},{"de":"C – F – A","en":"C – F – A"} ],
+              [ {"de":"1 → 5","en":"1 → 5"},{"de":"G","en":"G"},{"de":"B – D – G","en":"B – D – G"} ],
+              [ {"de":"5 → 1","en":"5 → 1"},{"de":"G","en":"G"},{"de":"C – E – G","en":"C – E – G"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 4: Wie viele Finger?", "en": "Exercise 4: how many fingers?" },
+      "intro": { "de": "Bestimm über die Merkregel die gemeinsamen Töne und wie viele Finger sich bewegen.", "en": "Use the rule to work out the common notes and how many fingers move." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Wechsel","en":"Change"},{"de":"gemeinsame Töne","en":"common notes"},{"de":"Finger bewegen","en":"fingers move"} ],
+          "rows": [
+            [ {"de":"1 → 3","en":"1 → 3"},{"de":"E, G","en":"E, G"},{"de":"nur 1","en":"only 1"} ],
+            [ {"de":"1 → 4","en":"1 → 4"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"1 → 2","en":"1 → 2"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"2 → 4","en":"2 → 4"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"1 → 5","en":"1 → 5"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"4 → 6","en":"4 → 6"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"5 → 6","en":"5 → 6"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"1 → 6","en":"1 → 6"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Wechsel","en":"Change"},{"de":"gemeinsame Töne","en":"common notes"},{"de":"Finger bewegen","en":"fingers move"} ],
+            "rows": [
+              [ {"de":"1 → 4","en":"1 → 4"},{"de":"C","en":"C"},{"de":"2","en":"2"} ],
+              [ {"de":"1 → 2","en":"1 → 2"},{"de":"keine","en":"none"},{"de":"alle 3 (ganze Hand)","en":"all 3 (whole hand)"} ],
+              [ {"de":"2 → 4","en":"2 → 4"},{"de":"A, F","en":"A, F"},{"de":"nur 1","en":"only 1"} ],
+              [ {"de":"1 → 5","en":"1 → 5"},{"de":"G","en":"G"},{"de":"2","en":"2"} ],
+              [ {"de":"4 → 6","en":"4 → 6"},{"de":"A, C","en":"A, C"},{"de":"nur 1","en":"only 1"} ],
+              [ {"de":"5 → 6","en":"5 → 6"},{"de":"keine","en":"none"},{"de":"alle 3 (ganze Hand)","en":"all 3 (whole hand)"} ],
+              [ {"de":"1 → 6","en":"1 → 6"},{"de":"C, E","en":"C, E"},{"de":"nur 1","en":"only 1"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 5: fließende Akkordfolge", "en": "Exercise 5: a flowing progression" },
+      "intro": { "de": "Schreib für die Folge 1 – 6 – 4 – 5 in C eine fließende Lage (so wenig Bewegung wie möglich).", "en": "Write a flowing voicing for the progression 1 – 6 – 4 – 5 in C (as little movement as possible)." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Akkord (Stufe)","en":"Chord (number)"},{"de":"empfohlene Lage","en":"recommended voicing"} ],
+          "rows": [
+            [ {"de":"1 (C)","en":"1 (C)"},{"de":"C – E – G","en":"C – E – G"} ],
+            [ {"de":"6 (Am)","en":"6 (Am)"},{"de":"","en":""} ],
+            [ {"de":"4 (F)","en":"4 (F)"},{"de":"","en":""} ],
+            [ {"de":"5 (G)","en":"5 (G)"},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Akkord (Stufe)","en":"Chord (number)"},{"de":"empfohlene Lage","en":"recommended voicing"} ],
+            "rows": [
+              [ {"de":"1 (C)","en":"1 (C)"},{"de":"C – E – G","en":"C – E – G"} ],
+              [ {"de":"6 (Am)","en":"6 (Am)"},{"de":"C – E – A","en":"C – E – A"} ],
+              [ {"de":"4 (F)","en":"4 (F)"},{"de":"C – F – A","en":"C – F – A"} ],
+              [ {"de":"5 (G)","en":"5 (G)"},{"de":"B – D – G","en":"B – D – G"} ]
+            ]
+          }]
+        }
+      ]
+    }
+  ]
+}
