@@ -187,6 +187,19 @@ input[type="text"]:focus { border-color: var(--accent); }
 }
 .timer-bar.warn { background: var(--warn); }
 
+.topic {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  background: #eef2ff;
+  border: 1px solid #e0e7ff;
+  padding: 4px 11px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  letter-spacing: 0.01em;
+}
+
 .question {
   font-size: 19px;
   font-weight: 700;

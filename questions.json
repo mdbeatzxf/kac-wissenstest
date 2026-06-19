@@ -6,8 +6,8 @@
     "bewertung": {
       "punkteProFrage": 1,
       "bestehensgrenzeProzent": 80,
-      "sekundenProFrage": 30,
-      "fragenProSitzung": 12
+      "sekundenProFrage": 45,
+      "fragenProSitzung": 10
     }
   },
 

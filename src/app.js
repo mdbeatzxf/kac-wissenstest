@@ -21,6 +21,23 @@ function shuffle(arr) {
   return a;
 }
 
+// Thema (Kapitel) aus dem 'quelle'-Feld ableiten: alles vor der Seitenangabe.
+// "Signale, Kabel & Stecker, S.2" -> "Signale, Kabel & Stecker"
+const THEMA_EN = {
+  "Rollen & Ablauf": "Roles & Workflow",
+  "Equipment-Übersicht": "Equipment Overview",
+  "Signale, Kabel & Stecker": "Signals, Cables & Connectors",
+  "PA, Monitore & Verstärker": "PA, Monitors & Amplifiers",
+  "Das Mischpult bedienen": "Operating the Console",
+  "Mixing Station": "Mixing Station",
+  "Patchlist 101": "Patch List 101",
+};
+
+function themaVon(quelle) {
+  const de = (quelle || "").split(/,\s*S\./)[0].trim();
+  return { de, en: THEMA_EN[de] || de };
+}
+
 async function ladeDaten() {
   const res = await fetch("questions.json", { cache: "no-store" });
   if (!res.ok) throw new Error("HTTP " + res.status);
@@ -186,6 +203,7 @@ async function initQuiz() {
       bereich: q.bereich,
       frage: q.frage,
       frage_en: q.frage_en || q.frage,
+      thema: themaVon(q.quelle),
       options,
     };
   });
@@ -241,6 +259,9 @@ async function initQuiz() {
       "von"
     )} ${arbeitsfragen.length}`;
     $("#questionText").textContent = L === "en" ? q.frage_en : q.frage;
+
+    const chip = $("#topicChip");
+    if (chip) chip.textContent = L === "en" ? q.thema.en : q.thema.de;
 
     const optBox = $("#options");
     if (!nurText) {
