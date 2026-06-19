@@ -593,10 +593,13 @@ function renderBlock(b, ctx) {
       const sid = 'fig-' + guideId + '-' + path;
       const cap = escapeHTML(tx(b.caption));
       const ar = b.aspect || '16 / 10';
-      // Echtes Bild: optionales Feld "image" am figure-Block (z. B. "images/dock.jpg").
-      const imgSrc = b.image ? ` src="${escapeHTML(b.image)}"` : '';
+      // Echtes Bild: figure-Feld "image" (+ optional "image_en" für EN-Version).
+      // "fit" = contain | cover (Default cover). Fehlt das Bild, bleibt der Platzhalter.
+      const chosen = (state.lang === 'en' && b.image_en) ? b.image_en : b.image;
+      const imgSrc = chosen ? ` src="${escapeHTML(chosen)}"` : '';
+      const fit = b.fit ? ` fit="${escapeHTML(b.fit)}"` : '';
       return `<figure class="g-fig">
-          <image-slot id="${sid}" class="g-slot" placeholder="${cap}" shape="rect"${imgSrc} style="width:100%;aspect-ratio:${ar}"></image-slot>
+          <image-slot id="${sid}" class="g-slot" placeholder="${cap}" shape="rect"${imgSrc}${fit} style="width:100%;height:auto;aspect-ratio:${ar}"></image-slot>
           <figcaption class="g-figcap mono">${cap}</figcaption>
         </figure>`;
     }

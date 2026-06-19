@@ -2,15 +2,30 @@
   "sections": [
     {
       "tag": "sound",
-      "title": { "de": "Was ist Mixing Station?", "en": "What is Mixing Station?" },
+      "title": {
+        "de": "Was ist Mixing Station?",
+        "en": "What is Mixing Station?"
+      },
       "blocks": [
         {
           "type": "bullets",
           "items": [
-            { "de": "Fernsteuerung für Digitalpulte — läuft auf Tablet, Handy oder Laptop (iOS, Android, Windows, Mac, Linux).", "en": "Remote control for digital consoles — runs on a tablet, phone or laptop (iOS, Android, Windows, Mac, Linux)." },
-            { "de": "Unterstützt u. a. unsere Pulte: Behringer X32/M32 und Allen & Heath SQ.", "en": "Supports our consoles, among others: Behringer X32/M32 and Allen & Heath SQ." },
-            { "de": "Kostenlos zum Ausprobieren; einzelne Funktionen per In-App-Kauf.", "en": "Free to try; individual features via in-app purchase." },
-            { "de": "Wichtig: kein Audio-Player — reine Fernsteuerung des Pults.", "en": "Important: not an audio player — purely remote control of the console." }
+            {
+              "de": "Fernsteuerung für Digitalpulte — läuft auf Tablet, Handy oder Laptop (iOS, Android, Windows, Mac, Linux).",
+              "en": "Remote control for digital consoles — runs on a tablet, phone or laptop (iOS, Android, Windows, Mac, Linux)."
+            },
+            {
+              "de": "Unterstützt u. a. unsere Pulte: Behringer X32/M32 und Allen & Heath SQ.",
+              "en": "Supports our consoles, among others: Behringer X32/M32 and Allen & Heath SQ."
+            },
+            {
+              "de": "Kostenlos zum Ausprobieren; einzelne Funktionen per In-App-Kauf.",
+              "en": "Free to try; individual features via in-app purchase."
+            },
+            {
+              "de": "Wichtig: kein Audio-Player — reine Fernsteuerung des Pults.",
+              "en": "Important: not an audio player — purely remote control of the console."
+            }
           ]
         },
         {
@@ -24,7 +39,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Verbinden — im selben WLAN", "en": "Connecting — on the same Wi-Fi" },
+      "title": {
+        "de": "Verbinden — im selben WLAN",
+        "en": "Connecting — on the same Wi-Fi"
+      },
       "intro": {
         "de": "Die wichtigste Regel: Das Pult und dein Gerät müssen im selben Netzwerk (WLAN) sein.",
         "en": "The most important rule: the console and your device must be on the same network (Wi-Fi)."
@@ -33,12 +51,30 @@
         {
           "type": "steps",
           "items": [
-            { "de": "Das Pult ins Netzwerk bringen (LAN-Kabel zum Router/Switch — oder das eigene WLAN des Pults nutzen).", "en": "Get the console onto the network (LAN cable to the router/switch — or use the console's own Wi-Fi)." },
-            { "de": "Dein Gerät mit demselben WLAN verbinden.", "en": "Connect your device to the same Wi-Fi." },
-            { "de": "Mixing Station öffnen.", "en": "Open Mixing Station." }
+            {
+              "de": "Das Pult ins Netzwerk bringen (LAN-Kabel zum Router/Switch — oder das eigene WLAN des Pults nutzen).",
+              "en": "Get the console onto the network (LAN cable to the router/switch — or use the console's own Wi-Fi)."
+            },
+            {
+              "de": "Dein Gerät mit demselben WLAN verbinden.",
+              "en": "Connect your device to the same Wi-Fi."
+            },
+            {
+              "de": "Mixing Station öffnen.",
+              "en": "Open Mixing Station."
+            }
           ]
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Pult und Gerät sind im selben Netzwerk", "en": "Console and device are on the same network" } },
+        {
+          "type": "figure",
+          "aspect": "1520 / 520",
+          "caption": {
+            "de": "Pult und Gerät sind im selben Netzwerk",
+            "en": "Console and device are on the same network"
+          },
+          "image": "images/KAC_ms_verbindung.svg",
+          "fit": "contain"
+        },
         {
           "type": "note",
           "text": {
@@ -50,7 +86,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Pult finden & verbinden (Startbildschirm)", "en": "Find & connect the console (start screen)" },
+      "title": {
+        "de": "Pult finden & verbinden (Startbildschirm)",
+        "en": "Find & connect the console (start screen)"
+      },
       "blocks": [
         {
           "type": "text",
@@ -59,7 +98,16 @@
             "en": "On startup the overview opens. Tap Search — the app looks for the console on the Wi-Fi. Once found, tap Connect. Alternatively, connect manually via the IP address."
           }
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Startbildschirm: Pult auswählen, dann mit Search im WLAN finden", "en": "Start screen: pick the console, then find it on the Wi-Fi with Search" } },
+        {
+          "type": "figure",
+          "aspect": "1400 / 950",
+          "caption": {
+            "de": "Startbildschirm: Pult auswählen, dann mit Search im WLAN finden",
+            "en": "Start screen: pick the console, then find it on the Wi-Fi with Search"
+          },
+          "image": "images/ms_screen_auswahl.png",
+          "fit": "contain"
+        },
         {
           "type": "note",
           "text": {
@@ -71,7 +119,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Zwei Arten, die App zu nutzen", "en": "Two ways to use the app" },
+      "title": {
+        "de": "Zwei Arten, die App zu nutzen",
+        "en": "Two ways to use the app"
+      },
       "intro": {
         "de": "Je nachdem, was du brauchst:",
         "en": "Depending on what you need:"
@@ -79,7 +130,10 @@
       "blocks": [
         {
           "type": "sub",
-          "title": { "de": "Nur mein Monitor-Mix", "en": "My monitor mix only" },
+          "title": {
+            "de": "Nur mein Monitor-Mix",
+            "en": "My monitor mix only"
+          },
           "text": {
             "de": "Auf der Bühne stellst du nur deinen eigenen Monitor-/In-Ear-Mix ein — ideal für Sänger und Musiker.",
             "en": "On stage you set only your own monitor/in-ear mix — ideal for singers and musicians."
@@ -87,7 +141,10 @@
         },
         {
           "type": "sub",
-          "title": { "de": "Voller Zugriff", "en": "Full access" },
+          "title": {
+            "de": "Voller Zugriff",
+            "en": "Full access"
+          },
           "text": {
             "de": "Du hast Zugriff auf das ganze Pult — genau wie an der FOH-Position.",
             "en": "You have access to the whole console — just like at the FOH position."
@@ -95,19 +152,37 @@
         },
         {
           "type": "sub",
-          "title": { "de": "Voller Zugriff — was du steuern kannst", "en": "Full access — what you can control" },
+          "title": {
+            "de": "Voller Zugriff — was du steuern kannst",
+            "en": "Full access — what you can control"
+          },
           "items": [
-            { "de": "PA-/Hauptmix (L/R) — der Mix für den Raum.", "en": "PA/main mix (L/R) — the mix for the room." },
-            { "de": "Monitor-/Aux-Mixe — alle Bühnen-Sends (Monitore, In-Ears, Sidefills).", "en": "Monitor/aux mixes — all stage sends (monitors, in-ears, sidefills)." },
-            { "de": "Kanäle: Gain, EQ, Gate/Kompressor, Mute, Fader.", "en": "Channels: gain, EQ, gate/compressor, mute, fader." },
-            { "de": "DCAs/Gruppen, Routing und Szenen — je nach Pult.", "en": "DCAs/groups, routing and scenes — depending on the console." }
+            {
+              "de": "PA-/Hauptmix (L/R) — der Mix für den Raum.",
+              "en": "PA/main mix (L/R) — the mix for the room."
+            },
+            {
+              "de": "Monitor-/Aux-Mixe — alle Bühnen-Sends (Monitore, In-Ears, Sidefills).",
+              "en": "Monitor/aux mixes — all stage sends (monitors, in-ears, sidefills)."
+            },
+            {
+              "de": "Kanäle: Gain, EQ, Gate/Kompressor, Mute, Fader.",
+              "en": "Channels: gain, EQ, gate/compressor, mute, fader."
+            },
+            {
+              "de": "DCAs/Gruppen, Routing und Szenen — je nach Pult.",
+              "en": "DCAs/groups, routing and scenes — depending on the console."
+            }
           ]
         }
       ]
     },
     {
       "tag": "sound",
-      "title": { "de": "Layout — Mixe & Kanäle", "en": "Layout — mixes & channels" },
+      "title": {
+        "de": "Layout — Mixe & Kanäle",
+        "en": "Layout — mixes & channels"
+      },
       "intro": {
         "de": "Im Layout siehst du alles auf einen Blick: links wählst du den Mix oder Aux-Ausgang, rechts siehst du die Kanäle/Eingänge des Pults inklusive Effekte.",
         "en": "In the layout you see everything at a glance: on the left you pick the mix or aux output, on the right you see the console's channels/inputs including effects."
@@ -116,12 +191,30 @@
         {
           "type": "bullets",
           "items": [
-            { "de": "Links — Mixe (Aux): die verschiedenen Aux-Sends auswählen (z. B. In-Ears, Monitore).", "en": "Left — mixes (aux): select the different aux sends (e.g. in-ears, monitors)." },
-            { "de": "Rechts — Kanäle: alle Eingänge, Effekte und das ganze Pult.", "en": "Right — channels: all inputs, effects and the whole console." },
-            { "de": "So baust du gezielt einen einzelnen Mix auf — oder arbeitest am Hauptmix.", "en": "This way you set up a single mix on purpose — or work on the main mix." }
+            {
+              "de": "Links — Mixe (Aux): die verschiedenen Aux-Sends auswählen (z. B. In-Ears, Monitore).",
+              "en": "Left — mixes (aux): select the different aux sends (e.g. in-ears, monitors)."
+            },
+            {
+              "de": "Rechts — Kanäle: alle Eingänge, Effekte und das ganze Pult.",
+              "en": "Right — channels: all inputs, effects and the whole console."
+            },
+            {
+              "de": "So baust du gezielt einen einzelnen Mix auf — oder arbeitest am Hauptmix.",
+              "en": "This way you set up a single mix on purpose — or work on the main mix."
+            }
           ]
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Mixer-Ansicht: Kanalzug oben (Gain, EQ, Comp), Mixe links, Kanäle unten", "en": "Mixer view: channel strip on top (gain, EQ, comp), mixes on the left, channels along the bottom" } },
+        {
+          "type": "figure",
+          "aspect": "1400 / 950",
+          "caption": {
+            "de": "Mixer-Ansicht: Kanalzug oben (Gain, EQ, Comp), Mixe links, Kanäle unten",
+            "en": "Mixer view: channel strip on top (gain, EQ, comp), mixes on the left, channels along the bottom"
+          },
+          "image": "images/ms_screen_layout.png",
+          "fit": "contain"
+        },
         {
           "type": "note",
           "text": {
@@ -133,7 +226,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Eigene Layer bearbeiten", "en": "Editing your own layers" },
+      "title": {
+        "de": "Eigene Layer bearbeiten",
+        "en": "Editing your own layers"
+      },
       "intro": {
         "de": "Mixing Station passt sich deiner Position an: Du kannst eigene Layer bauen und nur die Kanäle, Mixe und Regler zeigen, die du brauchst — dazu Kanalzug, Theme und ein kontrastreicher Modus für draußen.",
         "en": "Mixing Station adapts to your position: you can build your own layers and show only the channels, mixes and controls you need — plus channel strip, theme and a high-contrast mode for outdoors."
@@ -142,12 +238,30 @@
         {
           "type": "steps",
           "items": [
-            { "de": "Tippe im Mixer rechts auf den Kanalzug / das gewünschte Layer (z. B. CH 1-16), um das Layer-Setup zu öffnen.", "en": "In the mixer, tap the channel strip / the layer you want on the right (e.g. CH 1-16) to open the Layer Setup." },
-            { "de": "Tippe die Kanäle, Mixe oder Regler an, die das Layer zeigen soll.", "en": "Tap the channels, mixes or controls the layer should show." },
-            { "de": "Sortiere sie per Drag & Drop — oder ziehe Einträge heraus, um sie zu entfernen.", "en": "Reorder them by drag & drop — or drag entries out to remove them." }
+            {
+              "de": "Tippe im Mixer rechts auf den Kanalzug / das gewünschte Layer (z. B. CH 1-16), um das Layer-Setup zu öffnen.",
+              "en": "In the mixer, tap the channel strip / the layer you want on the right (e.g. CH 1-16) to open the Layer Setup."
+            },
+            {
+              "de": "Tippe die Kanäle, Mixe oder Regler an, die das Layer zeigen soll.",
+              "en": "Tap the channels, mixes or controls the layer should show."
+            },
+            {
+              "de": "Sortiere sie per Drag & Drop — oder ziehe Einträge heraus, um sie zu entfernen.",
+              "en": "Reorder them by drag & drop — or drag entries out to remove them."
+            }
           ]
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Layer-Setup: Kanäle auswählen und per Drag & Drop sortieren", "en": "Layer Setup: select channels and sort them by drag & drop" } },
+        {
+          "type": "figure",
+          "aspect": "1400 / 950",
+          "caption": {
+            "de": "Layer-Setup: Kanäle auswählen und per Drag & Drop sortieren",
+            "en": "Layer Setup: select channels and sort them by drag & drop"
+          },
+          "image": "images/ms_screen_layer.png",
+          "fit": "contain"
+        },
         {
           "type": "note",
           "text": {

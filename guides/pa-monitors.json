@@ -2,13 +2,26 @@
   "sections": [
     {
       "tag": "sound",
-      "title": { "de": "Der Weg aus dem Pult", "en": "The path out of the mixer" },
+      "title": {
+        "de": "Der Weg aus dem Pult",
+        "en": "The path out of the mixer"
+      },
       "intro": {
         "de": "Was aus dem Pult kommt, sind Line-Signale: der Hauptmix für den Raum und mehrere Monitor-/In-Ear-Mixe für die Bühne.",
         "en": "What comes out of the mixer are line signals: the main mix for the room and several monitor/in-ear mixes for the stage."
       },
       "blocks": [
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Vom Pult zur Haupt-PA, zu Monitoren und In-Ears (kabelgebunden & kabellos)", "en": "From the mixer to the main PA, monitors and in-ears (wired & wireless)" } },
+        {
+          "type": "figure",
+          "aspect": "1600 / 780",
+          "caption": {
+            "de": "Vom Pult zur Haupt-PA, zu Monitoren und In-Ears (kabelgebunden & kabellos)",
+            "en": "From the mixer to the main PA, monitors and in-ears (wired & wireless)"
+          },
+          "image": "images/KAC_pult_ausgaenge.svg",
+          "image_en": "images/KAC_pult_ausgaenge_EN.svg",
+          "fit": "contain"
+        },
         {
           "type": "note",
           "text": {
@@ -20,7 +33,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Monitore vs. In-Ears", "en": "Monitors vs. In-Ears" },
+      "title": {
+        "de": "Monitore vs. In-Ears",
+        "en": "Monitors vs. In-Ears"
+      },
       "intro": {
         "de": "Beide haben denselben Zweck: Die Leute auf der Bühne müssen sich selbst und die Band hören. Der Weg dahin unterscheidet sich.",
         "en": "Both have the same purpose: the people on stage need to hear themselves and the band. The way there differs."
@@ -28,7 +44,10 @@
       "blocks": [
         {
           "type": "sub",
-          "title": { "de": "Monitor (Wedge)", "en": "Monitor (wedge)" },
+          "title": {
+            "de": "Monitor (Wedge)",
+            "en": "Monitor (wedge)"
+          },
           "text": {
             "de": "Ein Lautsprecher auf der Bühne, der auf die Person zeigt. Einfach, man „fühlt“ den Sound — bringt aber Lautstärke auf die Bühne und kann rückkoppeln.",
             "en": "A speaker on stage pointing at the person. Simple, you “feel” the sound — but it brings volume onto the stage and can feed back."
@@ -36,17 +55,33 @@
         },
         {
           "type": "sub",
-          "title": { "de": "In-Ears (IEM)", "en": "In-Ears (IEM)" },
+          "title": {
+            "de": "In-Ears (IEM)",
+            "en": "In-Ears (IEM)"
+          },
           "text": {
             "de": "Ein persönlicher Mix direkt auf die Ohrhörer. Leise Bühne, Gehörschutz, gleichbleibender Mix — braucht aber etwas mehr Aufwand. Zwei Varianten:",
             "en": "A personal mix straight into the earphones. Quiet stage, hearing protection, consistent mix — but needs a bit more setup. Two variants:"
           },
           "items": [
-            { "de": "Kabelgebunden: ein Kabel vom Beltpack (Empfänger am Gürtel) ins Ohr — einfach und störungsfrei, aber weniger Bewegungsfreiheit.", "en": "Wired: a cable from the beltpack (receiver on the belt) to the ear — simple and interference-free, but less freedom to move." },
-            { "de": "Kabellos (RF): Sender am Pult, Taschenempfänger an der Person — volle Bewegungsfreiheit, etwas mehr Aufwand.", "en": "Wireless (RF): transmitter at the mixer, pocket receiver on the person — full freedom to move, a bit more setup." }
+            {
+              "de": "Kabelgebunden: ein Kabel vom Beltpack (Empfänger am Gürtel) ins Ohr — einfach und störungsfrei, aber weniger Bewegungsfreiheit.",
+              "en": "Wired: a cable from the beltpack (receiver on the belt) to the ear — simple and interference-free, but less freedom to move."
+            },
+            {
+              "de": "Kabellos (RF): Sender am Pult, Taschenempfänger an der Person — volle Bewegungsfreiheit, etwas mehr Aufwand.",
+              "en": "Wireless (RF): transmitter at the mixer, pocket receiver on the person — full freedom to move, a bit more setup."
+            }
           ]
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Monitor (Wedge) · In-Ear kabelgebunden · In-Ear kabellos (RF)", "en": "Monitor (wedge) · in-ear wired · in-ear wireless (RF)" } },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Monitor (Wedge) · In-Ear kabelgebunden · In-Ear kabellos (RF)",
+            "en": "Monitor (wedge) · in-ear wired · in-ear wireless (RF)"
+          }
+        },
         {
           "type": "note",
           "text": {
@@ -58,7 +93,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Aux-Mixe (Wege zur Bühne)", "en": "Aux mixes (paths to the stage)" },
+      "title": {
+        "de": "Aux-Mixe (Wege zur Bühne)",
+        "en": "Aux mixes (paths to the stage)"
+      },
       "intro": {
         "de": "Ein Aux-Mix (Aux-Weg) ist ein eigener Mix neben dem Hauptmix — über einen Mix-Bus. Damit versorgst du alles auf der Bühne, das seinen eigenen Sound braucht:",
         "en": "An aux mix (aux path) is its own mix alongside the main mix — via a mix bus. With it you feed everything on stage that needs its own sound:"
@@ -67,9 +105,18 @@
         {
           "type": "bullets",
           "items": [
-            { "de": "Monitore (Wedges) am Boden", "en": "Monitors (wedges) on the floor" },
-            { "de": "In-Ears — kabelgebunden oder kabellos", "en": "In-ears — wired or wireless" },
-            { "de": "Sidefills — Lautsprecher an den Seiten der Bühne", "en": "Sidefills — speakers at the sides of the stage" }
+            {
+              "de": "Monitore (Wedges) am Boden",
+              "en": "Monitors (wedges) on the floor"
+            },
+            {
+              "de": "In-Ears — kabelgebunden oder kabellos",
+              "en": "In-ears — wired or wireless"
+            },
+            {
+              "de": "Sidefills — Lautsprecher an den Seiten der Bühne",
+              "en": "Sidefills — speakers at the sides of the stage"
+            }
           ]
         },
         {
@@ -90,18 +137,31 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "PA-Anlage", "en": "PA system" },
+      "title": {
+        "de": "PA-Anlage",
+        "en": "PA system"
+      },
       "intro": {
         "de": "Die PA ist das, was die Gemeinde hört. Sie besteht meist aus Tops (Mitten/Höhen) und Subs (Bass).",
         "en": "The PA is what the congregation hears. It usually consists of tops (mids/highs) and subs (bass)."
       },
       "blocks": [
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Tops für Stimmen & Instrumente, Subs für den Bass", "en": "Tops for voices & instruments, subs for the bass" } }
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Tops für Stimmen & Instrumente, Subs für den Bass",
+            "en": "Tops for voices & instruments, subs for the bass"
+          }
+        }
       ]
     },
     {
       "tag": "sound",
-      "title": { "de": "Aktiv vs. Passiv — der entscheidende Unterschied", "en": "Active vs. Passive — the key difference" },
+      "title": {
+        "de": "Aktiv vs. Passiv — der entscheidende Unterschied",
+        "en": "Active vs. Passive — the key difference"
+      },
       "intro": {
         "de": "Der Unterschied liegt im Verstärker (Endstufe): ist er in der Box eingebaut oder extern? Das entscheidet, was du anschließt — und welches Signal die Box bekommt.",
         "en": "The difference is in the amplifier (power amp): is it built into the box or external? That decides what you connect — and which signal the box gets."
@@ -109,7 +169,10 @@
       "blocks": [
         {
           "type": "sub",
-          "title": { "de": "Aktive Box", "en": "Active box" },
+          "title": {
+            "de": "Aktive Box",
+            "en": "Active box"
+          },
           "text": {
             "de": "Der Verstärker ist eingebaut. Du brauchst nur zwei Dinge: Strom (Netzkabel) und das Line-Signal vom Pult. Einstecken, fertig.",
             "en": "The amplifier is built in. You only need two things: power (mains cable) and the line signal from the mixer. Plug in, done."
@@ -117,7 +180,10 @@
         },
         {
           "type": "sub",
-          "title": { "de": "Passive Box", "en": "Passive box" },
+          "title": {
+            "de": "Passive Box",
+            "en": "Passive box"
+          },
           "text": {
             "de": "In der Box ist kein Verstärker. Sie braucht eine externe Endstufe, die das Line-Signal verstärkt. Die Endstufe schickt dann ein starkes Lautsprecher-Signal über ein Boxenkabel (Speakon) zur Box.",
             "en": "There is no amplifier in the box. It needs an external power amp that amplifies the line signal. The amp then sends a strong speaker signal over a speaker cable (Speakon) to the box."
@@ -126,16 +192,90 @@
         {
           "type": "table",
           "head": [
-            { "de": "", "en": "" },
-            { "de": "Aktive Box", "en": "Active box" },
-            { "de": "Passive Box", "en": "Passive box" }
+            {
+              "de": "",
+              "en": ""
+            },
+            {
+              "de": "Aktive Box",
+              "en": "Active box"
+            },
+            {
+              "de": "Passive Box",
+              "en": "Passive box"
+            }
           ],
           "rows": [
-            [ { "de": "Verstärker", "en": "Amplifier" }, { "de": "eingebaut", "en": "built in" }, { "de": "extern (Endstufe nötig)", "en": "external (power amp needed)" } ],
-            [ { "de": "Box braucht", "en": "The box needs" }, { "de": "Strom + Line-Signal", "en": "power + line signal" }, { "de": "Lautsprecher-Signal von der Endstufe", "en": "speaker signal from the amp" } ],
-            [ { "de": "Netzkabel an der Box", "en": "Mains cable on the box" }, { "de": "ja", "en": "yes" }, { "de": "nein", "en": "no" } ],
-            [ { "de": "Aufbau", "en": "Setup" }, { "de": "einfach: Strom + Signal", "en": "simple: power + signal" }, { "de": "Endstufe muss zur Box passen", "en": "amp must match the box" } ],
-            [ { "de": "Typisch für", "en": "Typical for" }, { "de": "Monitore, kleine/mittlere PAs", "en": "monitors, small/medium PAs" }, { "de": "große/fest installierte Systeme", "en": "large/permanently installed systems" } ]
+            [
+              {
+                "de": "Verstärker",
+                "en": "Amplifier"
+              },
+              {
+                "de": "eingebaut",
+                "en": "built in"
+              },
+              {
+                "de": "extern (Endstufe nötig)",
+                "en": "external (power amp needed)"
+              }
+            ],
+            [
+              {
+                "de": "Box braucht",
+                "en": "The box needs"
+              },
+              {
+                "de": "Strom + Line-Signal",
+                "en": "power + line signal"
+              },
+              {
+                "de": "Lautsprecher-Signal von der Endstufe",
+                "en": "speaker signal from the amp"
+              }
+            ],
+            [
+              {
+                "de": "Netzkabel an der Box",
+                "en": "Mains cable on the box"
+              },
+              {
+                "de": "ja",
+                "en": "yes"
+              },
+              {
+                "de": "nein",
+                "en": "no"
+              }
+            ],
+            [
+              {
+                "de": "Aufbau",
+                "en": "Setup"
+              },
+              {
+                "de": "einfach: Strom + Signal",
+                "en": "simple: power + signal"
+              },
+              {
+                "de": "Endstufe muss zur Box passen",
+                "en": "amp must match the box"
+              }
+            ],
+            [
+              {
+                "de": "Typisch für",
+                "en": "Typical for"
+              },
+              {
+                "de": "Monitore, kleine/mittlere PAs",
+                "en": "monitors, small/medium PAs"
+              },
+              {
+                "de": "große/fest installierte Systeme",
+                "en": "large/permanently installed systems"
+              }
+            ]
           ]
         },
         {
@@ -145,7 +285,14 @@
             "en": "How do you tell? Does the box have a mains cable → active. Only speaker sockets (Speakon) and no power connector → passive."
           }
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Aktiv: Rückseite mit Verstärker, Strom & Line-Eingang. Passiv: Rückseite mit nur Boxen-Buchsen (Speakon)", "en": "Active: rear with amplifier, power & line input. Passive: rear with only speaker sockets (Speakon)" } },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Aktiv: Rückseite mit Verstärker, Strom & Line-Eingang. Passiv: Rückseite mit nur Boxen-Buchsen (Speakon)",
+            "en": "Active: rear with amplifier, power & line input. Passive: rear with only speaker sockets (Speakon)"
+          }
+        },
         {
           "type": "note",
           "text": {
@@ -164,7 +311,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Verstärker / Endstufen", "en": "Amplifiers / power amps" },
+      "title": {
+        "de": "Verstärker / Endstufen",
+        "en": "Amplifiers / power amps"
+      },
       "intro": {
         "de": "Für passive Boxen macht die Endstufe aus dem Line-Signal ein starkes Lautsprecher-Signal mit genug Leistung für die Box.",
         "en": "For passive boxes, the power amp turns the line signal into a strong speaker signal with enough power for the box."
@@ -173,11 +323,24 @@
         {
           "type": "bullets",
           "items": [
-            { "de": "Endstufe und Box müssen zusammenpassen (Leistung/Impedanz).", "en": "Amp and box must match (power/impedance)." },
-            { "de": "Nicht ins Clipping fahren — das kann die Lautsprecher beschädigen.", "en": "Don't drive it into clipping — it can damage the speakers." }
+            {
+              "de": "Endstufe und Box müssen zusammenpassen (Leistung/Impedanz).",
+              "en": "Amp and box must match (power/impedance)."
+            },
+            {
+              "de": "Nicht ins Clipping fahren — das kann die Lautsprecher beschädigen.",
+              "en": "Don't drive it into clipping — it can damage the speakers."
+            }
           ]
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Endstufe / Amp-Rack", "en": "Power amp / amp rack" } },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Endstufe / Amp-Rack",
+            "en": "Power amp / amp rack"
+          }
+        },
         {
           "type": "note",
           "text": {
@@ -189,7 +352,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Line- vs. Lautsprecher-Signal", "en": "Line vs. Speaker signal" },
+      "title": {
+        "de": "Line- vs. Lautsprecher-Signal",
+        "en": "Line vs. Speaker signal"
+      },
       "blocks": [
         {
           "type": "text",
@@ -198,7 +364,17 @@
             "en": "Out of the mixer comes a line signal. Only after the power amp (or inside the active box) does it become a speaker signal — lots of power, over the speaker cable (Speakon)."
           }
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Vom Line-Signal zum Lautsprecher-Signal", "en": "From line signal to speaker signal" } },
+        {
+          "type": "figure",
+          "aspect": "1500 / 430",
+          "caption": {
+            "de": "Vom Line-Signal zum Lautsprecher-Signal",
+            "en": "From line signal to speaker signal"
+          },
+          "image": "images/KAC_amp_chain.svg",
+          "image_en": "images/KAC_amp_chain_EN.svg",
+          "fit": "contain"
+        },
         {
           "type": "note",
           "text": {
@@ -210,7 +386,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Rückkopplungen vermeiden", "en": "Avoiding feedback" },
+      "title": {
+        "de": "Rückkopplungen vermeiden",
+        "en": "Avoiding feedback"
+      },
       "intro": {
         "de": "Rückkopplung entsteht, wenn ein Mikrofon den Lautsprecher wieder aufnimmt — es schaukelt sich zu einem Pfeifen auf. So beugst du vor:",
         "en": "Feedback happens when a microphone picks up the loudspeaker again — it builds up into a howl. How to prevent it:"
@@ -219,13 +398,32 @@
         {
           "type": "bullets",
           "items": [
-            { "de": "Mikrofone nicht auf Lautsprecher oder Monitore richten.", "en": "Don't point microphones at loudspeakers or monitors." },
-            { "de": "Pegel und Gain nur so hoch wie nötig halten.", "en": "Keep level and gain only as high as needed." },
-            { "de": "Ungenutzte Mikrofone stummschalten.", "en": "Mute unused microphones." },
-            { "de": "Pfeift es trotzdem: die störende Frequenz mit dem EQ absenken.", "en": "If it still howls: cut the offending frequency with the EQ." }
+            {
+              "de": "Mikrofone nicht auf Lautsprecher oder Monitore richten.",
+              "en": "Don't point microphones at loudspeakers or monitors."
+            },
+            {
+              "de": "Pegel und Gain nur so hoch wie nötig halten.",
+              "en": "Keep level and gain only as high as needed."
+            },
+            {
+              "de": "Ungenutzte Mikrofone stummschalten.",
+              "en": "Mute unused microphones."
+            },
+            {
+              "de": "Pfeift es trotzdem: die störende Frequenz mit dem EQ absenken.",
+              "en": "If it still howls: cut the offending frequency with the EQ."
+            }
           ]
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Mikro hört Lautsprecher → Pfeifen. Auf Abstand, Richtung und Pegel achten.", "en": "Mic hears speaker → howl. Watch distance, direction and level." } },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Mikro hört Lautsprecher → Pfeifen. Auf Abstand, Richtung und Pegel achten.",
+            "en": "Mic hears speaker → howl. Watch distance, direction and level."
+          }
+        },
         {
           "type": "note",
           "text": {

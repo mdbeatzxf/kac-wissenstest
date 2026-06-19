@@ -2,7 +2,10 @@
   "sections": [
     {
       "tag": "sound",
-      "title": { "de": "Die drei Signalarten", "en": "The three types of signal" },
+      "title": {
+        "de": "Die drei Signalarten",
+        "en": "The three types of signal"
+      },
       "intro": {
         "de": "Nicht jedes Audiosignal ist gleich stark. Am wichtigsten für uns: Was ist es — und wohin gehört es?",
         "en": "Not every audio signal is equally strong. What matters most for us: what is it — and where does it belong?"
@@ -11,25 +14,61 @@
         {
           "type": "table",
           "head": [
-            { "de": "Signal", "en": "Signal" },
-            { "de": "Was es ist", "en": "What it is" },
-            { "de": "Worauf achten", "en": "What to watch" }
+            {
+              "de": "Signal",
+              "en": "Signal"
+            },
+            {
+              "de": "Was es ist",
+              "en": "What it is"
+            },
+            {
+              "de": "Worauf achten",
+              "en": "What to watch"
+            }
           ],
           "rows": [
             [
-              { "de": "Mikrofon", "en": "Microphone" },
-              { "de": "Das schwache Signal direkt vom Mikrofon.", "en": "The weak signal straight from the microphone." },
-              { "de": "Geht in einen Mikrofon-Eingang (XLR). Sehr empfindlich — daher gute, intakte Kabel verwenden.", "en": "Goes into a microphone input (XLR). Very sensitive — so use good, intact cables." }
+              {
+                "de": "Mikrofon",
+                "en": "Microphone"
+              },
+              {
+                "de": "Das schwache Signal direkt vom Mikrofon.",
+                "en": "The weak signal straight from the microphone."
+              },
+              {
+                "de": "Geht in einen Mikrofon-Eingang (XLR). Sehr empfindlich — daher gute, intakte Kabel verwenden.",
+                "en": "Goes into a microphone input (XLR). Very sensitive — so use good, intact cables."
+              }
             ],
             [
-              { "de": "Instrument", "en": "Instrument" },
-              { "de": "Kommt direkt von E-Gitarre oder Bass (passive Tonabnehmer).", "en": "Comes straight from an electric guitar or bass (passive pickups)." },
-              { "de": "Braucht einen Instrumenten-Eingang (Hi-Z) oder eine DI-Box — sonst klingt es dünn und schwach.", "en": "Needs an instrument input (Hi-Z) or a DI box — otherwise it sounds thin and weak." }
+              {
+                "de": "Instrument",
+                "en": "Instrument"
+              },
+              {
+                "de": "Kommt direkt von E-Gitarre oder Bass (passive Tonabnehmer).",
+                "en": "Comes straight from an electric guitar or bass (passive pickups)."
+              },
+              {
+                "de": "Braucht einen Instrumenten-Eingang (Hi-Z) oder eine DI-Box — sonst klingt es dünn und schwach.",
+                "en": "Needs an instrument input (Hi-Z) or a DI box — otherwise it sounds thin and weak."
+              }
             ],
             [
-              { "de": "Line", "en": "Line" },
-              { "de": "Ein bereits verstärktes Signal, z. B. von Keyboard, Laptop oder Player.", "en": "An already amplified signal, e.g. from a keyboard, laptop or player." },
-              { "de": "Geht in einen Line-Eingang. Stärker und weniger empfindlich als ein Mikro- oder Instrumentensignal.", "en": "Goes into a line input. Stronger and less sensitive than a mic or instrument signal." }
+              {
+                "de": "Line",
+                "en": "Line"
+              },
+              {
+                "de": "Ein bereits verstärktes Signal, z. B. von Keyboard, Laptop oder Player.",
+                "en": "An already amplified signal, e.g. from a keyboard, laptop or player."
+              },
+              {
+                "de": "Geht in einen Line-Eingang. Stärker und weniger empfindlich als ein Mikro- oder Instrumentensignal.",
+                "en": "Goes into a line input. Stronger and less sensitive than a mic or instrument signal."
+              }
             ]
           ]
         },
@@ -44,30 +83,59 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Stecker & Buchsen", "en": "Connectors & Sockets" },
+      "title": {
+        "de": "Stecker & Buchsen",
+        "en": "Connectors & Sockets"
+      },
       "blocks": [
         {
           "type": "sub",
-          "title": { "de": "Klinke — groß (6,3 mm) & mini (3,5 mm)", "en": "Jack — large (6.3 mm) & mini (3.5 mm)" },
+          "title": {
+            "de": "Klinke — groß (6,3 mm) & mini (3,5 mm)",
+            "en": "Jack — large (6.3 mm) & mini (3.5 mm)"
+          },
           "text": {
             "de": "Die große Klinke (6,3 mm) nutzen wir für Instrumente, Keyboards und Line-Geräte. Die Mini-Klinke (3,5 mm) kennst du von Laptops, Handys oder Kopfhörern. Beide gibt es als Mono (TS) und Stereo (TRS). Eine Klinke rastet nicht ein — sie kann also leichter herausrutschen.",
             "en": "We use the large jack (6.3 mm) for instruments, keyboards and line devices. The mini jack (3.5 mm) is the one you know from laptops, phones or headphones. Both come as mono (TS) and stereo (TRS). A jack doesn't lock in place — so it can slip out more easily."
           }
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Große Klinke (6,3 mm) & Mini-Klinke (3,5 mm)", "en": "Large jack (6.3 mm) & mini jack (3.5 mm)" } },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Große Klinke (6,3 mm) & Mini-Klinke (3,5 mm)",
+            "en": "Large jack (6.3 mm) & mini jack (3.5 mm)"
+          }
+        },
         {
           "type": "sub",
-          "title": { "de": "XLR — der Standard für Mikrofone", "en": "XLR — the standard for microphones" },
+          "title": {
+            "de": "XLR — der Standard für Mikrofone",
+            "en": "XLR — the standard for microphones"
+          },
           "text": {
             "de": "Der häufigste Stecker im Audio, vor allem für Mikrofone. Ein XLR-Kabel hat an einem Ende einen Stecker (male) und am anderen eine Buchse (female) — so passen zwei Kabel immer richtig zusammen.",
             "en": "The most common connector in audio, above all for microphones. An XLR cable has a plug (male) on one end and a socket (female) on the other — so two cables always fit together correctly."
           },
           "items": [
-            { "de": "Belegung (3 Pins): Pin 1 = Schirm, Pin 2 = Plus, Pin 3 = Minus.", "en": "Pinout (3 pins): Pin 1 = shield, Pin 2 = plus, Pin 3 = minus." },
-            { "de": "Verriegelung: Der Stecker rastet ein und rutscht nicht versehentlich heraus.", "en": "Locking: the plug latches in and won't slip out by accident." }
+            {
+              "de": "Belegung (3 Pins): Pin 1 = Schirm, Pin 2 = Plus, Pin 3 = Minus.",
+              "en": "Pinout (3 pins): Pin 1 = shield, Pin 2 = plus, Pin 3 = minus."
+            },
+            {
+              "de": "Verriegelung: Der Stecker rastet ein und rutscht nicht versehentlich heraus.",
+              "en": "Locking: the plug latches in and won't slip out by accident."
+            }
           ]
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "XLR male (Stecker = Ausgang) & XLR female (Buchse = Eingang)", "en": "XLR male (plug = output) & XLR female (socket = input)" } },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "XLR male (Stecker = Ausgang) & XLR female (Buchse = Eingang)",
+            "en": "XLR male (plug = output) & XLR female (socket = input)"
+          }
+        },
         {
           "type": "note",
           "text": {
@@ -82,12 +150,22 @@
             "en": "FYI: Loudspeakers have their own connectors — e.g. the Speakon, which locks with a twist. For power there is the Powercon. We normally don't plug these ourselves — just recognising them is enough."
           }
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Speakon (für Lautsprecher) & Powercon (für Strom)", "en": "Speakon (for loudspeakers) & Powercon (for power)" } }
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Speakon (für Lautsprecher) & Powercon (für Strom)",
+            "en": "Speakon (for loudspeakers) & Powercon (for power)"
+          }
+        }
       ]
     },
     {
       "tag": "sound",
-      "title": { "de": "DI-Box: Instrumente ans Pult bringen", "en": "DI Box: getting instruments to the mixer" },
+      "title": {
+        "de": "DI-Box: Instrumente ans Pult bringen",
+        "en": "DI Box: getting instruments to the mixer"
+      },
       "blocks": [
         {
           "type": "text",
@@ -103,7 +181,14 @@
             "en": "The DI box fixes exactly that: it takes the instrument signal and turns it into a clean, balanced signal that reaches the mixer interference-free, even over long runs. Instrument in (via jack), balanced out (via XLR)."
           }
         },
-        { "type": "figure", "aspect": "4 / 3", "caption": { "de": "DI-Box (Direct Inject)", "en": "DI box (Direct Inject)" } },
+        {
+          "type": "figure",
+          "aspect": "4 / 3",
+          "caption": {
+            "de": "DI-Box (Direct Inject)",
+            "en": "DI box (Direct Inject)"
+          }
+        },
         {
           "type": "note",
           "text": {
@@ -115,7 +200,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Y-Kabel", "en": "Y-Cable" },
+      "title": {
+        "de": "Y-Kabel",
+        "en": "Y-Cable"
+      },
       "blocks": [
         {
           "type": "text",
@@ -127,11 +215,24 @@
         {
           "type": "bullets",
           "items": [
-            { "de": "Aufteilen: ein Ausgang auf zwei Geräte — z. B. zwei aktive Boxen oder Monitore.", "en": "Splitting: one output to two devices — e.g. two active speakers or monitors." },
-            { "de": "Zusammenführen: zwei Signale (etwa links und rechts) in einen Eingang.", "en": "Combining: two signals (say left and right) into one input." }
+            {
+              "de": "Aufteilen: ein Ausgang auf zwei Geräte — z. B. zwei aktive Boxen oder Monitore.",
+              "en": "Splitting: one output to two devices — e.g. two active speakers or monitors."
+            },
+            {
+              "de": "Zusammenführen: zwei Signale (etwa links und rechts) in einen Eingang.",
+              "en": "Combining: two signals (say left and right) into one input."
+            }
           ]
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Y-Kabel: Mini-Klinke → 2× Klinke / XLR → 2× XLR", "en": "Y-cable: mini jack → 2× jack / XLR → 2× XLR" } },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Y-Kabel: Mini-Klinke → 2× Klinke / XLR → 2× XLR",
+            "en": "Y-cable: mini jack → 2× jack / XLR → 2× XLR"
+          }
+        },
         {
           "type": "note",
           "text": {
@@ -143,7 +244,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Mischpult: Ein- & Ausgänge", "en": "Mixer: Inputs & Outputs" },
+      "title": {
+        "de": "Mischpult: Ein- & Ausgänge",
+        "en": "Mixer: Inputs & Outputs"
+      },
       "intro": {
         "de": "Am Mischpult kommt alles zusammen. Wichtig ist nur: Wo geht ein Signal rein — und wo kommt es wieder raus?",
         "en": "Everything comes together at the mixer. All that matters is: where does a signal go in — and where does it come back out?"
@@ -151,7 +255,10 @@
       "blocks": [
         {
           "type": "sub",
-          "title": { "de": "Eingänge (in)", "en": "Inputs (in)" },
+          "title": {
+            "de": "Eingänge (in)",
+            "en": "Inputs (in)"
+          },
           "text": {
             "de": "Hier kommen Mikrofone, Instrumente und Line-Quellen an. Die Buchsen sind meist XLR (für Mikrofone) oder Klinke (für Instrumente und Line) — oft als Combo-Buchse, die beides aufnimmt.",
             "en": "This is where microphones, instruments and line sources arrive. The sockets are mostly XLR (for microphones) or jack (for instruments and line) — often as a combo socket that takes both."
@@ -159,7 +266,10 @@
         },
         {
           "type": "sub",
-          "title": { "de": "Ausgänge (out)", "en": "Outputs (out)" },
+          "title": {
+            "de": "Ausgänge (out)",
+            "en": "Outputs (out)"
+          },
           "text": {
             "de": "Vom Pult geht es weiter: der Hauptmix (Master) zu den Lautsprechern im Raum. Dazu mehrere weitere Ausgänge für Monitore oder In-Ears — jeder kann seinen eigenen Mix bekommen. Die Ausgangsbuchsen sind meist XLR, manchmal auch Klinke.",
             "en": "From the mixer it continues: the main mix (master) to the loudspeakers in the room. On top of that, several more outputs for monitors or in-ears — each can get its own mix. The output sockets are mostly XLR, sometimes jack too."
@@ -172,8 +282,22 @@
             "en": "These connections sit on the back of the mixer — and in many setups also on a stagebox on stage, connected to the mixer by a network cable."
           }
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Pult-Rückseite: Ein- & Ausgänge (XLR / Klinke)", "en": "Mixer rear: inputs & outputs (XLR / jack)" } },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Stagebox: Ein- & Ausgänge auf der Bühne", "en": "Stagebox: inputs & outputs on stage" } },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Pult-Rückseite: Ein- & Ausgänge (XLR / Klinke)",
+            "en": "Mixer rear: inputs & outputs (XLR / jack)"
+          }
+        },
+        {
+          "type": "figure",
+          "aspect": "16 / 9",
+          "caption": {
+            "de": "Stagebox: Ein- & Ausgänge auf der Bühne",
+            "en": "Stagebox: inputs & outputs on stage"
+          }
+        },
         {
           "type": "note",
           "text": {
@@ -185,7 +309,10 @@
     },
     {
       "tag": "sound",
-      "title": { "de": "Wie das Signal fließt", "en": "How the signal flows" },
+      "title": {
+        "de": "Wie das Signal fließt",
+        "en": "How the signal flows"
+      },
       "blocks": [
         {
           "type": "text",
@@ -194,7 +321,17 @@
             "en": "Finally, all together: from microphone or instrument through connectors and cables — via a DI box if needed — into the mixer, and from there on to loudspeakers, monitors and in-ears."
           }
         },
-        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Signalfluss: von der Quelle zum Lautsprecher", "en": "Signal flow: from source to loudspeaker" } }
+        {
+          "type": "figure",
+          "aspect": "1500 / 560",
+          "caption": {
+            "de": "Signalfluss: von der Quelle zum Lautsprecher",
+            "en": "Signal flow: from source to loudspeaker"
+          },
+          "image": "images/KAC_signalfluss.svg",
+          "image_en": "images/KAC_signalfluss_EN.svg",
+          "fit": "contain"
+        }
       ]
     }
   ]
