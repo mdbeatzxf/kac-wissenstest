@@ -17,7 +17,7 @@ Tech: Vanilla HTML/CSS/JS (Variante A, kein Build). Läuft auf jedem Static-Host
   kennt, kann ihn eingeben) – für diesen Zweck ausreichend.
 - **Testauswahl:** Die Person sieht nur die Tests, die in ihrem Feld `bereiche`
   erlaubt sind (`projection` und/oder `sound`).
-- **Quiz:** eine Frage pro Bildschirm, **12 s Timer** mit Auto-Advance,
+- **Quiz:** eine Frage pro Bildschirm, **30 s Timer** mit Auto-Advance,
   kein Zurück / kein Überspringen, Fragen- und Antwort-Reihenfolge gemischt,
   Fortschrittsanzeige + Countdown. Pro Sitzung werden **12 zufällige Fragen**
   gezogen (konfigurierbar).
@@ -146,7 +146,7 @@ Wichtig: `questions.json`, `index.html`, `quiz.html`, `result.html` und der
 | Einstellung               | Default | Bedeutung                                              |
 | ------------------------- | ------- | ------------------------------------------------------ |
 | `appsScriptUrl`           | `""`    | Apps-Script-/exec-URL fürs Sheet (leer = nur lokal)    |
-| `sekundenProFrage`        | `12`    | Timer pro Frage                                        |
+| `sekundenProFrage`        | `30`    | Timer pro Frage                                        |
 | `bestehensgrenzeProzent`  | `80`    | ab wie viel % „bestanden"                              |
 | `fragenProSitzung`        | `12`    | Fragen pro Sitzung; `null`/`0` = **alle** Fragen       |
 | `antiCheat.*`             | an      | Mischen, Tab-Wechsel zählen, Rechtsklick/Auswahl sperren |
@@ -156,7 +156,7 @@ Wichtig: `questions.json`, `index.html`, `quiz.html`, `result.html` und der
 
 ## 8. Anti-Cheat – ehrliche Grenzen
 
-**Aktiv & sinnvoll:** 12-s-Timer + Auto-Advance, eine Frage zur Zeit, kein
+**Aktiv & sinnvoll:** 30-s-Timer + Auto-Advance, eine Frage zur Zeit, kein
 Zurück, gemischte Reihenfolgen, Tab-Wechsel werden gezählt und ins Sheet
 geschrieben, Rechtsklick/Textauswahl unterdrückt.
 
@@ -178,7 +178,7 @@ kac-wissenstest/
 ├─ README.md
 ├─ questions.json          # Fragen (3 Pools) + Teilnehmer + Tests + Konfig
 ├─ index.html              # Login + Testauswahl
-├─ quiz.html               # Quiz (eine Frage, 12-s-Timer)
+├─ quiz.html               # Quiz (eine Frage, 30-s-Timer)
 ├─ result.html             # Endergebnis
 ├─ src/
 │  ├─ config.js            # zentrale Einstellungen

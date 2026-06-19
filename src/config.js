@@ -9,7 +9,7 @@ export const CONFIG = {
   appsScriptUrl: "",
 
   // ---- Quiz-Regeln ---------------------------------------------------
-  sekundenProFrage: 12,          // Timer pro Frage (Sekunden)
+  sekundenProFrage: 30,          // Timer pro Frage (Sekunden)
   bestehensgrenzeProzent: 80,    // ab wie viel % gilt der Test als bestanden
   punkteProFrage: 1,
   fragenProSitzung: 12,          // wie viele Fragen pro Sitzung ziehen;
