@@ -151,7 +151,7 @@
       timerLbl: 'Timer 15 s', drillKey: 'Tonart', keyRandom: 'Zufall',
       start: 'Start', stop: 'Stopp', playPrompt: 'Spiele', step: 'Schritt', question: 'Frage',
       waiting: 'Spiel den Akkord…', drillCorrect: 'Richtig! Weiter …', timeUp: 'So geht\'s:',
-      hits: 'Treffer', seconds: 'Sek.', skip: 'Weiter →',
+      hits: 'Treffer', seconds: 'Sek.', skip: 'Weiter →', tip: 'Tipp', withHint: function (n) { return 'davon ' + n + ' mit Tipp'; },
       result: 'Auswertung', accuracy: 'Trefferquote', avgTime: 'Ø Zeit pro Aufgabe',
       byInversion: 'Nach Umkehrung', again: 'Nochmal', backStart: 'Zurück', savedLocal: 'Ergebnis lokal gespeichert.',
       backChoose: 'Auswahl', tileGo: 'Weiter', cfgMode: 'Modus', startBtn: 'Training starten',
@@ -193,7 +193,7 @@
       timerLbl: 'Timer 15 s', drillKey: 'Key', keyRandom: 'Random',
       start: 'Start', stop: 'Stop', playPrompt: 'Play', step: 'Step', question: 'Question',
       waiting: 'Play the chord…', drillCorrect: 'Correct! Next …', timeUp: 'Like this:',
-      hits: 'Hits', seconds: 'sec', skip: 'Next →',
+      hits: 'Hits', seconds: 'sec', skip: 'Next →', tip: 'Hint', withHint: function (n) { return n + ' with hint'; },
       result: 'Result', accuracy: 'Accuracy', avgTime: 'Avg time per question',
       byInversion: 'By inversion', again: 'Again', backStart: 'Back', savedLocal: 'Result saved locally.',
       backChoose: 'Menu', tileGo: 'Next', cfgMode: 'Mode', startBtn: 'Start training',
@@ -213,6 +213,7 @@
      3) ZUSTAND
      ---------------------------------------------------------------- */
   const DRILL_SECONDS = 15;
+  const HINT_DELAY = 10000;   // Üben: Zieltasten faden nach 10 s blass ein
   const DRILL_SAVE_URL = ''; // TODO: Google Apps Script / Server-Endpoint zum zentralen Sammeln.
   const state = {
     lang: 'de', keyId: 'C', showHint: true, view: 'home', sound: true,
@@ -223,8 +224,9 @@
       type: 'walk', format: 'practice', timerOn: true, keyMode: 'random',
       steps: [], index: 0, progName: '',
       deadline: 0, secondsLeft: DRILL_SECONDS, questionStart: 0,
-      timerId: null, advanceId: null,
+      timerId: null, advanceId: null, assistId: null,
       revealing: false, locked: false, tap: new Set(), msg: null,
+      hintOn: false, hintOpacity: 0, tipUsed: false, hintedThisQ: false,
       hits: 0, quizIndex: 0, quizTotal: 20, results: [], lastRecord: null
     }
   };
@@ -321,7 +323,7 @@
         else if (fb.missing.has(p)) el.classList.add('is-missing');
         else if (fb.extra.has(p)) el.classList.add('is-extra');
       } else {
-        if (targetSet.has(p)) el.classList.add('is-target');
+        if (targetSet.has(p)) el.classList.add(opts.targetClass || 'is-target');
         if (played.has(p)) el.classList.add('is-played');
       }
       if (opts.rootPos === p) el.classList.add('is-root');
@@ -649,14 +651,38 @@
     const d = state.drill;
     if (d.timerId) { clearInterval(d.timerId); d.timerId = null; }
     if (d.advanceId) { clearTimeout(d.advanceId); d.advanceId = null; }
+    if (d.assistId) { clearInterval(d.assistId); d.assistId = null; }
   }
   function newPrompt(advance) {
     const d = state.drill;
     stopDrillTimers();
     if (advance) { d.index++; if (d.index >= d.steps.length) { d.steps = buildProgression(); d.index = 0; } }
     d.revealing = false; d.locked = false; d.tap = new Set(); d.msg = null; d.questionStart = now();
+    d.hintOn = false; d.hintOpacity = 0; d.tipUsed = false; d.hintedThisQ = false;
     if (d.timerOn) { d.secondsLeft = DRILL_SECONDS; d.deadline = now() + DRILL_SECONDS * 1000; d.timerId = setInterval(tickDrill, 100); }
+    d.assistId = setInterval(assistTick, 250);   // Auto-Fade-Hilfe (Üben) + Tipp
     renderDrill();
+  }
+  // Blendet die Zieltasten gestuft ein: im Üben-Modus automatisch nach HINT_DELAY,
+  // per Tipp-Knopf sofort. Im Quiz nur per Tipp.
+  function assistTick() {
+    const d = state.drill;
+    if (!$('drillView') || !d.running || d.revealing || d.locked) return;
+    let op = 0;
+    if (d.tipUsed) op = 0.55;
+    else if (d.format !== 'quiz') {
+      const elapsed = now() - d.questionStart;
+      if (elapsed >= HINT_DELAY) op = 0.14 + Math.min(1, (elapsed - HINT_DELAY) / 8000) * (0.5 - 0.14);
+    }
+    const show = op > 0;
+    if (show !== d.hintOn) { d.hintOn = show; d.hintOpacity = op; updateDrillBoard(); }
+    else if (show) { d.hintOpacity = op; const b = $('drillBoard'); if (b) b.style.setProperty('--hint-op', op.toFixed(3)); }
+  }
+  function onTip() {
+    const d = state.drill;
+    if (!d.running || d.revealing || d.locked) return;
+    d.tipUsed = true; d.hintedThisQ = true;
+    assistTick();
   }
   function tickDrill() {
     const d = state.drill;
@@ -713,7 +739,7 @@
     const d = state.drill;
     if (d.format === 'quiz') {
       const step = d.steps[d.index];
-      d.results.push({ hit: hit, timeMs: now() - d.questionStart, key: step.key.id, label: step.label, inv: step.inv });
+      d.results.push({ hit: hit, timeMs: now() - d.questionStart, key: step.key.id, label: step.label, inv: step.inv, hinted: d.hintedThisQ });
       d.quizIndex++;
       if (d.quizIndex >= d.quizTotal) { finishQuiz(); return; }
       newPrompt(true);
@@ -752,11 +778,15 @@
     }
     html += '<div class="drill-board" id="drillBoard"></div>' +
             '<div class="drill-msg" id="drillMsg"></div>' +
-            '<div class="drill-skip"><button class="btn btn-ghost" id="skipBtn" type="button">' + esc(L.skip) + '</button></div>' +
+            '<div class="drill-skip">' +
+              '<button class="btn btn-ghost" id="tipBtn" type="button">' + esc(L.tip) + '</button>' +
+              '<button class="btn btn-ghost" id="skipBtn" type="button">' + esc(L.skip) + '</button>' +
+            '</div>' +
             '<div class="midi-status mono"></div>';
     host.innerHTML = html;
 
     $('drillBack').addEventListener('click', function () { stopDrill(); showView('config'); });
+    $('tipBtn').addEventListener('click', onTip);
     $('skipBtn').addEventListener('click', onSkip);
 
     updateDrillBoard();
@@ -769,15 +799,19 @@
     const d = state.drill, board = $('drillBoard');
     if (!board) return;
     const step = d.steps[d.index];
-    let feedback = null, showTarget = false;
+    let feedback = null, showTarget = false, ghost = false;
     if (correct) feedback = { correct: new Set(step.positions), missing: new Set(), extra: new Set(), ok: true };
     else if (d.revealing) showTarget = true;
+    else if (d.hintOn) ghost = true;
     const played = showTarget ? new Set() : playedDisplayPositions(currentInput(), step.positions);
     board.innerHTML = '';
-    board.appendChild(buildKeyboard(showTarget ? step.positions : [], {
+    board.appendChild(buildKeyboard((showTarget || ghost) ? step.positions : [], {
       whiteW: 38, interactive: true, onTap: onDrillTap,
-      played: played, feedback: feedback, rootPos: d.revealing ? step.rootPos : undefined
+      played: played, feedback: feedback,
+      targetClass: ghost ? 'is-hint' : 'is-target',
+      rootPos: d.revealing ? step.rootPos : undefined
     }));
+    if (ghost) board.style.setProperty('--hint-op', (d.hintOpacity || 0.14).toFixed(3));
     const msg = $('drillMsg');
     if (msg) {
       let cls = 'drill-msg', text = d.msg || t().waiting;
@@ -805,13 +839,15 @@
     const total = d.results.length, hits = d.results.filter(function (r) { return r.hit; }).length;
     const pct = total ? Math.round(hits / total * 100) : 0;
     const dur = d.results.reduce(function (s, r) { return s + (r.timeMs || 0); }, 0);
-    const rec = { ts: now(), name: participantName(), exercise: d.type, keyMode: d.keyMode, total: total, hits: hits, pct: pct, durationMs: dur, results: d.results.slice() };
+    const hinted = d.results.filter(function (r) { return r.hinted; }).length;
+    const rec = { ts: now(), name: participantName(), exercise: d.type, keyMode: d.keyMode, total: total, hits: hits, pct: pct, hinted: hinted, durationMs: dur, results: d.results.slice() };
     saveDrillResult(rec); d.lastRecord = rec;
     renderDrill();
   }
   function renderResult(host) {
     const L = t(), d = state.drill, rec = d.lastRecord || { total: 0, hits: 0, pct: 0, durationMs: 0, results: [] };
     const avg = rec.results.length ? Math.round(rec.durationMs / rec.results.length / 100) / 10 : 0;
+    const hintedCount = rec.results.filter(function (r) { return r.hinted; }).length;
     // Genauigkeit je Umkehrung
     const byInv = [0, 1, 2].map(function (iv) {
       const rs = rec.results.filter(function (r) { return r.inv === iv; });
@@ -829,7 +865,7 @@
       '<div class="kicker" style="margin-top:4px">' + esc(L.result) + '</div>' +
       '<div class="res-score"><span class="res-big">' + rec.hits + '<span class="res-tot">/' + rec.total + '</span></span>' +
       '<span class="res-pct mono">' + rec.pct + '%</span></div>' +
-      '<div class="res-meta mono">' + esc(L.accuracy) + ': ' + rec.pct + '% · ' + esc(L.avgTime) + ': ' + avg + ' ' + esc(L.seconds) + '</div>' +
+      '<div class="res-meta mono">' + esc(L.accuracy) + ': ' + rec.pct + '% · ' + esc(L.avgTime) + ': ' + avg + ' ' + esc(L.seconds) + (hintedCount ? ' · ' + esc(L.withHint(hintedCount)) : '') + '</div>' +
       '<div class="res-byinv"><div class="ctrl-label mono">' + esc(L.byInversion) + '</div>' + invHtml + '</div>' +
       '<div class="res-saved mono">' + esc(L.savedLocal) + '</div>' +
       '<div class="modal-actions res-actions">' +
