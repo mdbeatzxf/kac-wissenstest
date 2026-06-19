@@ -429,6 +429,32 @@ h1.display {
 .save-status .dot.warn { background: var(--red); }
 .save-status .dot.pending { background: var(--hair); animation: pulse 1s steps(2) infinite; }
 
+/* ---- Auswertung: falsch beantwortete Fragen ---- */
+.review { margin-top: 26px; border-top: 1.5px solid var(--ink); padding-top: 18px; }
+.review-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.review-title { font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+.review-count {
+  font: 700 11px/1 ui-monospace, Menlo, Consolas, monospace;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--red);
+}
+.review-item { margin-top: 18px; border-left: 3px solid var(--red); padding: 2px 0 2px 16px; }
+.review-theme {
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
+}
+.review-q { font-size: 16px; font-weight: 500; line-height: 1.4; margin: 6px 0 12px; }
+.review-line {
+  display: grid; grid-template-columns: 130px 1fr; gap: 10px; align-items: start;
+  padding: 6px 0; font-size: 14.5px; line-height: 1.4;
+}
+.review-line + .review-line { border-top: 1px dashed var(--hair); }
+.review-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); padding-top: 3px; }
+.review-line.is-wrong .review-ans { color: var(--red); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.review-line.is-right .review-ans { color: #1f8a4d; font-weight: 700; }
+.review-allright {
+  margin-top: 24px; border-top: 1.5px solid var(--ink); padding-top: 18px;
+  font-size: 14px; color: #1f8a4d; font-weight: 700;
+}
+
 /* ============================================================
    Modal (abort confirmation)
    ============================================================ */

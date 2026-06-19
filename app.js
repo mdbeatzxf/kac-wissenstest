@@ -149,6 +149,12 @@ const I18N = {
     save_fail: 'Übermittlung fehlgeschlagen — Ergebnis lokal im Browser gesichert.',
     back_home: 'Zur Startseite',
     of: 'von',
+    review_title: 'Das hattest du falsch',
+    review_count: (n) => `${n} ${n === 1 ? 'falsche Antwort' : 'falsche Antworten'}`,
+    review_your: 'Deine Antwort',
+    review_correct: 'Richtige Antwort',
+    review_none: 'keine Antwort',
+    review_allright: 'Alles richtig — keine Fehler. 🎯',
   },
   en: {
     brand: 'KAC Production Team',
@@ -261,6 +267,12 @@ const I18N = {
     save_fail: 'Submission failed — result saved locally in the browser.',
     back_home: 'Back to start',
     of: 'of',
+    review_title: 'What you got wrong',
+    review_count: (n) => `${n} ${n === 1 ? 'wrong answer' : 'wrong answers'}`,
+    review_your: 'Your answer',
+    review_correct: 'Correct answer',
+    review_none: 'no answer',
+    review_allright: 'All correct — no mistakes. 🎯',
   },
 };
 
@@ -1358,6 +1370,24 @@ function finishQuiz() {
     };
   });
 
+  // Falsch beantwortete Fragen für die Auswertung (nur Anzeige, nicht im
+  // gespeicherten Record — hält die Übermittlung schlank).
+  state._lastReview = state.session
+    .filter(item => !(item.selected !== null && item.selected === item.correctIndex))
+    .map(item => {
+      const chosen = item.selected !== null ? item.options[item.selected] : null;
+      const corr = item.correctIndex >= 0 ? item.options[item.correctIndex] : null;
+      return {
+        theme: themeFromQuelle(item.q.quelle),
+        q_de: item.q.frage,
+        q_en: item.q.frage_en || item.q.frage,
+        your_de: chosen ? chosen.de : null,
+        your_en: chosen ? (chosen.en ?? chosen.de) : null,
+        corr_de: corr ? corr.de : '',
+        corr_en: corr ? (corr.en ?? corr.de) : '',
+      };
+    });
+
   const punkte = correct * rules.punkteProFrage;
   const maxPunkte = total * rules.punkteProFrage;
   const prozent = maxPunkte > 0 ? Math.round((punkte / maxPunkte) * 100) : 0;
@@ -1385,6 +1415,41 @@ function finishQuiz() {
   submitResult(record);
 }
 
+/* Auswertung der falsch beantworteten Fragen (lang-aware, aus state._lastReview). */
+function reviewHTML() {
+  const L = t();
+  const review = state._lastReview || [];
+  if (!review.length) {
+    return `<div class="review-allright mono">${escapeHTML(L.review_allright)}</div>`;
+  }
+  const items = review.map(it => {
+    const q = state.lang === 'en' ? it.q_en : it.q_de;
+    const your = state.lang === 'en' ? it.your_en : it.your_de;
+    const corr = state.lang === 'en' ? it.corr_en : it.corr_de;
+    return `
+      <div class="review-item">
+        <div class="review-theme mono">${escapeHTML(it.theme)}</div>
+        <div class="review-q">${escapeHTML(q)}</div>
+        <div class="review-line is-wrong">
+          <span class="review-lbl mono">${escapeHTML(L.review_your)}</span>
+          <span class="review-ans">${your ? escapeHTML(your) : escapeHTML(L.review_none)}</span>
+        </div>
+        <div class="review-line is-right">
+          <span class="review-lbl mono">${escapeHTML(L.review_correct)}</span>
+          <span class="review-ans">${escapeHTML(corr)}</span>
+        </div>
+      </div>`;
+  }).join('');
+  return `
+    <div class="review">
+      <div class="review-head">
+        <span class="review-title">${escapeHTML(L.review_title)}</span>
+        <span class="review-count mono">${escapeHTML(L.review_count(review.length))}</span>
+      </div>
+      ${items}
+    </div>`;
+}
+
 function renderResult(r) {
   currentScreen = 'result';
   app.classList.remove('app--wide');
@@ -1403,6 +1468,8 @@ function renderResult(r) {
         <div class="cell"><div class="k">${escapeHTML(L.test_label)}</div><div class="v">${escapeHTML(r.testLabel)}</div></div>
         <div class="cell"><div class="k">${escapeHTML(L.threshold)}</div><div class="v">${state.rules.bestehensgrenzeProzent}%</div></div>
       </div>
+
+      ${reviewHTML()}
 
       <div class="save-status" id="saveStatus">
         <span class="dot pending"></span><span id="saveText">${escapeHTML(L.save_pending)}</span>
