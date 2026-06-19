@@ -267,11 +267,13 @@
         },
         {
           "type": "figure",
-          "aspect": "4 / 3",
+          "aspect": "1500 / 1500",
           "caption": {
             "de": "UGREEN GaN-Ladegerät",
             "en": "UGREEN GaN charger"
-          }
+          },
+          "image": "images/gan-charger.jpg",
+          "fit": "contain"
         },
         {
           "type": "text",
