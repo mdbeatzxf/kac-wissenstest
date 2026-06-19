@@ -101,11 +101,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Große Klinke (6,3 mm) & Mini-Klinke (3,5 mm)",
             "en": "Large jack (6.3 mm) & mini jack (3.5 mm)"
-          }
+          },
+          "image": "images/klinke.jpg",
+          "fit": "contain"
         },
         {
           "type": "sub",
@@ -130,11 +132,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "XLR male (Stecker = Ausgang) & XLR female (Buchse = Eingang)",
             "en": "XLR male (plug = output) & XLR female (socket = input)"
-          }
+          },
+          "image": "images/xlr-male.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -152,11 +156,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Speakon (für Lautsprecher) & Powercon (für Strom)",
             "en": "Speakon (for loudspeakers) & Powercon (for power)"
-          }
+          },
+          "image": "images/speakon.jpg",
+          "fit": "contain"
         }
       ]
     },
@@ -187,7 +193,9 @@
           "caption": {
             "de": "DI-Box (Direct Inject)",
             "en": "DI box (Direct Inject)"
-          }
+          },
+          "image": "images/di-box.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -227,11 +235,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Y-Kabel: Mini-Klinke → 2× Klinke / XLR → 2× XLR",
             "en": "Y-cable: mini jack → 2× jack / XLR → 2× XLR"
-          }
+          },
+          "image": "images/y-kabel.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -284,19 +294,23 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Pult-Rückseite: Ein- & Ausgänge (XLR / Klinke)",
             "en": "Mixer rear: inputs & outputs (XLR / jack)"
-          }
+          },
+          "image": "images/pult-rueckseite.jpg",
+          "fit": "contain"
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Stagebox: Ein- & Ausgänge auf der Bühne",
             "en": "Stagebox: inputs & outputs on stage"
-          }
+          },
+          "image": "images/stagebox.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",

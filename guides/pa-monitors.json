@@ -76,11 +76,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Monitor (Wedge) · In-Ear kabelgebunden · In-Ear kabellos (RF)",
             "en": "Monitor (wedge) · in-ear wired · in-ear wireless (RF)"
-          }
+          },
+          "image": "images/monitor-wedge.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -148,11 +150,13 @@
       "blocks": [
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Tops für Stimmen & Instrumente, Subs für den Bass",
             "en": "Tops for voices & instruments, subs for the bass"
-          }
+          },
+          "image": "images/pa-top.jpg",
+          "fit": "contain"
         }
       ]
     },
@@ -287,11 +291,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Aktiv: Rückseite mit Verstärker, Strom & Line-Eingang. Passiv: Rückseite mit nur Boxen-Buchsen (Speakon)",
             "en": "Active: rear with amplifier, power & line input. Passive: rear with only speaker sockets (Speakon)"
-          }
+          },
+          "image": "images/aktivbox-rueckseite.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -335,11 +341,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "4 / 3",
           "caption": {
             "de": "Endstufe / Amp-Rack",
             "en": "Power amp / amp rack"
-          }
+          },
+          "image": "images/endstufe.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",

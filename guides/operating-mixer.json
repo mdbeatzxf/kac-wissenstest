@@ -238,11 +238,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "16 / 10",
           "caption": {
             "de": "Pegel-Übersicht: 0 dBFS = Clipping — mit Reserve darunter bleiben",
             "en": "Level overview: 0 dBFS = clipping — stay below with headroom"
-          }
+          },
+          "image": "images/gain-clipping.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -290,11 +292,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "16 / 10",
           "caption": {
             "de": "Gate-Seite mit Threshold (und Range)",
             "en": "Gate page with threshold (and range)"
-          }
+          },
+          "image": "images/gate.jpg",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -372,11 +376,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "16 / 10",
           "caption": {
             "de": "EQ-Kurve (Beispiel): Bereiche anheben oder absenken",
             "en": "EQ curve (example): boost or cut ranges"
-          }
+          },
+          "image": "images/eq-kurve.png",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -550,11 +556,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "16 / 10",
           "caption": {
             "de": "Digitalpult: Der Master-Fader ist meist der ganz rechte (hier „MAIN“)",
             "en": "Digital console: the master fader is usually the far right one (here “MAIN”)"
-          }
+          },
+          "image": "images/digitalpult.webp",
+          "fit": "contain"
         },
         {
           "type": "note",
@@ -606,11 +614,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "16 / 10",
           "caption": {
             "de": "Input-Patch (Beispiel): Lokaler Eingang 5 ist auf Kanal 5 gepatcht",
             "en": "Input patch (example): local input 5 is patched to channel 5"
-          }
+          },
+          "image": "images/input-patch.jpg",
+          "fit": "contain"
         },
         {
           "type": "sub",

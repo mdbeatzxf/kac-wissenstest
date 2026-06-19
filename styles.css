@@ -602,7 +602,9 @@ h1.display {
 
 /* figure (image-slot placeholder) */
 .g-fig { margin: 24px 0 0; }
-.g-slot { display: block; border: 1.5px dashed var(--hair); background: rgba(22,21,15,0.02); }
+.g-slot { display: block; background: rgba(22,21,15,0.02); }
+.g-slot:not([data-filled]) { border: 1.5px dashed var(--hair); }
+.g-slot[data-filled] { border: 1px solid var(--hair); background: transparent; }
 .g-figcap {
   margin-top: 9px; font-size: 12px; line-height: 1.4; letter-spacing: 0.04em;
   color: var(--ink-soft); padding-left: 14px; border-left: 2px solid var(--red);
