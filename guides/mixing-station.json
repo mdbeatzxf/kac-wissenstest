@@ -100,7 +100,7 @@
         },
         {
           "type": "figure",
-          "aspect": "1400 / 950",
+          "aspect": "2000 / 1500",
           "caption": {
             "de": "Startbildschirm: Pult auswählen, dann mit Search im WLAN finden",
             "en": "Start screen: pick the console, then find it on the Wi-Fi with Search"
@@ -207,7 +207,7 @@
         },
         {
           "type": "figure",
-          "aspect": "1400 / 950",
+          "aspect": "2000 / 1500",
           "caption": {
             "de": "Mixer-Ansicht: Kanalzug oben (Gain, EQ, Comp), Mixe links, Kanäle unten",
             "en": "Mixer view: channel strip on top (gain, EQ, comp), mixes on the left, channels along the bottom"
@@ -254,7 +254,7 @@
         },
         {
           "type": "figure",
-          "aspect": "1400 / 950",
+          "aspect": "2000 / 1500",
           "caption": {
             "de": "Layer-Setup: Kanäle auswählen und per Drag & Drop sortieren",
             "en": "Layer Setup: select channels and sort them by drag & drop"

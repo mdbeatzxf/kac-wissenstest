@@ -726,3 +726,25 @@ h1.display {
   .ws-table input.ws-inp { border-bottom: 1px solid #999; font-size: 13px; }
   .guide-sec, .g-fig, .callout, .ws { break-inside: avoid; }
 }
+
+/* ---- "richtig oder falsch?" — selbst markieren ---- */
+.tf { margin: 16px 0 0; }
+.tf-item {
+  padding: 14px 4px; border-bottom: 1px solid var(--hair);
+  display: grid; grid-template-columns: 1fr auto; gap: 8px 14px; align-items: center;
+}
+.tf-item.ok { box-shadow: inset 3px 0 0 var(--ink); padding-left: 12px; }
+.tf-item.bad { box-shadow: inset 3px 0 0 var(--red); padding-left: 12px; }
+.tf-stmt { font-size: 16px; line-height: 1.3; }
+.tf-pick { display: flex; gap: 8px; }
+.tf-btn {
+  appearance: none; cursor: pointer; border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  font: 700 13px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.04em; padding: 10px 14px;
+}
+.tf-btn.is-sel { background: var(--ink); color: var(--paper); }
+.tf-item.bad .tf-btn.is-sel { background: var(--red); border-color: var(--red); color: var(--paper); }
+.tf-corr { grid-column: 1 / -1; font-size: 14px; font-weight: 700; color: var(--red); margin-top: 2px; }
+@media (max-width: 420px) {
+  .tf-item { grid-template-columns: 1fr; }
+  .tf-pick { justify-self: start; }
+}

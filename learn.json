@@ -4,94 +4,181 @@
       "id": "rueckblick-1",
       "file": "guides/rueckblick-1.json",
       "area": "academy",
-      "kicker": { "de": "Music Academy · Rückblick", "en": "Music Academy · Recap" },
-      "meta": { "de": "Theorie · alle bisherigen Themen", "en": "Theory · everything so far" },
+      "kicker": {
+        "de": "Music Academy · Rückblick",
+        "en": "Music Academy · Recap"
+      },
+      "meta": {
+        "de": "Theorie · alle bisherigen Themen",
+        "en": "Theory · everything so far"
+      },
       "updated": "Juni 2026",
-      "title": { "de": "Rückblick — was wir gelernt haben", "en": "Recap — what we've learned" },
-      "subtitle": { "de": "Teil 1 · zum Wiederholen und Vertiefen", "en": "Part 1 · to revise and deepen" },
+      "title": {
+        "de": "Rückblick — was wir gelernt haben",
+        "en": "Recap — what we've learned"
+      },
+      "subtitle": {
+        "de": "Teil 1 · zum Wiederholen und Vertiefen",
+        "en": "Part 1 · to revise and deepen"
+      },
       "intro": {
         "de": "Diese Übersicht fasst alle Themen zusammen, die wir bisher in der Music Academy durchgenommen haben — Schritt für Schritt, in der Reihenfolge, in der wir sie gelernt haben. Du brauchst kein Vorwissen: lies von oben nach unten und spiel die Beispiele am Klavier mit.",
         "en": "This overview sums up every topic we've covered so far in the Music Academy — step by step, in the order we learned them. You need no prior knowledge: read top to bottom and play the examples along on the piano."
-      }
+      },
+      "group": "lernen"
     },
     {
       "id": "tonleitern",
       "file": "guides/tonleitern.json",
       "area": "academy",
-      "kicker": { "de": "Music Academy · Arbeitsblatt", "en": "Music Academy · Worksheet" },
-      "meta": { "de": "Arbeitsblatt · alle Dur-Tonleitern", "en": "Worksheet · all major scales" },
+      "kicker": {
+        "de": "Music Academy · Arbeitsblatt",
+        "en": "Music Academy · Worksheet"
+      },
+      "meta": {
+        "de": "Arbeitsblatt · alle Dur-Tonleitern",
+        "en": "Worksheet · all major scales"
+      },
       "updated": "Juni 2026",
-      "title": { "de": "Tonleitern bauen", "en": "Building scales" },
-      "subtitle": { "de": "Arbeitsblatt · alle Dur-Tonleitern mit Formel", "en": "Worksheet · all major scales with the formula" },
+      "title": {
+        "de": "Tonleitern bauen",
+        "en": "Building scales"
+      },
+      "subtitle": {
+        "de": "Arbeitsblatt · alle Dur-Tonleitern mit Formel",
+        "en": "Worksheet · all major scales with the formula"
+      },
       "intro": {
         "de": "Mit einer einzigen Formel baust du jede Dur-Tonleiter selbst — egal von welchem Ton du startest. Zwei Beispiele (C und E) schauen wir genau an, dann baust du die übrigen selbst. Die Lösungen zum Vergleichen blendest du jeweils ein.",
         "en": "With a single formula you can build any major scale yourself — no matter which note you start from. We look closely at two examples (C and E), then you build the rest. Reveal the solutions to check yourself."
-      }
+      },
+      "group": "uebungen"
     },
     {
       "id": "nashville-anwenden",
       "file": "guides/nashville-anwenden.json",
       "area": "academy",
-      "kicker": { "de": "Music Academy · Anwenden", "en": "Music Academy · Applying" },
-      "meta": { "de": "Konzept + Übungen · in Stufen denken", "en": "Concept + exercises · thinking in numbers" },
+      "kicker": {
+        "de": "Music Academy · Anwenden",
+        "en": "Music Academy · Applying"
+      },
+      "meta": {
+        "de": "Konzept + Übungen · in Stufen denken",
+        "en": "Concept + exercises · thinking in numbers"
+      },
       "updated": "Juni 2026",
-      "title": { "de": "Nashville-System anwenden", "en": "Applying the Nashville system" },
-      "subtitle": { "de": "Dieselbe Note — andere Tonart, andere Stufe", "en": "The same note — different key, different number" },
+      "title": {
+        "de": "Nashville-System anwenden",
+        "en": "Applying the Nashville system"
+      },
+      "subtitle": {
+        "de": "Dieselbe Note — andere Tonart, andere Stufe",
+        "en": "The same note — different key, different number"
+      },
       "intro": {
         "de": "Im Nashville-System denken wir in Stufen (1–7) statt in festen Akkordnamen. Der Clou: Ein und derselbe Ton ist je nach Tonart eine andere Stufe — und damit Dur oder Moll. Hier lernst du, das schnell herauszufinden, mit Raster und Übungen.",
         "en": "In the Nashville system we think in numbers (1–7) instead of fixed chord names. The trick: one and the same note is a different number depending on the key — and therefore major or minor. Here you'll learn to work that out quickly, with a grid and exercises."
-      }
+      },
+      "group": "lernen"
     },
     {
       "id": "nashville-uebungen",
       "file": "guides/nashville-uebungen.json",
       "area": "academy",
-      "kicker": { "de": "Music Academy · Übungen", "en": "Music Academy · Exercises" },
-      "meta": { "de": "8 Übungen mit Lösungen", "en": "8 exercises with solutions" },
+      "kicker": {
+        "de": "Music Academy · Übungen",
+        "en": "Music Academy · Exercises"
+      },
+      "meta": {
+        "de": "8 Übungen mit Lösungen",
+        "en": "8 exercises with solutions"
+      },
       "updated": "Juni 2026",
-      "title": { "de": "Nashville-System — Übungen", "en": "Nashville system — exercises" },
-      "subtitle": { "de": "8 Übungen in verschiedenen Formen", "en": "8 exercises in different forms" },
+      "title": {
+        "de": "Nashville-System — Übungen",
+        "en": "Nashville system — exercises"
+      },
+      "subtitle": {
+        "de": "8 Übungen in verschiedenen Formen",
+        "en": "8 exercises in different forms"
+      },
       "intro": {
         "de": "Hier übst du das Nashville-System richtig — von einzelnen Stufen bis zu ganzen Akkordfolgen und Transponieren. Die erste Zeile jeder Übung ist als Beispiel ausgefüllt; die Lösungen blendest du zum Vergleichen ein.",
         "en": "Here you really practise the Nashville system — from single numbers to whole chord progressions and transposing. The first row of each exercise is filled in as an example; reveal the solutions to compare."
-      }
+      },
+      "group": "uebungen"
     },
     {
       "id": "inversionen",
       "file": "guides/inversionen.json",
       "area": "academy",
-      "kicker": { "de": "Music Academy · Vertiefung", "en": "Music Academy · Deep dive" },
-      "meta": { "de": "Umkehrungen + der kürzeste Weg", "en": "Inversions + the shortest path" },
+      "kicker": {
+        "de": "Music Academy · Vertiefung",
+        "en": "Music Academy · Deep dive"
+      },
+      "meta": {
+        "de": "Umkehrungen + der kürzeste Weg",
+        "en": "Inversions + the shortest path"
+      },
       "updated": "Juni 2026",
-      "title": { "de": "Inversionen — Umkehrungen", "en": "Inversions" },
-      "subtitle": { "de": "Umkehrungen in C-Dur und der kürzeste Weg", "en": "Inversions in C major and the shortest path" },
+      "title": {
+        "de": "Inversionen — Umkehrungen",
+        "en": "Inversions"
+      },
+      "subtitle": {
+        "de": "Umkehrungen in C-Dur und der kürzeste Weg",
+        "en": "Inversions in C major and the shortest path"
+      },
       "intro": {
         "de": "Wir bleiben bewusst in C-Dur und transponieren alles dorthin — so musst du nur ein System richtig gut können. Dieses Blatt zeigt zuerst alle Umkehrungen der Stufen in C, und dann das Wichtigste: wie du beim Akkordwechsel den kürzesten Weg gehst.",
         "en": "We deliberately stay in C major and transpose everything there — so you only have to master one system. This sheet first shows all inversions of the numbers in C, and then the key thing: how to take the shortest path when changing chords."
-      }
+      },
+      "group": "lernen"
     },
     {
       "id": "inversionen-uebungen",
       "file": "guides/inversionen-uebungen.json",
       "area": "academy",
-      "kicker": { "de": "Music Academy · Übungen", "en": "Music Academy · Exercises" },
-      "meta": { "de": "11 Übungen mit Lösungen · alles in C", "en": "11 exercises with solutions · all in C" },
+      "kicker": {
+        "de": "Music Academy · Übungen",
+        "en": "Music Academy · Exercises"
+      },
+      "meta": {
+        "de": "11 Übungen mit Lösungen · alles in C",
+        "en": "11 exercises with solutions · all in C"
+      },
       "updated": "Juni 2026",
-      "title": { "de": "Inversionen — Übungen", "en": "Inversions — exercises" },
-      "subtitle": { "de": "11 Übungen in verschiedenen Formen — alles in C", "en": "11 exercises in different forms — all in C" },
+      "title": {
+        "de": "Inversionen — Übungen",
+        "en": "Inversions — exercises"
+      },
+      "subtitle": {
+        "de": "11 Übungen in verschiedenen Formen — alles in C",
+        "en": "11 exercises in different forms — all in C"
+      },
       "intro": {
         "de": "Hier übst du Umkehrungen und den kürzesten Weg beim Akkordwechsel — alles in C-Dur. Von „Lagen erkennen“ bis zu ganzen fließenden Akkordfolgen. Die erste Zeile jeder Übung ist ein Beispiel; die Lösungen blendest du ein.",
         "en": "Here you practise inversions and the shortest path when changing chords — all in C major. From “spotting the position” to whole flowing progressions. The first row of each exercise is an example; reveal the solutions."
-      }
+      },
+      "group": "uebungen"
     },
     {
       "id": "rollen-ablauf",
       "file": "guides/rollen-ablauf.json",
       "area": "production",
-      "bereiche": ["projection", "sound"],
+      "bereiche": [
+        "projection",
+        "sound"
+      ],
       "updated": "Juni 2026",
-      "title": { "de": "Rollen & Ablauf — Auf- und Abbau", "en": "Roles & Workflow — Setup and Teardown" },
-      "subtitle": { "de": "Für das Production Team · Sound & Projection", "en": "For the Production Team · Sound & Projection" },
+      "title": {
+        "de": "Rollen & Ablauf — Auf- und Abbau",
+        "en": "Roles & Workflow — Setup and Teardown"
+      },
+      "subtitle": {
+        "de": "Für das Production Team · Sound & Projection",
+        "en": "For the Production Team · Sound & Projection"
+      },
       "intro": {
         "de": "Damit Auf- und Abbau reibungslos laufen, hat jede Position klare Aufgaben. Diese Übersicht zeigt den Ablauf für Projection und die Rollen im Sound-Team — beim Aufbau, während des Gottesdienstes und beim Abbau.",
         "en": "So that setup and teardown run smoothly, every position has clear tasks. This overview shows the projection workflow and the roles in the sound team — during setup, during the service, and during teardown."
@@ -101,10 +188,18 @@
       "id": "signals-cables",
       "file": "guides/signals-cables.json",
       "area": "production",
-      "bereiche": ["sound"],
+      "bereiche": [
+        "sound"
+      ],
       "updated": "Juni 2026",
-      "title": { "de": "Signale, Kabel & Stecker", "en": "Signals, Cables & Connectors" },
-      "subtitle": { "de": "Für das Sound-Team", "en": "For the Sound team" },
+      "title": {
+        "de": "Signale, Kabel & Stecker",
+        "en": "Signals, Cables & Connectors"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team",
+        "en": "For the Sound team"
+      },
       "intro": {
         "de": "Das Wichtigste auf einen Blick: welche Signale es gibt, welcher Stecker wohin gehört — und wie alles am Mischpult zusammenkommt.",
         "en": "The essentials at a glance: which signals there are, which connector goes where — and how everything comes together at the mixer."
@@ -114,10 +209,18 @@
       "id": "patchlist",
       "file": "guides/patchlist.json",
       "area": "production",
-      "bereiche": ["sound"],
+      "bereiche": [
+        "sound"
+      ],
       "updated": "Juni 2026",
-      "title": { "de": "Patchlist 101", "en": "Patchlist 101" },
-      "subtitle": { "de": "Für das Sound-Team", "en": "For the Sound team" },
+      "title": {
+        "de": "Patchlist 101",
+        "en": "Patchlist 101"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team",
+        "en": "For the Sound team"
+      },
       "intro": {
         "de": "Was eine Patchliste ist, warum wir sie nutzen und wie man sie Schritt für Schritt liest — inklusive der wichtigsten Frage: Was tue ich, wenn keine DI-Box eingetragen ist?",
         "en": "What a patch list is, why we use it and how to read it step by step — including the most important question: what do I do when no DI box is listed?"
@@ -127,10 +230,18 @@
       "id": "operating-mixer",
       "file": "guides/operating-mixer.json",
       "area": "production",
-      "bereiche": ["sound"],
+      "bereiche": [
+        "sound"
+      ],
       "updated": "Juni 2026",
-      "title": { "de": "Das Mischpult bedienen", "en": "Operating the Mixing Console" },
-      "subtitle": { "de": "Für das Sound-Team", "en": "For the Sound team" },
+      "title": {
+        "de": "Das Mischpult bedienen",
+        "en": "Operating the Mixing Console"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team",
+        "en": "For the Sound team"
+      },
       "intro": {
         "de": "Schritt für Schritt durchs Pult: Wir folgen dem Weg, den jedes Signal durch einen Kanal nimmt — vom Gain bis zum Master. Gilt für jedes digitale Pult (Beispiele für SQ und Behringer X-Air, wo sie sich unterscheiden).",
         "en": "Step by step through the mixer: we follow the path each signal takes through a channel — from gain to the master. This applies to any digital console (examples for SQ and Behringer X-Air where they differ)."
@@ -140,10 +251,18 @@
       "id": "pa-monitors",
       "file": "guides/pa-monitors.json",
       "area": "production",
-      "bereiche": ["sound"],
+      "bereiche": [
+        "sound"
+      ],
       "updated": "Juni 2026",
-      "title": { "de": "Monitore, In-Ears, PA & Verstärker", "en": "Monitors, In-Ears, PA & Amplifiers" },
-      "subtitle": { "de": "Für das Sound-Team", "en": "For the Sound team" },
+      "title": {
+        "de": "Monitore, In-Ears, PA & Verstärker",
+        "en": "Monitors, In-Ears, PA & Amplifiers"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team",
+        "en": "For the Sound team"
+      },
       "intro": {
         "de": "Was passiert mit dem Sound, nachdem er das Pult verlässt? Das ist die Ausgangsseite: Monitore und In-Ears auf der Bühne, die PA für den Raum und die Verstärker dazwischen.",
         "en": "What happens to the sound after it leaves the mixer? This is the output side: monitors and in-ears on stage, the PA for the room, and the amplifiers in between."
@@ -153,10 +272,18 @@
       "id": "mixing-station",
       "file": "guides/mixing-station.json",
       "area": "production",
-      "bereiche": ["sound"],
+      "bereiche": [
+        "sound"
+      ],
       "updated": "Juni 2026",
-      "title": { "de": "Mixing Station — Kurzanleitung", "en": "Mixing Station — Quick Guide" },
-      "subtitle": { "de": "Das Pult per Tablet oder Handy fernsteuern", "en": "Remote-control the console from a tablet or phone" },
+      "title": {
+        "de": "Mixing Station — Kurzanleitung",
+        "en": "Mixing Station — Quick Guide"
+      },
+      "subtitle": {
+        "de": "Das Pult per Tablet oder Handy fernsteuern",
+        "en": "Remote-control the console from a tablet or phone"
+      },
       "intro": {
         "de": "Mit Mixing Station steuerst du das Mischpult per Tablet, Handy oder Laptop fern. Du kannst z. B. deinen eigenen Monitor-Mix direkt auf der Bühne einstellen — oder mit vollem Zugriff den ganzen Mix fahren. Die App spielt selbst keinen Ton ab; sie steuert nur das Pult.",
         "en": "With Mixing Station you remote-control the mixing console from a tablet, phone or laptop. For example, you can adjust your own monitor mix right on stage — or run the whole mix with full access. The app doesn't play any audio itself; it only controls the console."
@@ -166,10 +293,18 @@
       "id": "projection-equipment",
       "file": "guides/projection-equipment.json",
       "area": "production",
-      "bereiche": ["projection"],
+      "bereiche": [
+        "projection"
+      ],
       "updated": "Juni 2026",
-      "title": { "de": "Projection — Equipment-Übersicht", "en": "Projection — Equipment Overview" },
-      "subtitle": { "de": "Für das Projection-Team", "en": "For the Projection team" },
+      "title": {
+        "de": "Projection — Equipment-Übersicht",
+        "en": "Projection — Equipment Overview"
+      },
+      "subtitle": {
+        "de": "Für das Projection-Team",
+        "en": "For the Projection team"
+      },
       "intro": {
         "de": "Warum haben wir welches Gerät — und wofür setzen wir es ein? Dieses Dokument erklärt unsere Kern-Hardware am Projection-Platz. Ziel: Jeder versteht, was wir haben, warum, und wann man was nimmt — auch ohne tiefes Technikwissen.",
         "en": "Why do we have which device — and what do we use it for? This document explains our core hardware at the projection station. Goal: everyone understands what we have, why, and when to use what — even without deep technical knowledge."

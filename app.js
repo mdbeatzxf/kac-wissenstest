@@ -53,7 +53,18 @@ const I18N = {
     back_areas: 'Übersicht',
     learn_academy_kicker: 'Music Academy · Lernbereich',
     learn_academy_title: 'Lernen',
-    learn_academy_intro: 'Theorie und Übungen zum Selbstlernen. Lies von oben nach unten und spiel die Beispiele am Klavier mit.',
+    learn_academy_intro: 'Theorie und Beispiele zum Nachlesen. Lies von oben nach unten und spiel die Beispiele am Klavier mit.',
+    ac_home_kicker: 'Music Academy',
+    ac_home_intro: 'Theorie lesen oder Übungen ausfüllen.',
+    ac_learn: 'Lernen',
+    ac_learn_sub: 'Theorie & Beispiele zum Nachlesen',
+    ac_exerc: 'Übungen',
+    ac_exerc_sub: 'Arbeitsblätter zum Ausfüllen & Drucken',
+    learn_exerc_kicker: 'Music Academy · Übungen',
+    learn_exerc_title: 'Übungen',
+    learn_exerc_intro: 'Tippe deine Antworten direkt ein, prüfe sie und blende bei Bedarf die Lösung ein. Unten gibt es „Drucken".',
+    tf_true: 'Richtig',
+    tf_false: 'Falsch',
     show_solutions: 'Lösungen anzeigen',
     hide_solutions: 'Lösungen ausblenden',
     ws_check: 'Prüfen',
@@ -136,7 +147,18 @@ const I18N = {
     back_areas: 'Overview',
     learn_academy_kicker: 'Music Academy · Learning area',
     learn_academy_title: 'Learn',
-    learn_academy_intro: 'Theory and exercises for self-study. Read top to bottom and play the examples along on the piano.',
+    learn_academy_intro: 'Theory and examples to read up on. Read top to bottom and play the examples along on the piano.',
+    ac_home_kicker: 'Music Academy',
+    ac_home_intro: 'Read the theory or fill in the exercises.',
+    ac_learn: 'Learn',
+    ac_learn_sub: 'Theory & examples to read up on',
+    ac_exerc: 'Exercises',
+    ac_exerc_sub: 'Worksheets to fill in & print',
+    learn_exerc_kicker: 'Music Academy · Exercises',
+    learn_exerc_title: 'Exercises',
+    learn_exerc_intro: 'Type your answers directly, check them and reveal the solution if needed. Use "Print" at the bottom.',
+    tf_true: 'True',
+    tf_false: 'False',
     show_solutions: 'Show solutions',
     hide_solutions: 'Hide solutions',
     ws_check: 'Check',
@@ -212,6 +234,7 @@ const state = {
   data: null,
   learn: null,
   area: null,
+  academyGroup: 'lernen',  // 'lernen' | 'uebungen' (Untermenü der Music Academy)
   currentGuide: null,
   guideFrom: 'learn',  // 'home' (über Checkliste) | 'learn' (über Lernbereich)
   rules: null,        // effective bewertung
@@ -292,6 +315,7 @@ langToggle.addEventListener('click', () => {
 let currentScreen = 'boot';
 function rerenderCurrent() {
   if (currentScreen === 'area') renderArea();
+  else if (currentScreen === 'academyHome') renderAcademyHome();
   else if (currentScreen === 'home') renderHome();
   else if (currentScreen === 'learn') renderLearnHome();
   else if (currentScreen === 'guide') renderGuide(state.currentGuide, true);
@@ -372,7 +396,7 @@ function renderArea() {
       <div class="brandline mono">${escapeHTML(L.brand_portal)}</div>
     </section>`;
 
-  document.getElementById('areaAcademy').addEventListener('click', () => { state.area = 'academy'; renderLearnHome(); });
+  document.getElementById('areaAcademy').addEventListener('click', () => renderAcademyHome());
   document.getElementById('areaProduction').addEventListener('click', () => renderHome());
 }
 
@@ -545,11 +569,47 @@ function tagLabel(tag) {
   return '';
 }
 
+/* 6c) SCREEN: MUSIC ACADEMY HOME — Lernen | Übungen */
+function renderAcademyHome() {
+  currentScreen = 'academyHome';
+  state.area = 'academy';
+  const L = t();
+  const rows = [
+    { id: 'acLearn', group: 'lernen', name: L.ac_learn, sub: L.ac_learn_sub },
+    { id: 'acExerc', group: 'uebungen', name: L.ac_exerc, sub: L.ac_exerc_sub },
+  ];
+  const rowsHTML = rows.map((r, i) => `
+        <button class="test-row" type="button" id="${r.id}">
+          <span class="idx mono">${String(i + 1).padStart(2, '0')}</span>
+          <span>
+            <span class="name">${escapeHTML(r.name)}</span><br>
+            <span class="meta">${escapeHTML(r.sub)}</span>
+          </span>
+          <span class="arrow">→</span>
+        </button>`).join('');
+  app.innerHTML = `
+    <section class="screen">
+      <button class="backlink" id="acBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_areas)}</button>
+      <div class="kicker">${escapeHTML(L.ac_home_kicker)}</div>
+      <h1 class="display">${escapeHTML(L.area_academy_name)}</h1>
+      <p style="margin:20px 0 0;color:var(--ink-soft)">${escapeHTML(L.ac_home_intro)}</p>
+      <div class="test-list">${rowsHTML}
+      </div>
+      <div class="spacer"></div>
+      <div class="brandline mono">${escapeHTML(L.brand_academy)}</div>
+    </section>`;
+  document.getElementById('acBack').addEventListener('click', () => renderArea());
+  rows.forEach(r => document.getElementById(r.id).addEventListener('click', () => { state.academyGroup = r.group; renderLearnHome(); }));
+}
+
 function renderLearnHome() {
   currentScreen = 'learn';
   const L = t();
   const isAcademy = state.area === 'academy';
-  const guides = ((state.learn && state.learn.guides) || []).filter(g => (g.area || 'production') === state.area);
+  const isExerc = isAcademy && state.academyGroup === 'uebungen';
+  const guides = ((state.learn && state.learn.guides) || []).filter(g =>
+    (g.area || 'production') === state.area &&
+    (!isAcademy || (g.group || 'lernen') === state.academyGroup));
   const lang = state.lang;
   const tx = (o) => o ? (o[lang] ?? o.de ?? '') : '';
 
@@ -574,15 +634,15 @@ function renderLearnHome() {
   app.innerHTML = `
     <section class="screen">
       <button class="backlink" id="learnBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_areas)}</button>
-      <div class="kicker">${escapeHTML(isAcademy ? L.learn_academy_kicker : L.learn_kicker)}</div>
-      <h1 class="display">${escapeHTML(isAcademy ? L.learn_academy_title : L.learn_title)}</h1>
-      <p style="margin:20px 0 0;color:var(--ink-soft);max-width:42ch">${escapeHTML(isAcademy ? L.learn_academy_intro : L.learn_intro)}</p>
+      <div class="kicker">${escapeHTML(isExerc ? L.learn_exerc_kicker : isAcademy ? L.learn_academy_kicker : L.learn_kicker)}</div>
+      <h1 class="display">${escapeHTML(isExerc ? L.learn_exerc_title : isAcademy ? L.learn_academy_title : L.learn_title)}</h1>
+      <p style="margin:20px 0 0;color:var(--ink-soft);max-width:42ch">${escapeHTML(isExerc ? L.learn_exerc_intro : isAcademy ? L.learn_academy_intro : L.learn_intro)}</p>
       ${rows}
       <div class="spacer"></div>
       <div class="brandline mono">${escapeHTML(isAcademy ? L.brand_academy : L.brand)}</div>
     </section>`;
 
-  document.getElementById('learnBack').addEventListener('click', () => isAcademy ? renderArea() : renderHome());
+  document.getElementById('learnBack').addEventListener('click', () => isAcademy ? renderAcademyHome() : renderHome());
   app.querySelectorAll('.test-row[data-guide]').forEach(b =>
     b.addEventListener('click', () => { state.guideFrom = 'learn'; renderGuide(b.dataset.guide); }));
 }
@@ -777,6 +837,82 @@ function wireWorksheets(root) {
   });
 }
 
+/* ---- interaktiv: "richtig oder falsch?" (bullets + solution-Tabelle) ---- */
+function isTrueFalsePair(b, next) {
+  if (!b || b.type !== 'bullets' || !next || next.type !== 'solution') return false;
+  const tbl = next.blocks && next.blocks[0];
+  if (!tbl || tbl.type !== 'table') return false;
+  return (tbl.head || []).some(h => {
+    const s = (h.de || '').toLowerCase(); return s.includes('richtig') && s.includes('falsch');
+  });
+}
+function renderTrueFalse(bullets, solTable, ctx) {
+  const { tx, L } = ctx;
+  const head = solTable.head || [];
+  const ansCol = head.findIndex(h => { const s = (h.de || '').toLowerCase(); return s.includes('richtig') && s.includes('falsch'); });
+  const corrCol = head.length - 1;
+  const items = (bullets.items || []).map((it, i) => {
+    const row = (solTable.rows || [])[i] || [];
+    const ans = tx(row[ansCol] || {}).toLowerCase().trim();
+    const correctVal = ans.startsWith('r') ? 'true' : 'false';
+    let corr = tx(row[corrCol] || {});
+    if (!corr || corr === '–' || corr === '-') corr = '';
+    return `<div class="tf-item" data-tf data-correct="${correctVal}" data-corr="${escapeHTML(corr)}">
+        <div class="tf-stmt">${escapeHTML(tx(it))}</div>
+        <div class="tf-pick">
+          <button class="tf-btn" type="button" data-tf-val="true">${escapeHTML(L.tf_true)}</button>
+          <button class="tf-btn" type="button" data-tf-val="false">${escapeHTML(L.tf_false)}</button>
+        </div>
+        <div class="tf-corr" hidden></div>
+      </div>`;
+  }).join('');
+  return `<div class="tf" data-tfgroup>${items}
+      <div class="ws-controls">
+        <button class="ws-btn" type="button" data-tf-check>${escapeHTML(L.ws_check)}</button>
+        <button class="ws-btn ws-btn--ghost" type="button" data-tf-solve>${escapeHTML(L.ws_solve)}</button>
+        <button class="ws-btn ws-btn--ghost" type="button" data-tf-reset>${escapeHTML(L.ws_reset)}</button>
+        <span class="ws-result mono" data-tf-result></span>
+      </div>
+    </div>`;
+}
+function wireTrueFalse(root) {
+  root.querySelectorAll('[data-tfgroup]').forEach(grp => {
+    const items = [...grp.querySelectorAll('[data-tf]')];
+    const result = grp.querySelector('[data-tf-result]');
+    const showCorr = (it, on) => { const c = it.querySelector('.tf-corr'); if (on && it.dataset.corr) { c.textContent = it.dataset.corr; c.hidden = false; } else c.hidden = true; };
+    items.forEach(it => it.querySelectorAll('[data-tf-val]').forEach(btn => btn.addEventListener('click', () => {
+      it.dataset.pick = btn.dataset.tfVal;
+      it.querySelectorAll('[data-tf-val]').forEach(b => b.classList.toggle('is-sel', b === btn));
+      it.classList.remove('ok', 'bad'); showCorr(it, false);
+    })));
+    grp.querySelector('[data-tf-check]').addEventListener('click', () => {
+      let ok = 0;
+      items.forEach(it => {
+        it.classList.remove('ok', 'bad'); showCorr(it, false);
+        if (!it.dataset.pick) return;
+        if (it.dataset.pick === it.dataset.correct) { it.classList.add('ok'); ok++; }
+        else { it.classList.add('bad'); showCorr(it, true); }
+      });
+      result.textContent = t().ws_result(ok, items.length);
+    });
+    grp.querySelector('[data-tf-solve]').addEventListener('click', () => {
+      items.forEach(it => {
+        it.classList.remove('ok', 'bad'); it.dataset.pick = it.dataset.correct;
+        it.querySelectorAll('[data-tf-val]').forEach(b => b.classList.toggle('is-sel', b.dataset.tfVal === it.dataset.correct));
+        showCorr(it, true);
+      });
+      result.textContent = '';
+    });
+    grp.querySelector('[data-tf-reset]').addEventListener('click', () => {
+      items.forEach(it => {
+        it.classList.remove('ok', 'bad'); delete it.dataset.pick; showCorr(it, false);
+        it.querySelectorAll('[data-tf-val]').forEach(b => b.classList.remove('is-sel'));
+      });
+      result.textContent = '';
+    });
+  });
+}
+
 function guideShell(g, kicker, L, tx, bodyHTML, showTest, brand) {
   return `
     <section class="screen guide">
@@ -837,6 +973,11 @@ async function renderGuide(guideId, keepScroll = false) {
     const blks = sec.blocks || [];
     for (let bi = 0; bi < blks.length; bi++) {
       const b = blks[bi];
+      if (isTrueFalsePair(b, blks[bi + 1])) {
+        html += renderTrueFalse(b, blks[bi + 1].blocks[0], { tx, L });
+        bi++; // Lösungs-Block überspringen — er ist jetzt der Antwortschlüssel
+        continue;
+      }
       if (isWorksheetPair(b, blks[bi + 1])) {
         html += renderWorksheet(b, blks[bi + 1].blocks[0], { tx, L });
         bi++; // Lösungs-Block überspringen — er ist jetzt der Antwortschlüssel der Eingabefelder
@@ -850,8 +991,9 @@ async function renderGuide(guideId, keepScroll = false) {
   const body = document.getElementById('guideBody');
   if (body) body.innerHTML = html || `<p class="g-text">${escapeHTML(L.learn_empty)}</p>`;
 
-  // interaktive Arbeitsblätter aktivieren (Prüfen / Lösung / Leeren)
+  // interaktive Arbeitsblätter + richtig/falsch aktivieren
   wireWorksheets(app);
+  wireTrueFalse(app);
 
   // hide reset button if this guide has no checklists
   const resetBtn = document.getElementById('resetChecks');
