@@ -339,6 +339,41 @@
 .invtrainer .drill-msg.is-bad { color: var(--red); font-weight: 700; }
 .invtrainer .drill-msg.is-reveal { color: var(--ink); font-weight: 700; }
 
+/* ============================ Topbar (Modus + Ton) ============================ */
+.invtrainer .topbar { margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.invtrainer .modeswitch { display: inline-flex; border: 1.5px solid var(--ink); }
+.invtrainer .soundbtn {
+  appearance: none; cursor: pointer; background: transparent; color: var(--ink);
+  border: 1.5px solid var(--ink); font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace;
+  letter-spacing: 0.06em; padding: 10px 14px; transition: background var(--t-fast), color var(--t-fast), opacity var(--t-fast);
+}
+.invtrainer .soundbtn:hover { background: var(--hair); }
+.invtrainer .soundbtn.is-off { opacity: 0.5; }
+
+/* Timer-Switch in der Drill-Steuerung */
+.invtrainer .drill-timerswitch { align-self: flex-end; padding-bottom: 2px; }
+
+/* Weiter/Überspringen */
+.invtrainer .drill-skip { margin-top: 16px; }
+.invtrainer .drill-skip .btn { min-height: 42px; padding: 11px 18px; }
+
+/* ============================ Auswertung (Quiz) ============================ */
+.invtrainer .drill-result { margin-top: 24px; border: 1.5px solid var(--ink); padding: 22px 24px; background: var(--paper); }
+.invtrainer .res-score { display: flex; align-items: baseline; gap: 16px; margin-top: 8px; }
+.invtrainer .res-big { font-size: 60px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.invtrainer .res-tot { font-size: 30px; color: var(--ink-soft); }
+.invtrainer .res-pct { font-size: 18px; color: var(--red); font-weight: 700; }
+.invtrainer .res-meta { margin-top: 12px; font-size: 13px; color: var(--ink-soft); }
+.invtrainer .res-byinv { margin-top: 20px; border-top: 1px solid var(--hair); padding-top: 16px; }
+.invtrainer .res-byinv .ctrl-label { margin-bottom: 12px; }
+.invtrainer .ri-row { display: grid; grid-template-columns: 130px 1fr 48px; align-items: center; gap: 12px; margin-top: 8px; }
+.invtrainer .ri-lbl { font-size: 12px; color: var(--ink); }
+.invtrainer .ri-bar { height: 10px; background: var(--hair); border: 1px solid var(--ink); overflow: hidden; }
+.invtrainer .ri-fill { display: block; height: 100%; background: var(--good); }
+.invtrainer .ri-val { font-size: 12px; color: var(--ink-soft); text-align: right; }
+.invtrainer .res-saved { margin-top: 16px; font-size: 11px; color: var(--ink-soft); letter-spacing: 0.04em; }
+.invtrainer .res-actions { margin-top: 18px; }
+
 /* ============================ Mobile ============================ */
 @media (max-width: 640px) {
   .invtrainer .controls { gap: 18px; }
