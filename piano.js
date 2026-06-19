@@ -153,7 +153,17 @@
       waiting: 'Spiel den Akkord…', drillCorrect: 'Richtig! Weiter …', timeUp: 'So geht\'s:',
       hits: 'Treffer', seconds: 'Sek.', skip: 'Weiter →',
       result: 'Auswertung', accuracy: 'Trefferquote', avgTime: 'Ø Zeit pro Aufgabe',
-      byInversion: 'Nach Umkehrung', again: 'Nochmal', backStart: 'Zurück', savedLocal: 'Ergebnis lokal gespeichert.'
+      byInversion: 'Nach Umkehrung', again: 'Nochmal', backStart: 'Zurück', savedLocal: 'Ergebnis lokal gespeichert.',
+      backChoose: 'Auswahl', tileGo: 'Weiter', cfgMode: 'Modus', startBtn: 'Training starten',
+      timerSwitch: 'Timer 15 s pro Frage',
+      tileOverview: 'Übersicht', tileOverviewSub: 'Alle Stufen & Umkehrungen im Raster — antippen oder am MIDI-Keyboard spielen.',
+      tilePractice: 'Üben', tilePracticeSub: 'Ohne Druck üben, läuft endlos — Timer optional.',
+      tileQuiz: 'Quiz', tileQuizSub: '20 Fragen mit Timer — am Ende deine Auswertung.',
+      descWalk: 'Eine Akkordfolge, die in Quint-Schritten durch die Tonleiter wandert. Jede Stufe in der Umkehrung mit der geringsten Fingerbewegung — du übst alle Umkehrungen, nicht nur die Grundstellung.',
+      descClassic: 'Bekannte Akkordfolgen wie I–IV–V–I oder ii–V–I, jeweils in der stimmführungs-freundlichen Lage.',
+      descMixed: 'Zufällige Mischung aus Stufenreihen und Klassikern.',
+      timerLockedTitle: 'Timer 15 s pro Frage — beim Quiz immer an.',
+      timerLockedSub: 'Im Quiz-Modus läuft der Timer fest mit und lässt sich nicht abschalten.'
     },
     en: {
       kicker: 'Music Academy · Practice',
@@ -185,7 +195,17 @@
       waiting: 'Play the chord…', drillCorrect: 'Correct! Next …', timeUp: 'Like this:',
       hits: 'Hits', seconds: 'sec', skip: 'Next →',
       result: 'Result', accuracy: 'Accuracy', avgTime: 'Avg time per question',
-      byInversion: 'By inversion', again: 'Again', backStart: 'Back', savedLocal: 'Result saved locally.'
+      byInversion: 'By inversion', again: 'Again', backStart: 'Back', savedLocal: 'Result saved locally.',
+      backChoose: 'Menu', tileGo: 'Next', cfgMode: 'Mode', startBtn: 'Start training',
+      timerSwitch: 'Timer 15 s per question',
+      tileOverview: 'Overview', tileOverviewSub: 'All degrees & inversions in the grid — tap or play on a MIDI keyboard.',
+      tilePractice: 'Practice', tilePracticeSub: 'Practise without pressure, runs endlessly — timer optional.',
+      tileQuiz: 'Quiz', tileQuizSub: '20 questions with timer — your result at the end.',
+      descWalk: 'A chord sequence moving through the scale in fifths. Each degree in the inversion with the least finger movement — you practise all inversions, not just root position.',
+      descClassic: 'Well-known progressions like I–IV–V–I or ii–V–I, each in the voice-leading-friendly position.',
+      descMixed: 'Random mix of scale-step series and classics.',
+      timerLockedTitle: 'Timer 15 s per question — always on in Quiz.',
+      timerLockedSub: 'In Quiz mode the timer runs fixed and cannot be switched off.'
     }
   };
 
@@ -195,7 +215,7 @@
   const DRILL_SECONDS = 15;
   const DRILL_SAVE_URL = ''; // TODO: Google Apps Script / Server-Endpoint zum zentralen Sammeln.
   const state = {
-    lang: 'de', keyId: 'C', showHint: true, mode: 'grid', sound: true,
+    lang: 'de', keyId: 'C', showHint: true, view: 'home', sound: true,
     modal: null,
     midi: { supported: typeof navigator !== 'undefined' && !!navigator.requestMIDIAccess, requested: false, deviceName: '', active: new Set() },
     drill: {
@@ -460,7 +480,7 @@
   }
   function onMidiChange() {
     if (state.modal) midiUpdateModal();
-    else if (state.mode === 'drill' && state.drill.running) checkDrill();
+    else if (state.view === 'drill' && state.drill.running) checkDrill();
   }
   function midiStatusText() {
     const L = t(), m = state.midi;
@@ -624,7 +644,6 @@
     const d = state.drill;
     d.running = false; d.finished = false; d.revealing = false; d.locked = false;
     stopDrillTimers(); allNotesOff();
-    if (state.mode === 'drill') renderDrill();
   }
   function stopDrillTimers() {
     const d = state.drill;
@@ -703,111 +722,47 @@
     }
   }
 
+  // Laufender Drill (Steuerung liegt jetzt im Konfig-Screen).
   function renderDrill() {
     const host = $('drillView');
     if (!host) return;
     const L = t(), d = state.drill;
-    host.innerHTML = '';
-
-    // Steuerleiste (immer)
-    const ctr = document.createElement('div');
-    ctr.className = 'drill-controls';
-    ctr.appendChild(segBlock(L.drillType, [['walk', L.typeWalk], ['classic', L.typeClassic], ['mixed', L.typeMixed]], d.type, function (v) { d.type = v; if (d.running) startDrill(); else renderDrill(); }));
-    ctr.appendChild(segBlock(L.format, [['practice', L.fPractice], ['quiz', L.fQuiz]], d.format, function (v) { d.format = v; if (d.running) startDrill(); else renderDrill(); }));
-
-    const timerBlock = document.createElement('label');
-    timerBlock.className = 'switch drill-timerswitch';
-    timerBlock.innerHTML =
-      '<input type="checkbox" id="timerChk"' + (d.timerOn ? ' checked' : '') + ' />' +
-      '<span class="switch-track"><span class="switch-knob"></span></span>' +
-      '<span class="switch-text mono">' + esc(L.timerLbl) + '</span>';
-    ctr.appendChild(timerBlock);
-
-    const keySeg = document.createElement('div');
-    keySeg.className = 'seg-block';
-    keySeg.innerHTML = '<div class="ctrl-label mono">' + esc(L.drillKey) + '</div>';
-    const sel = document.createElement('select');
-    sel.className = 'drill-select mono';
-    const optR = document.createElement('option'); optR.value = 'random'; optR.textContent = L.keyRandom; sel.appendChild(optR);
-    KEYS.forEach(function (k) { const o = document.createElement('option'); o.value = k.id; o.textContent = k.id; sel.appendChild(o); });
-    sel.value = d.keyMode;
-    sel.addEventListener('change', function () { d.keyMode = this.value; if (d.running) startDrill(); });
-    keySeg.appendChild(sel);
-    ctr.appendChild(keySeg);
-
-    const action = document.createElement('div');
-    action.className = 'seg-block seg-action';
-    const startBtn = document.createElement('button');
-    startBtn.type = 'button';
-    startBtn.className = 'btn ' + (d.running ? 'btn-ghost' : 'btn-primary');
-    startBtn.textContent = d.running ? L.stop : L.start;
-    startBtn.addEventListener('click', function () { if (d.running) stopDrill(); else { ensureAudio(); initMidi(); startDrill(); } });
-    action.appendChild(startBtn);
-    ctr.appendChild(action);
-    host.appendChild(ctr);
-
-    // Timer-Switch erst jetzt verdrahten (Element existiert)
-    $('timerChk').addEventListener('change', function () { d.timerOn = this.checked; if (d.running) startDrill(); });
-
-    const status = document.createElement('div'); status.className = 'midi-status mono'; host.appendChild(status);
 
     if (d.finished) { renderResult(host); updateMidiStatus(); return; }
-    if (!d.running) {
-      const intro = document.createElement('p'); intro.className = 'drill-intro'; intro.textContent = L.drillIntro; host.appendChild(intro);
-      updateMidiStatus(); return;
-    }
+    if (!d.running) { host.innerHTML = ''; return; }
 
     const step = d.steps[d.index];
     const counter = d.format === 'quiz'
       ? (L.question + ' ' + (d.quizIndex + 1) + '/' + d.quizTotal + ' · ' + L.hits + ' ' + d.hits)
       : (L.step + ' ' + (d.index + 1) + ' · ' + L.hits + ' ' + d.hits);
-    const card = document.createElement('div');
-    card.className = 'drill-prompt';
-    card.innerHTML =
-      '<div class="dp-top mono"><span>' + esc(step.key.id) + ' · ' + esc(d.progName) + '</span>' +
-      '<span class="dp-step">' + esc(counter) + '</span></div>' +
-      '<div class="dp-main"><span class="dp-lbl mono">' + esc(L.playPrompt) + '</span> ' +
-      '<span class="dp-chord">' + esc(step.label) + '</span> ' +
-      '<span class="dp-inv">' + esc(L.columns[step.inv]) + '</span></div>';
-    host.appendChild(card);
 
+    let html =
+      backLink('drillBack', L.backChoose) +
+      '<div class="iv-modekick mono">' + esc(L.cfgMode) + ' · ' + esc(d.format === 'quiz' ? L.tileQuiz : L.tilePractice) + '</div>' +
+      '<div class="drill-prompt">' +
+        '<div class="dp-top mono"><span>' + esc(step.key.id) + ' · ' + esc(d.progName) + '</span>' +
+        '<span class="dp-step">' + esc(counter) + '</span></div>' +
+        '<div class="dp-main"><span class="dp-lbl mono">' + esc(L.playPrompt) + '</span> ' +
+        '<span class="dp-chord">' + esc(step.label) + '</span> ' +
+        '<span class="dp-inv">' + esc(L.columns[step.inv]) + '</span></div>' +
+      '</div>';
     if (d.timerOn) {
-      const timer = document.createElement('div');
-      timer.className = 'drill-timer';
-      timer.innerHTML = '<div class="dt-track"><div id="drillBar" class="dt-bar"></div></div><span id="drillSecs" class="dt-secs mono">' + d.secondsLeft + ' ' + esc(L.seconds) + '</span>';
-      host.appendChild(timer);
+      html += '<div class="drill-timer"><div class="dt-track"><div id="drillBar" class="dt-bar"></div></div>' +
+              '<span id="drillSecs" class="dt-secs mono">' + d.secondsLeft + ' ' + esc(L.seconds) + '</span></div>';
     }
+    html += '<div class="drill-board" id="drillBoard"></div>' +
+            '<div class="drill-msg" id="drillMsg"></div>' +
+            '<div class="drill-skip"><button class="btn btn-ghost" id="skipBtn" type="button">' + esc(L.skip) + '</button></div>' +
+            '<div class="midi-status mono"></div>';
+    host.innerHTML = html;
 
-    const board = document.createElement('div'); board.className = 'drill-board'; board.id = 'drillBoard'; host.appendChild(board);
-    const msg = document.createElement('div'); msg.className = 'drill-msg'; msg.id = 'drillMsg'; host.appendChild(msg);
-
-    const skipWrap = document.createElement('div');
-    skipWrap.className = 'drill-skip';
-    const skipBtn = document.createElement('button');
-    skipBtn.type = 'button'; skipBtn.className = 'btn btn-ghost'; skipBtn.textContent = L.skip;
-    skipBtn.addEventListener('click', onSkip);
-    skipWrap.appendChild(skipBtn);
-    host.appendChild(skipWrap);
+    $('drillBack').addEventListener('click', function () { stopDrill(); showView('config'); });
+    $('skipBtn').addEventListener('click', onSkip);
 
     updateDrillBoard();
     updateMidiStatus();
     const bar = $('drillBar');
     if (bar) bar.style.width = (Math.max(0, d.deadline - now()) / (DRILL_SECONDS * 1000) * 100) + '%';
-  }
-
-  function segBlock(label, items, current, onChoose) {
-    const block = document.createElement('div');
-    block.className = 'seg-block';
-    block.innerHTML = '<div class="ctrl-label mono">' + esc(label) + '</div>';
-    const row = document.createElement('div'); row.className = 'seg';
-    items.forEach(function (it) {
-      const b = document.createElement('button');
-      b.type = 'button'; b.className = 'segbtn mono' + (current === it[0] ? ' is-active' : ''); b.textContent = it[1];
-      b.addEventListener('click', function () { onChoose(it[0]); });
-      row.appendChild(b);
-    });
-    block.appendChild(row);
-    return block;
   }
 
   function updateDrillBoard(correct) {
@@ -881,26 +836,158 @@
         '<button class="btn btn-primary" id="resAgain" type="button">' + esc(L.again) + '</button>' +
         '<button class="btn btn-ghost" id="resBack" type="button">' + esc(L.backStart) + '</button>' +
       '</div>';
+    host.innerHTML = '';
     host.appendChild(panel);
-    $('resAgain').addEventListener('click', function () { ensureAudio(); startDrill(); });
-    $('resBack').addEventListener('click', function () { d.finished = false; renderDrill(); });
+    $('resAgain').addEventListener('click', function () { ensureAudio(); startDrill(); showView('drill'); });
+    $('resBack').addEventListener('click', function () { stopDrill(); showView('home'); });
   }
 
   /* ----------------------------------------------------------------
-     11) MODUS-UMSCHALTER + SOUND
+     11) NAVIGATION  (Kacheln · Übersicht/Raster · Konfig · Drill) + SOUND
      ---------------------------------------------------------------- */
-  function renderModeSwitch() {
-    const el = $('modeswitch');
-    if (!el) return;
+  const ICON_GRID =
+    '<svg viewBox="0 0 64 64" fill="none" aria-hidden="true">' +
+    '<rect x="13" y="13" width="16" height="16" stroke="#16150f" stroke-width="2"/>' +
+    '<rect x="35" y="13" width="16" height="16" stroke="#16150f" stroke-width="2"/>' +
+    '<rect x="13" y="35" width="16" height="16" stroke="#16150f" stroke-width="2"/>' +
+    '<rect x="35" y="35" width="16" height="16" stroke="#16150f" stroke-width="2"/></svg>';
+  const ICON_LOOP =
+    '<svg viewBox="0 0 64 64" fill="none" aria-hidden="true">' +
+    '<path d="M32 32 C 28 24, 17 24, 17 32 C 17 40, 28 40, 32 32 C 36 24, 47 24, 47 32 C 47 40, 36 40, 32 32 Z" stroke="#16150f" stroke-width="2" stroke-linejoin="miter"/></svg>';
+  const ICON_WATCH =
+    '<svg viewBox="0 0 64 64" fill="none" aria-hidden="true">' +
+    '<circle cx="32" cy="38" r="17" stroke="#16150f" stroke-width="2"/>' +
+    '<line x1="32" y1="38" x2="32" y2="27" stroke="#16150f" stroke-width="2"/>' +
+    '<line x1="32" y1="38" x2="40" y2="42" stroke="#16150f" stroke-width="2"/>' +
+    '<line x1="26" y1="13" x2="38" y2="13" stroke="#16150f" stroke-width="2"/>' +
+    '<line x1="32" y1="13" x2="32" y2="20" stroke="#16150f" stroke-width="2"/>' +
+    '<line x1="47" y1="22" x2="51" y2="18" stroke="#16150f" stroke-width="2"/></svg>';
+  const ICON_LOCK =
+    '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+    '<rect x="5" y="11" width="14" height="9" stroke="#2a63b0" stroke-width="1.8"/>' +
+    '<path d="M8 11 V8 a4 4 0 0 1 8 0 V11" stroke="#2a63b0" stroke-width="1.8"/></svg>';
+
+  function backLink(id, label) {
+    return '<button class="iv-back" id="' + id + '" type="button"><span class="iv-arr">←</span> ' + esc(label) + '</button>';
+  }
+
+  /* --- Startseite: drei Kacheln --- */
+  function renderHome() {
+    const host = $('homeView');
+    if (!host) return;
     const L = t();
-    el.innerHTML = '';
-    [['grid', L.modeGrid], ['drill', L.modeDrill]].forEach(function (mo) {
-      const b = document.createElement('button');
-      b.type = 'button'; b.className = 'modebtn mono' + (state.mode === mo[0] ? ' is-active' : ''); b.textContent = mo[1];
-      b.addEventListener('click', function () { ensureAudio(); setMode(mo[0]); });
-      el.appendChild(b);
+    host.innerHTML =
+      '<div class="tiles">' +
+        tileHTML('overview', ICON_GRID, L.tileOverview, L.tileOverviewSub, L.tileGo) +
+        tileHTML('practice', ICON_LOOP, L.tilePractice, L.tilePracticeSub, L.tileGo) +
+        tileHTML('quiz', ICON_WATCH, L.tileQuiz, L.tileQuizSub, L.tileGo) +
+      '</div>';
+    host.querySelectorAll('.tile').forEach(function (b) {
+      b.addEventListener('click', function () {
+        ensureAudio();
+        const which = b.getAttribute('data-tile');
+        if (which === 'overview') { showView('raster'); }
+        else {
+          state.drill.format = (which === 'quiz') ? 'quiz' : 'practice';
+          if (which === 'quiz') state.drill.timerOn = true;
+          showView('config');
+        }
+      });
     });
   }
+  function tileHTML(id, icon, title, sub, go) {
+    return '<button class="tile" type="button" data-tile="' + id + '">' +
+      '<span class="tile-icon">' + icon + '</span>' +
+      '<span class="tile-title">' + esc(title) + '</span>' +
+      '<span class="tile-sub">' + esc(sub) + '</span>' +
+      '<span class="tile-go mono">' + esc(go) + ' <span class="arrow">→</span></span>' +
+    '</button>';
+  }
+
+  /* --- Übersicht: Raster --- */
+  function renderRaster() {
+    const host = $('rasterView');
+    if (!host) return;
+    const L = t();
+    host.innerHTML =
+      backLink('rasterBack', L.backChoose) +
+      '<div id="controls" class="controls"></div>' +
+      '<div id="legend" class="legend"></div>' +
+      '<div class="gridwrap"><div id="grid" class="grid"></div></div>' +
+      '<p id="notation" class="notation"></p>';
+    $('rasterBack').addEventListener('click', function () { showView('home'); });
+    if ($('notation')) $('notation').textContent = L.notation;
+    renderControls(); renderLegend(); renderGrid();
+  }
+
+  /* --- Konfiguration (für Üben oder Quiz) --- */
+  function renderConfig() {
+    const host = $('configView');
+    if (!host) return;
+    const L = t(), d = state.drill;
+    const types = [['walk', L.typeWalk, L.descWalk], ['classic', L.typeClassic, L.descClassic], ['mixed', L.typeMixed, L.descMixed]];
+    const optsHtml = types.map(function (tp, idx) {
+      return '<button class="opt' + (d.type === tp[0] ? ' is-active' : '') + '" type="button" data-type="' + tp[0] + '">' +
+        '<span class="radio"></span>' +
+        '<span class="opt-body"><span class="opt-title">' + esc(tp[1]) + '</span>' +
+        '<span class="opt-desc">' + esc(tp[2]) + '</span></span>' +
+        '<span class="opt-no mono">0' + (idx + 1) + '</span></button>';
+    }).join('');
+    const chips = ['random'].concat(KEYS.map(function (k) { return k.id; })).map(function (id) {
+      const label = id === 'random' ? L.keyRandom : id;
+      return '<button class="chip mono' + (id === 'random' ? ' chip-random' : '') + (d.keyMode === id ? ' is-active' : '') + '" type="button" data-key="' + id + '">' + esc(label) + '</button>';
+    }).join('');
+    let timerHtml;
+    if (d.format === 'quiz') {
+      timerHtml = '<div class="locked">' + ICON_LOCK +
+        '<span class="locked-text"><b>' + esc(L.timerLockedTitle) + '</b>' +
+        '<span class="sm">' + esc(L.timerLockedSub) + '</span></span></div>';
+    } else {
+      timerHtml = '<label class="switch"><input type="checkbox" id="cfgTimer"' + (d.timerOn ? ' checked' : '') + ' />' +
+        '<span class="switch-track"><span class="switch-knob"></span></span>' +
+        '<span class="switch-text mono">' + esc(L.timerSwitch) + '</span></label>';
+    }
+    host.innerHTML =
+      backLink('configBack', L.backChoose) +
+      '<div class="iv-modekick mono">' + esc(L.cfgMode) + ' · ' + esc(d.format === 'quiz' ? L.tileQuiz : L.tilePractice) + '</div>' +
+      '<div class="block"><div class="block-label">' + esc(L.drillType) + '</div><div class="opts">' + optsHtml + '</div></div>' +
+      '<div class="block"><div class="block-label">' + esc(L.drillKey) + ' <span class="hint mono">' + esc(d.keyMode === 'random' ? L.keyRandom : d.keyMode) + '</span></div><div class="chips">' + chips + '</div></div>' +
+      '<div class="block"><div class="block-label">' + esc(L.timerLbl) + '</div><div class="cfg-timer">' + timerHtml + '</div></div>' +
+      '<div class="midi-status mono"></div>' +
+      '<button class="start" id="cfgStart" type="button"><span>' + esc(L.startBtn) + '</span><span class="arrow">→</span></button>';
+    $('configBack').addEventListener('click', function () { showView('home'); });
+    host.querySelectorAll('.opt').forEach(function (o) {
+      o.addEventListener('click', function () {
+        d.type = o.getAttribute('data-type');
+        host.querySelectorAll('.opt').forEach(function (x) { x.classList.toggle('is-active', x === o); });
+      });
+    });
+    host.querySelectorAll('.chip').forEach(function (c) {
+      c.addEventListener('click', function () { d.keyMode = c.getAttribute('data-key'); renderConfig(); });
+    });
+    if (d.format !== 'quiz') { const tc = $('cfgTimer'); if (tc) tc.addEventListener('change', function () { d.timerOn = this.checked; }); }
+    $('cfgStart').addEventListener('click', function () { ensureAudio(); initMidi(); startDrill(); showView('drill'); });
+    updateMidiStatus();
+  }
+
+  /* --- Ansicht umschalten --- */
+  function showView(view) {
+    state.view = view;
+    if (view !== 'raster') closeModal();
+    const map = { home: 'homeView', raster: 'rasterView', config: 'configView', drill: 'drillView' };
+    Object.keys(map).forEach(function (k) { const el = $(map[k]); if (el) el.hidden = (k !== view); });
+    // Modul-Kopf (Kicker/Titel/Untertitel) nur auf der Startseite — Unteransichten
+    // tragen ihren eigenen Backlink oben.
+    const home = (view === 'home');
+    const kick = document.querySelector('.invtrainer > .kicker'); if (kick) kick.style.display = home ? '' : 'none';
+    const ttl = $('title'); if (ttl) ttl.style.display = home ? '' : 'none';
+    const sub = $('subtitle'); if (sub) sub.style.display = home ? '' : 'none';
+    if (view === 'home') renderHome();
+    else if (view === 'raster') renderRaster();
+    else if (view === 'config') { initMidi(); renderConfig(); }
+    else if (view === 'drill') renderDrill();
+  }
+
   function renderSoundToggle() {
     const el = $('soundToggle');
     if (!el) return;
@@ -912,18 +999,6 @@
       if (!state.sound) allNotesOff(); else ensureAudio();
       renderSoundToggle();
     };
-  }
-  function setMode(mode) {
-    if (state.mode === mode) return;
-    state.mode = mode;
-    if (mode !== 'drill') stopDrill();
-    applyMode(); renderModeSwitch();
-  }
-  function applyMode() {
-    const gv = $('gridView'), dv = $('drillView');
-    if (!gv || !dv) return;
-    if (state.mode === 'drill') { gv.hidden = true; dv.hidden = false; initMidi(); renderDrill(); }
-    else { dv.hidden = true; gv.hidden = false; stopDrillTimers(); }
   }
 
   /* ----------------------------------------------------------------
@@ -943,9 +1018,8 @@
     state.lang = lang;
     try { localStorage.setItem('tt_lang', lang); } catch (e) {}
     applyStaticTexts();
-    renderModeSwitch(); renderSoundToggle();
-    renderControls(); renderLegend(); renderGrid();
-    if (state.mode === 'drill') renderDrill();
+    renderSoundToggle();
+    showView(state.view);
     if (state.modal) renderModal();
     updateMidiStatus();
   }
@@ -961,26 +1035,21 @@
       const snd = localStorage.getItem('tt_sound');
       if (snd === '0') state.sound = false; else if (snd === '1') state.sound = true;
     } catch (e) {}
-    // Transient zurücksetzen, aber gewählten Modus behalten (Sprachwechsel).
+    // Transient zurücksetzen, aber die gewählte Ansicht behalten (Sprachwechsel).
     stopDrillTimers(); allNotesOff();
     state.modal = null;
     state.drill.running = false; state.drill.finished = false; state.drill.revealing = false; state.drill.locked = false;
+    if (state.view === 'drill') state.view = 'config';   // laufender Drill wird beim Re-Mount gestoppt
 
     root.classList.add('invtrainer');
     root.innerHTML =
+      '<div class="topbar"><button id="soundToggle" class="soundbtn mono" type="button"></button></div>' +
       '<div class="kicker" data-i="kicker"></div>' +
       '<h1 id="title" class="title"></h1>' +
       '<p id="subtitle" class="sub"></p>' +
-      '<div class="topbar">' +
-        '<div id="modeswitch" class="modeswitch"></div>' +
-        '<button id="soundToggle" class="soundbtn mono" type="button"></button>' +
-      '</div>' +
-      '<div id="gridView">' +
-        '<div id="controls" class="controls"></div>' +
-        '<div id="legend" class="legend"></div>' +
-        '<div class="gridwrap"><div id="grid" class="grid"></div></div>' +
-        '<p id="notation" class="notation"></p>' +
-      '</div>' +
+      '<div id="homeView"></div>' +
+      '<div id="rasterView" hidden></div>' +
+      '<div id="configView" hidden></div>' +
       '<div id="drillView" hidden></div>' +
       '<div id="modalRoot"></div>';
 
@@ -989,9 +1058,8 @@
       escWired = true;
     }
     applyStaticTexts();
-    renderModeSwitch(); renderSoundToggle();
-    renderControls(); renderLegend(); renderGrid();
-    applyMode();
+    renderSoundToggle();
+    showView(state.view);
   }
 
   window.InversionTrainer = {

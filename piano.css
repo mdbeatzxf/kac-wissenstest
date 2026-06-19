@@ -340,7 +340,7 @@
 .invtrainer .drill-msg.is-reveal { color: var(--ink); font-weight: 700; }
 
 /* ============================ Topbar (Modus + Ton) ============================ */
-.invtrainer .topbar { margin-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.invtrainer .topbar { margin-top: 6px; display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
 .invtrainer .modeswitch { display: inline-flex; border: 1.5px solid var(--ink); }
 .invtrainer .soundbtn {
   appearance: none; cursor: pointer; background: transparent; color: var(--ink);
@@ -374,6 +374,99 @@
 .invtrainer .res-saved { margin-top: 16px; font-size: 11px; color: var(--ink-soft); letter-spacing: 0.04em; }
 .invtrainer .res-actions { margin-top: 18px; }
 
+/* ============================ Navigation: Backlink + Modus-Kicker ============================ */
+.invtrainer .iv-back {
+  align-self: flex-start; appearance: none; border: none; background: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 20px;
+  font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
+  transition: color var(--t-fast), gap var(--t-fast); padding: 0;
+}
+.invtrainer .iv-back:hover { color: var(--red); gap: 11px; }
+.invtrainer .iv-back .iv-arr { font-size: 15px; }
+.invtrainer .iv-modekick {
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+}
+.invtrainer .iv-modekick::before { content: ""; width: 22px; height: 2px; background: var(--red); display: inline-block; }
+
+/* ============================ Kacheln (Startseite) ============================ */
+.invtrainer .tiles { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.invtrainer .tile {
+  appearance: none; cursor: pointer; text-align: left; color: var(--ink);
+  display: flex; flex-direction: column; gap: 16px;
+  border: 1.5px solid var(--ink); background: transparent; border-radius: var(--radius);
+  padding: 28px 24px; min-height: 280px;
+  transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
+}
+.invtrainer .tile-icon svg { width: 56px; height: 56px; display: block; }
+.invtrainer .tile-icon svg [stroke] { stroke: var(--ink); transition: stroke var(--t-fast); }
+.invtrainer .tile-title { font-weight: 700; font-size: clamp(26px, 3.4vw, 34px); letter-spacing: -0.02em; line-height: 1; }
+.invtrainer .tile-sub { color: var(--ink-soft); font-size: 14.5px; line-height: 1.45; max-width: 26ch; }
+.invtrainer .tile-go { margin-top: auto; letter-spacing: 0.1em; text-transform: uppercase; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+.invtrainer .tile-go .arrow { font-size: 15px; transition: transform var(--t-fast); }
+.invtrainer .tile:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+.invtrainer .tile:hover .tile-sub { color: rgba(242,241,236,0.72); }
+.invtrainer .tile:hover .tile-icon svg [stroke] { stroke: var(--paper); }
+.invtrainer .tile:hover .tile-go .arrow { transform: translateX(4px); }
+.invtrainer .tile:active { transform: translateY(0); }
+
+/* ============================ Konfiguration ============================ */
+.invtrainer .block { margin-top: 30px; }
+.invtrainer .block-label {
+  font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
+  padding-bottom: 12px; border-bottom: 1.5px solid var(--ink); display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+}
+.invtrainer .block-label .hint { color: var(--ink-soft); font-weight: 400; letter-spacing: 0.06em; }
+
+.invtrainer .opts { display: flex; flex-direction: column; }
+.invtrainer .opt {
+  appearance: none; cursor: pointer; text-align: left; width: 100%;
+  display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 16px;
+  background: transparent; border: none; color: var(--ink);
+  padding: 18px 4px 18px 18px; border-bottom: 1px solid var(--hair); position: relative;
+  transition: background var(--t-fast);
+}
+.invtrainer .opt::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: transparent; transition: background var(--t-fast); }
+.invtrainer .opt .radio { width: 22px; height: 22px; border: 1.5px solid var(--ink); border-radius: 50%; margin-top: 2px; flex: none; display: grid; place-items: center; }
+.invtrainer .opt .radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: background var(--t-fast); }
+.invtrainer .opt-title { display: block; font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+.invtrainer .opt-desc { display: block; color: var(--ink-soft); font-size: 14px; line-height: 1.45; margin-top: 5px; max-width: 56ch; }
+.invtrainer .opt-no { font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace; color: var(--ink-soft); margin-top: 3px; }
+.invtrainer .opt:hover { background: rgba(22,21,15,0.03); }
+.invtrainer .opt.is-active::before { background: var(--red); }
+.invtrainer .opt.is-active .radio::after { background: var(--red); }
+.invtrainer .opt.is-active .opt-no { color: var(--red); }
+
+.invtrainer .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.invtrainer .chip {
+  appearance: none; cursor: pointer; border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  font-size: 14px; font-weight: 700; letter-spacing: 0.02em; min-width: 46px; padding: 11px 8px; text-align: center; border-radius: var(--radius);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.invtrainer .chip:hover { background: var(--hair); }
+.invtrainer .chip.is-active { background: var(--ink); color: var(--paper); }
+.invtrainer .chip.chip-random { letter-spacing: 0.08em; text-transform: uppercase; padding-left: 14px; padding-right: 14px; }
+
+.invtrainer .cfg-timer { margin-top: 16px; }
+.invtrainer .locked { display: flex; align-items: center; gap: 13px; border-left: 3px solid var(--blue); background: rgba(42,99,176,0.07); padding: 14px 16px; }
+.invtrainer .locked svg { width: 22px; height: 22px; flex: none; }
+.invtrainer .locked-text { font-size: 15px; }
+.invtrainer .locked-text b { font-weight: 700; }
+.invtrainer .locked-text .sm { display: block; color: var(--ink-soft); font-size: 12.5px; margin-top: 3px; letter-spacing: 0.02em; }
+
+.invtrainer .start {
+  margin-top: 36px; appearance: none; cursor: pointer; width: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  border: none; background: var(--ink); color: var(--paper);
+  font: 700 20px/1 "Helvetica Neue", Helvetica, Arial, sans-serif; letter-spacing: -0.01em;
+  padding: 22px 24px; min-height: 62px; border-radius: var(--radius);
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+.invtrainer .start .arrow { font-size: 22px; transition: transform var(--t-fast); }
+.invtrainer .start:hover { background: var(--red); }
+.invtrainer .start:hover .arrow { transform: translateX(5px); }
+.invtrainer .start:active { transform: translateY(1px); }
+
 /* ============================ Mobile ============================ */
 @media (max-width: 640px) {
   .invtrainer .controls { gap: 18px; }
@@ -383,4 +476,8 @@
   .invtrainer .seg-action { margin-left: 0; width: 100%; }
   .invtrainer .seg-action .btn { width: 100%; }
   .invtrainer .dp-chord { font-size: 32px; }
+  .invtrainer .tiles { grid-template-columns: 1fr; }
+  .invtrainer .tile { min-height: 0; }
+  .invtrainer .opt { grid-template-columns: auto 1fr; }
+  .invtrainer .opt-no { display: none; }
 }
