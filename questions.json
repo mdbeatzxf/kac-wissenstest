@@ -1,0 +1,1118 @@
+{
+  "meta": {
+    "titel": "KAC Production Team – Wissenstest",
+    "stand": "Juni 2026",
+    "hinweis": "antwortIndex ist die 0-basierte Position der richtigen Antwort in 'optionen' (gilt fuer 'optionen' UND 'optionen_en', gleiche Reihenfolge). Reihenfolge wird zur Laufzeit gemischt (Anti-Cheat). 'bereich' steuert, in welchem Pool eine Frage liegt: projection | production | sound. 'production' = gemeinsame Rollen/Ablauf-Fragen, die in BEIDEN Tests auftauchen.",
+    "bewertung": {
+      "punkteProFrage": 1,
+      "bestehensgrenzeProzent": 80,
+      "sekundenProFrage": 12,
+      "fragenProSitzung": 12
+    }
+  },
+
+  "tests": {
+    "projection": {
+      "label": "Projection",
+      "label_en": "Projection",
+      "pools": ["projection", "production"]
+    },
+    "sound": {
+      "label": "Sound",
+      "label_en": "Sound",
+      "pools": ["sound", "production"]
+    }
+  },
+
+  "teilnehmer": [
+    { "vorname": "Marcus", "nachname": "Dolak", "bereiche": ["projection", "sound"] },
+    { "vorname": "Daniel", "nachname": "Nyarko", "bereiche": ["projection", "sound"] },
+    { "vorname": "Samuel", "nachname": "Mutitu", "bereiche": ["projection", "sound"] },
+    { "vorname": "Leticia", "nachname": "Forbah Ade", "bereiche": ["projection", "sound"] },
+    { "vorname": "Rose", "nachname": "Kuhnigk", "bereiche": ["projection", "sound"] },
+    { "vorname": "Naayi", "nachname": "Tel-Dornoo", "bereiche": ["projection", "sound"] },
+    { "vorname": "Emmanuel", "nachname": "Atta Gyamfi", "bereiche": ["projection", "sound"] }
+  ],
+  "_teilnehmer_hinweis": "Diese Liste durch die echten Namen ersetzen. 'bereiche' = welche Tests die Person machen darf (Werte: 'projection' und/oder 'sound'). Login matcht vorname+nachname (gross-/kleinschreibungs-, leerzeichen- und umlaut-tolerant) gegen diese Liste.",
+
+  "pools": {
+    "projection": [
+      {
+        "id": "P01",
+        "bereich": "projection",
+        "frage": "In welcher Reihenfolge wird der Projection-Platz aufgebaut?",
+        "frage_en": "In what order do you set up the projection station?",
+        "optionen": [
+          "Laptop einschalten → Dock anschliessen → Bildschirme → Strom",
+          "Dock an Bildschirme → Verbindungsart festlegen → Strom an Dock → Dock mit Laptop verbinden → dann Laptop einschalten",
+          "ProPresenter öffnen → Strom → Dock → Laptop",
+          "Laptop mit Dock verbinden → Laptop einschalten → Bildschirme → Strom"
+        ],
+        "optionen_en": [
+          "Turn on laptop → connect dock → screens → power",
+          "Dock to screens → choose connection type → power to dock → connect dock to laptop → then turn on the laptop",
+          "Open ProPresenter → power → dock → laptop",
+          "Connect laptop to dock → turn on laptop → screens → power"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Rollen & Ablauf, S.1"
+      },
+      {
+        "id": "P02",
+        "bereich": "projection",
+        "frage": "Was gilt beim Projection-Aufbau-Ablauf?",
+        "frage_en": "What is the rule for the projection setup sequence?",
+        "optionen": [
+          "Erst alles anschliessen (Dock → Bildschirme → Strom → Laptop), dann den Laptop einschalten",
+          "Erst den Laptop einschalten, dann anschliessen",
+          "Reihenfolge ist egal",
+          "Zuerst ProPresenter öffnen"
+        ],
+        "optionen_en": [
+          "Connect everything first (dock → screens → power → laptop), then turn on the laptop",
+          "Turn on the laptop first, then connect everything",
+          "The order doesn't matter",
+          "Open ProPresenter first"
+        ],
+        "antwortIndex": 0,
+        "quelle": "Rollen & Ablauf, S.1"
+      },
+      {
+        "id": "P03",
+        "bereich": "projection",
+        "frage": "Wofür nutzt das Team die UGREEN Dockingstation mit DisplayLink?",
+        "frage_en": "What does the team use the UGREEN docking station with DisplayLink for?",
+        "optionen": [
+          "Um Ton aufzunehmen",
+          "Um das Mischpult fernzusteuern",
+          "Um mehr Bildschirme auszugeben, als der Mac nativ unterstützt (bis zu 4)",
+          "Als Netzteil für die Boxen"
+        ],
+        "optionen_en": [
+          "To record audio",
+          "To remote-control the mixing console",
+          "To drive more screens than the Mac natively supports (up to 4)",
+          "As a power supply for the speakers"
+        ],
+        "antwortIndex": 2,
+        "quelle": "Equipment-Übersicht, S.1"
+      },
+      {
+        "id": "P05",
+        "bereich": "projection",
+        "frage": "Was ist DisplayLink?",
+        "frage_en": "What is DisplayLink?",
+        "optionen": [
+          "Eine Streaming-App",
+          "Es überträgt das Bild komprimiert per Software über USB statt über die normalen Videoausgänge",
+          "Ein Lautsprecherkabel",
+          "Ein WLAN-Standard"
+        ],
+        "optionen_en": [
+          "A streaming app",
+          "It transmits the image compressed via software over USB instead of through the normal video outputs",
+          "A speaker cable",
+          "A Wi-Fi standard"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Equipment-Übersicht, S.1"
+      },
+      {
+        "id": "P06",
+        "bereich": "projection",
+        "frage": "Wird der Laptop am Projection-Platz separat ans Netzteil gehängt?",
+        "frage_en": "Is the laptop at the projection station plugged into its own power adapter?",
+        "optionen": [
+          "Ja, immer",
+          "Nein, er wird über die Dock mitgeladen",
+          "Nur im Akkubetrieb",
+          "Nur bei Updates"
+        ],
+        "optionen_en": [
+          "Yes, always",
+          "No, it is charged through the dock",
+          "Only on battery power",
+          "Only during updates"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Equipment-Übersicht, S.1"
+      },
+      {
+        "id": "P07",
+        "bereich": "projection",
+        "frage": "Wann nutzt man Wireless-HDMI?",
+        "frage_en": "When do you use wireless HDMI?",
+        "optionen": [
+          "Immer, weil es am besten ist",
+          "Nur für Ton",
+          "Wenn kein Kabel möglich/sinnvoll ist – spontaner/mobiler Aufbau oder keine LAN-Dose vorhanden",
+          "Wenn der Bildschirm direkt daneben steht"
+        ],
+        "optionen_en": [
+          "Always, because it's the best",
+          "Only for audio",
+          "When a cable isn't possible/practical – spontaneous/mobile setup or no LAN socket available",
+          "When the screen is right next to it"
+        ],
+        "antwortIndex": 2,
+        "quelle": "Equipment-Übersicht, S.2 + S.5"
+      },
+      {
+        "id": "P08",
+        "bereich": "projection",
+        "frage": "Wie wird das Wireless-HDMI-Set angeschlossen?",
+        "frage_en": "How is the wireless HDMI set connected?",
+        "optionen": [
+          "Sender (TX) an Laptop/Quelle, Empfänger (RX) an Fernseher/Beamer",
+          "Sender (TX) an den Fernseher, Empfänger (RX) an den Laptop",
+          "Beide Teile an den Laptop",
+          "Über ein LAN-Kabel verbunden"
+        ],
+        "optionen_en": [
+          "Transmitter (TX) to laptop/source, receiver (RX) to TV/projector",
+          "Transmitter (TX) to the TV, receiver (RX) to the laptop",
+          "Both parts to the laptop",
+          "Connected via a LAN cable"
+        ],
+        "antwortIndex": 0,
+        "quelle": "Equipment-Übersicht, S.2"
+      },
+      {
+        "id": "P09",
+        "bereich": "projection",
+        "frage": "Wie weit reicht der HDMI-Extender über LAN ungefähr?",
+        "frage_en": "Roughly how far does the HDMI extender over LAN reach?",
+        "optionen": ["ca. 5 m", "ca. 20 m", "ca. 60 m", "unbegrenzt"],
+        "optionen_en": ["approx. 5 m", "approx. 20 m", "approx. 60 m", "unlimited"],
+        "antwortIndex": 2,
+        "quelle": "Equipment-Übersicht, S.3"
+      },
+      {
+        "id": "P10",
+        "bereich": "projection",
+        "frage": "Merksatz für die Signalrichtung beim HDMI-Extender über LAN?",
+        "frage_en": "Mnemonic for the signal direction of the HDMI extender over LAN?",
+        "optionen": [
+          "Display → RX → LAN → TX → Quelle",
+          "Quelle → TX → LAN → RX → Bildschirm/Beamer",
+          "Quelle → RX → LAN → TX → Display",
+          "TX → Quelle → Display → RX"
+        ],
+        "optionen_en": [
+          "Display → RX → LAN → TX → source",
+          "Source → TX → LAN → RX → screen/projector",
+          "Source → RX → LAN → TX → display",
+          "TX → source → display → RX"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Equipment-Übersicht, S.3"
+      },
+      {
+        "id": "P11",
+        "bereich": "projection",
+        "frage": "Brauchen beim HDMI-Extender beide Teile (TX und RX) Strom?",
+        "frage_en": "On the HDMI extender, do both parts (TX and RX) need power?",
+        "optionen": [
+          "Nur der Sender (TX)",
+          "Nur der Empfänger (RX)",
+          "Ja, beide brauchen Strom",
+          "Keiner, sie werden über LAN versorgt"
+        ],
+        "optionen_en": [
+          "Only the transmitter (TX)",
+          "Only the receiver (RX)",
+          "Yes, both need power",
+          "Neither, they are powered over LAN"
+        ],
+        "antwortIndex": 2,
+        "quelle": "Equipment-Übersicht, S.3"
+      },
+      {
+        "id": "P12",
+        "bereich": "projection",
+        "frage": "Wo steckt der USB-Dongle der kabellosen Maus?",
+        "frage_en": "Where is the wireless mouse's USB dongle plugged in?",
+        "optionen": [
+          "Direkt am Laptop",
+          "Fest in der UGREEN-Dock",
+          "Am Netzteil",
+          "In der Stagebox"
+        ],
+        "optionen_en": [
+          "Directly into the laptop",
+          "Permanently in the UGREEN dock",
+          "Into the power adapter",
+          "Into the stage box"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Equipment-Übersicht, S.4"
+      },
+      {
+        "id": "P13",
+        "bereich": "projection",
+        "frage": "Schnell-Entscheidung: Bildschirm/Beamer weiter weg, LAN-Dose vorhanden – was nimmst du?",
+        "frage_en": "Quick decision: screen/projector farther away, LAN socket available – what do you use?",
+        "optionen": [
+          "Normales HDMI-Kabel",
+          "Wireless-HDMI",
+          "HDMI-Extender über LAN",
+          "UGREEN Dock"
+        ],
+        "optionen_en": [
+          "Normal HDMI cable",
+          "Wireless HDMI",
+          "HDMI extender over LAN",
+          "UGREEN dock"
+        ],
+        "antwortIndex": 2,
+        "quelle": "Equipment-Übersicht, S.5"
+      }
+    ],
+
+    "production": [
+      {
+        "id": "P14",
+        "bereich": "production",
+        "frage": "Was gilt beim Abbau im Production-Team?",
+        "frage_en": "What is the rule for teardown in the production team?",
+        "optionen": [
+          "Eine Person baut alles ab",
+          "Jeder baut ab, was er aufgebaut hat – gemeinsam anfangen, gemeinsam fertig werden",
+          "Man geht, sobald der eigene Teil fertig ist",
+          "Der Abbau läuft beliebig"
+        ],
+        "optionen_en": [
+          "One person tears everything down",
+          "Everyone tears down what they set up – start together, finish together",
+          "You leave as soon as your own part is done",
+          "Teardown happens in any order"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Rollen & Ablauf, S.3"
+      }
+    ],
+
+    "sound": [
+      {
+        "id": "S01",
+        "bereich": "sound",
+        "frage": "Welche Position baut alles auf, was direkt ans Mischpult kommt (Funkmikros, Bluetooth, Recording)?",
+        "frage_en": "Which position sets up everything that connects directly to the mixing console (wireless mics, Bluetooth, recording)?",
+        "optionen": [
+          "Position 1 · Lokal am Mischpult",
+          "Position 2 · PA & alles, was rausgeht",
+          "Position 3 · Instrumente nach Patchliste",
+          "Position 4 · Mikros, In-Ears, Crowd-Mics"
+        ],
+        "optionen_en": [
+          "Position 1 · Local at the console",
+          "Position 2 · PA & everything that goes out",
+          "Position 3 · Instruments per patch list",
+          "Position 4 · Mics, in-ears, crowd mics"
+        ],
+        "antwortIndex": 0,
+        "quelle": "Rollen & Ablauf, S.2"
+      },
+      {
+        "id": "S02",
+        "bereich": "sound",
+        "frage": "Wonach werden Instrumente und Mikrofone immer angeschlossen?",
+        "frage_en": "What are instruments and microphones always connected according to?",
+        "optionen": ["Nach Gefühl", "Nach der aktuellen Patchliste", "Nach Kabellänge", "Nach Lautstärke"],
+        "optionen_en": ["By gut feeling", "By the current patch list", "By cable length", "By loudness"],
+        "antwortIndex": 1,
+        "quelle": "Rollen & Ablauf, S.2"
+      },
+      {
+        "id": "S03",
+        "bereich": "sound",
+        "frage": "Wer mischt im Gottesdienst den Saal-Sound für die Gemeinde?",
+        "frage_en": "Who mixes the room sound for the congregation during the service?",
+        "optionen": ["Monitor", "FOH (Front of House)", "Recording", "Projection"],
+        "optionen_en": ["Monitor", "FOH (Front of House)", "Recording", "Projection"],
+        "antwortIndex": 1,
+        "quelle": "Rollen & Ablauf, S.3"
+      },
+      {
+        "id": "S04",
+        "bereich": "sound",
+        "frage": "Welche drei Signalarten gibt es?",
+        "frage_en": "What are the three types of signal?",
+        "optionen": [
+          "Mikrofon, Instrument, Line",
+          "XLR, Klinke, Speakon",
+          "Bass, Mitten, Höhen",
+          "Pre, Post, Master"
+        ],
+        "optionen_en": [
+          "Microphone, instrument, line",
+          "XLR, jack, Speakon",
+          "Bass, mids, treble",
+          "Pre, post, master"
+        ],
+        "antwortIndex": 0,
+        "quelle": "Signale, Kabel & Stecker, S.1"
+      },
+      {
+        "id": "S05",
+        "bereich": "sound",
+        "frage": "An welchen Eingang/Stecker gehört ein Mikrofon-Signal?",
+        "frage_en": "Which input/connector does a microphone signal belong to?",
+        "optionen": ["Line-Eingang / Klinke", "Mikrofon-Eingang (XLR)", "Speakon", "Powercon"],
+        "optionen_en": ["Line input / jack", "Microphone input (XLR)", "Speakon", "Powercon"],
+        "antwortIndex": 1,
+        "quelle": "Signale, Kabel & Stecker, S.1"
+      },
+      {
+        "id": "S06",
+        "bereich": "sound",
+        "frage": "Was braucht ein passives Instrument (E-Gitarre/Bass), damit es nicht dünn klingt?",
+        "frage_en": "What does a passive instrument (electric guitar/bass) need so it doesn't sound thin?",
+        "optionen": [
+          "Einen Line-Eingang",
+          "Einen Instrumenten-Eingang (Hi-Z) oder eine DI-Box",
+          "Einen Speakon-Anschluss",
+          "Ein Y-Kabel"
+        ],
+        "optionen_en": [
+          "A line input",
+          "An instrument input (Hi-Z) or a DI box",
+          "A Speakon connector",
+          "A Y-cable"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Signale, Kabel & Stecker, S.1"
+      },
+      {
+        "id": "S07",
+        "bereich": "sound",
+        "frage": "Wie ist ein XLR-Stecker belegt (3 Pole)?",
+        "frage_en": "How is an XLR connector wired (3 pins)?",
+        "optionen": [
+          "Pin 1 Plus, Pin 2 Minus, Pin 3 Schirm",
+          "Pin 1 Abschirmung, Pin 2 Plus, Pin 3 Minus",
+          "Pin 1 Strom, Pin 2 Signal, Pin 3 Erde",
+          "Alle Pins gleich belegt"
+        ],
+        "optionen_en": [
+          "Pin 1 plus, pin 2 minus, pin 3 shield",
+          "Pin 1 shield, pin 2 plus, pin 3 minus",
+          "Pin 1 power, pin 2 signal, pin 3 ground",
+          "All pins wired the same"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Signale, Kabel & Stecker, S.2"
+      },
+      {
+        "id": "S08",
+        "bereich": "sound",
+        "frage": "Was gilt für das Stecker-Geschlecht bei Ein-/Ausgängen?",
+        "frage_en": "What's the rule for connector gender on inputs/outputs?",
+        "optionen": [
+          "Ausgang = female, Eingang = male",
+          "Ausgang = male (Stecker), Eingang = female (Buchse)",
+          "Beide male",
+          "Spielt keine Rolle"
+        ],
+        "optionen_en": [
+          "Output = female, input = male",
+          "Output = male (plug), input = female (socket)",
+          "Both male",
+          "Doesn't matter"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Signale, Kabel & Stecker, S.2"
+      },
+      {
+        "id": "S09",
+        "bereich": "sound",
+        "frage": "Was macht eine DI-Box?",
+        "frage_en": "What does a DI box do?",
+        "optionen": [
+          "Sie verstärkt Lautsprecher",
+          "Sie macht aus dem schwachen, asymmetrischen Instrumentsignal ein sauberes, symmetrisches Signal (XLR)",
+          "Sie wandelt Strom um",
+          "Sie mischt zwei Signale zusammen"
+        ],
+        "optionen_en": [
+          "It amplifies speakers",
+          "It turns the weak, unbalanced instrument signal into a clean, balanced signal (XLR)",
+          "It converts power",
+          "It mixes two signals together"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Signale, Kabel & Stecker, S.2"
+      },
+      {
+        "id": "S10",
+        "bereich": "sound",
+        "frage": "Wofür sind Speakon und Powercon?",
+        "frage_en": "What are Speakon and Powercon for?",
+        "optionen": [
+          "Speakon für Mikros, Powercon für Line",
+          "Speakon für Lautsprecher, Powercon für Strom",
+          "Beide für Strom",
+          "Beide für Lautsprecher"
+        ],
+        "optionen_en": [
+          "Speakon for mics, Powercon for line",
+          "Speakon for speakers, Powercon for power",
+          "Both for power",
+          "Both for speakers"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Signale, Kabel & Stecker, S.2"
+      },
+      {
+        "id": "S11",
+        "bereich": "sound",
+        "frage": "Was macht ein Y-Kabel?",
+        "frage_en": "What does a Y-cable do?",
+        "optionen": [
+          "Es verstärkt das Signal",
+          "Es verzweigt: aus eins mach zwei (oder aus zwei mach eins)",
+          "Es wandelt XLR in Klinke",
+          "Es verriegelt den Stecker"
+        ],
+        "optionen_en": [
+          "It amplifies the signal",
+          "It splits: one into two (or two into one)",
+          "It converts XLR to jack",
+          "It locks the connector"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Signale, Kabel & Stecker, S.3"
+      },
+      {
+        "id": "S12",
+        "bereich": "sound",
+        "frage": "Welcher Stecker rastet ein und rutscht nicht versehentlich heraus?",
+        "frage_en": "Which connector latches and won't accidentally slip out?",
+        "optionen": ["Klinke", "XLR", "Mini-Klinke", "Cinch"],
+        "optionen_en": ["Jack", "XLR", "Mini-jack", "RCA"],
+        "antwortIndex": 1,
+        "quelle": "Signale, Kabel & Stecker, S.1 + S.2"
+      },
+      {
+        "id": "S13",
+        "bereich": "sound",
+        "frage": "Welches Signal kommt aus dem Mischpult?",
+        "frage_en": "What signal comes out of the mixing console?",
+        "optionen": ["Lautsprecher-Signal", "Line-Signal", "Mikrofon-Signal", "Strom"],
+        "optionen_en": ["Speaker signal", "Line signal", "Microphone signal", "Power"],
+        "antwortIndex": 1,
+        "quelle": "PA, Monitore & Verstärker, S.1 + S.7"
+      },
+      {
+        "id": "S14",
+        "bereich": "sound",
+        "frage": "Was braucht eine Aktivbox?",
+        "frage_en": "What does an active (powered) speaker need?",
+        "optionen": [
+          "Nur ein Lautsprecherkabel von der Endstufe",
+          "Strom (Netzkabel) und das Line-Signal vom Pult",
+          "Nichts, sie ist passiv",
+          "Zwei Endstufen"
+        ],
+        "optionen_en": [
+          "Just a speaker cable from the amplifier",
+          "Power (mains cable) and the line signal from the console",
+          "Nothing, it's passive",
+          "Two power amplifiers"
+        ],
+        "antwortIndex": 1,
+        "quelle": "PA, Monitore & Verstärker, S.4"
+      },
+      {
+        "id": "S15",
+        "bereich": "sound",
+        "frage": "Woran erkennst du eine Passivbox?",
+        "frage_en": "How do you recognize a passive speaker?",
+        "optionen": [
+          "Sie hat ein Netzkabel",
+          "Sie hat nur Lautsprecher-Buchsen (Speakon) und keinen Stromanschluss",
+          "Sie ist immer kleiner",
+          "Sie hat ein Display"
+        ],
+        "optionen_en": [
+          "It has a mains cable",
+          "It only has speaker sockets (Speakon) and no power connector",
+          "It's always smaller",
+          "It has a display"
+        ],
+        "antwortIndex": 1,
+        "quelle": "PA, Monitore & Verstärker, S.4"
+      },
+      {
+        "id": "S16",
+        "bereich": "sound",
+        "frage": "Was darf man niemals tun?",
+        "frage_en": "What must you never do?",
+        "optionen": [
+          "Ein Line-Signal ins Pult stecken",
+          "Ein Lautsprecher-Signal (Endstufen-Ausgang) in einen Line-Eingang stecken",
+          "Eine Aktivbox an Strom anschliessen",
+          "Einen Monitor aufstellen"
+        ],
+        "optionen_en": [
+          "Plug a line signal into the console",
+          "Plug a speaker signal (power-amp output) into a line input",
+          "Connect an active speaker to power",
+          "Set up a monitor"
+        ],
+        "antwortIndex": 1,
+        "quelle": "PA, Monitore & Verstärker, S.4"
+      },
+      {
+        "id": "S17",
+        "bereich": "sound",
+        "frage": "Monitor (Wedge) vs. In-Ear – was stimmt?",
+        "frage_en": "Monitor (wedge) vs. in-ear – which is true?",
+        "optionen": [
+          "Beide sind leise und persönlich",
+          "Monitor = laut auf der Bühne (kann rückkoppeln), In-Ear = leise & persönlich",
+          "In-Ear ist lauter als ein Monitor",
+          "Monitore brauchen keinen Aux-Weg"
+        ],
+        "optionen_en": [
+          "Both are quiet and personal",
+          "Monitor = loud on stage (can feed back), in-ear = quiet & personal",
+          "In-ear is louder than a monitor",
+          "Monitors don't need an aux send"
+        ],
+        "antwortIndex": 1,
+        "quelle": "PA, Monitore & Verstärker, S.2"
+      },
+      {
+        "id": "S18",
+        "bereich": "sound",
+        "frage": "Was ist ein Aux-Mix?",
+        "frage_en": "What is an aux mix?",
+        "optionen": [
+          "Der Hauptmix für den Saal",
+          "Ein eigener Mix für die Bühne (Monitor/In-Ear/Sidefill), getrennt vom Saal, meist pre-fader",
+          "Ein Halleffekt",
+          "Ein Stromweg"
+        ],
+        "optionen_en": [
+          "The main mix for the room",
+          "A separate mix for the stage (monitor/in-ear/sidefill), separate from the room, usually pre-fader",
+          "A reverb effect",
+          "A power path"
+        ],
+        "antwortIndex": 1,
+        "quelle": "PA, Monitore & Verstärker, S.3"
+      },
+      {
+        "id": "S19",
+        "bereich": "sound",
+        "frage": "Wie beugst du Rückkopplung (Feedback) vor?",
+        "frage_en": "How do you prevent feedback?",
+        "optionen": [
+          "Mikros direkt auf die Monitore richten",
+          "Pegel/Gain nur so hoch wie nötig, Mikros nicht auf Lautsprecher richten, ungenutzte Mikros muten",
+          "Alle Mikros voll aufdrehen",
+          "Den Master ins Rote fahren"
+        ],
+        "optionen_en": [
+          "Point mics directly at the monitors",
+          "Levels/gain only as high as needed, don't point mics at speakers, mute unused mics",
+          "Turn all mics all the way up",
+          "Drive the master into the red"
+        ],
+        "antwortIndex": 1,
+        "quelle": "PA, Monitore & Verstärker, S.7"
+      },
+      {
+        "id": "S21",
+        "bereich": "sound",
+        "frage": "Was macht der Gain (Trim)?",
+        "frage_en": "What does the gain (trim) do?",
+        "optionen": [
+          "Er stellt die Lautstärke dieses Kanals im fertigen Mix ein",
+          "Er stellt am Eingang ein, wie kräftig das Signal in den Kanal kommt (einmal sauber einstellen)",
+          "Er schickt das Signal auf einen Bus",
+          "Er senkt Frequenzen ab"
+        ],
+        "optionen_en": [
+          "It sets this channel's volume in the final mix",
+          "It sets at the input how strong the signal enters the channel (set once, cleanly)",
+          "It sends the signal to a bus",
+          "It cuts frequencies"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.1 + S.2"
+      },
+      {
+        "id": "S22",
+        "bereich": "sound",
+        "frage": "Welcher Pegel bedeutet Clipping/Übersteuern?",
+        "frage_en": "Which level means clipping/overdriving?",
+        "optionen": ["−18 dBFS", "0 dBFS", "−12 dBFS", "−60 dBFS"],
+        "optionen_en": ["−18 dBFS", "0 dBFS", "−12 dBFS", "−60 dBFS"],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.2"
+      },
+      {
+        "id": "S23",
+        "bereich": "sound",
+        "frage": "Was macht ein Gate (Noise Gate)?",
+        "frage_en": "What does a gate (noise gate) do?",
+        "optionen": [
+          "Es komprimiert laute Spitzen",
+          "Es macht den Kanal automatisch leise, wenn das Signal unter den Threshold fällt",
+          "Es verstärkt leise Stellen",
+          "Es verteilt das Signal auf Busse"
+        ],
+        "optionen_en": [
+          "It compresses loud peaks",
+          "It automatically silences the channel when the signal drops below the threshold",
+          "It boosts quiet parts",
+          "It distributes the signal to buses"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.3"
+      },
+      {
+        "id": "S24",
+        "bereich": "sound",
+        "frage": "Was bedeutet eine Kompressor-Ratio von 4:1?",
+        "frage_en": "What does a compressor ratio of 4:1 mean?",
+        "optionen": [
+          "Die Lautstärke wird vervierfacht",
+          "Von 4 dB über dem Threshold kommt nur 1 dB durch",
+          "Alles wird 4× leiser",
+          "Der Kompressor hat keine Wirkung"
+        ],
+        "optionen_en": [
+          "The volume is quadrupled",
+          "Of 4 dB above the threshold, only 1 dB passes through",
+          "Everything gets 4× quieter",
+          "The compressor has no effect"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.3"
+      },
+      {
+        "id": "S25",
+        "bereich": "sound",
+        "frage": "Pre-Fader vs. Post-Fader – typische Nutzung?",
+        "frage_en": "Pre-fader vs. post-fader – typical use?",
+        "optionen": [
+          "Pre für Effekte, Post für Monitore",
+          "Pre-Fader typisch für Monitore, Post-Fader typisch für Effekte",
+          "Beide für den Master",
+          "Spielt keine Rolle"
+        ],
+        "optionen_en": [
+          "Pre for effects, post for monitors",
+          "Pre-fader typically for monitors, post-fader typically for effects",
+          "Both for the master",
+          "Doesn't matter"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.4"
+      },
+      {
+        "id": "S26",
+        "bereich": "sound",
+        "frage": "DCA-Gruppe vs. Gruppe (Subgruppe)?",
+        "frage_en": "DCA group vs. group (subgroup)?",
+        "optionen": [
+          "Beide führen das Audio zusammen",
+          "DCA steuert nur Pegel/Mute; die Gruppe führt das Audio wirklich zusammen",
+          "DCA führt Audio zusammen, die Gruppe steuert nur Mute",
+          "Es gibt keinen Unterschied"
+        ],
+        "optionen_en": [
+          "Both sum the audio together",
+          "A DCA only controls level/mute; the group actually sums the audio together",
+          "A DCA sums the audio, the group only controls mute",
+          "There is no difference"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.5"
+      },
+      {
+        "id": "S27",
+        "bereich": "sound",
+        "frage": "Welcher Richtwert gilt für den Master-Out?",
+        "frage_en": "What's the guideline value for the master out?",
+        "optionen": [
+          "+12 dB",
+          "ungefähr 0 dB (Unity), nie ins Rote",
+          "−30 dB",
+          "so laut wie möglich"
+        ],
+        "optionen_en": [
+          "+12 dB",
+          "around 0 dB (unity), never into the red",
+          "−30 dB",
+          "as loud as possible"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.6"
+      },
+      {
+        "id": "S28",
+        "bereich": "sound",
+        "frage": "Was bedeutet Routing?",
+        "frage_en": "What does routing mean?",
+        "optionen": [
+          "Die Lautstärke des Masters",
+          "Festlegen, welcher Eingang auf welchen Kanal kommt und welcher Mix auf welchen Ausgang geht",
+          "Ein Halleffekt",
+          "Ein Kabeltyp"
+        ],
+        "optionen_en": [
+          "The volume of the master",
+          "Defining which input goes to which channel and which mix goes to which output",
+          "A reverb effect",
+          "A cable type"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.7"
+      },
+      {
+        "id": "S29",
+        "bereich": "sound",
+        "frage": "Was ist Mixing Station?",
+        "frage_en": "What is Mixing Station?",
+        "optionen": [
+          "Ein Tonplayer / Abspielprogramm",
+          "Eine Fernsteuerung für digitale Pulte (kein Ton-Player)",
+          "Eine DI-Box",
+          "Ein Verstärker"
+        ],
+        "optionen_en": [
+          "An audio player / playback program",
+          "A remote control for digital consoles (not an audio player)",
+          "A DI box",
+          "An amplifier"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Mixing Station, S.1"
+      },
+      {
+        "id": "S30",
+        "bereich": "sound",
+        "frage": "Was ist die wichtigste Verbindungsregel bei Mixing Station?",
+        "frage_en": "What is the most important connection rule for Mixing Station?",
+        "optionen": [
+          "Das Gerät per USB ans Pult anschliessen",
+          "Pult und Gerät müssen im selben WLAN/Netzwerk sein",
+          "Per Bluetooth koppeln",
+          "Beide an den Strom"
+        ],
+        "optionen_en": [
+          "Connect the device to the console via USB",
+          "The console and the device must be on the same Wi-Fi/network",
+          "Pair via Bluetooth",
+          "Both to power"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Mixing Station, S.1 + S.2"
+      },
+      {
+        "id": "S31",
+        "bereich": "sound",
+        "frage": "Das Pult erscheint nicht in der Geräteliste – häufigste Ursache?",
+        "frage_en": "The console doesn't appear in the device list – most common cause?",
+        "optionen": [
+          "Die App ist veraltet",
+          "Pult und Gerät sind nicht im selben WLAN",
+          "Ein Kabel ist defekt",
+          "Der Akku ist leer"
+        ],
+        "optionen_en": [
+          "The app is outdated",
+          "The console and the device are not on the same Wi-Fi",
+          "A cable is faulty",
+          "The battery is dead"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Mixing Station, S.1 + S.2"
+      },
+      {
+        "id": "S32",
+        "bereich": "sound",
+        "frage": "Was ist die 48-V-Phantomspeisung (+48V)?",
+        "frage_en": "What is 48 V phantom power (+48V)?",
+        "optionen": [
+          "Eine Lautstärke-Einstellung am Kanal",
+          "48-Volt-Gleichspannung, die das Pult über dasselbe XLR-Mikrofonkabel liefert – als Strom",
+          "Ein Halleffekt",
+          "Ein Lautsprecheranschluss"
+        ],
+        "optionen_en": [
+          "A volume setting on the channel",
+          "48-volt DC that the console supplies over the same XLR mic cable – as power",
+          "A reverb effect",
+          "A speaker connector"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.2 (48 V Phantomspeisung)"
+      },
+      {
+        "id": "S33",
+        "bereich": "sound",
+        "frage": "Welche Geräte brauchen +48 V Phantomspeisung?",
+        "frage_en": "Which devices need +48 V phantom power?",
+        "optionen": [
+          "Dynamische Mikrofone (z. B. SM58)",
+          "Kondensatormikrofone (z. B. Crowd-/Raummikros, Chormikros) und aktive DI-Boxen",
+          "Passive DI-Boxen",
+          "Lautsprecher und Monitore"
+        ],
+        "optionen_en": [
+          "Dynamic microphones (e.g. SM58)",
+          "Condenser microphones (e.g. crowd/room mics, choir mics) and active DI boxes",
+          "Passive DI boxes",
+          "Speakers and monitors"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.2"
+      },
+      {
+        "id": "S34",
+        "bereich": "sound",
+        "frage": "Welche Geräte brauchen KEINE Phantomspeisung?",
+        "frage_en": "Which devices do NOT need phantom power?",
+        "optionen": [
+          "Kondensatormikrofone",
+          "Aktive DI-Boxen",
+          "Dynamische Mikrofone (z. B. SM58) und passive DI-Boxen",
+          "Crowd-/Raummikrofone"
+        ],
+        "optionen_en": [
+          "Condenser microphones",
+          "Active DI boxes",
+          "Dynamic microphones (e.g. SM58) and passive DI boxes",
+          "Crowd/room microphones"
+        ],
+        "antwortIndex": 2,
+        "quelle": "Das Mischpult bedienen, S.2"
+      },
+      {
+        "id": "S35",
+        "bereich": "sound",
+        "frage": "Worauf musst du achten, bevor du ein Mikro ein-/aussteckst, wenn 48 V aktiv ist?",
+        "frage_en": "What must you watch out for before plugging/unplugging a mic when 48 V is active?",
+        "optionen": [
+          "Nichts Besonderes",
+          "Vorher die Phantomspeisung ausschalten und den Kanal muten / Fader runter – sonst lauter Knall (schadet Boxen & Ohren)",
+          "Den Gain voll aufdrehen",
+          "Den Master ins Rote fahren"
+        ],
+        "optionen_en": [
+          "Nothing in particular",
+          "First switch off phantom power and mute the channel / pull the fader down – otherwise a loud pop (harms speakers & ears)",
+          "Turn the gain all the way up",
+          "Drive the master into the red"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.2"
+      },
+      {
+        "id": "S36",
+        "bereich": "sound",
+        "frage": "Wo sitzt die Phantomspeisung im Signalweg?",
+        "frage_en": "Where does phantom power sit in the signal path?",
+        "optionen": [
+          "Ganz hinten, am Master",
+          "Ganz am Eingang – noch vor dem Gain, pro Kanal getrennt schaltbar",
+          "Nach dem EQ",
+          "Im Mixbus"
+        ],
+        "optionen_en": [
+          "Right at the end, at the master",
+          "Right at the input – before the gain, switchable separately per channel",
+          "After the EQ",
+          "In the mix bus"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Das Mischpult bedienen, S.2"
+      },
+      {
+        "id": "S37",
+        "bereich": "sound",
+        "frage": "Was ist eine Patchlist?",
+        "frage_en": "What is a patch list?",
+        "optionen": [
+          "Eine Liste der Lieder im Gottesdienst",
+          "Eine Tabelle, die festhält, welches Signal in welchen Eingang bzw. auf welchen Kanal kommt",
+          "Eine Lautstärke-Vorlage fürs Pult",
+          "Eine Liste der Stromkabel"
+        ],
+        "optionen_en": [
+          "A list of the songs in the service",
+          "A table that records which signal goes into which input or onto which channel",
+          "A volume preset for the console",
+          "A list of the power cables"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.1"
+      },
+      {
+        "id": "S38",
+        "bereich": "sound",
+        "frage": "Wieso nutzen wir Patchlisten?",
+        "frage_en": "Why do we use patch lists?",
+        "optionen": [
+          "Damit jeder frei nach Gefühl aufbauen kann",
+          "Damit der Aufbau immer gleich, schnell und fehlerfrei ist – gemeinsame Sprache zwischen Aufbau und Pult",
+          "Nur zur Dekoration",
+          "Um die Lieder zu sortieren"
+        ],
+        "optionen_en": [
+          "So everyone can set up freely by gut feeling",
+          "So the setup is always identical, fast and error-free – a common language between setup and console",
+          "Just for decoration",
+          "To sort the songs"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.2"
+      },
+      {
+        "id": "S39",
+        "bereich": "sound",
+        "frage": "Was bedeutet 48V in der Notiz-Spalte einer Patchlist?",
+        "frage_en": "What does 48V in the notes column of a patch list mean?",
+        "optionen": [
+          "Der Kanal ist defekt",
+          "Für diesen Kanal die Phantomspeisung (48 V) einschalten – typisch bei Kondensatormikros",
+          "Die Lautstärke auf 48 stellen",
+          "48 Meter Kabel verlegen"
+        ],
+        "optionen_en": [
+          "The channel is faulty",
+          "Switch on phantom power (48 V) for this channel – typical for condenser mics",
+          "Set the volume to 48",
+          "Run 48 meters of cable"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.2"
+      },
+      {
+        "id": "S40",
+        "bereich": "sound",
+        "frage": "Was bedeuten 'Local Inputs' vs. 'Stage Box Inputs'?",
+        "frage_en": "What do 'local inputs' vs. 'stage box inputs' mean?",
+        "optionen": [
+          "Local = auf der Bühne, Stagebox = am Pult",
+          "Local = Eingänge direkt am Mischpult, Stagebox = Eingänge an der Stagebox auf der Bühne",
+          "Beide sind Ausgänge",
+          "Es gibt keinen Unterschied"
+        ],
+        "optionen_en": [
+          "Local = on the stage, stage box = at the console",
+          "Local = inputs directly on the console, stage box = inputs on the stage box on stage",
+          "Both are outputs",
+          "There is no difference"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.4"
+      },
+      {
+        "id": "S41",
+        "bereich": "sound",
+        "frage": "Eine Quelle hat einen Klinken- oder Miniklinken-Ausgang (z. B. Keyboard, Laptop). Was brauchst du?",
+        "frage_en": "A source has a jack or mini-jack output (e.g. keyboard, laptop). What do you need?",
+        "optionen": [
+          "Nichts, direkt ins Pult",
+          "Eine DI-Box",
+          "Einen Speakon-Anschluss",
+          "Zwingend 48 V Phantomspeisung"
+        ],
+        "optionen_en": [
+          "Nothing, straight into the console",
+          "A DI box",
+          "A Speakon connector",
+          "Mandatory 48 V phantom power"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.3 + S.6"
+      },
+      {
+        "id": "S42",
+        "bereich": "sound",
+        "frage": "Eine Quelle hat bereits einen XLR-Ausgang (Line, symmetrisch). Was machst du meist?",
+        "frage_en": "A source already has an XLR output (line, balanced). What do you usually do?",
+        "optionen": [
+          "Immer eine DI-Box dazwischen",
+          "Meist direkt ins Pult / in die Stagebox – keine DI-Box nötig",
+          "Auf Klinke adaptieren",
+          "Den Kopfhörer-Ausgang nutzen"
+        ],
+        "optionen_en": [
+          "Always put a DI box in between",
+          "Usually straight into the console / stage box – no DI box needed",
+          "Adapt it to jack",
+          "Use the headphone output"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.3 + S.6"
+      },
+      {
+        "id": "S43",
+        "bereich": "sound",
+        "frage": "In der Patchlist steht bei einer Quelle 'L/R'. Was heißt das?",
+        "frage_en": "A source in the patch list is marked 'L/R'. What does that mean?",
+        "optionen": [
+          "Mono, nur ein Kanal",
+          "Stereo = zwei Kanäle (also zwei DI-Kanäle bzw. eine Stereo-DI)",
+          "Links oder rechts auswählen",
+          "Der Lautsprecher steht rechts"
+        ],
+        "optionen_en": [
+          "Mono, only one channel",
+          "Stereo = two channels (so two DI channels or one stereo DI)",
+          "Select left or right",
+          "The speaker is on the right"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.3 + S.4"
+      },
+      {
+        "id": "S44",
+        "bereich": "sound",
+        "frage": "Die DI-Box-Spalte ist leer. Was tust du?",
+        "frage_en": "The DI box column is empty. What do you do?",
+        "optionen": [
+          "Automatisch keine DI-Box verwenden",
+          "Am Instrument entscheiden (Stecker/Ausgänge anschauen), nicht raten – im Zweifel DI-Box nehmen und nachfragen",
+          "Den Kanal überspringen",
+          "Immer 48 V einschalten"
+        ],
+        "optionen_en": [
+          "Automatically use no DI box",
+          "Decide at the instrument (look at the connectors/outputs), don't guess – when in doubt take a DI box and ask",
+          "Skip the channel",
+          "Always switch on 48 V"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.3"
+      },
+      {
+        "id": "S45",
+        "bereich": "sound",
+        "frage": "Welchen Ausgang nutzt du beim Keyboard / E-Drum für den Mix?",
+        "frage_en": "Which output do you use on the keyboard / e-drum for the mix?",
+        "optionen": [
+          "Den Kopfhörer-Ausgang (Phones)",
+          "Den Main Out / Line Out (L/R)",
+          "Den USB-Anschluss",
+          "Den Strom-Eingang"
+        ],
+        "optionen_en": [
+          "The headphone output (phones)",
+          "The main out / line out (L/R)",
+          "The USB port",
+          "The power input"
+        ],
+        "antwortIndex": 1,
+        "quelle": "Patchlist 101, S.4"
+      }
+    ]
+  }
+}
