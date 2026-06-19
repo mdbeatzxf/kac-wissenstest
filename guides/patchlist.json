@@ -1,0 +1,257 @@
+{
+  "sections": [
+    {
+      "tag": "sound",
+      "title": { "de": "Was ist eine Patchliste?", "en": "What is a patch list?" },
+      "intro": {
+        "de": "Eine Patchliste ist unser Plan für den Aufbau. Ziel: Jeder kann eine Patchliste selbstständig lesen und korrekt aufbauen — auch ohne viel Erfahrung.",
+        "en": "A patch list is our plan for the setup. Goal: anyone can read a patch list on their own and set up correctly, even without much experience."
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Eine Patchliste (auch Input-Liste oder I/O-Liste) ist eine Tabelle, die festhält, welches Signal in welchen Eingang bzw. Kanal geht. Sie verbindet drei Dinge: die Quelle (z. B. Gesang, Gitarre, Keys), den physischen Eingang (welche Buchse, wo) und den Kanal am Pult (z. B. Kanal 5).",
+            "en": "A patch list (also called an input list or I/O list) is a table that records which signal goes into which input or channel. It links three things: the source (e.g. vocals, guitar, keys), the physical input (which socket, where) and the channel on the console (e.g. channel 5)."
+          }
+        },
+        {
+          "type": "lead",
+          "text": {
+            "de": "Kurz: Die Patchliste sagt dir, was wohin geht — vom Instrument bis zum Kanal am Pult.",
+            "en": "In short: the patch list tells you what goes in where — from the instrument all the way to the channel on the mixer."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Eine echte Patchliste aus unserem Setup (Local Inputs)", "en": "A real patch list from our setup (Local Inputs)" } }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Warum nutzen wir Patchlisten?", "en": "Why do we use patch lists?" },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Immer gleicher Aufbau: dasselbe zuverlässige Setup jede Woche — egal, wer Dienst hat.", "en": "Always set up the same way: the same reliable setup every week — no matter who is on duty." },
+            { "de": "Klarheit am Pult: Wer mischt, weiß sofort, was auf welchem Kanal liegt (Kanal 1 = Kick, Kanal 8 = Lead-Gesang …).", "en": "Clarity at the console: whoever mixes knows immediately what is on each channel (channel 1 = kick, channel 8 = lead vocal …)." },
+            { "de": "Schneller & fehlerfrei: Der Aufbau geht zügig, und Fehler wie falsche Buchse oder vertauschte Kanäle fallen weg.", "en": "Faster & error-free: setup is quick and mistakes like the wrong socket or swapped channels go away." },
+            { "de": "Gemeinsame Sprache: Aufbau-Team und mischende Person reden über genau dasselbe.", "en": "A shared language: the stage/setup team and the mixing person talk about exactly the same thing." },
+            { "de": "Wiederholbar: Was einmal funktioniert, lässt sich jederzeit wiederholen.", "en": "Reproducible: whatever works once can be repeated any time." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Die Patchliste ist die gemeinsame Sprache zwischen Aufbau und Mischpult.",
+            "en": "The patch list is the shared language between setup and the mixing console."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Wie liest man eine Patchliste?", "en": "How do you read a patch list?" },
+      "intro": {
+        "de": "Die meisten Patchlisten sind als Tabelle aufgebaut. Sie kann etwas anders aussehen, aber die Idee ist immer gleich. Ein typisches Beispiel:",
+        "en": "Most patch lists are laid out as a table. It can look a little different, but the idea is always the same. A typical example:"
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            { "de": "Ch", "en": "Ch" },
+            { "de": "Name / Quelle", "en": "Name / Source" },
+            { "de": "Was kommt rein", "en": "What comes in" },
+            { "de": "DI-Box?", "en": "DI box?" },
+            { "de": "Hinweis", "en": "Note" }
+          ],
+          "rows": [
+            [ { "de": "1", "en": "1" }, { "de": "Kick", "en": "Kick" }, { "de": "Mikrofon (XLR)", "en": "Microphone (XLR)" }, { "de": "nein", "en": "no" }, { "de": "48V an", "en": "48V on" } ],
+            [ { "de": "5", "en": "5" }, { "de": "Bass", "en": "Bass" }, { "de": "Instrument (Klinke)", "en": "Instrument (jack)" }, { "de": "ja", "en": "yes" }, { "de": "DI vor dem Amp", "en": "DI before the amp" } ],
+            [ { "de": "9", "en": "9" }, { "de": "Keys L", "en": "Keys L" }, { "de": "Keyboard (Klinke)", "en": "Keyboard (jack)" }, { "de": "ja", "en": "yes" }, { "de": "Stereo — siehe Ch 10", "en": "Stereo — see Ch 10" } ],
+            [ { "de": "10", "en": "10" }, { "de": "Keys R", "en": "Keys R" }, { "de": "Keyboard (Klinke)", "en": "Keyboard (jack)" }, { "de": "ja", "en": "yes" }, { "de": "Stereo", "en": "Stereo" } ],
+            [ { "de": "12", "en": "12" }, { "de": "Playback", "en": "Playback" }, { "de": "Laptop (Mini-Klinke)", "en": "Laptop (mini-jack)" }, { "de": "ja", "en": "yes" }, { "de": "Stereo DI", "en": "Stereo DI" } ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Die Spalten — was bedeuten sie?", "en": "The columns — what do they mean?" },
+          "items": [
+            { "de": "Ch / Kanal / Input: die Nummer des Eingangs bzw. Kanals. Hier steckst du das Signal ein (am Pult oder an der Stagebox).", "en": "Ch / Channel / Input: the number of the input or channel. This is where you plug the signal in (on the console or the stage box)." },
+            { "de": "Name / Quelle: was es ist — z. B. Kick, Snare, Lead-Gesang, Keys L, Keys R.", "en": "Name / Source: what it is — e.g. kick, snare, lead vocal, keys L, keys R." },
+            { "de": "Was kommt rein: welches Signal und welcher Stecker ankommt — z. B. Mikro (XLR), Instrument (Klinke), Laptop (Mini-Klinke).", "en": "What comes in: which signal and which connector arrives — e.g. mic (XLR), instrument (jack), laptop (mini-jack)." },
+            { "de": "DI-Box?: ob für diese Quelle eine DI-Box nötig ist (mehr dazu in Abschnitt 5).", "en": "DI box?: whether a DI box is needed for this source (more on that in section 5)." },
+            { "de": "Hinweis: Zusatzinfos — z. B. 48V (Phantomspeisung), Stereo-Hinweis, Stativ, Position.", "en": "Note / Stand: extra info — e.g. 48V (phantom power), stereo note, stand, position." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "48V / Phantomspeisung: Manche Mikrofone (Kondensator) brauchen Strom vom Pult — das ist die „48V“. Steht es im Hinweis, schalte 48V für diesen Kanal ein. Für Instrumente über eine DI ist das normalerweise nicht nötig.",
+            "en": "48V / phantom power: some microphones (condensers) need power from the console — that is the “48V”. If the note says so, switch on 48V for that channel. For instruments via a DI this is normally not needed."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Welche Arten von Patchlisten gibt es?", "en": "Which types of patch list are there?" },
+      "intro": {
+        "de": "Patchlisten unterscheiden sich danach, wo die Signale rein- oder rausgehen:",
+        "en": "Patch lists differ by where the signals go in or out:"
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Local Inputs", "en": "Local Inputs" },
+          "text": {
+            "de": "Eingänge direkt am Pult (Rückseite) am Mischplatz. Kurze Wege — gut, wenn die Quelle nah am Pult ist.",
+            "en": "Inputs directly on the mixing console (the back of the console) at the mix position. Short runs — good when the source is close to the console."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Stage Box Inputs", "en": "Stage Box Inputs" },
+          "text": {
+            "de": "Eingänge an einer Stagebox (digitales Snake) auf der Bühne. Die Signale gehen digital zum Pult — ideal, wenn die Quellen weit weg vom Pult auf der Bühne sind.",
+            "en": "Inputs on a stage box (digital snake) on stage. The signals travel to the console digitally — ideal when the sources are far from the console on stage."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Outputs", "en": "Outputs" },
+          "text": {
+            "de": "Was rausgeht: Haupt-PA (Main L/R), Subwoofer, Monitore/Wedges, In-Ears, Recording. Outputs sagen, wohin der Mix geschickt wird.",
+            "en": "What goes out: main PA (Main L/R), subwoofer, monitors/wedges, in-ears, recording. Outputs say where the mix is sent."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Inputs = was reinkommt. Outputs = wohin es rausgeht. Local = am Pult, Stagebox = auf der Bühne.",
+            "en": "Inputs = what comes in. Outputs = where it goes out. Local = at the console, Stage box = on stage."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Local Inputs: Rückseite des Pults (Allen & Heath SQ-5)", "en": "Local Inputs: back of the mixing console (Allen & Heath SQ-5)" } },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Stagebox auf der Bühne (Midas DL32)", "en": "Stage box on stage (Midas DL32)" } }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Die DI-Box-Spalte — und was tun, wenn nichts eingetragen ist?", "en": "The DI box column — and what to do when nothing is listed?" },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Wofür ist eine DI-Box da?", "en": "What is a DI box for?" },
+          "text": {
+            "de": "Eine DI-Box wandelt das Signal eines Instruments oder Geräts (z. B. Keyboard, E-Drums, Bass, Laptop) in ein symmetrisches Signal über XLR. Das bringt zwei Vorteile: lange Kabel ohne Brummen/Rauschen und ein Signal, das Pult und Stagebox sauber aufnehmen können.",
+            "en": "A DI box converts the signal of an instrument or device (e.g. keyboard, e-drums, bass, laptop) into a balanced signal over XLR. That brings two advantages: long cables without hum/noise and a signal that the console and stage box can take cleanly."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Wann brauche ich eine DI-Box?", "en": "When do I need a DI box?" },
+          "items": [
+            { "de": "Quelle hat einen Klinken-Ausgang (6,3 mm), Cinch/RCA oder Mini-Klinke (3,5 mm) → DI-Box nötig (z. B. Keyboard, E-Drums, Laptop, Bass).", "en": "Source has a jack output (6.3 mm), RCA/cinch or mini-jack (3.5 mm) → DI box needed (e.g. keyboard, e-drums, laptop, bass)." },
+            { "de": "Quelle hat bereits einen XLR-Ausgang (symmetrisch, Line) → meist direkt ins Pult / die Stagebox, keine DI-Box nötig.", "en": "Source already has an XLR output (balanced, line) → usually straight into the console / stage box, no DI box needed." },
+            { "de": "Im Zweifel: DI-Box nutzen — das ist die sichere Wahl und schadet nie.", "en": "When in doubt: use a DI box — it is the safe choice and never hurts." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Wichtig: Eine leere DI-Spalte heißt nicht automatisch „keine DI-Box“. Sie kann auch bedeuten, dass es einfach noch nicht eingetragen wurde. Du entscheidest am Instrument — nicht durch Raten.",
+            "en": "Important: an empty DI column does not automatically mean “no DI box”. It can also mean it simply hasn't been filled in yet. You decide at the instrument — not by guessing."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "So gehst du vor (Beispiel „Keys L/R“ ohne DI-Hinweis):", "en": "How to proceed (example “Keys L/R” with no DI note):" }
+        },
+        {
+          "type": "steps",
+          "items": [
+            { "de": "Geh zum Keyboard und schau dir seine Ausgänge an.", "en": "Go to the keyboard and look at its outputs." },
+            { "de": "Welcher Stecker? Klinke / Cinch / Mini-Klinke → DI-Box. XLR → meist direkt rein.", "en": "Which connector? Jack / RCA / mini-jack → DI box. XLR → usually straight in." },
+            { "de": "Wie viele Ausgänge? „L/R“ heißt Stereo = zwei Ausgänge → du brauchst zwei DI-Kanäle (oder eine Stereo-DI): eine DI für Keys L und Keys R.", "en": "How many outputs? “L/R” means stereo = two outputs → you need two DI channels (or a stereo DI): a DI for keys L and keys R." },
+            { "de": "Auf die Beschriftung achten: „Main Out L/R“ / „Line Out“ nutzen — nicht den Kopfhörer-Ausgang („Phones“) für den Mix.", "en": "Mind the labels: use “Main Out L/R” / “Line Out” — not the headphone output (“Phones”) for the mix." },
+            { "de": "Unsicher? DI-Box nutzen und kurz mit der Person klären, die den Gottesdienst leitet.", "en": "Not sure? Use a DI box and quickly check with the person leading the service." }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Was am Instrument tun (konkrete Fälle)", "en": "What to do at the instrument (concrete cases)" },
+      "intro": {
+        "de": "An jedem Instrument wendest du genau dieselbe Logik an: hingehen, den Ausgang ansehen, den Stecker erkennen, prüfen, wie viele es sind.",
+        "en": "You apply exactly the same logic at every instrument: go over, look at the output, identify the connector, check how many there are."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Keyboard / Synth (z. B. „Keys L/R“)", "en": "Keyboard / synth (e.g. “Keys L/R”)" },
+          "text": {
+            "de": "Meist Main Out L/R auf Klinke (unsymmetrisch, Line). → Stereo: zwei DI-Kanäle. Wenn nur Mono gebraucht wird und nur ein Kanal frei ist, nimm L (Mono) — aber das vorher klären.",
+            "en": "Usually Main Out L/R on jack (unbalanced, line). → Stereo: two DI channels. If only mono is needed and only one channel is free, take L (mono) — but clarify that beforehand."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "E-Drums", "en": "E-drums" },
+          "text": {
+            "de": "Das Drum-Modul hat meist Main Out L/R auf Klinke (unsymmetrisch, Line). → Stereo: zwei DI-Kanäle. Nicht den Kopfhörer-Ausgang („Phones“) für den Mix nutzen. Ist nur ein Kanal frei, bei Bedarf auf Mono summieren (vorher absprechen).",
+            "en": "The drum module usually has Main Out L/R on jack (unbalanced, line). → Stereo: two DI channels. Do not use the headphone (“Phones”) output for the mix. If only one channel is free, sum to mono if needed (agree first)."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Bass / Akustikgitarre mit Tonabnehmer", "en": "Bass / acoustic guitar with pickup" },
+          "text": {
+            "de": "Klinken-Ausgang → DI-Box. Beim Bass wird die DI oft vor dem Amp abgegriffen (gemäß Patchliste/Absprache).",
+            "en": "Jack output → DI box. For bass the DI is often taken before the amp (as per the patch list/agreement)."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Playback / Laptop / Handy", "en": "Playback / laptop / phone" },
+          "text": {
+            "de": "Mini-Klinke (3,5 mm) oder Cinch → DI-Box (Stereo). Ein passendes Adapterkabel bereithalten.",
+            "en": "Mini-jack (3.5 mm) or RCA → DI box (stereo). Keep a suitable adapter cable ready."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Faustregel: Klinke / Cinch / Mini-Klinke → DI-Box. XLR → meist direkt rein. Und „L/R“ heißt immer: zwei Kanäle.",
+            "en": "Rule of thumb: jack / RCA / mini-jack → DI box. XLR → usually straight in. And “L/R” always means: two channels."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Keyboard-Rückseite: Output L/MONO + R (Klinke) — z. B. Yamaha MODX", "en": "Keyboard rear: Output L/MONO + R (jack) — e.g. Yamaha MODX" } },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "DI-Box: Eingang (Klinke) + Ausgang (XLR), Ground-Lift & Strom (9V/Phantom)", "en": "DI box: input (jack) + output (XLR), ground-lift switch and power (9V/phantom)" } }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Beispiele", "en": "Examples" },
+      "intro": {
+        "de": "Zwei echte Patchlisten von uns. Sie sehen unterschiedlich aus, aber du liest sie gleich: Finde den Kanal, die Quelle und wie sie angeschlossen wird.",
+        "en": "Two real patch lists from us. They look different, but you read them the same way: find the channel, the source and how it connects."
+      },
+      "blocks": [
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Stage Box Inputs — die Spalte „Stagebox“ zeigt, wo jedes Signal gepatcht ist (Box 1-1, Box 2-3 …). Viele Keys/Gitarren laufen über DI (Stereo: L/R).", "en": "Stage Box Inputs — the “Stagebox” column shows where each signal is patched (Box 1-1, Box 2-3 …). Many keys/guitars run via DI (stereo: L/R)." } },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Outputs — welcher Ausgang wohin geht: In-Ears (IEM), Monitor-Wedges, Sidefill, Sub, FoH.", "en": "Outputs — which output goes where: in-ears (IEM), monitor wedges, sidefill, sub, FoH." } },
+        {
+          "type": "sub",
+          "title": { "de": "Schnell-Entscheidung: Brauche ich eine DI-Box?", "en": "Quick decision: do I need a DI box?" },
+          "items": [
+            { "de": "Quelle hat einen XLR-Ausgang (Line/symmetrisch)? → meist direkt ins Pult / die Stagebox", "en": "Source has an XLR output (line/balanced)? → usually straight into the console / stage box" },
+            { "de": "Quelle hat Klinke / Cinch / Mini-Klinke? → DI-Box (z. B. Keys, E-Drums, Bass, Laptop)", "en": "Source has jack / RCA / mini-jack? → DI box (e.g. keys, e-drums, bass, laptop)" },
+            { "de": "Steht da „L/R“? → zwei Kanäle (Stereo) — also zwei DI-Kanäle", "en": "Does it say “L/R”? → two channels (stereo) — so two DI channels" },
+            { "de": "Unsicher? → DI-Box nutzen und mit der Leitung klären", "en": "Not sure? → use a DI box and check with the person leading the service" }
+          ]
+        }
+      ]
+    }
+  ]
+}

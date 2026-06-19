@@ -1,0 +1,385 @@
+{
+  "sections": [
+    {
+      "tag": "sound",
+      "title": { "de": "Der Kanalzug auf einen Blick", "en": "The channel strip at a glance" },
+      "intro": {
+        "de": "Auf einem digitalen Pult durchläuft jeder Kanal dieselbe Kette. Wenn du diese Reihenfolge kennst, findest du dich auf jedem Pult zurecht.",
+        "en": "On a digital console every channel runs through the same chain. Once you know this order, you'll find your way around any console."
+      },
+      "blocks": [
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Der Signalweg innerhalb eines Kanals", "en": "The signal path within a channel" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "Reihenfolge im Kanal: Gain → Gate → Kompressor → EQ → Fader → Sends → Bus/Master.",
+            "en": "Order in the channel: Gain → Gate → Compressor → EQ → Fader → Sends → Bus/Master."
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Hinweis: Das ist die typische Reihenfolge. Auf manchen Pulten sieht sie etwas anders aus — und auf vielen digitalen Pulten kannst du die Reihenfolge einzelner Blöcke sogar selbst ändern (z. B. EQ vor oder nach dem Kompressor). Gain bleibt aber immer ganz vorne, am Eingang.",
+            "en": "Note: This is the typical order. On some consoles it looks a little different — and on many digital consoles you can even change the order of individual blocks yourself (e.g. EQ before or after the compressor). Gain, however, always stays right at the front, at the input."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "48-V-Phantomspeisung (+48V)", "en": "48 V Phantom Power (+48V)" },
+      "intro": {
+        "de": "Manche Geräte brauchen Strom, bevor sie überhaupt ein Signal liefern. Die Phantomspeisung liefert diesen Strom direkt vom Pult — als 48-Volt-Gleichspannung über dasselbe XLR-Mikrofonkabel, das auch das Audio überträgt. Daher „Phantom“: Der Strom ist da, ohne extra Kabel.",
+        "en": "Some devices need power before they can deliver a signal at all. Phantom power supplies that power straight from the console — as 48-volt DC sent down the same XLR mic cable that also carries the audio. That's why it's “phantom”: the power is there without needing an extra cable."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Wofür wir +48 V brauchen", "en": "What we need +48 V for" },
+          "items": [
+            { "de": "Kondensatormikrofone — sie haben aktive Elektronik und funktionieren nur mit Phantomspeisung. Dazu gehören z. B. unsere Crowd-/Raummikrofone (CrowdMics) sowie Chor- und Gemeindemikrofone.", "en": "Condenser microphones — they have active electronics and only work with phantom power. This includes e.g. our crowd/room mics (CrowdMics) as well as the choir and congregation mics." },
+            { "de": "Aktive DI-Boxen — z. B. für Keyboard, Laptop oder akustische Instrumente mit aktiver Elektronik.", "en": "Active DI boxes — e.g. for keyboard, laptop or acoustic instruments with active electronics." }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Wofür wir KEINE +48 V brauchen", "en": "What we do NOT need +48 V for" },
+          "items": [
+            { "de": "Dynamische Mikrofone (z. B. Gesangsmikros wie das SM58) — sie brauchen keinen Strom.", "en": "Dynamic microphones (e.g. vocal mics like the SM58) — they need no power." },
+            { "de": "Passive DI-Boxen — sie arbeiten ohne Strom.", "en": "Passive DI boxes — they work without power." },
+            { "de": "Faustregel: 48 V schadet einem dynamischen Mikro auf einer symmetrischen XLR-Leitung meist nicht — aber nur dort einschalten, wo es wirklich gebraucht wird.", "en": "Rule of thumb: 48 V usually won't harm a dynamic mic on a balanced XLR line — but only switch it on where it's actually needed." }
+          ]
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "+48 V läuft über dasselbe XLR-Kabel zum Mikro / zur aktiven DI", "en": "+48 V travels over the same XLR cable to the mic / active DI" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "Die Phantomspeisung sitzt direkt am Eingang — vor dem Gain — und ist pro Kanal schaltbar. Nur dort einschalten, wo ein Kondensatormikro oder eine aktive DI angeschlossen ist.",
+            "en": "Phantom power sits right at the input — before the gain — and is switchable per channel. Only turn it on where a condenser mic or an active DI is connected."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Wichtig: Vor dem Ein- oder Ausstecken die Phantomspeisung ausschalten und den Kanal stummschalten / den Fader runterziehen — sonst gibt es einen lauten Knall, der Lautsprecher und Ohren schädigen kann. Auf SQ und X-Air schaltest du +48 V pro Kanal im Preamp-/Input-Menü.",
+            "en": "Important: Before plugging or unplugging, switch phantom power off and mute the channel / pull the fader down — otherwise you get a loud pop that can damage speakers and ears. On SQ and X-Air you switch +48 V per channel in the preamp/input menu."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Gain (Eingangspegel)", "en": "Gain (input level)" },
+      "intro": {
+        "de": "Gain (auch Trim) stellt ein, wie stark das Signal ganz am Anfang in den Kanal kommt — vor allem anderen.",
+        "en": "Gain (also Trim) sets how strongly the signal enters the channel right at the start — before everything else."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Gain vs. Fader — warum zwei Regler?", "en": "Gain vs. Fader — why two controls?" },
+          "text": {
+            "de": "Beide regeln eine Art „Lautstärke“, aber an völlig verschiedenen Stellen. Der Gain sitzt am Eingang und legt fest, wie stark das Signal im Kanal ankommt — das entscheidet, wie sauber die ganze Kette (Gate, Kompressor, EQ) arbeitet. Der Fader sitzt am Ende und legt nur fest, wie laut dieser Kanal im fertigen Mix ist.",
+            "en": "Both control a kind of “volume”, but at completely different places. Gain sits at the input and sets how strong the signal arrives in the channel — this decides how cleanly the whole chain (gate, compressor, EQ) works. The Fader sits at the end and only sets how loud this channel is in the finished mix."
+          }
+        },
+        {
+          "type": "table",
+          "head": [
+            { "de": "", "en": "" },
+            { "de": "Gain (Trim)", "en": "Gain (Trim)" },
+            { "de": "Fader", "en": "Fader" }
+          ],
+          "rows": [
+            [ { "de": "Wo im Kanal", "en": "Where in the channel" }, { "de": "ganz vorne, am Eingang", "en": "right at the front, at the input" }, { "de": "am Ende, kurz vor dem Master", "en": "at the end, just before the master" } ],
+            [ { "de": "Aufgabe", "en": "Job" }, { "de": "Eingangspegel für die ganze Kette", "en": "input level for the whole chain" }, { "de": "Pegel dieses Kanals im Mix", "en": "level of this channel in the mix" } ],
+            [ { "de": "Wirkt auf", "en": "Affects" }, { "de": "Gate, Kompressor & EQ reagieren auf diesen Pegel", "en": "gate, compressor & EQ react to this level" }, { "de": "nur den Pegel im Mix", "en": "only the level in the mix" } ],
+            [ { "de": "Wann einstellen", "en": "When set" }, { "de": "einmal beim Soundcheck", "en": "once at soundcheck" }, { "de": "während des Gottesdienstes laufend", "en": "adjust constantly during the service" } ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Kurz: Der Gain bringt das Signal sauber rein, der Fader mischt es. Zu wenig Gain rauscht, zu viel übersteuert (Clipping) — und das lässt sich mit dem Fader hinterher nicht mehr reparieren.",
+            "en": "In short: gain brings the signal in cleanly, the fader mixes it. Too little gain hisses, too much clips — and that can't be fixed with the fader afterwards."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "So stellst du den Gain ein:", "en": "How to set the gain:" },
+          "items": [
+            { "de": "Lass die Person in normaler Auftrittslautstärke singen oder spielen, während du den Gain einstellst.", "en": "Have the person sing or play at normal performance volume while you set the gain." },
+            { "de": "Ziel ist ein starkes Signal mit Reserve (Headroom) — meist im grünen bis unteren gelben Bereich, nie rot (Clipping).", "en": "Aim for a strong signal with headroom — mostly in the green to lower yellow range, never red (clipping)." },
+            { "de": "Digitale Faustregel: Spitzen etwa bei −18 bis −12 dBFS.", "en": "Digital rule of thumb: peaks around −18 to −12 dBFS." }
+          ]
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Pegel-Übersicht: 0 dBFS = Clipping — mit Reserve darunter bleiben", "en": "Level overview: 0 dBFS = clipping — stay below with headroom" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "Gain = wie stark das Signal reinkommt (einmal sauber einstellen). Fader = wie laut der Kanal im Mix ist (laufend anpassen).",
+            "en": "Gain = how strongly the signal comes in (set once, cleanly). Fader = how loud the channel is in the mix (adjust constantly)."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Gate (Noise Gate)", "en": "Gate (noise gate)" },
+      "intro": {
+        "de": "Ein Gate macht einen Kanal automatisch leise, wenn das Signal zu schwach ist — z. B. wenn niemand singt oder spielt. So bleiben Rauschen und Übersprechen draußen.",
+        "en": "A gate automatically quiets a channel when the signal is too weak — e.g. when nobody is singing or playing. This keeps noise and bleed out."
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Der Threshold (Schwelle) legt den Pegel fest, ab dem das Gate öffnet: darunter bleibt der Kanal zu, darüber öffnet er.",
+            "en": "The threshold sets the level at which the gate opens: below it the channel stays closed, above it the channel opens."
+          }
+        },
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Nützlich für: laute/geräuschvolle Quellen (z. B. Drum-Mikros) und offene Mikros, die in Pausen still sein sollen.", "en": "Useful for: loud/noisy sources (e.g. drum mics) and open mics that should be silent during breaks." },
+            { "de": "Vorsicht bei: Lead-Gesang — sonst werden leise Passagen abgeschnitten.", "en": "Careful with: lead vocals — otherwise quiet passages get cut off." },
+            { "de": "Tipp: Threshold knapp über das Hintergrundgeräusch setzen.", "en": "Tip: set the threshold just above the background noise." }
+          ]
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Gate-Seite mit Threshold (und Range)", "en": "Gate page with threshold (and range)" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "Gate = eine Tür: Signal laut genug → Tür auf. Zu leise → Tür zu.",
+            "en": "Gate = a door: signal loud enough → door opens. Too quiet → door closes."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Kompressor", "en": "Compressor" },
+      "intro": {
+        "de": "Ein Kompressor gleicht Lautstärkeunterschiede aus: Er macht die lauten Stellen leiser, damit der Gesamtpegel gleichmäßiger wird — z. B. bei einer Person, die mal flüstert und mal ruft.",
+        "en": "A compressor evens out volume differences: it makes the loud parts quieter so the overall level is more consistent — e.g. for a singer who whispers one moment and shouts the next."
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Threshold: der Pegel, ab dem der Kompressor zu arbeiten beginnt.", "en": "Threshold: the level at which the compressor starts working." },
+            { "de": "Ratio: wie stark komprimiert wird. Bei 4:1 kommt von 4 dB über dem Threshold nur 1 dB durch.", "en": "Ratio: how strongly it compresses. At 4:1, of 4 dB above the threshold only 1 dB gets through." },
+            { "de": "Gesang: eine sanfte Ratio (2:1 bis 4:1), nur ein paar dB Reduktion.", "en": "Vocals: a gentle ratio (2:1 to 4:1), only a few dB of reduction." },
+            { "de": "Nicht übertreiben — zu viel klingt flach und leblos.", "en": "Don't overdo it — too much sounds flat and lifeless." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Kompressor = eine Bremse für die lauten Spitzen.",
+            "en": "Compressor = a brake on the loud peaks."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "EQ (Klang) — kurz", "en": "EQ (tone) — briefly" },
+      "intro": {
+        "de": "Mit dem EQ (Equalizer) formst du den Klang, indem du Frequenzbereiche anhebst oder absenkst — grob: Höhen, Mitten, Tiefen.",
+        "en": "With the EQ (equalizer) you shape the tone by boosting or cutting frequency ranges — roughly: highs, mids, lows."
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Lieber absenken, was stört, als alles anzuheben.", "en": "Better to cut what's disturbing than to boost everything." },
+            { "de": "Low-Cut / Hochpass auf Stimmen entfernt unnötiges Tieffrequenz-Rumpeln.", "en": "Low-cut / high-pass on voices removes unnecessary low-frequency rumble." }
+          ]
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "EQ-Kurve (Beispiel): Bereiche anheben oder absenken", "en": "EQ curve (example): boost or cut ranges" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "Erst aufräumen (absenken), dann gezielt formen.",
+            "en": "First clean up (cut), then shape on purpose."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Sends & Mix-Busse", "en": "Sends & mix buses" },
+      "intro": {
+        "de": "Neben dem Hauptmix kann ein Kanal auch auf andere Wege geschickt werden — die Mix-Busse (Bus 1, 2, 3 …). Typisch für Monitor-/In-Ear-Mixe oder Effekte (z. B. Hall).",
+        "en": "Besides the main mix, a channel can also be sent to other paths — the mix buses (bus 1, 2, 3 …). Typical for monitor/in-ear mixes or effects (e.g. reverb)."
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Für jeden Kanal stellst du ein, wie viel auf welchen Bus geht. Jeder Bus ist ein eigener Mix.",
+            "en": "For each channel you set how much goes to which bus. Each bus is its own mix."
+          }
+        },
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Pre-Fader: unabhängig vom Kanal-Fader — typisch für Monitore.", "en": "Pre-fader: independent of the channel fader — typical for monitors." },
+            { "de": "Post-Fader: folgt dem Fader — typisch für Effekte.", "en": "Post-fader: follows the fader — typical for effects." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Send = etwas zusätzlich woanders hinschicken — ohne den Hauptmix zu verändern.",
+            "en": "Send = send something additionally elsewhere — without changing the main mix."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Stereo & Mono", "en": "Stereo & Mono" },
+      "intro": {
+        "de": "Ein Mono-Kanal trägt ein Signal. Ein Stereo-Kanal trägt zwei Signale, die zusammengehören: links und rechts.",
+        "en": "A mono channel carries one signal. A stereo channel carries two signals that belong together: left and right."
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Stereo-Quellen (Keyboard, Laptop, Playback) haben L und R. Damit ein Fader beide steuert, nutzt du einen Stereo-Kanal oder verlinkst zwei Kanäle.",
+            "en": "Stereo sources (keyboard, laptop, playback) have L and R. So that one fader controls both, you use a stereo channel or link two channels."
+          }
+        },
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Allen & Heath SQ: echte Stereo-Kanäle möglich.", "en": "Allen & Heath SQ: true stereo channels possible." },
+            { "de": "Behringer X-Air: zwei Mono-Kanäle (links/rechts), die du verlinkst.", "en": "Behringer X-Air: two mono channels (left/right) that you link together." }
+          ]
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Auch Sends, DCAs und Gruppen gibt es als Mono oder Stereo — passend zur Quelle wählen, damit Stereo stereo bleibt.",
+            "en": "Sends, DCAs and groups also come as mono or stereo — choose to match the source so stereo stays stereo."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Stereo-Quelle → in Stereo behandeln (Stereo-Kanal oder zwei Kanäle verlinken).",
+            "en": "Stereo source → handle it in stereo (stereo channel or link two channels)."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "DCA-Gruppen & Gruppen", "en": "DCA groups & groups" },
+      "intro": {
+        "de": "Beide bündeln mehrere Kanäle — aber auf unterschiedliche Weise.",
+        "en": "Both bundle several channels — but in different ways."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "DCA-Gruppe", "en": "DCA group" },
+          "text": {
+            "de": "Ein Master-Fader, der Pegel und Mute mehrerer Kanäle gemeinsam steuert (z. B. „alle Drums“, „alle Vocals“). Das Audio bleibt in den Kanälen.",
+            "en": "A master fader that controls level and mute of several channels together (e.g. “all drums”, “all vocals”). The audio stays in the channels."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Gruppe (Subgruppe)", "en": "Group (subgroup)" },
+          "text": {
+            "de": "Hier läuft das Audio mehrerer Kanäle tatsächlich zusammen. Auf der Gruppe kannst du dann EQ/Kompression auf alle gleichzeitig anwenden.",
+            "en": "Here the audio of several channels actually runs together. On the group you can then apply EQ/compression to all of them at once."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Ein DCA steuert nur Pegel/Mute — die Gruppe führt das Audio zusammen", "en": "A DCA controls only level/mute — the group runs the audio together" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "DCA = nur Pegel/Mute. Gruppe = Audio läuft zusammen + wird gemeinsam bearbeitet.",
+            "en": "DCA = only level/mute. Group = audio runs together + processed as one."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Mix-Bus-Bearbeitung & Master-Out", "en": "Mix-bus processing & master out" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Jeder Mix-Bus — und der Master — kann einen eigenen EQ und Kompressor haben. So bearbeitest du einen ganzen Monitor-Mix oder den Hauptmix als Ganzes.",
+            "en": "Every mix bus — and the master — can have its own EQ and compressor. This lets you process a whole monitor mix or the main mix as a whole."
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Der Master-Out ist der Hauptmix (L/R), der zur PA geht. Halte ihn etwa bei 0 dB (Unity) und behalte das Master-Meter im Blick. Der Master-Fader ist meist der ganz rechte — oft mit „Main“ beschriftet.",
+            "en": "The master out is the main mix (L/R) that goes to the PA. Keep it around 0 dB (unity) and keep an eye on the master meter. The master fader is usually the fader on the far right — often labelled “Main”."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Digitalpult: Der Master-Fader ist meist der ganz rechte (hier „MAIN“)", "en": "Digital console: the master fader is usually the far right one (here “MAIN”)" } },
+        {
+          "type": "note",
+          "text": {
+            "de": "Master = der fertige Mix für den Raum. 0 dB als Richtwert, nie in den roten Bereich.",
+            "en": "Master = the finished mix for the room. 0 dB as a guide, never into the red."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Routing", "en": "Routing" },
+      "intro": {
+        "de": "Routing heißt: entscheiden, welcher Eingang auf welchen Kanal geht und welcher Mix auf welchen Ausgang. Auf Digitalpulten sind die physischen Buchsen und die Kanäle getrennt — du ordnest sie frei zu.",
+        "en": "Routing means deciding which input goes to which channel and which mix goes to which output. On digital consoles the physical sockets and the channels are separate — you assign them freely."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Eingänge zuordnen (Patch)", "en": "Assigning inputs (patch)" },
+          "items": [
+            { "de": "Kanal 1 ← lokaler Eingang 1 am Pult, oder", "en": "Channel 1 ← local input 1 on the console, or" },
+            { "de": "Kanal 1 ← Stagebox A, Eingang 15, oder", "en": "Channel 1 ← stagebox A, input 15, or" },
+            { "de": "Kanal 1 ← Stagebox B, Eingang 14.", "en": "Channel 1 ← stagebox B, input 14." }
+          ]
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "So kann dasselbe Mikrofon — je nach Patch — auf jedem Kanal liegen. Genau deshalb lohnt sich ein fester, dokumentierter Patch.",
+            "en": "So the same microphone can — depending on the patch — sit on any channel. That's why a fixed, documented patch pays off."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Input-Patch (Beispiel): Lokaler Eingang 5 ist auf Kanal 5 gepatcht", "en": "Input patch (example): local input 5 is patched to channel 5" } },
+        {
+          "type": "sub",
+          "title": { "de": "Ausgänge zuordnen", "en": "Assigning outputs" },
+          "items": [
+            { "de": "Master (L/R) → Hauptausgänge zur PA", "en": "Master (L/R) → main outputs to the PA" },
+            { "de": "Mix-Bus 3 → ein Monitorweg auf der Bühne (lokaler Ausgang oder Stagebox-Ausgang)", "en": "Mix bus 3 → a monitor path on stage (local output or stagebox output)" },
+            { "de": "Mix-Bus 4 → ein In-Ear-Sender", "en": "Mix bus 4 → an in-ear transmitter" }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Vor dem Gottesdienst kurz prüfen, ob das Routing stimmt — ein falscher Patch ist eine der häufigsten Fehlerquellen. Routing = die Wegekarte: welcher Eingang auf welchen Kanal, welcher Mix auf welchen Ausgang.",
+            "en": "Before the service quickly check that the routing is correct — a wrong patch is one of the most common sources of error. Routing = the route map: which input to which channel, which mix to which output."
+          }
+        }
+      ]
+    }
+  ]
+}

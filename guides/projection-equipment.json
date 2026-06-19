@@ -1,0 +1,220 @@
+{
+  "sections": [
+    {
+      "tag": "projection",
+      "title": { "de": "UGREEN Dockingstation (mit DisplayLink)", "en": "UGREEN Docking Station (with DisplayLink)" },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Was es ist", "en": "What it is" },
+          "text": {
+            "de": "Eine Dockingstation, die per USB-C an den Laptop angeschlossen wird und u. a. zusätzliche Bildschirm-Ausgänge bereitstellt.",
+            "en": "A docking station connected to the laptop via USB-C that provides, among other things, extra screen outputs."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Warum wir es haben", "en": "Why we have it" },
+          "text": {
+            "de": "Wir arbeiten mit einem MacBook. Das gibt nativ aber nur begrenzt Bildschirme aus — über HDMI plus ggf. einen weiteren Monitor über einen USB-Dongle. Je nach Modell ist die Zahl der nativ unterstützten externen Displays stark limitiert. Im Betrieb brauchen wir aber bis zu vier Bildschirme. Genau dafür nutzen wir die Dock mit DisplayLink.",
+            "en": "We work with a MacBook. Natively it only outputs a limited number of screens — via HDMI plus possibly one more monitor over a USB dongle. Depending on the model, the number of natively supported external displays is heavily limited. In operation, though, we need up to four screens. That's exactly what we use the dock with DisplayLink for."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "UGREEN Dock — Anschlüsse", "en": "UGREEN dock — connections" } },
+        {
+          "type": "sub",
+          "title": { "de": "Anschluss am Platz", "en": "Connections at the station" },
+          "items": [
+            { "de": "USB-C 1 (Laden): Netzteil anschließen — versorgt die Dock mit Strom.", "en": "USB-C 1 (charging): connect the power supply — powers the dock." },
+            { "de": "USB-C 2: mit dem Laptop verbinden — überträgt Bild & Daten und lädt den Laptop gleichzeitig mit.", "en": "USB-C 2: connect to the laptop — carries video & data and charges the laptop at the same time." },
+            { "de": "Display 1 (HDMI oder DisplayPort): ersten Monitor anschließen — pro Display nutzt man eines von beiden.", "en": "Display 1 (HDMI or DisplayPort): connect the first monitor — per display you use one of the two." },
+            { "de": "Display 2 (HDMI oder DisplayPort): zweiten Monitor anschließen.", "en": "Display 2 (HDMI or DisplayPort): connect the second monitor." },
+            { "de": "Ethernet / Internet (LAN): Netzwerkkabel anschließen für eine stabile, kabelgebundene Internetverbindung — zuverlässiger als WLAN (z. B. für Updates, Streaming oder ProPresenter-Sync).", "en": "Ethernet / internet (LAN): connect a network cable for a stable, wired internet connection — more reliable than Wi-Fi (e.g. for updates, streaming or ProPresenter sync)." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Der Laptop wird über die Dock geladen — kein separates Laptop-Netzteil nötig.",
+            "en": "The laptop charges over the dock — no separate laptop power supply needed."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Was ist DisplayLink?", "en": "What is DisplayLink?" },
+          "text": {
+            "de": "DisplayLink schickt das Bildsignal nicht über die normalen Video-Ausgänge der Grafikkarte, sondern komprimiert es per Software und überträgt es über USB. In der Dock wird es wieder in ein normales Bildsignal umgewandelt. So lassen sich zusätzliche, „virtuelle“ Displays anschließen, die der Mac über seine Hardware sonst gar nicht ansteuern könnte.",
+            "en": "DisplayLink doesn't send the video signal over the graphics card's normal video outputs; instead it compresses it in software and transmits it over USB. In the dock it is turned back into a normal video signal. This lets you connect extra, “virtual” displays that the Mac couldn't drive through its hardware otherwise."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Konkret bei uns: HDMI (direkt am MacBook) + 1 Monitor über USB-Dongle + 2 weitere über DisplayLink = die vier Bildschirme, die wir brauchen.",
+            "en": "Concretely for us: HDMI (straight from the MacBook) + 1 monitor over a USB dongle + 2 more over DisplayLink = the four screens we need."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "projection",
+      "title": { "de": "Wireless-HDMI-Set (kabellos, per Funk)", "en": "Wireless HDMI set (cable-free, over RF)" },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Was es ist", "en": "What it is" },
+          "text": {
+            "de": "Ein kabelloses HDMI-Übertragungsset (Sender + Empfänger mit Antennen), überträgt das Bild per Funk (bis 1080p).",
+            "en": "A wireless HDMI transmission set (transmitter + receiver with antennas) that sends the image over RF (up to 1080p)."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Warum wir es haben", "en": "Why we have it" },
+          "text": {
+            "de": "Für Situationen, in denen kein Kabel verlegt werden kann oder sich nicht lohnt — z. B. spontane, mobile oder temporäre Aufbauten, oder wenn am Zielort keine LAN-Dose verfügbar ist. Dann lohnt es sich, Wireless zu nutzen.",
+            "en": "For situations where no cable can be run or it isn't worth it — e.g. spontaneous, mobile or temporary setups, or when there's no LAN socket at the destination. Then it pays to go wireless."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Sender (TX) & Empfänger (RX) mit Funkantennen", "en": "Transmitter (TX) & receiver (RX) with RF antennas" } },
+        {
+          "type": "sub",
+          "title": { "de": "So wird es angeschlossen", "en": "How to connect it" }
+        },
+        {
+          "type": "steps",
+          "items": [
+            { "de": "Sender (TX) an den Laptop / die Quelle (HDMI).", "en": "Transmitter (TX) to the laptop / source (HDMI)." },
+            { "de": "Empfänger (RX) an den Fernseher / Beamer (HDMI).", "en": "Receiver (RX) to the TV / projector (HDMI)." },
+            { "de": "Beide Sticks per USB mit Strom versorgen.", "en": "Power both sticks via USB." },
+            { "de": "Nach ca. 5 Sekunden startet die Übertragung automatisch.", "en": "After about 5 seconds the transmission starts automatically." }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "projection",
+      "title": { "de": "HDMI-Extender über LAN (kabelgebunden, TX/RX)", "en": "HDMI extender over LAN (wired, TX/RX)" },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Was es ist", "en": "What it is" },
+          "text": {
+            "de": "Ein Set aus Sender (TX) und Empfänger (RX), das ein HDMI-Signal über ein Netzwerkkabel (Cat5e/6/7) überträgt — bis zu ca. 60 m.",
+            "en": "A set of transmitter (TX) and receiver (RX) that sends an HDMI signal over a network cable (Cat5e/6/7) — up to about 60 m."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Warum wir es haben", "en": "Why we have it" },
+          "text": {
+            "de": "Lange HDMI-Kabel sind unpraktisch und störanfällig. LAN-Kabel sind über große Distanzen deutlich robuster — und in den Räumen liegen ohnehin fest verlegte LAN-Dosen. So überbrücken wir lange Strecken sauber, ohne meterweise HDMI ziehen zu müssen.",
+            "en": "Long HDMI cables are impractical and prone to interference. LAN cables are far more robust over long distances — and the rooms already have permanently installed LAN sockets. This way we bridge long runs cleanly without dragging metres of HDMI."
+          }
+        },
+        { "type": "figure", "aspect": "16 / 9", "caption": { "de": "Sender (TX) & Empfänger (RX) mit RJ45-Buchse · Schema: Quelle → TX → LAN → RX → Display", "en": "Transmitter (TX) & receiver (RX) with RJ45 socket · diagram: source → TX → LAN → RX → display" } },
+        {
+          "type": "sub",
+          "title": { "de": "So wird es angeschlossen", "en": "How to connect it" }
+        },
+        {
+          "type": "steps",
+          "items": [
+            { "de": "HDMI-Quelle (z. B. Laptop bzw. Dock-Ausgang) → „HDMI IN“ am Sender (TX).", "en": "HDMI source (e.g. laptop or dock output) → “HDMI IN” on the transmitter (TX)." },
+            { "de": "Vom TX mit LAN-Kabel weiter → zum Empfänger (RX) (direkt oder über die fest verlegten LAN-Dosen im Gebäude).", "en": "From the TX onward by LAN cable → to the receiver (RX) (directly or via the building's installed LAN sockets)." },
+            { "de": "Am RX wird das Signal wieder in HDMI umgewandelt → „HDMI OUT“ → Fernseher oder Beamer.", "en": "At the RX the signal is converted back to HDMI → “HDMI OUT” → TV or projector." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Wichtig: Beide Teile — Sender (TX) und Empfänger (RX) — brauchen Strom und müssen jeweils an eine Steckdose angeschlossen werden. Merksatz für die Richtung: Quelle → TX → LAN → RX → Bildschirm/Beamer.",
+            "en": "Important: Both parts — transmitter (TX) and receiver (RX) — need power and each must be plugged into a socket. Remember the direction: source → TX → LAN → RX → screen/projector."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "projection",
+      "title": { "de": "UGREEN Netzteil (GaN-Mehrfach-Ladegerät)", "en": "UGREEN power supply (GaN multi-charger)" },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Was es ist", "en": "What it is" },
+          "text": {
+            "de": "Ein kompaktes Ladegerät mit 3× USB-C und 1× USB-A — ein Gerät, vier Anschlüsse.",
+            "en": "A compact charger with 3× USB-C and 1× USB-A — one device, four ports."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Warum wir es haben", "en": "Why we have it" },
+          "text": {
+            "de": "Ein einziges Netzteil lädt alles am Platz. Die beiden stärksten USB-C-Ports sind für die Laptops gedacht — wir haben ja immer einen Laptop bei Sound und einen bei Projection. Die übrigen Ports versorgen Kleingeräte (Tablet, Funk, Telefon o. Ä.).",
+            "en": "A single power supply charges everything at the station. The two strongest USB-C ports are meant for the laptops — we always have one laptop at sound and one at projection. The remaining ports power small devices (tablet, wireless gear, phone, etc.)."
+          }
+        },
+        { "type": "figure", "aspect": "4 / 3", "caption": { "de": "UGREEN GaN-Ladegerät", "en": "UGREEN GaN charger" } },
+        {
+          "type": "text",
+          "text": {
+            "de": "So sparen wir mehrere Einzel-Netzteile und haben am Platz nur ein Gerät für die gesamte Stromversorgung.",
+            "en": "This saves several individual power supplies and leaves just one device at the station for all power."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "projection",
+      "title": { "de": "Mauspad & kabellose Maus", "en": "Mouse pad & wireless mouse" },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Was es ist", "en": "What it is" },
+          "text": {
+            "de": "Ein Mauspad und eine kabellose Computermaus für die komfortable und präzise Bedienung am Platz.",
+            "en": "A mouse pad and a wireless computer mouse for comfortable, precise operation at the station."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Warum wir es haben", "en": "Why we have it" },
+          "text": {
+            "de": "Eine Maus ist für längeres, präzises Arbeiten (z. B. während des Gottesdienstes) angenehmer und genauer als das Trackpad. Der USB-Dongle der Maus steckt fest in der UGREEN-Dock — so ist die Maus sofort einsatzbereit, sobald das MacBook angedockt ist, und niemand muss den Dongle suchen.",
+            "en": "For longer, precise work (e.g. during the service) a mouse is more comfortable and more accurate than the trackpad. The mouse's USB dongle stays plugged into the UGREEN dock — so the mouse is ready the moment the MacBook is docked, and nobody has to hunt for the dongle."
+          }
+        },
+        {
+          "type": "table",
+          "head": [
+            { "de": "Gerät", "en": "Device" },
+            { "de": "Zweck", "en": "Purpose" },
+            { "de": "Warum / wann nutzen", "en": "Why / when to use" }
+          ],
+          "rows": [
+            [ { "de": "UGREEN Dock (DisplayLink)", "en": "UGREEN dock (DisplayLink)" }, { "de": "Mehr Bildschirme am MacBook", "en": "More screens on the MacBook" }, { "de": "Wenn mehr Displays gebraucht werden, als der Mac nativ kann (bis zu 4)", "en": "When more displays are needed than the Mac can do natively (up to 4)" } ],
+            [ { "de": "Wireless-HDMI", "en": "Wireless HDMI" }, { "de": "HDMI über Funk", "en": "HDMI over RF" }, { "de": "Kein Kabel möglich/sinnvoll, spontaner oder mobiler Aufbau", "en": "No cable possible/sensible, spontaneous or mobile setup" } ],
+            [ { "de": "HDMI-Extender (LAN)", "en": "HDMI extender (LAN)" }, { "de": "HDMI über lange Strecke, kabelgebunden", "en": "HDMI over long distance, wired" }, { "de": "Lange Distanz, LAN-Dose vorhanden, stabile Verbindung gewünscht", "en": "Long distance, LAN socket available, stable connection wanted" } ],
+            [ { "de": "UGREEN Netzteil (3×C / 1×A)", "en": "UGREEN power supply (3×C / 1×A)" }, { "de": "Zentrale Stromversorgung", "en": "Central power supply" }, { "de": "Beide Laptops (Sound + Projection) + Kleingeräte an einem Gerät laden", "en": "Charge both laptops (sound + projection) + small devices from one unit" } ],
+            [ { "de": "Mauspad & kabellose Maus", "en": "Mouse pad & wireless mouse" }, { "de": "Komfortable/präzise Bedienung", "en": "Comfortable/precise operation" }, { "de": "Genauer als das Trackpad; Dongle steckt fest in der Dock, sofort einsatzbereit", "en": "More accurate than the trackpad; dongle stays in the dock, ready instantly" } ]
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "projection",
+      "title": { "de": "Schnell-Entscheidung: Welche Bildübertragung?", "en": "Quick decision: which video transmission?" },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Bildschirm ist nah / direkt erreichbar? → normales HDMI-Kabel", "en": "Screen is close / directly reachable? → normal HDMI cable" },
+            { "de": "Bildschirm/Beamer weiter weg, LAN-Dose vorhanden? → HDMI-Extender über LAN (stabil, bevorzugt)", "en": "Screen/projector further away, LAN socket available? → HDMI extender over LAN (stable, preferred)" },
+            { "de": "Kein Kabel möglich oder spontaner Aufbau? → Wireless-HDMI", "en": "No cable possible or spontaneous setup? → wireless HDMI" },
+            { "de": "Mehr Bildschirme am MacBook nötig? → UGREEN Dock mit DisplayLink", "en": "More screens needed on the MacBook? → UGREEN dock with DisplayLink" }
+          ]
+        }
+      ]
+    }
+  ]
+}

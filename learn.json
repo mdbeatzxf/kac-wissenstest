@@ -1,0 +1,88 @@
+{
+  "guides": [
+    {
+      "id": "rollen-ablauf",
+      "file": "guides/rollen-ablauf.json",
+      "bereiche": ["projection", "sound"],
+      "updated": "Juni 2026",
+      "title": { "de": "Rollen & Ablauf — Auf- und Abbau", "en": "Roles & Workflow — Setup and Teardown" },
+      "subtitle": { "de": "Für das Production Team · Sound & Projection", "en": "For the Production Team · Sound & Projection" },
+      "intro": {
+        "de": "Damit Auf- und Abbau reibungslos laufen, hat jede Position klare Aufgaben. Diese Übersicht zeigt den Ablauf für Projection und die Rollen im Sound-Team — beim Aufbau, während des Gottesdienstes und beim Abbau.",
+        "en": "So that setup and teardown run smoothly, every position has clear tasks. This overview shows the projection workflow and the roles in the sound team — during setup, during the service, and during teardown."
+      }
+    },
+    {
+      "id": "signals-cables",
+      "file": "guides/signals-cables.json",
+      "bereiche": ["sound"],
+      "updated": "Juni 2026",
+      "title": { "de": "Signale, Kabel & Stecker", "en": "Signals, Cables & Connectors" },
+      "subtitle": { "de": "Für das Sound-Team", "en": "For the Sound team" },
+      "intro": {
+        "de": "Das Wichtigste auf einen Blick: welche Signale es gibt, welcher Stecker wohin gehört — und wie alles am Mischpult zusammenkommt.",
+        "en": "The essentials at a glance: which signals there are, which connector goes where — and how everything comes together at the mixer."
+      }
+    },
+    {
+      "id": "patchlist",
+      "file": "guides/patchlist.json",
+      "bereiche": ["sound"],
+      "updated": "Juni 2026",
+      "title": { "de": "Patchlist 101", "en": "Patchlist 101" },
+      "subtitle": { "de": "Für das Sound-Team", "en": "For the Sound team" },
+      "intro": {
+        "de": "Was eine Patchliste ist, warum wir sie nutzen und wie man sie Schritt für Schritt liest — inklusive der wichtigsten Frage: Was tue ich, wenn keine DI-Box eingetragen ist?",
+        "en": "What a patch list is, why we use it and how to read it step by step — including the most important question: what do I do when no DI box is listed?"
+      }
+    },
+    {
+      "id": "operating-mixer",
+      "file": "guides/operating-mixer.json",
+      "bereiche": ["sound"],
+      "updated": "Juni 2026",
+      "title": { "de": "Das Mischpult bedienen", "en": "Operating the Mixing Console" },
+      "subtitle": { "de": "Für das Sound-Team", "en": "For the Sound team" },
+      "intro": {
+        "de": "Schritt für Schritt durchs Pult: Wir folgen dem Weg, den jedes Signal durch einen Kanal nimmt — vom Gain bis zum Master. Gilt für jedes digitale Pult (Beispiele für SQ und Behringer X-Air, wo sie sich unterscheiden).",
+        "en": "Step by step through the mixer: we follow the path each signal takes through a channel — from gain to the master. This applies to any digital console (examples for SQ and Behringer X-Air where they differ)."
+      }
+    },
+    {
+      "id": "pa-monitors",
+      "file": "guides/pa-monitors.json",
+      "bereiche": ["sound"],
+      "updated": "Juni 2026",
+      "title": { "de": "Monitore, In-Ears, PA & Verstärker", "en": "Monitors, In-Ears, PA & Amplifiers" },
+      "subtitle": { "de": "Für das Sound-Team", "en": "For the Sound team" },
+      "intro": {
+        "de": "Was passiert mit dem Sound, nachdem er das Pult verlässt? Das ist die Ausgangsseite: Monitore und In-Ears auf der Bühne, die PA für den Raum und die Verstärker dazwischen.",
+        "en": "What happens to the sound after it leaves the mixer? This is the output side: monitors and in-ears on stage, the PA for the room, and the amplifiers in between."
+      }
+    },
+    {
+      "id": "mixing-station",
+      "file": "guides/mixing-station.json",
+      "bereiche": ["sound"],
+      "updated": "Juni 2026",
+      "title": { "de": "Mixing Station — Kurzanleitung", "en": "Mixing Station — Quick Guide" },
+      "subtitle": { "de": "Das Pult per Tablet oder Handy fernsteuern", "en": "Remote-control the console from a tablet or phone" },
+      "intro": {
+        "de": "Mit Mixing Station steuerst du das Mischpult per Tablet, Handy oder Laptop fern. Du kannst z. B. deinen eigenen Monitor-Mix direkt auf der Bühne einstellen — oder mit vollem Zugriff den ganzen Mix fahren. Die App spielt selbst keinen Ton ab; sie steuert nur das Pult.",
+        "en": "With Mixing Station you remote-control the mixing console from a tablet, phone or laptop. For example, you can adjust your own monitor mix right on stage — or run the whole mix with full access. The app doesn't play any audio itself; it only controls the console."
+      }
+    },
+    {
+      "id": "projection-equipment",
+      "file": "guides/projection-equipment.json",
+      "bereiche": ["projection"],
+      "updated": "Juni 2026",
+      "title": { "de": "Projection — Equipment-Übersicht", "en": "Projection — Equipment Overview" },
+      "subtitle": { "de": "Für das Projection-Team", "en": "For the Projection team" },
+      "intro": {
+        "de": "Warum haben wir welches Gerät — und wofür setzen wir es ein? Dieses Dokument erklärt unsere Kern-Hardware am Projection-Platz. Ziel: Jeder versteht, was wir haben, warum, und wann man was nimmt — auch ohne tiefes Technikwissen.",
+        "en": "Why do we have which device — and what do we use it for? This document explains our core hardware at the projection station. Goal: everyone understands what we have, why, and when to use what — even without deep technical knowledge."
+      }
+    }
+  ]
+}

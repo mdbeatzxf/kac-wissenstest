@@ -24,6 +24,25 @@ Tech: Vanilla HTML/CSS/JS (Variante A, kein Build). Läuft auf jedem Static-Host
 - **Ergebnis:** Score in % + bestanden/nicht bestanden (Default 80 %).
   Datensatz wird ans Google Sheet gepostet (und lokal als Fallback gesichert).
 
+### Startseite: Checkliste · Lernen · Test
+
+Nach dem Öffnen erscheint ein Menü mit drei Einträgen:
+
+- **01 · Checkliste** — die Auf-/Abbau-Checkliste (aus dem Guide `rollen-ablauf`)
+  mit abhakbaren Punkten, die im Browser gespeichert bleiben. Welcher Guide hier
+  erscheint, steuert `CONFIG.CHECKLIST_GUIDE` in `app.js`.
+- **02 · Lernen** — frei zugänglicher Lernbereich (**kein Login nötig**): Guides zu
+  Rollen & Ablauf, Signalen/Kabeln, Patchlist, Mischpult, PA/Monitoren, Mixing
+  Station und Projection-Equipment. Inhalte stehen in `learn.json` + `guides/*.json`.
+- **03 · Test** — der Wissens-Test (Login → Projection/Sound → Quiz → Ergebnis).
+
+### Bilder in den Guides
+
+Bild-Stellen in den Guides nutzen die `<image-slot>`-Komponente (`image-slot.js`).
+Ohne Bild zeigen sie eine beschriftete Platzhalter-Box (nichts bricht). Ein echtes
+Bild hinterlegst du, indem du im jeweiligen `figure`-Block in `guides/*.json` ein
+Feld `"image": "images/dateiname.jpg"` ergänzt (Datei in den Ordner `images/` legen).
+
 ### Drei Frage-Pools, zwei Tests
 
 In `questions.json` liegen die Fragen in drei Pools, jede Frage hat ein Feld
@@ -182,10 +201,16 @@ der Schlüssel nie im Browser.
 ```
 kac-wissenstest/
 ├─ README.md
-├─ questions.json          # Fragen (3 Pools) + Teilnehmer + Tests + Konfig (meta.bewertung)
-├─ index.html              # SPA-Shell (lädt styles.css + app.js)
-├─ app.js                  # komplette Logik (Login, Mischen, Timer, Scoring, Speichern, DE/EN)
+├─ questions.json          # Test-Fragen (3 Pools) + Teilnehmer + Tests + Konfig (meta.bewertung)
+├─ index.html              # SPA-Shell (lädt image-slot.js, styles.css + app.js)
+├─ app.js                  # komplette Logik (Home, Checkliste, Lernen, Login, Quiz, Scoring, DE/EN)
 ├─ styles.css              # Design (Swiss-/Typographic-Look)
+├─ image-slot.js           # <image-slot>-Komponente (Bild-Platzhalter in Guides)
+├─ learn.json              # Lernbereich: Liste der Guides (Titel, Bereiche, Intro)
+├─ guides/                 # je Guide eine JSON-Datei (Abschnitte, Checklisten, Bilder)
+│  ├─ rollen-ablauf.json   #   ← liefert die Checkliste (Home-Eintrag 01)
+│  ├─ signals-cables.json  ├─ patchlist.json        ├─ operating-mixer.json
+│  ├─ pa-monitors.json     ├─ mixing-station.json   └─ projection-equipment.json
 ├─ apps-script/
 │  └─ Code.gs              # Google Apps Script (Sheet-Endpoint)
 └─ pdfs/                   # (optional) Quell-PDFs als Referenz

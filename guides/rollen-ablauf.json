@@ -1,0 +1,182 @@
+{
+  "sections": [
+    {
+      "tag": "projection",
+      "title": { "de": "Projection — Aufbau", "en": "Projection — Setup" },
+      "intro": {
+        "de": "Beim Projection-Platz läuft der Aufbau in einer festen Reihenfolge — eine Person kann das komplett übernehmen:",
+        "en": "At the projection station the setup follows a fixed order — one person can handle it completely:"
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            { "de": "Dock an die jeweiligen Bildschirme anschließen.", "en": "Connect the dock to the respective screens." },
+            { "de": "Verbindungsart festlegen (z. B. HDMI) — je nach Bildschirm.", "en": "Choose the connection type (e.g. HDMI) — depending on the screen." },
+            { "de": "Strom an den Dock anschließen.", "en": "Connect power to the dock." },
+            { "de": "Dock mit dem Laptop verbinden.", "en": "Connect the dock to the laptop." },
+            { "de": "Erst jetzt den Laptop einschalten.", "en": "Only now switch the laptop on." },
+            { "de": "ProPresenter öffnen.", "en": "Open ProPresenter." },
+            { "de": "Bildschirme prüfen — richtiges Bild auf dem richtigen Screen.", "en": "Check the screens — right image on the right screen." },
+            { "de": "In ProPresenter alles für den Gottesdienst vorbereiten — fertig.", "en": "Prepare everything for the service in ProPresenter — done." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Reihenfolge zählt: erst alles anschließen (Dock → Bildschirme → Strom → Laptop), dann den Laptop einschalten.",
+            "en": "Order matters: connect everything first (dock → screens → power → laptop), then switch the laptop on."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Sound — Aufbau (Positionen)", "en": "Sound — Setup (positions)" },
+      "intro": {
+        "de": "Der Sound-Aufbau passiert an mehreren Positionen gleichzeitig. Jede Position hat ihren festen Bereich:",
+        "en": "The sound setup happens at several positions at the same time. Each position has its own area:"
+      },
+      "blocks": [
+        {
+          "type": "positions",
+          "items": [
+            {
+              "name": { "de": "Lokal am Mischpult", "en": "Local at the mixer" },
+              "who": { "de": "1 Person", "en": "1 person" },
+              "desc": { "de": "Alles anschließen, was direkt ans Mischpult kommt.", "en": "Connect everything that goes directly to the mixer." },
+              "items": [
+                { "de": "Mischpult mit Strom verbunden und eingeschaltet", "en": "Mixer connected to power and switched on" },
+                { "de": "Funkmikrofone: Empfänger angeschlossen, Akkus/Batterien geprüft, Kanäle/Frequenzen ok", "en": "Wireless mics: receivers connected, batteries checked, channels/frequencies ok" },
+                { "de": "Bluetooth-Receiver angeschlossen und gekoppelt", "en": "Bluetooth receiver connected and paired" },
+                { "de": "Recording-Material angeschlossen (Recording-Laptop oder USB-Stick)", "en": "Recording gear connected (recording laptop or USB stick)" },
+                { "de": "Aufnahme-Test: Signal kommt an, Aufnahme läuft", "en": "Recording test: signal arrives, recording runs" },
+                { "de": "Musik bereit", "en": "Music ready" }
+              ]
+            },
+            {
+              "name": { "de": "PA & alles, was rausgeht", "en": "PA & everything going out" },
+              "who": { "de": "2 Personen", "en": "2 people" },
+              "desc": { "de": "PA-Anlage und Monitore aufbauen und verkabeln — inkl. Verstärker und Strom.", "en": "Set up and cable the PA and monitors — incl. amplifiers and power." },
+              "items": [
+                { "de": "Tops und Subs aufgestellt und sicher positioniert", "en": "Tops and subs set up and safely positioned" },
+                { "de": "Aktiv/Passiv geklärt: passiv → Endstufe dazwischen; aktiv → Strom direkt an die Box", "en": "Active/passive clarified: passive → power amp in between; active → power straight to the box" },
+                { "de": "Endstufen/Verstärker mit Strom und Signal verbunden", "en": "Power amps/amplifiers connected to power and signal" },
+                { "de": "Signalwege vom Pult/Stagebox zur PA verlegt", "en": "Signal paths run from the mixer/stagebox to the PA" },
+                { "de": "Monitore aufgestellt und angeschlossen", "en": "Monitors set up and connected" },
+                { "de": "Gesamte Verkabelung inkl. Strom sauber verlegt (Stolperfallen abgeklebt)", "en": "All cabling incl. power run tidily (trip hazards taped down)" },
+                { "de": "Kurztest: Signal kommt auf PA und Monitoren an", "en": "Quick test: signal reaches the PA and monitors" }
+              ]
+            },
+            {
+              "name": { "de": "Instrumente nach Patchliste", "en": "Instruments per patch list" },
+              "who": { "de": "nach Patchliste", "en": "per patch list" },
+              "desc": { "de": "Alle Instrumente nach aktueller Patchliste anschließen.", "en": "Connect all instruments per the current patch list." },
+              "items": [
+                { "de": "Patchliste bereit und aktuell", "en": "Patch list ready and up to date" }
+              ],
+              "sub": [
+                {
+                  "name": { "de": "Keyboard", "en": "Keyboard" },
+                  "items": [ { "de": "Nach Patchliste angeschlossen (Stereo/DI), Strom ok", "en": "Connected per patch list (stereo/DI), power ok" } ]
+                },
+                {
+                  "name": { "de": "Bass", "en": "Bass" },
+                  "items": [ { "de": "Nach Patchliste angeschlossen (DI oder Amp)", "en": "Connected per patch list (DI or amp)" } ]
+                },
+                {
+                  "name": { "de": "Drums", "en": "Drums" },
+                  "items": [
+                    { "de": "Mikrofone nach Patchliste gesetzt", "en": "Mics placed per patch list" },
+                    { "de": "Alle Drum-Kanäle geprüft", "en": "All drum channels checked" },
+                    { "de": "Jeder Kanal liegt am richtigen Eingang (lokal/Stagebox)", "en": "Every channel is on the right input (local/stagebox)" }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": { "de": "Alles andere", "en": "Everything else" },
+              "who": { "de": "Mikros · In-Ears · Crowd-Mics", "en": "Mics · in-ears · crowd mics" },
+              "desc": { "de": "Restliche Mikrofone, In-Ears und Crowd-Mics anschließen.", "en": "Connect the remaining mics, in-ears and crowd mics." },
+              "items": [
+                { "de": "Kabelmikrofone nach Patchliste angeschlossen (Gesang/Sprecher)", "en": "Wired mics connected per patch list (vocals/speakers)" },
+                { "de": "In-Ears: Sender/Beltpacks bereit, Kanäle ok, Akkus geprüft", "en": "In-ears: transmitters/beltpacks ready, channels ok, batteries checked" },
+                { "de": "Crowd-Mics platziert und angeschlossen", "en": "Crowd mics placed and connected" },
+                { "de": "Funktionstest aller Mikrofone und In-Ears", "en": "Function test of all mics and in-ears" }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Instrumente und Mikrofone immer nach der aktuellen Patchliste anschließen.",
+            "en": "Always connect instruments and mics per the current patch list."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": { "de": "Sound — während des Gottesdienstes", "en": "Sound — during the service" },
+      "intro": {
+        "de": "Im Gottesdienst verteilen sich die Aufgaben idealerweise so:",
+        "en": "During the service the tasks are ideally split like this:"
+      },
+      "blocks": [
+        {
+          "type": "roles",
+          "items": [
+            {
+              "name": { "de": "FOH — Front of House", "en": "FOH — Front of House" },
+              "items": [
+                { "de": "Mischt den Saal-Sound für die Gemeinde.", "en": "Mixes the room sound for the congregation." },
+                { "de": "Behält Pegel, Mix und Master im Blick.", "en": "Keeps an eye on level, mix and master." }
+              ]
+            },
+            {
+              "name": { "de": "Monitor", "en": "Monitor" },
+              "hint": { "de": "Ziel: eigene Position", "en": "goal: its own position" },
+              "items": [
+                { "de": "Überwacht die In-Ear-/Monitor-Mixe.", "en": "Watches the in-ear/monitor mixes." },
+                { "de": "Sorgt dafür, dass sich die Sänger gut hören — Anpassung meist über iPad.", "en": "Makes sure the singers hear themselves well — usually adjusted via iPad." }
+              ]
+            },
+            {
+              "name": { "de": "Recording", "en": "Recording" },
+              "hint": { "de": "je nach Location", "en": "depending on location" },
+              "items": [
+                { "de": "Je nach Location übernimmt eine der Personen die Aufnahme.", "en": "Depending on the location, one of the people handles the recording." },
+                { "de": "Wer das ist, ist von Location zu Location unterschiedlich.", "en": "Who that is varies from location to location." }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "",
+      "title": { "de": "Abbau", "en": "Teardown" },
+      "intro": {
+        "de": "Beim Abbau genau umgekehrt: Jede Person baut das ab, was sie aufgebaut hat.",
+        "en": "Teardown is the exact reverse: each person packs down what they set up."
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Wir beginnen immer gleichzeitig mit dem Abbau — außer es ist anders abgesprochen.", "en": "We always start teardown at the same time — unless agreed otherwise." },
+            { "de": "Wir gehen erst, wenn alle fertig sind.", "en": "We only leave when everyone is finished." }
+          ]
+        },
+        {
+          "type": "closing",
+          "text": {
+            "de": "Jeder baut seinen Bereich ab. Gemeinsam anfangen, gemeinsam fertig werden.",
+            "en": "Everyone packs down their own area. Start together, finish together."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -23,8 +23,14 @@ const CONFIG = {
     bestehensgrenzeProzent: null, // z. B. 70
   },
 
+  QUESTIONS_FILE_LEARN: 'learn.json',
+
+  // Guide-ID, die zusätzlich als eigener "Checkliste"-Eintrag auf der Startseite erscheint.
+  CHECKLIST_GUIDE: 'rollen-ablauf',
+
   STORAGE_KEY_LANG: 'tt_lang',
   STORAGE_KEY_RESULTS: 'tt_results',
+  STORAGE_KEY_CHECK: 'tt_check',
 };
 
 /* ------------------------------------------------------------------
@@ -32,6 +38,26 @@ const CONFIG = {
    ------------------------------------------------------------------ */
 const I18N = {
   de: {
+    brand: 'KAC Production Team',
+    home_kicker: 'Production Team · Sound & Projection',
+    home_intro: 'Lerne die Abläufe und teste dein Wissen.',
+    home_learn: 'Lernen',
+    home_learn_sub: 'Abläufe, Rollen & Checklisten zum Nachlesen',
+    home_test: 'Test',
+    home_test_sub: 'Wissens-Check für Projection & Sound',
+    home_check: 'Checkliste',
+    home_check_sub: 'Auf- & Abbau zum Abhaken',
+    learn_kicker: 'Lernbereich',
+    learn_title: 'Lernen',
+    learn_intro: 'Anleitungen und Checklisten für das Team. Frei zugänglich — kein Login nötig.',
+    learn_empty: 'Aktuell sind keine Inhalte hinterlegt.',
+    back: 'Zurück',
+    back_home: 'Startseite',
+    back_learn: 'Lernbereich',
+    updated: 'Stand',
+    to_test: 'Wissen testen',
+    reset_checks: 'Haken zurücksetzen',
+    section_of: (x, y) => `Abschnitt ${x} / ${y}`,
     login_kicker: 'Production Team · Wissens-Test',
     login_title: 'Projection\n&\nSound',
     login_intro: 'Melde dich mit deinem Namen an, um deinen Test zu starten.',
@@ -73,6 +99,26 @@ const I18N = {
     of: 'von',
   },
   en: {
+    brand: 'KAC Production Team',
+    home_kicker: 'Production Team · Sound & Projection',
+    home_intro: 'Learn the workflows and test your knowledge.',
+    home_learn: 'Learn',
+    home_learn_sub: 'Workflows, roles & checklists to read up on',
+    home_test: 'Test',
+    home_test_sub: 'Knowledge check for Projection & Sound',
+    home_check: 'Checklist',
+    home_check_sub: 'Setup & teardown to tick off',
+    learn_kicker: 'Learning area',
+    learn_title: 'Learn',
+    learn_intro: 'Guides and checklists for the team. Freely accessible — no login needed.',
+    learn_empty: 'No content available yet.',
+    back: 'Back',
+    back_home: 'Home',
+    back_learn: 'Learning area',
+    updated: 'Updated',
+    to_test: 'Test your knowledge',
+    reset_checks: 'Reset checkmarks',
+    section_of: (x, y) => `Section ${x} / ${y}`,
     login_kicker: 'Production Team · Knowledge Test',
     login_title: 'Projection\n&\nSound',
     login_intro: 'Sign in with your name to start your test.',
@@ -120,6 +166,9 @@ const I18N = {
    ------------------------------------------------------------------ */
 const state = {
   data: null,
+  learn: null,
+  currentGuide: null,
+  guideFrom: 'learn',  // 'home' (über Checkliste) | 'learn' (über Lernbereich)
   rules: null,        // effective bewertung
   lang: CONFIG.DEFAULT_LANG,
   participant: null,  // matched teilnehmer
@@ -197,7 +246,10 @@ langToggle.addEventListener('click', () => {
 /* Re-render the current screen live (used by language switch) */
 let currentScreen = 'boot';
 function rerenderCurrent() {
-  if (currentScreen === 'login') renderLogin(true);
+  if (currentScreen === 'home') renderHome();
+  else if (currentScreen === 'learn') renderLearnHome();
+  else if (currentScreen === 'guide') renderGuide(state.currentGuide, true);
+  else if (currentScreen === 'login') renderLogin(true);
   else if (currentScreen === 'select') renderSelect();
   else if (currentScreen === 'quiz') updateQuizTexts();   // keep timer running
   else if (currentScreen === 'result') renderResult(state._lastResult);
@@ -234,7 +286,59 @@ async function boot() {
     punkteProFrage: b.punkteProFrage,
   };
 
-  renderLogin();
+  // Learning content (optional — site still works without it)
+  try {
+    const lr = await fetch(CONFIG.QUESTIONS_FILE_LEARN, { cache: 'no-store' });
+    if (lr.ok) state.learn = await lr.json();
+  } catch (e) { state.learn = null; }
+
+  renderHome();
+}
+
+/* ------------------------------------------------------------------
+   6b) SCREEN: HOME  ·  zwei Wege: Lernen / Test
+   ------------------------------------------------------------------ */
+function renderHome() {
+  currentScreen = 'home';
+  const L = t();
+  const guides = (state.learn && state.learn.guides) || [];
+  const hasLearn = guides.length > 0;
+  const hasCheck = hasLearn && guides.some(g => g.id === CONFIG.CHECKLIST_GUIDE);
+
+  // Reihenfolge: 01 Checkliste · 02 Lernen · 03 Test (Einträge fallen weg, wenn nicht vorhanden)
+  const rows = [];
+  if (hasCheck) rows.push({ id: 'goCheck', name: L.home_check, sub: L.home_check_sub });
+  if (hasLearn) rows.push({ id: 'goLearn', name: L.home_learn, sub: L.home_learn_sub });
+  rows.push({ id: 'goTest', name: L.home_test, sub: L.home_test_sub });
+
+  const rowsHTML = rows.map((r, i) => `
+        <button class="test-row" type="button" id="${r.id}">
+          <span class="idx mono">${String(i + 1).padStart(2, '0')}</span>
+          <span>
+            <span class="name">${escapeHTML(r.name)}</span><br>
+            <span class="meta">${escapeHTML(r.sub)}</span>
+          </span>
+          <span class="arrow">→</span>
+        </button>`).join('');
+
+  app.innerHTML = `
+    <section class="screen">
+      <div class="kicker">${escapeHTML(L.home_kicker)}</div>
+      <h1 class="display">Projection<br>&amp; Sound</h1>
+      <p style="margin:20px 0 0;color:var(--ink-soft)">${escapeHTML(L.home_intro)}</p>
+      <div class="test-list">${rowsHTML}
+      </div>
+      <div class="spacer"></div>
+      <div class="brandline mono">${escapeHTML(L.brand)}</div>
+    </section>`;
+
+  const gc = document.getElementById('goCheck');
+  if (gc) gc.addEventListener('click', () => { state.guideFrom = 'home'; renderGuide(CONFIG.CHECKLIST_GUIDE); });
+  const gl = document.getElementById('goLearn');
+  if (gl) gl.addEventListener('click', () => renderLearnHome());
+  document.getElementById('goTest').addEventListener('click', () => {
+    state.participant ? renderSelect() : renderLogin();
+  });
 }
 
 /* ------------------------------------------------------------------
@@ -249,6 +353,7 @@ function renderLogin(keepValues = false) {
 
   app.innerHTML = `
     <section class="screen">
+      <button class="backlink" id="loginBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_home)}</button>
       <div class="kicker">${escapeHTML(L.login_kicker)}</div>
       <h1 class="display">${title}</h1>
       <p style="margin:20px 0 0;color:var(--ink-soft);max-width:34ch">${escapeHTML(L.login_intro)}</p>
@@ -275,6 +380,7 @@ function renderLogin(keepValues = false) {
     </section>`;
 
   document.getElementById('loginForm').addEventListener('submit', onLogin);
+  document.getElementById('loginBack').addEventListener('click', () => renderHome());
 }
 
 function showNotice(msg) {
@@ -343,7 +449,256 @@ function renderSelect() {
     b.addEventListener('click', () => startQuiz(b.dataset.test)));
   document.getElementById('logoutBtn').addEventListener('click', () => {
     state.participant = null;
-    renderLogin();
+    renderHome();
+  });
+}
+
+/* ------------------------------------------------------------------
+   8b) LERNBEREICH  ·  LEARNING AREA
+   ------------------------------------------------------------------ */
+function tagLabel(tag) {
+  if (tag === 'projection') return state.data?.tests?.projection?.label || 'Projection';
+  if (tag === 'sound') return state.data?.tests?.sound?.label || 'Sound';
+  return '';
+}
+
+function renderLearnHome() {
+  currentScreen = 'learn';
+  const L = t();
+  const guides = (state.learn && state.learn.guides) || [];
+  const lang = state.lang;
+  const tx = (o) => o ? (o[lang] ?? o.de ?? '') : '';
+
+  let rows;
+  if (!guides.length) {
+    rows = `<p class="notice" style="animation:none">${escapeHTML(L.learn_empty)}</p>`;
+  } else {
+    rows = '<div class="test-list">' + guides.map((g, i) => {
+      const tags = (g.bereiche || []).map(tagLabel).filter(Boolean).join(' · ');
+      return `
+        <button class="test-row" type="button" data-guide="${escapeHTML(g.id)}">
+          <span class="idx mono">${String(i + 1).padStart(2, '0')}</span>
+          <span>
+            <span class="name name--sm">${escapeHTML(tx(g.title))}</span><br>
+            <span class="meta">${escapeHTML(tags)}</span>
+          </span>
+          <span class="arrow">→</span>
+        </button>`;
+    }).join('') + '</div>';
+  }
+
+  app.innerHTML = `
+    <section class="screen">
+      <button class="backlink" id="learnBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_home)}</button>
+      <div class="kicker">${escapeHTML(L.learn_kicker)}</div>
+      <h1 class="display">${escapeHTML(L.learn_title)}</h1>
+      <p style="margin:20px 0 0;color:var(--ink-soft);max-width:40ch">${escapeHTML(L.learn_intro)}</p>
+      ${rows}
+      <div class="spacer"></div>
+      <div class="brandline mono">${escapeHTML(L.brand)}</div>
+    </section>`;
+
+  document.getElementById('learnBack').addEventListener('click', () => renderHome());
+  app.querySelectorAll('.test-row[data-guide]').forEach(b =>
+    b.addEventListener('click', () => { state.guideFrom = 'learn'; renderGuide(b.dataset.guide); }));
+}
+
+/* --- checklist persistence --- */
+function checkKey(guideId) { return CONFIG.STORAGE_KEY_CHECK + ':' + guideId; }
+function loadChecks(guideId) {
+  try { return JSON.parse(localStorage.getItem(checkKey(guideId)) || '{}'); } catch (e) { return {}; }
+}
+function saveChecks(guideId, obj) {
+  try { localStorage.setItem(checkKey(guideId), JSON.stringify(obj)); } catch (e) {}
+}
+
+/* --- lazy load a guide's sections (inline or from its own file) --- */
+const guideCache = {};
+async function loadGuideSections(g) {
+  if (guideCache[g.id]) return guideCache[g.id];
+  if (Array.isArray(g.sections)) { guideCache[g.id] = g.sections; return g.sections; }
+  if (g.file) {
+    try {
+      const r = await fetch(g.file, { cache: 'no-store' });
+      if (r.ok) { const j = await r.json(); guideCache[g.id] = j.sections || []; return guideCache[g.id]; }
+    } catch (e) {}
+  }
+  guideCache[g.id] = [];
+  return [];
+}
+
+/* --- one tickable checklist item --- */
+function makeCheck(id, label, checks) {
+  const on = checks[id] ? ' is-on' : '';
+  return `<button class="check${on}" type="button" data-cid="${escapeHTML(id)}">
+      <span class="check-box">${checks[id] ? '✓' : ''}</span>
+      <span class="check-label">${escapeHTML(label)}</span>
+    </button>`;
+}
+
+/* --- render one content block to HTML --- */
+function renderBlock(b, ctx) {
+  const { tx, checks, guideId, path } = ctx;
+  switch (b.type) {
+    case 'text':
+      return `<p class="g-text">${escapeHTML(tx(b.text))}</p>`;
+    case 'lead':
+      return `<p class="g-lead">${escapeHTML(tx(b.text))}</p>`;
+    case 'sub': {
+      let h = `<div class="g-sub"><h3 class="g-sub-title">${escapeHTML(tx(b.title))}</h3>`;
+      if (b.text) h += `<p class="g-text">${escapeHTML(tx(b.text))}</p>`;
+      if (b.items) h += '<ul class="bullets">' + b.items.map(it => `<li>${escapeHTML(tx(it))}</li>`).join('') + '</ul>';
+      return h + '</div>';
+    }
+    case 'bullets':
+      return '<ul class="bullets">' + (b.items || []).map(it => `<li>${escapeHTML(tx(it))}</li>`).join('') + '</ul>';
+    case 'steps':
+      return '<ol class="steps">' + (b.items || []).map(it => `<li><span class="step-text">${escapeHTML(tx(it))}</span></li>`).join('') + '</ol>';
+    case 'check':
+      return '<div class="checks">' + (b.items || []).map((it, i) => makeCheck(path + 'i' + i, tx(it), checks)).join('') + '</div>';
+    case 'positions':
+      return '<div class="poslist">' + (b.items || []).map((p, pi) => {
+        const items = (p.items || []).map((it, ii) => makeCheck(path + 'p' + pi + 'i' + ii, tx(it), checks)).join('');
+        const subs = (p.sub || []).map((s, sj) => `
+          <div class="subpos">
+            <div class="subpos-name mono">${escapeHTML(tx(s.name))}</div>
+            <div class="checks">${(s.items || []).map((it, ii) => makeCheck(path + 'p' + pi + 's' + sj + 'i' + ii, tx(it), checks)).join('')}</div>
+          </div>`).join('');
+        return `<div class="poscard">
+            <div class="pos-head">
+              <span class="pos-idx mono">P${pi + 1}</span>
+              <span class="pos-name">${escapeHTML(tx(p.name))}</span>
+              ${p.who ? `<span class="pos-who mono">${escapeHTML(tx(p.who))}</span>` : ''}
+            </div>
+            ${p.desc ? `<p class="pos-desc">${escapeHTML(tx(p.desc))}</p>` : ''}
+            <div class="checks">${items}</div>
+            ${subs}
+          </div>`;
+      }).join('') + '</div>';
+    case 'roles':
+      return '<div class="rolelist">' + (b.items || []).map(r => `
+        <div class="rolecard">
+          <div class="role-head">
+            <span class="role-name">${escapeHTML(tx(r.name))}</span>
+            ${r.hint ? `<span class="role-hint mono">${escapeHTML(tx(r.hint))}</span>` : ''}
+          </div>
+          <ul class="bullets">${(r.items || []).map(it => `<li>${escapeHTML(tx(it))}</li>`).join('')}</ul>
+        </div>`).join('') + '</div>';
+    case 'table': {
+      const head = '<tr>' + (b.head || []).map(h => `<th>${escapeHTML(tx(h))}</th>`).join('') + '</tr>';
+      const rows = (b.rows || []).map(r => '<tr>' + r.map(c => `<td>${escapeHTML(tx(c))}</td>`).join('') + '</tr>').join('');
+      return `<div class="g-tablewrap"><table class="g-table"><thead>${head}</thead><tbody>${rows}</tbody></table></div>`;
+    }
+    case 'figure': {
+      const sid = 'fig-' + guideId + '-' + path;
+      const cap = escapeHTML(tx(b.caption));
+      const ar = b.aspect || '16 / 10';
+      // Echtes Bild: optionales Feld "image" am figure-Block (z. B. "images/dock.jpg").
+      const imgSrc = b.image ? ` src="${escapeHTML(b.image)}"` : '';
+      return `<figure class="g-fig">
+          <image-slot id="${sid}" class="g-slot" placeholder="${cap}" shape="rect"${imgSrc} style="width:100%;aspect-ratio:${ar}"></image-slot>
+          <figcaption class="g-figcap mono">${cap}</figcaption>
+        </figure>`;
+    }
+    case 'note':
+      return `<div class="callout"><span class="callout-mark mono">!</span><span>${escapeHTML(tx(b.text))}</span></div>`;
+    case 'closing':
+      return `<p class="sec-closing">${escapeHTML(tx(b.text))}</p>`;
+    default:
+      return '';
+  }
+}
+
+function guideShell(g, tags, L, tx, bodyHTML) {
+  return `
+    <section class="screen guide">
+      <button class="backlink" id="guideBack" type="button"><span class="backarrow">←</span> ${escapeHTML(state.guideFrom === 'home' ? L.back_home : L.back_learn)}</button>
+      <div class="kicker">${escapeHTML(tags)}</div>
+      <h1 class="display guide-title">${escapeHTML(tx(g.title))}</h1>
+      <p class="guide-sub">${escapeHTML(tx(g.subtitle))}</p>
+      ${g.updated ? `<div class="guide-meta mono">${escapeHTML(L.updated)}: ${escapeHTML(g.updated)}</div>` : ''}
+      <p class="guide-intro">${escapeHTML(tx(g.intro))}</p>
+      <div class="hairline" style="margin:8px 0 30px"></div>
+      <div id="guideBody">${bodyHTML}</div>
+      <div class="guide-foot">
+        <button class="linkbtn" id="resetChecks" type="button">${escapeHTML(L.reset_checks)}</button>
+        <button class="btn" id="guideToTest" type="button"><span>${escapeHTML(L.to_test)}</span><span class="arrow">→</span></button>
+      </div>
+      <div class="spacer"></div>
+      <div class="brandline mono">${escapeHTML(L.brand)}</div>
+    </section>`;
+}
+
+async function renderGuide(guideId, keepScroll = false) {
+  const guides = (state.learn && state.learn.guides) || [];
+  const g = guides.find(x => x.id === guideId);
+  if (!g) { renderLearnHome(); return; }
+  currentScreen = 'guide';
+  state.currentGuide = guideId;
+  const L = t();
+  const lang = state.lang;
+  const tx = (o) => o ? (o[lang] ?? o.de ?? '') : '';
+  const scrollY = keepScroll ? window.scrollY : 0;
+  const tags = (g.bereiche || []).map(tagLabel).filter(Boolean).join(' · ');
+  const hasChecks = () => app.querySelector('.check');
+
+  // 1) paint header immediately with a loading line
+  app.innerHTML = guideShell(g, tags, L, tx, `<div class="g-loading mono">…</div>`);
+  wireGuideChrome(guideId);
+
+  // 2) load sections (inline or lazily from file) and render the body
+  const sections = await loadGuideSections(g);
+  if (currentScreen !== 'guide' || state.currentGuide !== guideId) return; // navigated away
+  const checks = loadChecks(guideId);
+
+  let html = '';
+  sections.forEach((sec, si) => {
+    const tagBadge = sec.tag ? `<span class="sec-tag mono">${escapeHTML(tagLabel(sec.tag))}</span>` : '';
+    html += `<div class="guide-sec">
+      <div class="sec-head">
+        <span class="sec-num mono">${String(si + 1).padStart(2, '0')}</span>
+        <h2 class="sec-title">${escapeHTML(tx(sec.title))}</h2>
+        ${tagBadge}
+      </div>`;
+    if (sec.intro) html += `<p class="sec-intro">${escapeHTML(tx(sec.intro))}</p>`;
+    (sec.blocks || []).forEach((b, bi) => {
+      html += renderBlock(b, { tx, checks, guideId, path: 's' + si + 'b' + bi });
+    });
+    html += '</div>';
+  });
+
+  const body = document.getElementById('guideBody');
+  if (body) body.innerHTML = html || `<p class="g-text">${escapeHTML(L.learn_empty)}</p>`;
+
+  // hide reset button if this guide has no checklists
+  const resetBtn = document.getElementById('resetChecks');
+  if (resetBtn && !hasChecks()) resetBtn.style.display = 'none';
+
+  // wire checklist toggles
+  app.querySelectorAll('.check').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.cid;
+      const c = loadChecks(guideId);
+      c[id] = !c[id];
+      saveChecks(guideId, c);
+      btn.classList.toggle('is-on', !!c[id]);
+      btn.querySelector('.check-box').textContent = c[id] ? '✓' : '';
+    });
+  });
+
+  if (keepScroll) window.scrollTo(0, scrollY);
+}
+
+function wireGuideChrome(guideId) {
+  document.getElementById('guideBack').addEventListener('click', () => {
+    state.guideFrom === 'home' ? renderHome() : renderLearnHome();
+  });
+  document.getElementById('guideToTest').addEventListener('click', () => {
+    state.participant ? renderSelect() : renderLogin();
+  });
+  document.getElementById('resetChecks').addEventListener('click', () => {
+    saveChecks(guideId, {});
+    renderGuide(guideId, true);
   });
 }
 
@@ -631,7 +986,7 @@ function renderResult(r) {
 
   document.getElementById('homeBtn').addEventListener('click', () => {
     state._saveState = null;
-    state.participant ? renderSelect() : renderLogin();
+    renderHome();
   });
 }
 
