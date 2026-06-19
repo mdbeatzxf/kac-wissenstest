@@ -38,14 +38,14 @@ function doPost(e) {
       data.zeitstempel || new Date().toISOString(),
       data.vorname || "",
       data.nachname || "",
-      data.testLabel || data.bereich || "",
+      data.testLabel || data.test || data.bereich || "",
       data.richtig != null ? data.richtig : "",
       data.gesamt != null ? data.gesamt : "",
       data.prozent != null ? data.prozent : "",
       data.bestanden ? "JA" : "NEIN",
       data.sprache || "",
       data.tabWechsel != null ? data.tabWechsel : 0,
-      JSON.stringify(data.proFrage || []),
+      JSON.stringify(data.fragen || data.proFrage || []),
     ]);
 
     return json({ ok: true });

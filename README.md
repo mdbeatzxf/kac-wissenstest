@@ -112,18 +112,18 @@ Eine Frage in den passenden Pool-Array (`pools.projection` / `pools.production`
    - Zugriff: **Jeder** (damit die Seite anonym posten darf)
    - **Bereitstellen** klicken, Zugriff autorisieren.
 5. Die **Web-App-URL** (endet auf `/exec`) kopieren.
-6. In `src/config.js` eintragen:
+6. Oben in `app.js` im `CONFIG`-Block eintragen:
 
    ```js
-   appsScriptUrl: "https://script.google.com/macros/s/XXXX/exec",
+   SAVE_URL: "https://script.google.com/macros/s/XXXX/exec",
    ```
 
 7. Fertig: Beim Beenden eines Tests wird eine Zeile ins Tabellenblatt
    **„Ergebnisse"** geschrieben (Spalten: Zeitstempel, Vorname, Nachname, Test,
    Richtig, Gesamt, Prozent, Bestanden, Sprache, Tab-Wechsel, Details-JSON).
 
-> Lässt du `appsScriptUrl` leer, läuft alles trotzdem – Ergebnisse werden dann
-> nur lokal im Browser (`localStorage`, Key `kac_ergebnisse`) gesichert.
+> Lässt du `SAVE_URL` leer, läuft alles trotzdem – Ergebnisse werden dann
+> nur lokal im Browser (`localStorage`, Key `tt_results`) gesichert.
 > Bei jeder Änderung am Script: **neue Bereitstellung** bzw. „Bereitstellung
 > verwalten → Bearbeiten → Neue Version".
 
@@ -136,21 +136,27 @@ Es sind nur statische Dateien – einfach den ganzen Ordner hochladen:
 - **Netlify / Cloudflare Pages:** Ordner per Drag-&-Drop hochladen, fertig.
 - **GitHub Pages:** Repo pushen, Pages auf den Branch/Root zeigen lassen.
 
-Wichtig: `questions.json`, `index.html`, `quiz.html`, `result.html` und der
-`src/`-Ordner müssen zusammen im selben Verzeichnis liegen.
+Wichtig: `index.html`, `app.js`, `styles.css` und `questions.json` müssen
+zusammen im selben Verzeichnis liegen.
 
 ---
 
-## 7. Konfiguration (`src/config.js`)
+## 7. Konfiguration
 
-| Einstellung               | Default | Bedeutung                                              |
-| ------------------------- | ------- | ------------------------------------------------------ |
-| `appsScriptUrl`           | `""`    | Apps-Script-/exec-URL fürs Sheet (leer = nur lokal)    |
-| `sekundenProFrage`        | `45`    | Timer pro Frage                                        |
-| `bestehensgrenzeProzent`  | `80`    | ab wie viel % „bestanden"                              |
-| `fragenProSitzung`        | `10`    | Fragen pro Sitzung; `null`/`0` = **alle** Fragen       |
-| `antiCheat.*`             | an      | Mischen, Tab-Wechsel zählen, Rechtsklick/Auswahl sperren |
-| `standardSprache`         | `"de"`  | `"de"` oder `"en"`                                     |
+**Timer, Fragenzahl und Bestehensgrenze** stehen in `questions.json` unter
+`meta.bewertung` (aktuell: 45 Sek., 10 Fragen, 80 %).
+
+Alles Weitere oben in `app.js` im `CONFIG`-Block:
+
+| Einstellung                        | Default | Bedeutung                                              |
+| ---------------------------------- | ------- | ------------------------------------------------------ |
+| `SAVE_URL`                         | `""`    | Apps-Script-/exec-URL fürs Sheet (leer = nur lokal)    |
+| `DEFAULT_LANG`                     | `"de"`  | Startsprache `"de"` oder `"en"`                        |
+| `OVERRIDE.sekundenProFrage`        | `null`  | Timer überschreiben (`null` = Wert aus questions.json) |
+| `OVERRIDE.fragenProSitzung`        | `null`  | Fragen/Sitzung überschreiben (`null` = aus JSON)       |
+| `OVERRIDE.bestehensgrenzeProzent`  | `null`  | Bestehensgrenze überschreiben (`null` = aus JSON)      |
+
+Anti-Cheat (Mischen, Tab-Wechsel zählen, Rechtsklick/Auswahl sperren) ist fest aktiv.
 
 ---
 
@@ -176,17 +182,10 @@ der Schlüssel nie im Browser.
 ```
 kac-wissenstest/
 ├─ README.md
-├─ questions.json          # Fragen (3 Pools) + Teilnehmer + Tests + Konfig
-├─ index.html              # Login + Testauswahl
-├─ quiz.html               # Quiz (eine Frage, 45-s-Timer)
-├─ result.html             # Endergebnis
-├─ src/
-│  ├─ config.js            # zentrale Einstellungen
-│  ├─ i18n.js              # DE/EN UI-Texte
-│  ├─ login.js             # Namensabgleich/Normalisierung
-│  ├─ app.js               # Ablauf-Logik (Laden, Mischen, Timer, Scoring)
-│  ├─ storage.js           # POST an Apps-Script-Webhook
-│  └─ styles.css
+├─ questions.json          # Fragen (3 Pools) + Teilnehmer + Tests + Konfig (meta.bewertung)
+├─ index.html              # SPA-Shell (lädt styles.css + app.js)
+├─ app.js                  # komplette Logik (Login, Mischen, Timer, Scoring, Speichern, DE/EN)
+├─ styles.css              # Design (Swiss-/Typographic-Look)
 ├─ apps-script/
 │  └─ Code.gs              # Google Apps Script (Sheet-Endpoint)
 └─ pdfs/                   # (optional) Quell-PDFs als Referenz
