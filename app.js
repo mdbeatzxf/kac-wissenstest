@@ -966,125 +966,30 @@ function wireTrueFalse(root) {
 }
 
 /* ==================================================================
-   PRAXIS-MODUL: Inversionen am Klavier  (Phase 1 — Tippen + Prüfen)
-   Tonart · Stufe (1–7) · Umkehrung → Zieltöne auf der Klaviatur.
-   MIDI folgt in Phase 2 (gedrückte Tasten leuchten + Live-Abgleich).
+   PRAXIS-MODUL: Inversionen am Klavier
+   Interaktives Raster (7 Stufen x 3 Umkehrungen, farbcodiert nach
+   Akkordqualitaet) + Tipp-zum-Ueben-Modal. Musiktheorie-Engine und
+   Rendering leben in piano.js (window.InversionTrainer); diese Funktion
+   liefert nur die App-Chrome (Backlink) und mountet das Modul, synchron
+   zur App-Sprache. Phase 2 = Web-MIDI-Eingang, Phase 3 = Progressionen
+   (Andockpunkte siehe piano.js).
    ================================================================== */
-const PX = {
-  KEYS: [
-    { pc: 0, name: 'C', flat: false }, { pc: 1, name: 'Db', flat: true }, { pc: 2, name: 'D', flat: false },
-    { pc: 3, name: 'Eb', flat: true }, { pc: 4, name: 'E', flat: false }, { pc: 5, name: 'F', flat: true },
-    { pc: 6, name: 'F#', flat: false }, { pc: 7, name: 'G', flat: false }, { pc: 8, name: 'Ab', flat: true },
-    { pc: 9, name: 'A', flat: false }, { pc: 10, name: 'Bb', flat: true }, { pc: 11, name: 'B', flat: false },
-  ],
-  MAJOR: [0, 2, 4, 5, 7, 9, 11],
-  QUAL: ['', 'm', 'm', '', '', 'm', 'dim'],   // Stufen 1..7
-  SHARP: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
-  FLAT: ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
-};
-function pxName(pc, flat) { return (flat ? PX.FLAT : PX.SHARP)[((pc % 12) + 12) % 12]; }
-function pxChord(tonicPc, degree, inversion) {
-  const i = degree - 1, S = PX.MAJOR;
-  const deg = k => S[(i + k) % 7] + 12 * Math.floor((i + k) / 7);
-  const root = tonicPc + deg(0), third = tonicPc + deg(2), fifth = tonicPc + deg(4);
-  let notes;
-  if (inversion === 0) notes = [root, third, fifth];
-  else if (inversion === 1) notes = [third, fifth, root + 12];
-  else notes = [fifth, root + 12, third + 12];
-  const lo = Math.min(...notes), sh = -12 * Math.floor(lo / 12);   // tiefster Ton in [0,12)
-  return notes.map(n => n + sh).sort((a, b) => a - b);
-}
-function pxChordName(tonicPc, degree, flat) {
-  const i = degree - 1; return pxName((tonicPc + PX.MAJOR[i]) % 12, flat) + PX.QUAL[i];
-}
-function pxKeyboard(target, played) {
-  const start = 0, end = 24, Ww = 100, Hh = 320;
-  const isW = c => PX.MAJOR.includes(((c % 12) + 12) % 12);
-  const whites = [], blacks = [];
-  for (let c = start; c <= end; c++) (isW(c) ? whites : blacks).push(c);
-  const wx = {}; whites.forEach((c, i) => wx[c] = i * Ww);
-  const Wb = Math.round(Ww * 0.62), Hb = Math.round(Hh * 0.62);
-  const tgt = new Set(target), pl = new Set(played);
-  let s = '';
-  whites.forEach(c => {
-    const cls = ['px-key', 'px-white']; if (pl.has(c)) cls.push('is-played'); if (tgt.has(c)) cls.push('is-target');
-    s += `<rect class="${cls.join(' ')}" data-px-note="${c}" x="${wx[c]}" y="0" width="${Ww}" height="${Hh}" rx="6"/>`;
-  });
-  whites.forEach(c => { if (tgt.has(c)) s += `<circle class="px-dot" data-px-note="${c}" cx="${wx[c] + Ww / 2}" cy="${Hh - 46}" r="24"/>`; });
-  const bx = {};
-  blacks.forEach(c => {
-    const x = wx[c - 1] + Ww - Math.round(Wb / 2); bx[c] = x;
-    const cls = ['px-key', 'px-black']; if (pl.has(c)) cls.push('is-played'); if (tgt.has(c)) cls.push('is-target');
-    s += `<rect class="${cls.join(' ')}" data-px-note="${c}" x="${x}" y="0" width="${Wb}" height="${Hb}" rx="4"/>`;
-  });
-  blacks.forEach(c => { if (tgt.has(c)) s += `<circle class="px-dot px-dot--b" data-px-note="${c}" cx="${bx[c] + Wb / 2}" cy="${Hb - 32}" r="16"/>`; });
-  return `<svg class="px-kbd" viewBox="0 0 ${whites.length * Ww} ${Hh}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
-}
 function renderInversionPraxis(g) {
   currentScreen = 'praxis';
   state.currentGuide = g.id;
   state.area = g.area || 'academy';
-  if (!state.praxis) state.praxis = { key: 0, degree: 1, inversion: 0, played: [] };
-  const P = state.praxis, L = t(), tx = o => o ? (o[state.lang] ?? o.de ?? '') : '';
-  const flat = PX.KEYS[P.key].flat;
-  const target = pxChord(PX.KEYS[P.key].pc, P.degree, P.inversion);
-  const chordName = pxChordName(PX.KEYS[P.key].pc, P.degree, flat);
-  const targetNames = target.map(n => pxName(n % 12, flat)).join(' – ');
-  const keyBtns = PX.KEYS.map((k, i) => `<button class="px-chip${i === P.key ? ' is-on' : ''}" data-px-key="${i}" type="button">${escapeHTML(k.name)}</button>`).join('');
-  const degBtns = [1, 2, 3, 4, 5, 6, 7].map(d => `<button class="px-chip${d === P.degree ? ' is-on' : ''}" data-px-deg="${d}" type="button">${d}</button>`).join('');
-  const invBtns = [0, 1, 2].map(iv => `<button class="px-chip px-chip--wide${iv === P.inversion ? ' is-on' : ''}" data-px-inv="${iv}" type="button">${escapeHTML([L.px_inv0, L.px_inv1, L.px_inv2][iv])}</button>`).join('');
-
+  const L = t();
   app.innerHTML = `
-    <section class="screen guide">
-      <button class="backlink" id="pxBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_learn)}</button>
-      <div class="kicker">${escapeHTML(L.learn_praxis_kicker)}</div>
-      <h1 class="display guide-title">${escapeHTML(tx(g.title))}</h1>
-      <p class="guide-intro">${escapeHTML(tx(g.intro))}</p>
-      <div class="hairline" style="margin:8px 0 22px"></div>
-      <div class="px-row"><span class="px-lbl mono">${escapeHTML(L.px_key)}</span><div class="px-chips">${keyBtns}</div></div>
-      <div class="px-row"><span class="px-lbl mono">${escapeHTML(L.px_degree)}</span><div class="px-chips">${degBtns}</div></div>
-      <div class="px-row"><span class="px-lbl mono">${escapeHTML(L.px_inversion)}</span><div class="px-chips">${invBtns}</div></div>
-      <div class="px-chord">
-        <span class="px-chord-name">${escapeHTML(chordName)}</span>
-        <span class="px-chord-meta mono">${escapeHTML(L.px_target)}: ${escapeHTML(targetNames)}</span>
-      </div>
-      <div class="px-kbd-wrap">${pxKeyboard(target, P.played)}</div>
-      <div class="ws-controls">
-        <button class="ws-btn" type="button" id="pxCheck">${escapeHTML(L.px_check)}</button>
-        <button class="ws-btn ws-btn--ghost" type="button" id="pxClear">${escapeHTML(L.px_clear)}</button>
-        <span class="ws-result mono" id="pxResult"></span>
-      </div>
-      <p class="px-tap mono">${escapeHTML(L.px_tap)}</p>
-      <div class="spacer"></div>
-      <div class="brandline mono">${escapeHTML(L.brand_academy)}</div>
+    <section class="screen">
+      <button class="backlink" id="pxBack" type="button"><span class="backarrow">\u2190</span> ${escapeHTML(L.back_learn)}</button>
+      <div id="ivMount"></div>
     </section>`;
-
   document.getElementById('pxBack').addEventListener('click', () => renderLearnHome());
-  app.querySelectorAll('[data-px-key]').forEach(b => b.addEventListener('click', () => { P.key = +b.dataset.pxKey; P.played = []; renderInversionPraxis(g); }));
-  app.querySelectorAll('[data-px-deg]').forEach(b => b.addEventListener('click', () => { P.degree = +b.dataset.pxDeg; P.played = []; renderInversionPraxis(g); }));
-  app.querySelectorAll('[data-px-inv]').forEach(b => b.addEventListener('click', () => { P.inversion = +b.dataset.pxInv; P.played = []; renderInversionPraxis(g); }));
-  app.querySelectorAll('[data-px-note]').forEach(k => k.addEventListener('click', () => {
-    const n = +k.dataset.pxNote, idx = P.played.indexOf(n);
-    if (idx >= 0) P.played.splice(idx, 1); else P.played.push(n);
-    renderInversionPraxis(g);
-  }));
-  document.getElementById('pxClear').addEventListener('click', () => { P.played = []; renderInversionPraxis(g); });
-  document.getElementById('pxCheck').addEventListener('click', () => {
-    const tgt = new Set(target), pl = new Set(P.played);
-    const missing = [...tgt].filter(n => !pl.has(n)), extra = [...pl].filter(n => !tgt.has(n));
-    app.querySelectorAll('[data-px-note]').forEach(k => {
-      const n = +k.dataset.pxNote; k.classList.remove('is-ok', 'is-bad');
-      if (tgt.has(n) && pl.has(n)) k.classList.add('is-ok'); else if (pl.has(n)) k.classList.add('is-bad');
-    });
-    const res = document.getElementById('pxResult');
-    if (!missing.length && !extra.length) res.textContent = L.px_correct;
-    else {
-      const parts = [];
-      if (missing.length) parts.push(`${L.px_hint_missing}: ${missing.map(n => pxName(n % 12, flat)).join(', ')}`);
-      if (extra.length) parts.push(`${L.px_hint_extra}: ${extra.map(n => pxName(n % 12, flat)).join(', ')}`);
-      res.textContent = parts.join(' · ');
-    }
-  });
+  const mountEl = document.getElementById('ivMount');
+  if (window.InversionTrainer) {
+    window.InversionTrainer.mount(mountEl);
+    window.InversionTrainer.setLang(state.lang);
+  }
 }
 
 function guideShell(g, kicker, L, tx, bodyHTML, showTest, brand) {

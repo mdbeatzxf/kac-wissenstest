@@ -1,0 +1,276 @@
+/* Inversionen-Praxis — Look (Claude Design), gescopt unter .invtrainer */
+/* ==================================================================
+   Inversionen am Klavier — Look
+   Alle Gestaltungs-Tokens auf .invtrainer (vererben an Nachfahren,
+   inkl. Modal). Look später leicht änderbar.
+   ================================================================== */
+
+.invtrainer {
+  /* --- Palette (Swiss / KAC) --- */
+  --paper:    #f2f1ec;
+  --ink:      #16150f;
+  --ink-soft: #6b6a62;
+  --hair:     rgba(22, 21, 15, 0.16);
+  --red:      #e02718;
+  --good:     #1f8a4d;
+
+  /* --- Akkordqualität: Zell-Hintergründe + Punkt --- */
+  --q-maj-bg: #f5f4ef;
+  --q-min-bg: #eae8df;
+  --q-dim-bg: #e2dfd4;
+  --q-dot-maj: #16150f;
+  --q-dot-min: #8a887e;
+  --q-dot-dim: #e02718;
+
+  /* --- Klaviatur --- */
+  --key-white:  #fbfaf6;
+  --key-white-edge: rgba(22,21,15,0.55);
+  --key-black:  #16150f;
+  --key-target: #e02718;        /* Zieltöne */
+  --key-target-ink: #ffffff;
+  --key-played: #2b2a22;        /* angetippt (Ring) */
+  --key-correct: #1f8a4d;       /* nach Prüfung: richtig */
+  --key-missing: #e02718;       /* fehlt noch */
+  --key-extra:  #b51405;        /* zu viel */
+
+  /* --- Form --- */
+  --radius: 2px;
+  --gutter: clamp(16px, 4vw, 36px);
+  --maxw: 1120px;
+  --t-fast: 130ms cubic-bezier(.2,.7,.3,1);
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.invtrainer .mono {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-feature-settings: "tnum" 1;
+}
+.invtrainer /* ============================ Header ============================ */
+.top {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px var(--gutter);
+  max-width: var(--maxw); margin: 0 auto;
+  gap: 16px;
+}
+.invtrainer /* ============================ Layout ============================ */
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 8px var(--gutter) 64px;
+}
+.invtrainer .kicker {
+  font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft);
+  display: flex; align-items: center; gap: 10px;
+}
+.invtrainer .kicker::before { content: ""; width: 22px; height: 2px; background: var(--red); display: inline-block; }
+.invtrainer .title {
+  font-weight: 700; font-size: clamp(30px, 6vw, 52px); line-height: 0.98;
+  letter-spacing: -0.02em; margin: 16px 0 0; text-wrap: balance;
+}
+.invtrainer .sub { margin: 14px 0 0; color: var(--ink-soft); max-width: 60ch; }
+.invtrainer /* ============================ Controls ============================ */
+.controls {
+  margin-top: 28px;
+  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 22px 32px;
+  border-top: 1.5px solid var(--ink); padding-top: 22px;
+}
+.invtrainer .ctrl-block { flex: 1 1 auto; min-width: 0; }
+.invtrainer .ctrl-label {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 10px;
+}
+.invtrainer .keyrow { display: flex; flex-wrap: wrap; gap: 6px; }
+.invtrainer .keybtn {
+  appearance: none; cursor: pointer;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
+  min-width: 44px; padding: 11px 6px; text-align: center;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.invtrainer .keybtn:hover { background: var(--hair); }
+.invtrainer .keybtn.is-active { background: var(--ink); color: var(--paper); }
+.invtrainer /* Switch */
+.switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+.invtrainer .switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.invtrainer .switch-track {
+  width: 44px; height: 24px; border: 1.5px solid var(--ink); background: var(--paper);
+  position: relative; flex: none; transition: background var(--t-fast);
+}
+.invtrainer .switch-knob {
+  position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+  background: var(--ink); transition: left var(--t-fast), background var(--t-fast);
+}
+.invtrainer .switch input:checked + .switch-track { background: var(--ink); }
+.invtrainer .switch input:checked + .switch-track .switch-knob { left: 23px; background: var(--paper); }
+.invtrainer .switch-text { font-size: 12px; letter-spacing: 0.04em; color: var(--ink); }
+.invtrainer /* ============================ Legende ============================ */
+.legend {
+  margin-top: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px;
+  font-size: 12px; color: var(--ink-soft);
+}
+.invtrainer .legend-title { letter-spacing: 0.06em; }
+.invtrainer .legend-item { display: inline-flex; align-items: center; gap: 7px; }
+.invtrainer .legend-swatch { width: 22px; height: 14px; border: 1px solid var(--hair); display: inline-block; }
+.invtrainer .legend-swatch.q-maj { background: var(--q-maj-bg); }
+.invtrainer .legend-swatch.q-min { background: var(--q-min-bg); }
+.invtrainer .legend-swatch.q-dim { background: var(--q-dim-bg); }
+.invtrainer .q-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.invtrainer .q-dot-maj { background: var(--q-dot-maj); }
+.invtrainer .q-dot-min { background: var(--q-dot-min); }
+.invtrainer .q-dot-dim { background: var(--q-dot-dim); }
+.invtrainer /* ============================ Raster ============================ */
+.gridwrap { margin-top: 22px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1.5px solid var(--ink); }
+.invtrainer .grid {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.8fr) repeat(3, minmax(210px, 1fr));
+  min-width: 760px;
+}
+.invtrainer .ghead {
+  background: var(--ink); color: var(--paper);
+  padding: 12px 14px; display: flex; align-items: center;
+  border-right: 1px solid rgba(242,241,236,0.18);
+}
+.invtrainer .ghead.corner { background: var(--ink); }
+.invtrainer .ghead:last-child { border-right: none; }
+.invtrainer .ghead-txt {
+  font: 700 11px/1.2 ui-monospace, Menlo, Consolas, monospace;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.invtrainer .rowlabel {
+  padding: 14px; border-top: 1px solid var(--hair); border-right: 1.5px solid var(--ink);
+  display: flex; flex-direction: column; gap: 6px; justify-content: center;
+  background: var(--paper);
+}
+.invtrainer .rowlabel .stage-num { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+.invtrainer .rowlabel .chord-name { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; line-height: 1; }
+.invtrainer .rowlabel .q-tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-soft); }
+.invtrainer .seven-badge {
+  margin-top: 4px; font-size: 11px; letter-spacing: 0.04em;
+  color: var(--red); border: 1px solid var(--red); padding: 4px 7px; width: max-content;
+  cursor: help;
+}
+.invtrainer .cell {
+  appearance: none; cursor: pointer; text-align: center;
+  border: none; border-top: 1px solid var(--hair); border-right: 1px solid var(--hair);
+  padding: 16px 12px 14px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px; justify-content: center;
+  transition: filter var(--t-fast), transform var(--t-fast);
+}
+.invtrainer .cell:nth-child(4n) { border-right: none; }
+.invtrainer .cell.q-maj { background: var(--q-maj-bg); }
+.invtrainer .cell.q-min { background: var(--q-min-bg); }
+.invtrainer .cell.q-dim { background: var(--q-dim-bg); }
+.invtrainer .cell:hover { filter: brightness(0.97); }
+.invtrainer .cell:hover .pkbd { transform: translateY(-1px); }
+.invtrainer .cell:active { transform: translateY(1px); }
+.invtrainer .cell-notes { font-size: 13px; letter-spacing: 0.02em; display: inline-flex; align-items: center; gap: 6px; color: var(--ink); }
+.invtrainer .cell-notes .sep { color: var(--ink-soft); }
+.invtrainer .cell-notes .bassnote { font-weight: 700; }
+.invtrainer .cell-notes .bassnote::after { content: ""; display: block; height: 2px; background: var(--red); margin-top: 2px; }
+.invtrainer /* ============================ Klaviatur ============================ */
+.pkbd {
+  position: relative; display: inline-flex; align-items: stretch;
+  transition: transform var(--t-fast);
+  user-select: none;
+}
+.invtrainer .pkey {
+  padding: 0; margin: 0; appearance: none; font: inherit;
+  position: relative; display: block;
+}
+.invtrainer .wkey {
+  background: var(--key-white);
+  border: 1px solid var(--key-white-edge);
+  border-radius: 0 0 var(--radius) var(--radius);
+  z-index: 1;
+}
+.invtrainer .bkey {
+  position: absolute; top: 0;
+  background: var(--key-black);
+  border: 1px solid #000;
+  border-radius: 0 0 var(--radius) var(--radius);
+  z-index: 2;
+}
+.invtrainer .pkbd.is-interactive .pkey { cursor: pointer; }
+.invtrainer /* Zieltöne / Zustände */
+.wkey.is-target { background: var(--key-target); border-color: var(--key-target); }
+.invtrainer .bkey.is-target { background: var(--key-target); border-color: var(--key-target); }
+.invtrainer .is-target .pkey-lbl { color: var(--key-target-ink); }
+.invtrainer .is-played:not(.is-target) { box-shadow: inset 0 0 0 3px var(--key-played); }
+.invtrainer .is-target.is-played { box-shadow: inset 0 0 0 3px rgba(0,0,0,0.4); }
+.invtrainer .wkey.is-correct, .invtrainer .bkey.is-correct { background: var(--key-correct); border-color: var(--key-correct); }
+.invtrainer .wkey.is-missing, .invtrainer .bkey.is-missing { background: var(--key-missing); border-color: var(--key-missing); outline: 3px solid var(--ink); outline-offset: -3px; }
+.invtrainer .wkey.is-extra, .invtrainer .bkey.is-extra { background: var(--key-extra); border-color: var(--key-extra); }
+.invtrainer .is-correct .pkey-lbl, .invtrainer .is-missing .pkey-lbl, .invtrainer .is-extra .pkey-lbl { color: #fff; }
+.invtrainer .is-extra::after {
+  content: "✕"; position: absolute; top: 4px; left: 0; right: 0; text-align: center;
+  color: #fff; font-size: 13px; font-weight: 700;
+}
+.invtrainer .pkey-lbl {
+  position: absolute; bottom: 6px; left: 0; right: 0; text-align: center;
+  font: 700 11px/1 ui-monospace, Menlo, Consolas, monospace; color: var(--ink-soft);
+  pointer-events: none;
+}
+.invtrainer .bkey .pkey-lbl { bottom: 5px; font-size: 10px; color: #d9d7cf; }
+.invtrainer /* ============================ Modal ============================ */
+.modal-back {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(22,21,15,0.55);
+  display: grid; place-items: center; padding: var(--gutter);
+  animation: fade var(--t-fast);
+}
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.invtrainer .modal-panel {
+  background: var(--paper); border: 1.5px solid var(--ink);
+  width: 100%; max-width: 720px; max-height: 92vh; overflow-y: auto;
+  padding: 22px 24px 24px;
+  animation: rise 280ms cubic-bezier(.2,.7,.3,1);
+}
+@keyframes rise { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+.invtrainer .modal-panel.q-maj { box-shadow: inset 0 4px 0 var(--q-dot-maj); }
+.invtrainer .modal-panel.q-min { box-shadow: inset 0 4px 0 var(--q-dot-min); }
+.invtrainer .modal-panel.q-dim { box-shadow: inset 0 4px 0 var(--q-dot-dim); }
+.invtrainer .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.invtrainer .mh-kicker { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.invtrainer .mh-chord { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; margin-top: 6px; }
+.invtrainer .mh-qual { font-size: 13px; color: var(--ink-soft); letter-spacing: 0.04em; margin-left: 6px; }
+.invtrainer .modal-x {
+  appearance: none; border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  width: 40px; height: 40px; flex: none; cursor: pointer; font-size: 16px;
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.invtrainer .modal-x:hover { background: var(--ink); color: var(--paper); }
+.invtrainer .mh-target { margin-top: 16px; font-size: 15px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.invtrainer .mh-target-lbl { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+.invtrainer .mh-target .bassnote { font-weight: 700; }
+.invtrainer .mh-target .bass-tag { font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 1px 5px; margin-left: 2px; }
+.invtrainer .mh-target .sep { color: var(--ink-soft); }
+.invtrainer .modal-note {
+  margin-top: 16px; display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start;
+  background: rgba(224,39,24,0.06); border-left: 3px solid var(--red); padding: 12px 14px;
+  font-size: 13.5px; line-height: 1.4;
+}
+.invtrainer .callout-mark { width: 22px; height: 22px; flex: none; background: var(--red); color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.invtrainer .modal-kbd { margin-top: 20px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+.invtrainer .modal-kbd .pkbd { margin: 0 auto; }
+.invtrainer .modal-msg { margin-top: 16px; font-size: 14px; min-height: 22px; color: var(--ink-soft); }
+.invtrainer .modal-msg.is-ok { color: var(--good); font-weight: 700; }
+.invtrainer .modal-msg.is-bad { color: var(--red); font-weight: 700; }
+.invtrainer .modal-actions { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+.invtrainer .btn {
+  appearance: none; cursor: pointer; border: 1.5px solid var(--ink);
+  font: 700 15px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 15px 22px; min-height: 50px; transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
+}
+.invtrainer .btn:active { transform: translateY(1px); }
+.invtrainer .btn-primary { background: var(--ink); color: var(--paper); }
+.invtrainer .btn-primary:hover { background: var(--red); border-color: var(--red); }
+.invtrainer .btn-ghost { background: transparent; color: var(--ink); }
+.invtrainer .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+.invtrainer .notation { margin-top: 22px; font-size: 12px; color: var(--ink-soft); letter-spacing: 0.02em; }
+/* ============================ Mobile ============================ */
+@media (max-width: 640px) {
+  .invtrainer .controls { gap: 18px; }
+  .invtrainer .mh-chord { font-size: 32px; }
+  .invtrainer .btn { flex: 1 1 auto; }
+}
