@@ -52,7 +52,7 @@
         "de": "Mit einer einzigen Formel baust du jede Dur-Tonleiter selbst — egal von welchem Ton du startest. Zwei Beispiele (C und E) schauen wir genau an, dann baust du die übrigen selbst. Die Lösungen zum Vergleichen blendest du jeweils ein.",
         "en": "With a single formula you can build any major scale yourself — no matter which note you start from. We look closely at two examples (C and E), then you build the rest. Reveal the solutions to check yourself."
       },
-      "group": "uebungen"
+      "group": "theorie"
     },
     {
       "id": "nashville-anwenden",
@@ -106,7 +106,7 @@
         "de": "Hier übst du das Nashville-System richtig — von einzelnen Stufen bis zu ganzen Akkordfolgen und Transponieren. Die erste Zeile jeder Übung ist als Beispiel ausgefüllt; die Lösungen blendest du zum Vergleichen ein.",
         "en": "Here you really practise the Nashville system — from single numbers to whole chord progressions and transposing. The first row of each exercise is filled in as an example; reveal the solutions to compare."
       },
-      "group": "uebungen"
+      "group": "theorie"
     },
     {
       "id": "inversionen",
@@ -160,7 +160,30 @@
         "de": "Hier übst du Umkehrungen und den kürzesten Weg beim Akkordwechsel — alles in C-Dur. Von „Lagen erkennen“ bis zu ganzen fließenden Akkordfolgen. Die erste Zeile jeder Übung ist ein Beispiel; die Lösungen blendest du ein.",
         "en": "Here you practise inversions and the shortest path when changing chords — all in C major. From “spotting the position” to whole flowing progressions. The first row of each exercise is an example; reveal the solutions."
       },
-      "group": "uebungen"
+      "group": "theorie"
+    },
+    {
+      "id": "inversionen-praxis",
+      "area": "academy",
+      "group": "praxis",
+      "module": "inversion-praxis",
+      "updated": "Juni 2026",
+      "title": {
+        "de": "Inversionen — Praxis",
+        "en": "Inversions — Practice"
+      },
+      "subtitle": {
+        "de": "Akkorde & Umkehrungen in jeder Tonart",
+        "en": "Chords & inversions in any key"
+      },
+      "intro": {
+        "de": "Wähle Tonart, Stufe und Umkehrung — die Klaviatur zeigt die Zieltöne. Tippe die Tasten und prüfe. (MIDI folgt.)",
+        "en": "Pick key, degree and inversion — the keyboard shows the target notes. Tap the keys and check. (MIDI coming.)"
+      },
+      "meta": {
+        "de": "Interaktiv · alle Stufen & Umkehrungen",
+        "en": "Interactive · all degrees & inversions"
+      }
     },
     {
       "id": "rollen-ablauf",

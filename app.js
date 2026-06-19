@@ -31,6 +31,7 @@ const CONFIG = {
   STORAGE_KEY_LANG: 'tt_lang',
   STORAGE_KEY_RESULTS: 'tt_results',
   STORAGE_KEY_CHECK: 'tt_check',
+  STORAGE_KEY_USER: 'tt_user',
 };
 
 /* ------------------------------------------------------------------
@@ -55,16 +56,34 @@ const I18N = {
     learn_academy_title: 'Lernen',
     learn_academy_intro: 'Theorie und Beispiele zum Nachlesen. Lies von oben nach unten und spiel die Beispiele am Klavier mit.',
     ac_home_kicker: 'Music Academy',
-    ac_home_intro: 'Theorie lesen oder Übungen ausfüllen.',
+    ac_home_intro: 'Theorie, Übungen oder Praxis wählen.',
     ac_learn: 'Lernen',
     ac_learn_sub: 'Theorie & Beispiele zum Nachlesen',
-    ac_exerc: 'Übungen',
-    ac_exerc_sub: 'Arbeitsblätter zum Ausfüllen & Drucken',
-    learn_exerc_kicker: 'Music Academy · Übungen',
-    learn_exerc_title: 'Übungen',
-    learn_exerc_intro: 'Tippe deine Antworten direkt ein, prüfe sie und blende bei Bedarf die Lösung ein. Unten gibt es „Drucken".',
+    ac_theorie: 'Theorie-Übungen',
+    ac_theorie_sub: 'Arbeitsblätter zum Ausfüllen & Drucken',
+    ac_praxis: 'Praxis',
+    ac_praxis_sub: 'Interaktiv am Klavier — Akkorde & Umkehrungen',
+    learn_theorie_kicker: 'Music Academy · Theorie-Übungen',
+    learn_theorie_title: 'Theorie-Übungen',
+    learn_theorie_intro: 'Tippe deine Antworten direkt ein, prüfe sie und blende bei Bedarf die Lösung ein. Unten gibt es „Drucken".',
+    learn_praxis_kicker: 'Music Academy · Praxis',
+    learn_praxis_title: 'Praxis',
+    learn_praxis_intro: 'Interaktive Übungen am Klavier. Wähle eine Übung.',
     tf_true: 'Richtig',
     tf_false: 'Falsch',
+    px_key: 'Tonart',
+    px_degree: 'Stufe',
+    px_inversion: 'Umkehrung',
+    px_inv0: 'Grundstellung',
+    px_inv1: '1. Umkehrung',
+    px_inv2: '2. Umkehrung',
+    px_target: 'Zieltöne',
+    px_check: 'Prüfen',
+    px_clear: 'Tasten leeren',
+    px_correct: 'Richtig gespielt! 🎯',
+    px_hint_missing: 'Es fehlt noch',
+    px_hint_extra: 'Zu viel',
+    px_tap: 'Tippe die Tasten, die du spielst — dann „Prüfen". (Bald auch per MIDI.)',
     show_solutions: 'Lösungen anzeigen',
     hide_solutions: 'Lösungen ausblenden',
     ws_check: 'Prüfen',
@@ -91,9 +110,9 @@ const I18N = {
     to_test: 'Wissen testen',
     reset_checks: 'Haken zurücksetzen',
     section_of: (x, y) => `Abschnitt ${x} / ${y}`,
-    login_kicker: 'Production Team · Wissens-Test',
-    login_title: 'Projection\n&\nSound',
-    login_intro: 'Melde dich mit deinem Namen an, um deinen Test zu starten.',
+    login_kicker: 'KAC · Lern- & Test-Portal',
+    login_title: 'KAC',
+    login_intro: 'Melde dich mit deinem Namen an, um loszulegen.',
     first_name: 'Vorname',
     last_name: 'Nachname',
     first_name_ph: 'z. B. Anna',
@@ -149,16 +168,34 @@ const I18N = {
     learn_academy_title: 'Learn',
     learn_academy_intro: 'Theory and examples to read up on. Read top to bottom and play the examples along on the piano.',
     ac_home_kicker: 'Music Academy',
-    ac_home_intro: 'Read the theory or fill in the exercises.',
+    ac_home_intro: 'Choose theory, exercises or practice.',
     ac_learn: 'Learn',
     ac_learn_sub: 'Theory & examples to read up on',
-    ac_exerc: 'Exercises',
-    ac_exerc_sub: 'Worksheets to fill in & print',
-    learn_exerc_kicker: 'Music Academy · Exercises',
-    learn_exerc_title: 'Exercises',
-    learn_exerc_intro: 'Type your answers directly, check them and reveal the solution if needed. Use "Print" at the bottom.',
+    ac_theorie: 'Theory exercises',
+    ac_theorie_sub: 'Worksheets to fill in & print',
+    ac_praxis: 'Practice',
+    ac_praxis_sub: 'Interactive at the piano — chords & inversions',
+    learn_theorie_kicker: 'Music Academy · Theory exercises',
+    learn_theorie_title: 'Theory exercises',
+    learn_theorie_intro: 'Type your answers directly, check them and reveal the solution if needed. Use "Print" at the bottom.',
+    learn_praxis_kicker: 'Music Academy · Practice',
+    learn_praxis_title: 'Practice',
+    learn_praxis_intro: 'Interactive exercises at the piano. Pick an exercise.',
     tf_true: 'True',
     tf_false: 'False',
+    px_key: 'Key',
+    px_degree: 'Degree',
+    px_inversion: 'Inversion',
+    px_inv0: 'Root position',
+    px_inv1: '1st inversion',
+    px_inv2: '2nd inversion',
+    px_target: 'Target notes',
+    px_check: 'Check',
+    px_clear: 'Clear keys',
+    px_correct: 'Played correctly! 🎯',
+    px_hint_missing: 'Still missing',
+    px_hint_extra: 'Too many',
+    px_tap: 'Tap the keys you play — then "Check". (MIDI coming soon.)',
     show_solutions: 'Show solutions',
     hide_solutions: 'Hide solutions',
     ws_check: 'Check',
@@ -185,9 +222,9 @@ const I18N = {
     to_test: 'Test your knowledge',
     reset_checks: 'Reset checkmarks',
     section_of: (x, y) => `Section ${x} / ${y}`,
-    login_kicker: 'Production Team · Knowledge Test',
-    login_title: 'Projection\n&\nSound',
-    login_intro: 'Sign in with your name to start your test.',
+    login_kicker: 'KAC · Learning & Test Portal',
+    login_title: 'KAC',
+    login_intro: 'Sign in with your name to get started.',
     first_name: 'First name',
     last_name: 'Last name',
     first_name_ph: 'e.g. Anna',
@@ -316,6 +353,7 @@ let currentScreen = 'boot';
 function rerenderCurrent() {
   if (currentScreen === 'area') renderArea();
   else if (currentScreen === 'academyHome') renderAcademyHome();
+  else if (currentScreen === 'praxis') { const g = ((state.learn && state.learn.guides) || []).find(x => x.id === state.currentGuide); if (g) renderInversionPraxis(g); }
   else if (currentScreen === 'home') renderHome();
   else if (currentScreen === 'learn') renderLearnHome();
   else if (currentScreen === 'guide') renderGuide(state.currentGuide, true);
@@ -362,7 +400,12 @@ async function boot() {
     if (lr.ok) state.learn = await lr.json();
   } catch (e) { state.learn = null; }
 
-  renderArea();
+  // Globaler Name-Login beim Start; danach das Bereichs-Portal.
+  try {
+    const u = JSON.parse(sessionStorage.getItem(CONFIG.STORAGE_KEY_USER) || 'null');
+    if (u && u.vorname && u.nachname) state.participant = u;
+  } catch (e) {}
+  state.participant ? renderArea() : renderLogin();
 }
 
 /* ------------------------------------------------------------------
@@ -393,11 +436,20 @@ function renderArea() {
         </button>
       </div>
       <div class="spacer"></div>
+      <div class="area-foot">
+        <span class="area-user mono">${state.participant ? escapeHTML(L.hello + ', ' + state.participant.vorname) : ''}</span>
+        <button class="linkbtn" id="areaLogout" type="button">${escapeHTML(L.logout)}</button>
+      </div>
       <div class="brandline mono">${escapeHTML(L.brand_portal)}</div>
     </section>`;
 
   document.getElementById('areaAcademy').addEventListener('click', () => renderAcademyHome());
   document.getElementById('areaProduction').addEventListener('click', () => renderHome());
+  document.getElementById('areaLogout').addEventListener('click', () => {
+    state.participant = null;
+    try { sessionStorage.removeItem(CONFIG.STORAGE_KEY_USER); } catch (e) {}
+    renderLogin();
+  });
 }
 
 /* ------------------------------------------------------------------
@@ -460,7 +512,6 @@ function renderLogin(keepValues = false) {
 
   app.innerHTML = `
     <section class="screen">
-      <button class="backlink" id="loginBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_home)}</button>
       <div class="kicker">${escapeHTML(L.login_kicker)}</div>
       <h1 class="display">${title}</h1>
       <p style="margin:20px 0 0;color:var(--ink-soft);max-width:34ch">${escapeHTML(L.login_intro)}</p>
@@ -487,7 +538,6 @@ function renderLogin(keepValues = false) {
     </section>`;
 
   document.getElementById('loginForm').addEventListener('submit', onLogin);
-  document.getElementById('loginBack').addEventListener('click', () => renderHome());
 }
 
 function showNotice(msg) {
@@ -512,7 +562,8 @@ function onLogin(e) {
   if (!match) { showNotice(L.not_found); return; }
 
   state.participant = match;
-  renderSelect();
+  try { sessionStorage.setItem(CONFIG.STORAGE_KEY_USER, JSON.stringify(match)); } catch (e) {}
+  renderArea();
 }
 
 /* ------------------------------------------------------------------
@@ -549,15 +600,12 @@ function renderSelect() {
       <p style="margin:20px 0 0;color:var(--ink-soft)">${escapeHTML(L.select_intro)}</p>
       ${rows}
       <div class="spacer"></div>
-      <div class="abort-row"><button class="linkbtn" id="logoutBtn" type="button">${escapeHTML(L.logout)}</button></div>
+      <div class="abort-row"><button class="linkbtn" id="logoutBtn" type="button">← ${escapeHTML(L.back_home)}</button></div>
     </section>`;
 
   app.querySelectorAll('.test-row').forEach(b =>
     b.addEventListener('click', () => startQuiz(b.dataset.test)));
-  document.getElementById('logoutBtn').addEventListener('click', () => {
-    state.participant = null;
-    renderHome();
-  });
+  document.getElementById('logoutBtn').addEventListener('click', () => renderHome());
 }
 
 /* ------------------------------------------------------------------
@@ -576,7 +624,8 @@ function renderAcademyHome() {
   const L = t();
   const rows = [
     { id: 'acLearn', group: 'lernen', name: L.ac_learn, sub: L.ac_learn_sub },
-    { id: 'acExerc', group: 'uebungen', name: L.ac_exerc, sub: L.ac_exerc_sub },
+    { id: 'acTheorie', group: 'theorie', name: L.ac_theorie, sub: L.ac_theorie_sub },
+    { id: 'acPraxis', group: 'praxis', name: L.ac_praxis, sub: L.ac_praxis_sub },
   ];
   const rowsHTML = rows.map((r, i) => `
         <button class="test-row" type="button" id="${r.id}">
@@ -606,7 +655,10 @@ function renderLearnHome() {
   currentScreen = 'learn';
   const L = t();
   const isAcademy = state.area === 'academy';
-  const isExerc = isAcademy && state.academyGroup === 'uebungen';
+  const grp = state.academyGroup;
+  const acKicker = grp === 'theorie' ? L.learn_theorie_kicker : grp === 'praxis' ? L.learn_praxis_kicker : L.learn_academy_kicker;
+  const acTitle = grp === 'theorie' ? L.learn_theorie_title : grp === 'praxis' ? L.learn_praxis_title : L.learn_academy_title;
+  const acIntro = grp === 'theorie' ? L.learn_theorie_intro : grp === 'praxis' ? L.learn_praxis_intro : L.learn_academy_intro;
   const guides = ((state.learn && state.learn.guides) || []).filter(g =>
     (g.area || 'production') === state.area &&
     (!isAcademy || (g.group || 'lernen') === state.academyGroup));
@@ -634,9 +686,9 @@ function renderLearnHome() {
   app.innerHTML = `
     <section class="screen">
       <button class="backlink" id="learnBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_areas)}</button>
-      <div class="kicker">${escapeHTML(isExerc ? L.learn_exerc_kicker : isAcademy ? L.learn_academy_kicker : L.learn_kicker)}</div>
-      <h1 class="display">${escapeHTML(isExerc ? L.learn_exerc_title : isAcademy ? L.learn_academy_title : L.learn_title)}</h1>
-      <p style="margin:20px 0 0;color:var(--ink-soft);max-width:42ch">${escapeHTML(isExerc ? L.learn_exerc_intro : isAcademy ? L.learn_academy_intro : L.learn_intro)}</p>
+      <div class="kicker">${escapeHTML(isAcademy ? acKicker : L.learn_kicker)}</div>
+      <h1 class="display">${escapeHTML(isAcademy ? acTitle : L.learn_title)}</h1>
+      <p style="margin:20px 0 0;color:var(--ink-soft);max-width:42ch">${escapeHTML(isAcademy ? acIntro : L.learn_intro)}</p>
       ${rows}
       <div class="spacer"></div>
       <div class="brandline mono">${escapeHTML(isAcademy ? L.brand_academy : L.brand)}</div>
@@ -913,6 +965,128 @@ function wireTrueFalse(root) {
   });
 }
 
+/* ==================================================================
+   PRAXIS-MODUL: Inversionen am Klavier  (Phase 1 — Tippen + Prüfen)
+   Tonart · Stufe (1–7) · Umkehrung → Zieltöne auf der Klaviatur.
+   MIDI folgt in Phase 2 (gedrückte Tasten leuchten + Live-Abgleich).
+   ================================================================== */
+const PX = {
+  KEYS: [
+    { pc: 0, name: 'C', flat: false }, { pc: 1, name: 'Db', flat: true }, { pc: 2, name: 'D', flat: false },
+    { pc: 3, name: 'Eb', flat: true }, { pc: 4, name: 'E', flat: false }, { pc: 5, name: 'F', flat: true },
+    { pc: 6, name: 'F#', flat: false }, { pc: 7, name: 'G', flat: false }, { pc: 8, name: 'Ab', flat: true },
+    { pc: 9, name: 'A', flat: false }, { pc: 10, name: 'Bb', flat: true }, { pc: 11, name: 'B', flat: false },
+  ],
+  MAJOR: [0, 2, 4, 5, 7, 9, 11],
+  QUAL: ['', 'm', 'm', '', '', 'm', 'dim'],   // Stufen 1..7
+  SHARP: ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'],
+  FLAT: ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'],
+};
+function pxName(pc, flat) { return (flat ? PX.FLAT : PX.SHARP)[((pc % 12) + 12) % 12]; }
+function pxChord(tonicPc, degree, inversion) {
+  const i = degree - 1, S = PX.MAJOR;
+  const deg = k => S[(i + k) % 7] + 12 * Math.floor((i + k) / 7);
+  const root = tonicPc + deg(0), third = tonicPc + deg(2), fifth = tonicPc + deg(4);
+  let notes;
+  if (inversion === 0) notes = [root, third, fifth];
+  else if (inversion === 1) notes = [third, fifth, root + 12];
+  else notes = [fifth, root + 12, third + 12];
+  const lo = Math.min(...notes), sh = -12 * Math.floor(lo / 12);   // tiefster Ton in [0,12)
+  return notes.map(n => n + sh).sort((a, b) => a - b);
+}
+function pxChordName(tonicPc, degree, flat) {
+  const i = degree - 1; return pxName((tonicPc + PX.MAJOR[i]) % 12, flat) + PX.QUAL[i];
+}
+function pxKeyboard(target, played) {
+  const start = 0, end = 24, Ww = 100, Hh = 320;
+  const isW = c => PX.MAJOR.includes(((c % 12) + 12) % 12);
+  const whites = [], blacks = [];
+  for (let c = start; c <= end; c++) (isW(c) ? whites : blacks).push(c);
+  const wx = {}; whites.forEach((c, i) => wx[c] = i * Ww);
+  const Wb = Math.round(Ww * 0.62), Hb = Math.round(Hh * 0.62);
+  const tgt = new Set(target), pl = new Set(played);
+  let s = '';
+  whites.forEach(c => {
+    const cls = ['px-key', 'px-white']; if (pl.has(c)) cls.push('is-played'); if (tgt.has(c)) cls.push('is-target');
+    s += `<rect class="${cls.join(' ')}" data-px-note="${c}" x="${wx[c]}" y="0" width="${Ww}" height="${Hh}" rx="6"/>`;
+  });
+  whites.forEach(c => { if (tgt.has(c)) s += `<circle class="px-dot" data-px-note="${c}" cx="${wx[c] + Ww / 2}" cy="${Hh - 46}" r="24"/>`; });
+  const bx = {};
+  blacks.forEach(c => {
+    const x = wx[c - 1] + Ww - Math.round(Wb / 2); bx[c] = x;
+    const cls = ['px-key', 'px-black']; if (pl.has(c)) cls.push('is-played'); if (tgt.has(c)) cls.push('is-target');
+    s += `<rect class="${cls.join(' ')}" data-px-note="${c}" x="${x}" y="0" width="${Wb}" height="${Hb}" rx="4"/>`;
+  });
+  blacks.forEach(c => { if (tgt.has(c)) s += `<circle class="px-dot px-dot--b" data-px-note="${c}" cx="${bx[c] + Wb / 2}" cy="${Hb - 32}" r="16"/>`; });
+  return `<svg class="px-kbd" viewBox="0 0 ${whites.length * Ww} ${Hh}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">${s}</svg>`;
+}
+function renderInversionPraxis(g) {
+  currentScreen = 'praxis';
+  state.currentGuide = g.id;
+  state.area = g.area || 'academy';
+  if (!state.praxis) state.praxis = { key: 0, degree: 1, inversion: 0, played: [] };
+  const P = state.praxis, L = t(), tx = o => o ? (o[state.lang] ?? o.de ?? '') : '';
+  const flat = PX.KEYS[P.key].flat;
+  const target = pxChord(PX.KEYS[P.key].pc, P.degree, P.inversion);
+  const chordName = pxChordName(PX.KEYS[P.key].pc, P.degree, flat);
+  const targetNames = target.map(n => pxName(n % 12, flat)).join(' – ');
+  const keyBtns = PX.KEYS.map((k, i) => `<button class="px-chip${i === P.key ? ' is-on' : ''}" data-px-key="${i}" type="button">${escapeHTML(k.name)}</button>`).join('');
+  const degBtns = [1, 2, 3, 4, 5, 6, 7].map(d => `<button class="px-chip${d === P.degree ? ' is-on' : ''}" data-px-deg="${d}" type="button">${d}</button>`).join('');
+  const invBtns = [0, 1, 2].map(iv => `<button class="px-chip px-chip--wide${iv === P.inversion ? ' is-on' : ''}" data-px-inv="${iv}" type="button">${escapeHTML([L.px_inv0, L.px_inv1, L.px_inv2][iv])}</button>`).join('');
+
+  app.innerHTML = `
+    <section class="screen guide">
+      <button class="backlink" id="pxBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_learn)}</button>
+      <div class="kicker">${escapeHTML(L.learn_praxis_kicker)}</div>
+      <h1 class="display guide-title">${escapeHTML(tx(g.title))}</h1>
+      <p class="guide-intro">${escapeHTML(tx(g.intro))}</p>
+      <div class="hairline" style="margin:8px 0 22px"></div>
+      <div class="px-row"><span class="px-lbl mono">${escapeHTML(L.px_key)}</span><div class="px-chips">${keyBtns}</div></div>
+      <div class="px-row"><span class="px-lbl mono">${escapeHTML(L.px_degree)}</span><div class="px-chips">${degBtns}</div></div>
+      <div class="px-row"><span class="px-lbl mono">${escapeHTML(L.px_inversion)}</span><div class="px-chips">${invBtns}</div></div>
+      <div class="px-chord">
+        <span class="px-chord-name">${escapeHTML(chordName)}</span>
+        <span class="px-chord-meta mono">${escapeHTML(L.px_target)}: ${escapeHTML(targetNames)}</span>
+      </div>
+      <div class="px-kbd-wrap">${pxKeyboard(target, P.played)}</div>
+      <div class="ws-controls">
+        <button class="ws-btn" type="button" id="pxCheck">${escapeHTML(L.px_check)}</button>
+        <button class="ws-btn ws-btn--ghost" type="button" id="pxClear">${escapeHTML(L.px_clear)}</button>
+        <span class="ws-result mono" id="pxResult"></span>
+      </div>
+      <p class="px-tap mono">${escapeHTML(L.px_tap)}</p>
+      <div class="spacer"></div>
+      <div class="brandline mono">${escapeHTML(L.brand_academy)}</div>
+    </section>`;
+
+  document.getElementById('pxBack').addEventListener('click', () => renderLearnHome());
+  app.querySelectorAll('[data-px-key]').forEach(b => b.addEventListener('click', () => { P.key = +b.dataset.pxKey; P.played = []; renderInversionPraxis(g); }));
+  app.querySelectorAll('[data-px-deg]').forEach(b => b.addEventListener('click', () => { P.degree = +b.dataset.pxDeg; P.played = []; renderInversionPraxis(g); }));
+  app.querySelectorAll('[data-px-inv]').forEach(b => b.addEventListener('click', () => { P.inversion = +b.dataset.pxInv; P.played = []; renderInversionPraxis(g); }));
+  app.querySelectorAll('[data-px-note]').forEach(k => k.addEventListener('click', () => {
+    const n = +k.dataset.pxNote, idx = P.played.indexOf(n);
+    if (idx >= 0) P.played.splice(idx, 1); else P.played.push(n);
+    renderInversionPraxis(g);
+  }));
+  document.getElementById('pxClear').addEventListener('click', () => { P.played = []; renderInversionPraxis(g); });
+  document.getElementById('pxCheck').addEventListener('click', () => {
+    const tgt = new Set(target), pl = new Set(P.played);
+    const missing = [...tgt].filter(n => !pl.has(n)), extra = [...pl].filter(n => !tgt.has(n));
+    app.querySelectorAll('[data-px-note]').forEach(k => {
+      const n = +k.dataset.pxNote; k.classList.remove('is-ok', 'is-bad');
+      if (tgt.has(n) && pl.has(n)) k.classList.add('is-ok'); else if (pl.has(n)) k.classList.add('is-bad');
+    });
+    const res = document.getElementById('pxResult');
+    if (!missing.length && !extra.length) res.textContent = L.px_correct;
+    else {
+      const parts = [];
+      if (missing.length) parts.push(`${L.px_hint_missing}: ${missing.map(n => pxName(n % 12, flat)).join(', ')}`);
+      if (extra.length) parts.push(`${L.px_hint_extra}: ${extra.map(n => pxName(n % 12, flat)).join(', ')}`);
+      res.textContent = parts.join(' · ');
+    }
+  });
+}
+
 function guideShell(g, kicker, L, tx, bodyHTML, showTest, brand) {
   return `
     <section class="screen guide">
@@ -938,6 +1112,7 @@ async function renderGuide(guideId, keepScroll = false) {
   const guides = (state.learn && state.learn.guides) || [];
   const g = guides.find(x => x.id === guideId);
   if (!g) { renderLearnHome(); return; }
+  if (g.module === 'inversion-praxis') { renderInversionPraxis(g); return; }
   currentScreen = 'guide';
   state.currentGuide = guideId;
   state.area = g.area || 'production';
