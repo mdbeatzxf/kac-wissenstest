@@ -413,6 +413,7 @@ async function boot() {
    ------------------------------------------------------------------ */
 function renderArea() {
   currentScreen = 'area';
+  app.classList.remove('app--wide');
   state.area = null;
   const L = t();
 
@@ -457,6 +458,7 @@ function renderArea() {
    ------------------------------------------------------------------ */
 function renderHome() {
   currentScreen = 'home';
+  app.classList.remove('app--wide');
   const L = t();
   const guides = (state.learn && state.learn.guides) || [];
   const prodGuides = guides.filter(g => (g.area || 'production') === 'production');
@@ -505,6 +507,7 @@ function renderHome() {
    ------------------------------------------------------------------ */
 function renderLogin(keepValues = false) {
   currentScreen = 'login';
+  app.classList.remove('app--wide');
   const prevFirst = keepValues ? (document.getElementById('vorname')?.value || '') : '';
   const prevLast = keepValues ? (document.getElementById('nachname')?.value || '') : '';
   const L = t();
@@ -571,6 +574,7 @@ function onLogin(e) {
    ------------------------------------------------------------------ */
 function renderSelect() {
   currentScreen = 'select';
+  app.classList.remove('app--wide');
   const L = t();
   const allowed = (state.participant.bereiche || []).filter(k => state.data.tests[k]);
 
@@ -620,6 +624,7 @@ function tagLabel(tag) {
 /* 6c) SCREEN: MUSIC ACADEMY HOME — Lernen | Übungen */
 function renderAcademyHome() {
   currentScreen = 'academyHome';
+  app.classList.remove('app--wide');
   state.area = 'academy';
   const L = t();
   const rows = [
@@ -653,6 +658,7 @@ function renderAcademyHome() {
 
 function renderLearnHome() {
   currentScreen = 'learn';
+  app.classList.remove('app--wide');
   const L = t();
   const isAcademy = state.area === 'academy';
   const grp = state.academyGroup;
@@ -978,6 +984,7 @@ function renderInversionPraxis(g) {
   currentScreen = 'praxis';
   state.currentGuide = g.id;
   state.area = g.area || 'academy';
+  app.classList.add('app--wide');   // breitere Leinwand fuer das 7x3-Raster
   const L = t();
   app.innerHTML = `
     <section class="screen">
@@ -1019,6 +1026,7 @@ async function renderGuide(guideId, keepScroll = false) {
   if (!g) { renderLearnHome(); return; }
   if (g.module === 'inversion-praxis') { renderInversionPraxis(g); return; }
   currentScreen = 'guide';
+  app.classList.remove('app--wide');
   state.currentGuide = guideId;
   state.area = g.area || 'production';
   const isAcademy = state.area === 'academy';
@@ -1160,6 +1168,7 @@ function startQuiz(testKey) {
    ------------------------------------------------------------------ */
 function renderQuiz() {
   currentScreen = 'quiz';
+  app.classList.remove('app--wide');
   const L = t();
   const total = state.session.length;
   const item = state.session[state.current];
@@ -1378,6 +1387,7 @@ function finishQuiz() {
 
 function renderResult(r) {
   currentScreen = 'result';
+  app.classList.remove('app--wide');
   const L = t();
   const pass = r.bestanden;
 

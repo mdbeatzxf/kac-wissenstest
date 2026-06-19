@@ -85,6 +85,8 @@ noscript { display: block; padding: 40px; font-weight: 700; }
   display: flex;
   flex-direction: column;
 }
+/* Inversionen-Praxis braucht mehr Breite als die Lese-Spalte (Tabelle 7×3). */
+.app.app--wide { max-width: 1120px; }
 
 .screen {
   display: flex;

@@ -53,13 +53,18 @@
     const pc0 = (((key.pc + s0) % 12) + 12) % 12;    // unterster Ton: Pitchclass in unterer Oktave
     const positions = semis.map(function (s) { return pc0 + (s - s0); });
     const names = degs.map(function (d) { return key.scale[(((d % 7) + 7) % 7)]; });
+    // Position des Grundtons innerhalb bottom→top — egal in welcher Umkehrung:
+    // inv 0 → unten (0), inv 1 → oben (2), inv 2 → Mitte (1).
+    const rootIndex = (3 - inv) % 3;
     return {
       degs: degs,
       semis: semis,
       positions: positions,   // bottom→top, alle innerhalb 0..23 (2 Oktaven)
       names: names,           // bottom→top
       quality: QUAL[i],
-      rootName: key.scale[i]
+      rootName: key.scale[i],
+      rootIndex: rootIndex,         // Index des Grundtons in names/positions
+      rootPos: positions[rootIndex] // Tastatur-Position des Grundtons
     };
   }
 
@@ -179,6 +184,7 @@
         if (targetSet.has(p)) el.classList.add('is-target');
         if (played.has(p)) el.classList.add('is-played');
       }
+      if (opts.rootPos === p) el.classList.add('is-root');   // Grundton markieren
       if (opts.labels && nameMap[p]) {
         const s = document.createElement('span');
         s.className = 'pkey-lbl';
@@ -262,13 +268,13 @@
           openModal(parseInt(this.dataset.i, 10), parseInt(this.dataset.inv, 10));
         });
 
-        const kb = buildKeyboard(ch.positions, { whiteW: 13 });
+        const kb = buildKeyboard(ch.positions, { whiteW: 12, rootPos: ch.rootPos });
         c.appendChild(kb);
 
         const notes = document.createElement('div');
         notes.className = 'cell-notes mono';
         notes.innerHTML = ch.names.map(function (n, idx) {
-          return '<span class="' + (idx === 0 ? 'bassnote' : '') + '">' + esc(n) + '</span>';
+          return '<span class="' + (idx === ch.rootIndex ? 'rootnote' : '') + '">' + esc(n) + '</span>';
         }).join('<span class="sep">–</span>');
         c.appendChild(notes);
 
@@ -347,6 +353,8 @@
       positions: ch.positions,
       names: ch.names,
       rootName: ch.rootName,
+      rootIndex: ch.rootIndex,
+      rootPos: ch.rootPos,
       quality: ch.quality,
       played: new Set(),
       feedback: null
@@ -418,7 +426,7 @@
     tn.className = 'mh-target mono';
     tn.innerHTML = '<span class="mh-target-lbl">' + esc(L.targetNotes) + ':</span> ' +
       m.names.map(function (n, idx) {
-        return '<span class="' + (idx === 0 ? 'bassnote' : '') + '">' + esc(n) + (idx === 0 ? ' <span class="bass-tag">' + esc(L.bass) + '</span>' : '') + '</span>';
+        return '<span class="' + (idx === m.rootIndex ? 'rootnote' : '') + '">' + esc(n) + '</span>';
       }).join(' <span class="sep">–</span> ');
     panel.appendChild(tn);
 
@@ -436,7 +444,8 @@
     kbWrap.className = 'modal-kbd';
     const kb = buildKeyboard(m.positions, {
       whiteW: 40, interactive: true, labels: true,
-      played: m.played, feedback: m.feedback, nameMap: nameMap
+      played: m.played, feedback: m.feedback, nameMap: nameMap,
+      rootPos: m.rootPos
     });
     kbWrap.appendChild(kb);
     panel.appendChild(kbWrap);
