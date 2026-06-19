@@ -32,7 +32,7 @@ const CONFIG = {
    ------------------------------------------------------------------ */
 const I18N = {
   de: {
-    login_kicker: 'Technik-Team · Wissens-Test',
+    login_kicker: 'Production Team · Wissens-Test',
     login_title: 'Projection\n&\nSound',
     login_intro: 'Melde dich mit deinem Namen an, um deinen Test zu starten.',
     first_name: 'Vorname',
@@ -73,7 +73,7 @@ const I18N = {
     of: 'von',
   },
   en: {
-    login_kicker: 'Tech Team · Knowledge Test',
+    login_kicker: 'Production Team · Knowledge Test',
     login_title: 'Projection\n&\nSound',
     login_intro: 'Sign in with your name to start your test.',
     first_name: 'First name',
