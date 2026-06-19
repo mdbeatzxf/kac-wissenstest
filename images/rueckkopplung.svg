@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ak" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16150f"/></marker>
+    <marker id="ar" markerWidth="12" markerHeight="12" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e02718"/></marker>
+  </defs>
+  <rect width="1200" height="470" fill="#f2f1ec"/>
+  <rect x="60" y="55" width="300" height="110" rx="14" fill="#f2f1ec" stroke="#16150f" stroke-width="2"/>
+  <text x="210" y="122" text-anchor="middle" font-size="28" font-weight="bold" fill="#16150f">Mikrofon</text>
+  <rect x="450" y="55" width="300" height="110" rx="14" fill="#16150f"/>
+  <text x="600" y="122" text-anchor="middle" font-size="28" font-weight="bold" fill="#f2f1ec">Mischpult</text>
+  <rect x="840" y="55" width="300" height="110" rx="14" fill="#f2f1ec" stroke="#16150f" stroke-width="2"/>
+  <text x="990" y="122" text-anchor="middle" font-size="28" font-weight="bold" fill="#16150f">Lautsprecher</text>
+  <line x1="360" y1="110" x2="448" y2="110" stroke="#16150f" stroke-width="4" marker-end="url(#ak)"/>
+  <line x1="750" y1="110" x2="838" y2="110" stroke="#16150f" stroke-width="4" marker-end="url(#ak)"/>
+  <path d="M990,168 C 990,330 210,330 210,170" fill="none" stroke="#e02718" stroke-width="4" stroke-dasharray="9 7" marker-end="url(#ar)"/>
+  <rect x="270" y="296" width="660" height="46" rx="8" fill="#f2f1ec"/>
+  <text x="600" y="327" text-anchor="middle" font-size="20" font-weight="bold" fill="#e02718">Schall zurück ins Mikro = Rückkopplung (Pfeifen)</text>
+  <g font-size="19" fill="#16150f">
+    <rect x="60" y="372" width="340" height="80" rx="10" fill="#f2f1ec" stroke="#16150f" stroke-width="1.5"/>
+    <text x="230" y="419" text-anchor="middle" font-weight="bold">Abstand halten</text>
+    <rect x="430" y="372" width="340" height="80" rx="10" fill="#f2f1ec" stroke="#16150f" stroke-width="1.5"/>
+    <text x="600" y="406" text-anchor="middle" font-weight="bold">Mikro nicht auf</text>
+    <text x="600" y="432" text-anchor="middle" font-weight="bold">Lautsprecher richten</text>
+    <rect x="800" y="372" width="340" height="80" rx="10" fill="#f2f1ec" stroke="#16150f" stroke-width="1.5"/>
+    <text x="970" y="406" text-anchor="middle" font-weight="bold">Pegel nur so hoch</text>
+    <text x="970" y="432" text-anchor="middle" font-weight="bold">wie nötig</text>
+  </g>
+</svg>

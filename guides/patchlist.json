@@ -27,12 +27,12 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 10",
+          "aspect": "1012 / 922",
           "caption": {
             "de": "Eine echte Patchliste aus unserem Setup (Local Inputs)",
             "en": "A real patch list from our setup (Local Inputs)"
           },
-          "image": "images/input-patch.jpg",
+          "image": "images/patchlist-local-inputs.jpg",
           "fit": "contain"
         }
       ]
@@ -481,11 +481,13 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "619 / 323",
           "caption": {
             "de": "Keyboard-Rückseite: Output L/MONO + R (Klinke) — z. B. Yamaha MODX",
             "en": "Keyboard rear: Output L/MONO + R (jack) — e.g. Yamaha MODX"
-          }
+          },
+          "image": "images/keyboard-rueckseite.jpg",
+          "fit": "contain"
         },
         {
           "type": "figure",
@@ -512,19 +514,23 @@
       "blocks": [
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "1332 / 1492",
           "caption": {
             "de": "Stage Box Inputs — die Spalte „Stagebox“ zeigt, wo jedes Signal gepatcht ist (Box 1-1, Box 2-3 …). Viele Keys/Gitarren laufen über DI (Stereo: L/R).",
             "en": "Stage Box Inputs — the “Stagebox” column shows where each signal is patched (Box 1-1, Box 2-3 …). Many keys/guitars run via DI (stereo: L/R)."
-          }
+          },
+          "image": "images/patchlist-stagebox.jpg",
+          "fit": "contain"
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "900 / 1464",
           "caption": {
             "de": "Outputs — welcher Ausgang wohin geht: In-Ears (IEM), Monitor-Wedges, Sidefill, Sub, FoH.",
             "en": "Outputs — which output goes where: in-ears (IEM), monitor wedges, sidefill, sub, FoH."
-          }
+          },
+          "image": "images/patchlist-outputs.jpg",
+          "fit": "contain"
         },
         {
           "type": "sub",

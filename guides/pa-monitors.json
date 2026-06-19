@@ -426,11 +426,14 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "1200 / 470",
           "caption": {
             "de": "Mikro hört Lautsprecher → Pfeifen. Auf Abstand, Richtung und Pegel achten.",
             "en": "Mic hears speaker → howl. Watch distance, direction and level."
-          }
+          },
+          "image": "images/rueckkopplung.svg",
+          "image_en": "images/rueckkopplung_EN.svg",
+          "fit": "contain"
         },
         {
           "type": "note",

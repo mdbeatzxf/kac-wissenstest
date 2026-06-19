@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs><marker id="ah" markerWidth="11" markerHeight="11" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#16150f"/></marker></defs>
+  <rect width="1200" height="430" fill="#f2f1ec"/>
+  <rect x="50" y="105" width="360" height="180" rx="14" fill="#16150f"/>
+  <text x="230" y="165" text-anchor="middle" font-size="30" font-weight="bold" fill="#f2f1ec">Mischpult-Kanal</text>
+  <rect x="105" y="200" width="250" height="54" rx="27" fill="#f2f1ec"/>
+  <circle cx="142" cy="227" r="11" fill="#e02718"/>
+  <text x="168" y="236" font-size="23" font-weight="bold" fill="#16150f">+48 V  AN</text>
+  <line x1="410" y1="195" x2="745" y2="195" stroke="#16150f" stroke-width="4" marker-end="url(#ah)"/>
+  <text x="577" y="168" text-anchor="middle" font-size="26" font-weight="bold" fill="#e02718">+48 V</text>
+  <text x="577" y="230" text-anchor="middle" font-size="18" fill="#6b6a62">dasselbe XLR-Kabel — Signal + Strom</text>
+  <rect x="760" y="105" width="390" height="78" rx="14" fill="#f2f1ec" stroke="#16150f" stroke-width="2"/>
+  <text x="955" y="153" text-anchor="middle" font-size="25" font-weight="bold" fill="#16150f">Kondensator-Mikro</text>
+  <rect x="760" y="205" width="390" height="78" rx="14" fill="#f2f1ec" stroke="#16150f" stroke-width="2"/>
+  <text x="955" y="253" text-anchor="middle" font-size="25" font-weight="bold" fill="#16150f">aktive DI-Box</text>
+  <text x="955" y="318" text-anchor="middle" font-size="18" fill="#6b6a62">brauchen +48 V</text>
+  <rect x="50" y="352" width="1100" height="56" rx="10" fill="#f2f1ec" stroke="#16150f" stroke-width="1.5"/>
+  <text x="80" y="387" font-size="20" fill="#16150f"><tspan font-weight="bold" fill="#e02718">Kein +48 V:</tspan> dynamische Mikros (z. B. SM58) und passive DI-Boxen.</text>
+</svg>

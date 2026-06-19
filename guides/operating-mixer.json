@@ -89,11 +89,14 @@
         },
         {
           "type": "figure",
-          "aspect": "16 / 9",
+          "aspect": "1200 / 430",
           "caption": {
             "de": "+48 V läuft über dasselbe XLR-Kabel zum Mikro / zur aktiven DI",
             "en": "+48 V travels over the same XLR cable to the mic / active DI"
-          }
+          },
+          "image": "images/phantom-48v.svg",
+          "image_en": "images/phantom-48v_EN.svg",
+          "fit": "contain"
         },
         {
           "type": "note",
