@@ -366,6 +366,7 @@ function rerenderCurrent() {
   if (currentScreen === 'area') renderArea();
   else if (currentScreen === 'academyHome') renderAcademyHome();
   else if (currentScreen === 'praxis') { const g = ((state.learn && state.learn.guides) || []).find(x => x.id === state.currentGuide); if (g) renderInversionPraxis(g); }
+  else if (currentScreen === 'scalepraxis') { const g = ((state.learn && state.learn.guides) || []).find(x => x.id === state.currentGuide); if (g) renderScalePraxis(g); }
   else if (currentScreen === 'home') renderHome();
   else if (currentScreen === 'learn') renderLearnHome();
   else if (currentScreen === 'guide') renderGuide(state.currentGuide, true);
@@ -1011,6 +1012,25 @@ function renderInversionPraxis(g) {
   }
 }
 
+function renderScalePraxis(g) {
+  currentScreen = 'scalepraxis';
+  state.currentGuide = g.id;
+  state.area = g.area || 'academy';
+  app.classList.add('app--wide');   // breitere Leinwand wie bei den Inversionen
+  const L = t();
+  app.innerHTML = `
+    <section class="screen">
+      <button class="backlink" id="spBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_learn)}</button>
+      <div id="stMount"></div>
+    </section>`;
+  document.getElementById('spBack').addEventListener('click', () => renderLearnHome());
+  const mountEl = document.getElementById('stMount');
+  if (window.ScaleTrainer) {
+    window.ScaleTrainer.mount(mountEl);
+    window.ScaleTrainer.setLang(state.lang);
+  }
+}
+
 function guideShell(g, kicker, L, tx, bodyHTML, showTest, brand) {
   return `
     <section class="screen guide">
@@ -1037,6 +1057,7 @@ async function renderGuide(guideId, keepScroll = false) {
   const g = guides.find(x => x.id === guideId);
   if (!g) { renderLearnHome(); return; }
   if (g.module === 'inversion-praxis') { renderInversionPraxis(g); return; }
+  if (g.module === 'scale-praxis') { renderScalePraxis(g); return; }
   currentScreen = 'guide';
   app.classList.remove('app--wide');
   state.currentGuide = guideId;

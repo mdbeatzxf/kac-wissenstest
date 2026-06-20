@@ -186,6 +186,29 @@
       }
     },
     {
+      "id": "tonleitern-praxis",
+      "area": "academy",
+      "group": "praxis",
+      "module": "scale-praxis",
+      "updated": "Juni 2026",
+      "title": {
+        "de": "Tonleitern — Praxis",
+        "en": "Scales — Practice"
+      },
+      "subtitle": {
+        "de": "Dur & Moll in jeder Tonart — Stufen, Halbtöne, Fingersatz",
+        "en": "Major & minor in any key — degrees, half steps, fingering"
+      },
+      "intro": {
+        "de": "Übersicht aller Tonleitern, üben und abfragen — die Stufen stehen im Vordergrund, der Fingersatz leuchtet auf den Händen.",
+        "en": "Overview of all scales, practise and test — degrees in focus, fingering lights up on the hands."
+      },
+      "meta": {
+        "de": "Interaktiv · Dur & Moll · Fingersatz",
+        "en": "Interactive · major & minor · fingering"
+      }
+    },
+    {
       "id": "rollen-ablauf",
       "file": "guides/rollen-ablauf.json",
       "area": "production",

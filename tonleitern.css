@@ -1,0 +1,328 @@
+/* ==================================================================
+   Tonleitern am Klavier — skalenspezifische Styles
+   Ergänzt piano.css (gleiche Tokens, gleicher Swiss-Look).
+   ================================================================== */
+
+:root { --blue: #2a63b0; }
+
+/* Moll: alle roten Akzente werden blau (Übersicht + Drill) */
+.invtrainer .screen.is-minor {
+  --red: var(--blue);
+  --key-target: var(--blue);
+  --key-target-ink: #ffffff;
+}
+
+.invtrainer #view { animation: viewin 300ms cubic-bezier(.2,.7,.3,1); }
+@keyframes viewin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Zurück-Link innerhalb der Ansichten ---------- */
+.invtrainer .backlink {
+  align-self: flex-start; appearance: none; border: none; background: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
+  padding: 0 0 22px; transition: color var(--t-fast), gap var(--t-fast);
+}
+.invtrainer .backlink .arrow { font-size: 15px; transition: transform var(--t-fast); }
+.invtrainer .backlink:hover { color: var(--red); }
+.invtrainer .backlink:hover .arrow { transform: translateX(-3px); }
+
+.invtrainer .screen { display: flex; flex-direction: column; }
+
+/* ==================================================================
+   HOME — drei Kacheln
+   ================================================================== */
+.invtrainer .tiles { margin-top: 34px; display: grid; gap: 16px; }
+.invtrainer .tiles-3 { grid-template-columns: repeat(3, 1fr); }
+.invtrainer .tile {
+  appearance: none; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: 16px;
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  border-radius: var(--radius); padding: 28px 24px; min-height: 280px;
+  transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast);
+}
+.invtrainer .tile-icon svg { width: 56px; height: 56px; display: block; }
+.invtrainer .tile-icon svg [stroke] { stroke: var(--ink); transition: stroke var(--t-fast); }
+.invtrainer .tile-title { font-weight: 700; font-size: clamp(26px, 4vw, 34px); letter-spacing: -0.02em; line-height: 1; }
+.invtrainer .tile-sub { color: var(--ink-soft); font-size: 14.5px; line-height: 1.45; max-width: 30ch; }
+.invtrainer .tile-go { margin-top: auto; font-size: 18px; font-weight: 700; }
+.invtrainer .tile-go .arrow { display: inline-block; transition: transform var(--t-fast); }
+.invtrainer .tile:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+.invtrainer .tile:hover .tile-sub { color: rgba(242,241,236,0.72); }
+.invtrainer .tile:hover .tile-icon svg [stroke] { stroke: var(--paper); }
+.invtrainer .tile:hover .tile-go { color: var(--red); }
+.invtrainer .tile:active { transform: translateY(0); }
+
+/* ==================================================================
+   ÜBERSICHT
+   ================================================================== */
+.invtrainer .ov-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+
+/* Dur/Moll Segmented */
+.invtrainer .seg { display: inline-flex; border: 1.5px solid var(--ink); border-radius: var(--radius); overflow: hidden; flex: none; }
+.invtrainer .seg-btn {
+  appearance: none; cursor: pointer; background: transparent; color: var(--ink); border: none;
+  font: 700 14px/1 "Helvetica Neue", Helvetica, Arial; letter-spacing: 0.02em;
+  padding: 13px 26px; transition: background var(--t-fast), color var(--t-fast);
+}
+.invtrainer .seg-btn + .seg-btn { border-left: 1.5px solid var(--ink); }
+.invtrainer .seg-btn.is-active { background: var(--ink); color: var(--paper); }
+
+.invtrainer .ov-legend {
+  margin-top: 22px; padding-top: 16px; border-top: 1.5px solid var(--ink);
+  display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 12px; color: var(--ink-soft);
+}
+.invtrainer .ovl-item { display: inline-flex; align-items: center; gap: 8px; }
+.invtrainer .ovl-deg { width: 18px; height: 18px; display: grid; place-items: center; background: var(--red); color: #fff; font-size: 11px; font-weight: 700; }
+.invtrainer .ovl-bracket { width: 20px; height: 9px; border: 1.5px solid var(--ink); border-top: none; }
+.invtrainer .ovl-key-dot { width: 14px; height: 14px; background: var(--red); display: inline-block; }
+
+.invtrainer .ov-list { margin-top: 8px; }
+.invtrainer .ov-item { border-bottom: 1px solid var(--hair); }
+.invtrainer .ov-item.is-open { background: rgba(22,21,15,0.02); }
+.invtrainer .ov-row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 280px) 1fr;
+  align-items: center; gap: 28px;
+  padding: 18px 4px; cursor: pointer;
+  transition: background var(--t-fast);
+}
+.invtrainer .ov-row:hover { background: rgba(22,21,15,0.03); }
+.invtrainer .ov-name { display: flex; flex-direction: column; gap: 4px; }
+.invtrainer .ov-key { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 0.9; }
+.invtrainer .ov-type { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* Töne + Stufen + Halbton-Klammern */
+.invtrainer .ov-tones { display: flex; align-items: stretch; }
+.invtrainer .tone-col { display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 30px; }
+.invtrainer .tone-deg {
+  width: 22px; height: 22px; display: grid; place-items: center;
+  background: var(--red); color: #fff; font-size: 12px; font-weight: 700; border-radius: var(--radius);
+}
+.invtrainer .tone-name { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+.invtrainer .tone-gap { width: 8px; }
+.invtrainer .tone-half { width: 16px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 14px; }
+.invtrainer .half-bracket {
+  width: 100%; height: 9px; border: 1.5px solid var(--ink); border-top: none; position: relative;
+}
+.invtrainer .half-bracket::after {
+  content: ""; position: absolute; left: 50%; bottom: -7px; transform: translateX(-50%);
+  width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent;
+  border-top: 5px solid var(--ink);
+}
+
+/* Klaviatur = Hauptelement der Zeile */
+.invtrainer .ov-kbd { display: flex; align-items: center; justify-content: flex-end; gap: 18px; }
+.invtrainer .ov-kbd .pkbd { flex: none; }
+.invtrainer .ov-fingbtn {
+  display: inline-flex; align-items: center; gap: 7px; flex: none;
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+}
+.invtrainer .ov-handicon { width: 20px; height: 20px; }
+.invtrainer .ov-handicon [stroke] { stroke: var(--ink); }
+.invtrainer .ov-chev { font-size: 12px; }
+.invtrainer .ov-item.is-open .ov-fingbtn { color: var(--red); }
+.invtrainer .ov-item.is-open .ov-handicon [stroke] { stroke: var(--red); }
+
+/* Detail-Panel: Hände + Stepper */
+.invtrainer .ov-detail { padding: 4px 4px 28px; display: flex; flex-direction: column; gap: 16px; animation: viewin 200ms ease; }
+.invtrainer .ovd-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.invtrainer .ovd-title { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+.invtrainer .ovd-current { font-size: 13px; color: var(--ink-soft); }
+.invtrainer .ovd-current b { color: var(--ink); }
+.invtrainer .ovd-dot { display: inline-grid; place-items: center; width: 20px; height: 20px; background: var(--red); color: #fff; font-weight: 700; font-size: 11px; margin-right: 6px; vertical-align: middle; }
+
+.invtrainer .ovd-steps { display: flex; flex-wrap: wrap; gap: 6px; }
+.invtrainer .ovd-step {
+  appearance: none; cursor: pointer; background: transparent; color: var(--ink);
+  border: 1.5px solid var(--hair); border-radius: var(--radius);
+  display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 8px 12px; min-width: 44px;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+.invtrainer .ovd-step-deg { font: 700 11px/1 ui-monospace, Menlo, Consolas, monospace; color: var(--ink-soft); }
+.invtrainer .ovd-step-name { font-size: 14px; font-weight: 700; }
+.invtrainer .ovd-step:hover { border-color: var(--ink); }
+.invtrainer .ovd-step.is-active { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.invtrainer .ovd-step.is-active .ovd-step-deg { color: rgba(242,241,236,0.7); }
+
+/* ==================================================================
+   KONFIG  (Stil aus training.html, an piano.css angeglichen)
+   ================================================================== */
+.invtrainer .block { margin-top: 30px; }
+.invtrainer .block-label {
+  font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink);
+  padding-bottom: 12px; border-bottom: 1.5px solid var(--ink);
+  display: flex; align-items: baseline; justify-content: space-between; gap: 12px;
+}
+.invtrainer .block-label .hint { color: var(--ink-soft); font-weight: 400; letter-spacing: 0.06em; }
+
+.invtrainer .opts { display: flex; flex-direction: column; }
+.invtrainer .opt {
+  appearance: none; cursor: pointer; text-align: left; width: 100%;
+  display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 16px;
+  background: transparent; border: none; color: var(--ink);
+  padding: 18px 4px 18px 18px; border-bottom: 1px solid var(--hair);
+  position: relative; transition: background var(--t-fast);
+}
+.invtrainer .opt::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: transparent; transition: background var(--t-fast); }
+.invtrainer .opt .radio { width: 22px; height: 22px; border: 1.5px solid var(--ink); border-radius: 50%; margin-top: 2px; flex: none; display: grid; place-items: center; }
+.invtrainer .opt .radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: background var(--t-fast); }
+.invtrainer .opt-body .opt-title { display: block; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+.invtrainer .opt-body .opt-desc { display: block; color: var(--ink-soft); font-size: 14px; line-height: 1.45; margin-top: 5px; max-width: 60ch; }
+.invtrainer .opt .opt-no { font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace; color: var(--ink-soft); margin-top: 3px; }
+.invtrainer .opt:hover { background: rgba(22,21,15,0.03); }
+.invtrainer .opt.is-active::before { background: var(--red); }
+.invtrainer .opt.is-active .radio::after { background: var(--red); }
+.invtrainer .opt.is-active .opt-no { color: var(--red); }
+
+.invtrainer .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+.invtrainer .chip {
+  appearance: none; cursor: pointer; border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  font: 700 14px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.02em;
+  min-width: 46px; padding: 11px 8px; text-align: center; border-radius: var(--radius);
+  transition: background var(--t-fast), color var(--t-fast);
+}
+.invtrainer .chip:hover { background: var(--hair); }
+.invtrainer .chip.is-active { background: var(--ink); color: var(--paper); }
+.invtrainer .chip.chip-random { letter-spacing: 0.08em; text-transform: uppercase; padding-left: 14px; padding-right: 14px; }
+
+.invtrainer .timer { margin-top: 18px; }
+.invtrainer .switch-text { font-size: 15px; }
+.invtrainer .locked { display: flex; align-items: center; gap: 13px; border-left: 3px solid var(--blue); background: rgba(42,99,176,0.07); padding: 14px 16px; }
+.invtrainer .locked svg { width: 22px; height: 22px; flex: none; }
+.invtrainer .locked-text { font-size: 15px; }
+.invtrainer .locked-text b { font-weight: 700; }
+.invtrainer .locked-text .sm { display: block; color: var(--ink-soft); font-size: 12.5px; margin-top: 3px; }
+
+.invtrainer .start {
+  margin-top: 38px; appearance: none; cursor: pointer; width: 100%;
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  border: none; background: var(--ink); color: var(--paper);
+  font: 700 20px/1 "Helvetica Neue", Helvetica, Arial; letter-spacing: -0.01em;
+  padding: 22px 24px; min-height: 64px; border-radius: var(--radius);
+  transition: background var(--t-fast), transform var(--t-fast);
+}
+.invtrainer .start .arrow { font-size: 22px; transition: transform var(--t-fast); }
+.invtrainer .start:hover { background: var(--red); }
+.invtrainer .start:hover .arrow { transform: translateX(5px); }
+.invtrainer .start:active { transform: translateY(1px); }
+
+/* ==================================================================
+   DRILL
+   ================================================================== */
+.invtrainer .drill-task {
+  margin-top: 6px; display: flex; align-items: flex-start; justify-content: space-between; gap: 20px;
+  border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); padding: 20px 0;
+}
+.invtrainer .dt-headline { margin-top: 8px; display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.invtrainer .dt-play { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+.invtrainer .dt-scale { font-size: clamp(28px, 5vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.invtrainer .dt-dir { font-size: 16px; font-weight: 700; color: var(--red); letter-spacing: 0.02em; }
+.invtrainer .dt-stats { display: flex; gap: 28px; flex: none; }
+.invtrainer .dt-stat { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; }
+.invtrainer .dt-stat-n { font-size: 30px; font-weight: 700; line-height: 1; }
+.invtrainer .dt-stat-d { font-size: 16px; color: var(--ink-soft); }
+.invtrainer .dt-stat-l { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+
+.invtrainer .timerbar { margin-top: 14px; height: 6px; background: var(--hair); overflow: hidden; }
+.invtrainer .timerbar-fill { display: block; height: 100%; width: 100%; background: var(--red); }
+
+.invtrainer .drill-dir { margin-top: 20px; display: inline-flex; border: 1.5px solid var(--ink); border-radius: var(--radius); overflow: hidden; width: max-content; }
+.invtrainer .dir-btn { appearance: none; cursor: pointer; background: transparent; color: var(--ink); border: none; font: 700 13px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.06em; text-transform: uppercase; padding: 12px 20px; transition: background var(--t-fast), color var(--t-fast); }
+.invtrainer .dir-btn + .dir-btn { border-left: 1.5px solid var(--ink); }
+.invtrainer .dir-btn.is-active { background: var(--ink); color: var(--paper); }
+
+.invtrainer .drill-legend { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 12px; color: var(--ink-soft); }
+.invtrainer .dl-item { display: inline-flex; align-items: center; gap: 8px; }
+.invtrainer .dl-chip { width: 20px; height: 20px; display: grid; place-items: center; font-size: 11px; font-weight: 700; }
+.invtrainer .dl-deg { background: var(--red); color: #fff; }
+.invtrainer .dl-fing { border: 1.5px solid var(--ink); color: var(--ink); }
+
+.invtrainer .drill-kbd {
+  margin-top: 18px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  border: 1.5px solid var(--ink); border-radius: var(--radius);
+  background: var(--paper); padding: 26px 22px 22px;
+}
+.invtrainer .drill-kbd .pkbd { margin: 0 auto; }
+
+/* aktuell fälliger Ton — Klaviatur ist Hauptorientierung */
+.invtrainer .pkey.is-current { outline: 4px solid var(--ink); outline-offset: -4px; z-index: 5; }
+.invtrainer .bkey.is-current { outline: 4px solid var(--paper); outline-offset: -4px; }
+
+/* ==================================================================
+   HÄNDE-GRAFIK (PianoHands)
+   ================================================================== */
+.invtrainer .drill-hands {
+  margin-top: 18px; border: 1.5px solid var(--hair); border-radius: var(--radius);
+  padding: 20px 22px; display: flex; flex-direction: column; gap: 14px;
+}
+.invtrainer .drill-hands-head {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+}
+.invtrainer .dh-title { font: 700 12px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
+.invtrainer .dh-current { font-size: 13px; color: var(--ink-soft); }
+.invtrainer .dh-current b { color: var(--ink); font-weight: 700; }
+.invtrainer .dh-current .dh-dot { display: inline-grid; place-items: center; width: 20px; height: 20px; background: var(--red); color: #fff; font-weight: 700; font-size: 11px; margin-right: 6px; vertical-align: middle; }
+
+.invtrainer .ph-pair { display: flex; justify-content: center; gap: clamp(24px, 8vw, 80px); }
+.invtrainer .ph-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.invtrainer .ph-hand { width: clamp(120px, 30vw, 170px); height: auto; display: block; }
+.invtrainer .ph-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+
+.invtrainer .ph-palm { fill: var(--key-white); stroke: var(--ink); stroke-width: 1.5; }
+.invtrainer .ph-finger-shape { fill: var(--key-white); stroke: var(--ink); stroke-width: 1.5; transition: fill var(--t-fast); }
+.invtrainer .ph-finger.is-active .ph-finger-shape { fill: var(--red); stroke: var(--red); }
+.invtrainer .ph-num { fill: var(--ink); font: 700 13px ui-monospace, Menlo, Consolas, monospace; }
+.invtrainer .ph-num.is-active { fill: #fff; }
+
+/* current-note stepper */
+.invtrainer .drill-cur { margin-top: 18px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.invtrainer .cur-step { appearance: none; cursor: pointer; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); width: 44px; height: 44px; font-size: 18px; font-weight: 700; transition: background var(--t-fast), color var(--t-fast); }
+.invtrainer .cur-step:hover { background: var(--ink); color: var(--paper); }
+.invtrainer .cur-readout { font: 700 14px/1 ui-monospace, Menlo, Consolas, monospace; letter-spacing: 0.04em; color: var(--ink-soft); }
+.invtrainer .cur-readout b { color: var(--ink); }
+
+/* Stufenzahl auf der Taste (Hauptfokus) */
+.invtrainer .pkey-deg {
+  position: absolute; left: 0; right: 0; bottom: 8px; text-align: center;
+  font-size: 14px; font-weight: 700; pointer-events: none; color: #fff;
+}
+.invtrainer .bkey .pkey-deg { bottom: 6px; font-size: 12px; color: #fff; }
+/* nur Zieltöne haben weiße Schrift auf rot; nicht-Ziel hätte keine deg-Nummer */
+
+/* Fingersatz auf der Taste (klein, oben) */
+.invtrainer .pkey-fing {
+  position: absolute; left: 0; right: 0; top: 6px; text-align: center;
+  font-size: 11px; font-weight: 700; pointer-events: none; color: var(--ink);
+}
+.invtrainer .wkey.is-target .pkey-fing { color: rgba(255,255,255,0.9); }
+.invtrainer .bkey .pkey-fing { top: 5px; font-size: 10px; color: #d9d7cf; }
+.invtrainer .bkey.is-target .pkey-fing { color: rgba(255,255,255,0.9); }
+
+/* Mini-Klaviatur in der Übersicht: Stufenzahl */
+.invtrainer .ov-kbd .pkey-deg { bottom: 5px; font-size: 11px; }
+.invtrainer .ov-kbd .bkey .pkey-deg { bottom: 4px; font-size: 9px; }
+
+.invtrainer .drill-actions { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
+.invtrainer .drill-next { margin-left: auto; }
+.invtrainer .drill-next .arrow { display: inline-block; transition: transform var(--t-fast); }
+.invtrainer .drill-next:hover .arrow { transform: translateX(4px); }
+
+/* ==================================================================
+   Mobile
+   ================================================================== */
+@media (max-width: 760px) {
+  .invtrainer .tiles-3 { grid-template-columns: 1fr; }
+  .invtrainer .tile { min-height: 0; }
+  .invtrainer .ov-row { grid-template-columns: 1fr; gap: 16px; align-items: flex-start; }
+  .invtrainer .ov-name { flex-direction: row; align-items: baseline; gap: 10px; }
+  .invtrainer .ov-kbd { justify-content: flex-start; }
+  .invtrainer .ov-tones { overflow-x: auto; }}
+@media (max-width: 560px) {
+  .invtrainer .drill-task { flex-direction: column; gap: 14px; }
+  .invtrainer .dt-stats { gap: 22px; }
+  .invtrainer .opt { grid-template-columns: auto 1fr; }
+  .invtrainer .opt .opt-no { display: none; }
+  .invtrainer .btn { flex: 1 1 auto; }
+  .invtrainer .drill-next { margin-left: 0; }}
