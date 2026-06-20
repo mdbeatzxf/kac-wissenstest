@@ -367,6 +367,7 @@ function rerenderCurrent() {
   else if (currentScreen === 'academyHome') renderAcademyHome();
   else if (currentScreen === 'praxis') { const g = ((state.learn && state.learn.guides) || []).find(x => x.id === state.currentGuide); if (g) renderInversionPraxis(g); }
   else if (currentScreen === 'scalepraxis') { const g = ((state.learn && state.learn.guides) || []).find(x => x.id === state.currentGuide); if (g) renderScalePraxis(g); }
+  else if (currentScreen === 'basspraxis') { const g = ((state.learn && state.learn.guides) || []).find(x => x.id === state.currentGuide); if (g) renderBassPraxis(g); }
   else if (currentScreen === 'home') renderHome();
   else if (currentScreen === 'learn') renderLearnHome();
   else if (currentScreen === 'guide') renderGuide(state.currentGuide, true);
@@ -1031,6 +1032,25 @@ function renderScalePraxis(g) {
   }
 }
 
+function renderBassPraxis(g) {
+  currentScreen = 'basspraxis';
+  state.currentGuide = g.id;
+  state.area = g.area || 'academy';
+  app.classList.add('app--wide');
+  const L = t();
+  app.innerHTML = `
+    <section class="screen">
+      <button class="backlink" id="bpBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_learn)}</button>
+      <div id="bpMount"></div>
+    </section>`;
+  document.getElementById('bpBack').addEventListener('click', () => renderLearnHome());
+  const mountEl = document.getElementById('bpMount');
+  if (window.BassTrainer) {
+    window.BassTrainer.mount(mountEl);
+    window.BassTrainer.setLang(state.lang);
+  }
+}
+
 function guideShell(g, kicker, L, tx, bodyHTML, showTest, brand) {
   return `
     <section class="screen guide">
@@ -1058,6 +1078,7 @@ async function renderGuide(guideId, keepScroll = false) {
   if (!g) { renderLearnHome(); return; }
   if (g.module === 'inversion-praxis') { renderInversionPraxis(g); return; }
   if (g.module === 'scale-praxis') { renderScalePraxis(g); return; }
+  if (g.module === 'bass-praxis') { renderBassPraxis(g); return; }
   currentScreen = 'guide';
   app.classList.remove('app--wide');
   state.currentGuide = guideId;

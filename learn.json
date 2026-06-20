@@ -236,6 +236,29 @@
       }
     },
     {
+      "id": "bass-praxis",
+      "area": "academy",
+      "group": "praxis",
+      "module": "bass-praxis",
+      "updated": "Juni 2026",
+      "title": {
+        "de": "Bass linke Hand — Praxis",
+        "en": "Left-hand bass — Practice"
+      },
+      "subtitle": {
+        "de": "Bass-Optionen & Umkehrungen in jeder Tonart",
+        "en": "Bass options & inversions in any key"
+      },
+      "intro": {
+        "de": "Übersicht, üben und abfragen — Grundton, Oktave, Shell, volles Voicing und die Umkehrungen, mit MIDI und Klang.",
+        "en": "Overview, practise and test — root, octave, shell, full voicing and the inversions, with MIDI and sound."
+      },
+      "meta": {
+        "de": "Interaktiv · 4 Optionen & Umkehrungen",
+        "en": "Interactive · 4 options & inversions"
+      }
+    },
+    {
       "id": "rollen-ablauf",
       "file": "guides/rollen-ablauf.json",
       "area": "production",

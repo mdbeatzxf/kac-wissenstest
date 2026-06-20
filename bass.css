@@ -1,0 +1,48 @@
+/* ==================================================================
+   Bass in der linken Hand — modulspezifische Styles (Akzent: grün).
+   Liegt unter .invtrainer → nutzt piano.css + tonleitern.css mit.
+   ================================================================== */
+
+/* Linke Hand = grün: rote Akzente + Zieltöne grün einfärben. */
+.invtrainer.basstrainer { --red: var(--green); --key-target: var(--green); --key-missing: var(--green); }
+
+/* Übersicht: Voicing-Tasten solid grün (Standard-is-target via --key-target). */
+/* Drill-Board: Zieltöne als grüner Umriss, damit "richtig" (solid) unterscheidbar bleibt. */
+.basstrainer .drill-board .wkey.is-target,
+.basstrainer .drill-board .bkey.is-target { background: transparent; box-shadow: inset 0 0 0 3px var(--green); }
+.basstrainer .drill-board .wkey.is-target { border-color: var(--green); }
+.basstrainer .drill-board .is-target .pkey-lbl { color: var(--green); }
+.basstrainer .drill-board .pkey.is-played,
+.basstrainer .drill-board .pkey.is-correct { background: var(--green); border-color: var(--green); box-shadow: none; }
+.basstrainer .drill-board .is-played .pkey-lbl,
+.basstrainer .drill-board .is-correct .pkey-lbl { color: #fff; }
+
+/* Basston-Markierung: kleiner dunkler Punkt oben auf der Taste. */
+.basstrainer .bass-kbd .pkey.is-bass::after {
+  content: ""; position: absolute; top: 5px; left: 50%; transform: translateX(-50%);
+  width: 7px; height: 7px; border-radius: 50%; background: #16150f;
+  box-shadow: 0 0 0 2px #fff; z-index: 4; pointer-events: none;
+}
+
+/* Aufgabe: Zieltöne als Text. */
+.basstrainer .dp-notes { margin-top: 12px; font-size: 16px; letter-spacing: 0.04em; color: var(--ink-soft); font-weight: 700; }
+
+/* ============================ Übersicht: Voicing-Zeilen ============================ */
+.basstrainer .ov-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.basstrainer .ov-keys { margin-top: 16px; }
+.basstrainer .voic-label { margin-top: 30px; }
+.basstrainer .voic-list { margin-top: 4px; }
+.basstrainer .voic-row {
+  display: grid; grid-template-columns: minmax(0, 300px) 1fr; align-items: center; gap: 28px;
+  padding: 18px 4px; border-bottom: 1px solid var(--hair);
+}
+.basstrainer .voic-name { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.basstrainer .voic-notes { margin-top: 4px; font-size: 15px; font-weight: 700; color: var(--green); }
+.basstrainer .voic-desc { margin-top: 6px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.45; max-width: 46ch; }
+.basstrainer .voic-kbd { display: flex; justify-content: flex-end; }
+.basstrainer .voic-kbd .pkbd { flex: none; }
+
+@media (max-width: 760px) {
+  .basstrainer .voic-row { grid-template-columns: 1fr; gap: 14px; }
+  .basstrainer .voic-kbd { justify-content: flex-start; }
+}
