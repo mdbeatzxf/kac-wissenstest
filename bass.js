@@ -114,13 +114,30 @@
   // Dur-Tonleiter: Halbton-Abstände + diatonische Qualität je Stufe (vii° wird gemieden).
   const MAJ_OFFS = [0, 2, 4, 5, 7, 9, 11];
   const MAJ_QUAL = ['maj', 'min', 'min', 'maj', 'maj', 'min', 'dim'];
-  const BASS_PROGS = [
-    { name: 'I–IV–V–I', degs: [0, 3, 4, 0] },
-    { name: 'I–V–vi–IV', degs: [0, 4, 5, 3] },
-    { name: 'vi–IV–I–V', degs: [5, 3, 0, 4] },
-    { name: 'ii–V–I', degs: [1, 4, 0] },
-    { name: 'I–vi–IV–V', degs: [0, 5, 3, 4] }
+  const ROMAN = ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii°'];
+  // Diatonisch korrekte Tonbenennung (jede Stufe ein eigener Buchstabe).
+  const LETTERS = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+  const LETTER_PC = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+  function scaleDegName(keyId, keyPc, degIdx) {           // degIdx: 0-basiert, darf > 6 sein
+    const li = LETTERS.indexOf(keyId.charAt(0));
+    const letter = LETTERS[(li + degIdx) % 7];
+    const pitch = ((keyPc + MAJ_OFFS[degIdx % 7]) % 12 + 12) % 12;
+    let acc = ((pitch - LETTER_PC[letter]) % 12 + 12) % 12;
+    if (acc > 6) acc -= 12;
+    return letter + (acc === 1 ? '#' : acc === 2 ? '##' : acc === -1 ? 'b' : acc === -2 ? 'bb' : '');
+  }
+  // 28 gängige diatonische Folgen (vii° gemieden) — Namen automatisch aus den Stufen.
+  const BASS_PROG_DEGS = [
+    [0, 3, 4, 0], [0, 4, 5, 3], [5, 3, 0, 4], [1, 4, 0], [0, 5, 3, 4],
+    [0, 3, 5, 4], [0, 5, 1, 4], [0, 4, 3, 4], [3, 4, 0], [0, 2, 5, 3],
+    [1, 4, 0, 5], [5, 1, 4, 0], [0, 3, 1, 4], [0, 2, 3, 4], [5, 4, 3, 0],
+    [0, 3, 4, 5], [0, 4, 1, 3], [2, 5, 1, 4], [0, 5, 2, 3], [3, 0, 4, 5],
+    [0, 1, 2, 3], [5, 3, 4, 0], [0, 3, 0, 4], [1, 3, 4, 0], [0, 4, 5, 2, 3, 0, 3, 4],
+    [0, 5, 3, 4, 0], [3, 4, 5, 0], [1, 5, 3, 4]
   ];
+  const BASS_PROGS = BASS_PROG_DEGS.map(function (degs) {
+    return { name: degs.map(function (d) { return ROMAN[d]; }).join('–'), degs: degs };
+  });
   // Die drei vollen Voicings (Grundstellung/1./2. Umkehrung) als Positionen,
   // bezogen auf den Akkord-Grundton R (0..11), t3 = 4 (Dur) / 3 (Moll).
   function bassInvPositions(R, t3, inv) {
@@ -228,9 +245,14 @@
         options: { t: 'Fülle-Optionen', d: 'Grundton · Oktave · Shell · Voll — welche Lage passt zur Höhe.' },
         inversions: { t: 'Umkehrungen', d: 'Dasselbe Voicing mit verschiedenem Bass (C–G–E / E–C–G / G–E–C).' },
         mixed: { t: 'Gemischt', d: 'Optionen und Umkehrungen gemischt.' },
+        degrees: { t: 'Nashville-Stufen', d: 'Spiele die Stufen einer Tonart als Bass — die 4, die 5, die 2 … in wählbarer Fülle.' },
         progression: { t: 'Stimmführung', d: 'Akkordfolgen mit kleinster Bewegung — die passende Umkehrung kommt von selbst (z. B. E–C–G → F–C–A).' }
       },
       progStep: 'Akkord',
+      blockFill: 'Fülle',
+      fillOpts: { root: 'Grundton', octave: 'Oktave', shell: 'Shell', voll: 'Voll', mixed: 'Gemischt' },
+      degKicker: 'Nashville-Stufe', playThe: 'Spiele die',
+      degEquals: function (d, key, chord) { return 'Stufe ' + d + ' in ' + key + ' = ' + chord; },
       randomKey: 'Zufall',
       timerSwitch: 'Timer 15 s pro Aufgabe',
       timerLockedTitle: 'Timer 15 s pro Aufgabe — beim Quiz immer an.',
@@ -284,9 +306,14 @@
         options: { t: 'Fullness options', d: 'Root · octave · shell · full — which fits the register.' },
         inversions: { t: 'Inversions', d: 'Same voicing, different bass (C–G–E / E–C–G / G–E–C).' },
         mixed: { t: 'Mixed', d: 'Options and inversions mixed.' },
+        degrees: { t: 'Nashville numbers', d: 'Play the numbers of a key as bass — the 4, the 5, the 2 … in any fullness.' },
         progression: { t: 'Voice leading', d: 'Chord progressions with the least movement — the right inversion follows by itself (e.g. E–C–G → F–C–A).' }
       },
       progStep: 'Chord',
+      blockFill: 'Fullness',
+      fillOpts: { root: 'Root', octave: 'Octave', shell: 'Shell', voll: 'Full', mixed: 'Mixed' },
+      degKicker: 'Nashville number', playThe: 'Play the',
+      degEquals: function (d, key, chord) { return 'Number ' + d + ' in ' + key + ' = ' + chord; },
       randomKey: 'Random',
       timerSwitch: 'Timer 15 s per task',
       timerLockedTitle: 'Timer 15 s per task — always on in the quiz.',
@@ -312,7 +339,7 @@
     lang: 'de', view: 'home',
     overviewKey: 'C', overviewQuality: 'major',   // major | minor
     mode: 'practice',                 // practice | quiz
-    cfg: { set: 'options', key: 'random', quality: 'major', timerOn: true },
+    cfg: { set: 'options', key: 'random', quality: 'major', fill: 'mixed', timerOn: true },
     drill: null
   };
   function t() { return I18N[state.lang]; }
@@ -508,7 +535,7 @@
     // Was üben?
     v.appendChild(blockLabel(L.blockSet));
     const opts = el('div', 'opts');
-    ['options', 'inversions', 'mixed', 'progression'].forEach(function (s, i) { opts.appendChild(optionCard(s, L.setOpts[s].t, L.setOpts[s].d, i + 1, state.cfg.set === s, function () { state.cfg.set = s; render(); })); });
+    ['options', 'inversions', 'mixed', 'degrees', 'progression'].forEach(function (s, i) { opts.appendChild(optionCard(s, L.setOpts[s].t, L.setOpts[s].d, i + 1, state.cfg.set === s, function () { state.cfg.set = s; render(); })); });
     v.appendChild(wrapBlock(opts));
     // Tonart
     const hint = el('span', 'hint mono'); hint.textContent = state.cfg.key === 'random' ? L.randomKey : state.cfg.key;
@@ -519,8 +546,18 @@
       b.addEventListener('click', function () { state.cfg.key = it.id; render(); }); chips.appendChild(b);
     });
     v.appendChild(wrapBlock(chips));
-    // Klang (Dur / Moll / Gemischt) — bei Stimmführung irrelevant (diatonische Folge).
-    if (state.cfg.set !== 'progression') {
+    // Fülle (nur bei Nashville-Stufen): Grundton / Oktave / Shell / Voll / Gemischt.
+    if (state.cfg.set === 'degrees') {
+      v.appendChild(blockLabel(L.blockFill));
+      const fchips = el('div', 'chips');
+      ['mixed', 'root', 'octave', 'shell', 'voll'].forEach(function (f) {
+        const b = el('button', 'chip mono' + (f === 'mixed' ? ' chip-random' : '') + (state.cfg.fill === f ? ' is-active' : '')); b.type = 'button'; b.textContent = L.fillOpts[f];
+        b.addEventListener('click', function () { state.cfg.fill = f; render(); }); fchips.appendChild(b);
+      });
+      v.appendChild(wrapBlock(fchips));
+    }
+    // Klang (Dur / Moll / Gemischt) — bei Stimmführung und Stufen irrelevant (diatonisch).
+    if (state.cfg.set !== 'progression' && state.cfg.set !== 'degrees') {
       v.appendChild(blockLabel(L.blockQuality));
       const qseg = el('div', 'seg quality-seg');
       ['major', 'minor', 'both'].forEach(function (q) {
@@ -571,9 +608,32 @@
       prog: { name: d.prog.name, pos: pos, total: total }
     };
   }
+  const FILL_TO_OPT = { root: 'root', octave: 'octave', shell: 'shell', voll: 'full' };
+  function buildDegreeTask() {
+    const cfg = state.cfg, L = t();
+    const keyObj = cfg.key === 'random' ? KEYS[Math.floor(Math.random() * KEYS.length)] : findKey(cfg.key);
+    const deg = 1 + Math.floor(Math.random() * 6);          // Stufen 1..6 (vii° gemieden)
+    const qual = MAJ_QUAL[deg - 1];                          // maj | min
+    const rootName = scaleDegName(keyObj.id, keyObj.pc, deg - 1);
+    const thirdName = scaleDegName(keyObj.id, keyObj.pc, deg - 1 + 2);
+    const fifthName = scaleDegName(keyObj.id, keyObj.pc, deg - 1 + 4);
+    const rootPc = ((keyObj.pc + MAJ_OFFS[deg - 1]) % 12 + 12) % 12;
+    const degKey = { id: rootName, pc: rootPc, third: thirdName, thirdm: thirdName, fifth: fifthName };
+    let fill = cfg.fill || 'voll';
+    if (fill === 'mixed') fill = ['root', 'octave', 'shell', 'voll'][Math.floor(Math.random() * 4)];
+    const optDef = OPTIONS.find(function (o) { return o.id === FILL_TO_OPT[fill]; });
+    const vc = computeVoicing(degKey, optDef, qual === 'min' ? 'minor' : 'major');
+    vc.checkBass = false;
+    return {
+      key: { id: keyObj.id }, def: { id: 'deg' + deg }, set: 'degrees',
+      degree: deg, chordName: rootName, quality: qual, fill: optDef.id,
+      label: L.optNames[optDef.id], voicing: vc, bassName: null
+    };
+  }
   function buildTask() {
     const cfg = state.cfg;
     if (cfg.set === 'progression') return buildProgressionTask();
+    if (cfg.set === 'degrees') return buildDegreeTask();
     const key = cfg.key === 'random' ? KEYS[Math.floor(Math.random() * KEYS.length)] : findKey(cfg.key);
     let set = cfg.set; if (set === 'mixed') set = Math.random() < 0.5 ? 'options' : 'inversions';
     let quality = cfg.quality || 'major'; if (quality === 'both') quality = Math.random() < 0.5 ? 'major' : 'minor';
@@ -623,12 +683,20 @@
     v.appendChild(backBtn(L.configTitle, 'config'));
     // Aufgabe
     const card = el('div', 'drill-prompt');
-    let topLeft = esc(task.key.id);
-    if (task.set === 'inversions') topLeft += ' · ' + esc(L.tiles.overview.t);
-    else if (task.set === 'progression') topLeft = esc(task.prog.name) + ' · ' + esc(L.progStep) + ' ' + task.prog.pos + '/' + task.prog.total;
+    let topLeft = esc(task.key.id), mainHTML, subHTML;
+    if (task.set === 'degrees') {
+      topLeft = esc(L.degKicker) + ' · ' + esc(task.key.id);
+      mainHTML = '<span class="dp-lbl mono">' + esc(L.playThe) + '</span> <span class="dp-chord dp-degree">' + task.degree + '</span> <span class="dp-inv">' + esc(task.label) + '</span>';
+      if (state.mode === 'quiz') subHTML = '<div class="dp-notes mono">' + esc('in ' + task.key.id) + '</div>';   // Antwort im Quiz verborgen
+      else subHTML = '<div class="dp-deg-eq mono">' + esc(L.degEquals(task.degree, task.key.id, task.chordName)) + '</div><div class="dp-notes mono">' + vc.names.join(' – ') + '</div>';
+    } else {
+      if (task.set === 'inversions') topLeft += ' · ' + esc(L.tiles.overview.t);
+      else if (task.set === 'progression') topLeft = esc(task.prog.name) + ' · ' + esc(L.progStep) + ' ' + task.prog.pos + '/' + task.prog.total;
+      mainHTML = '<span class="dp-lbl mono">' + esc(L.play) + '</span> <span class="dp-chord">' + esc(task.key.id) + '</span> <span class="dp-inv">' + esc(task.label) + '</span>';
+      subHTML = '<div class="dp-notes mono">' + vc.names.join(' – ') + '</div>';
+    }
     card.innerHTML = '<div class="dp-top mono"><span>' + topLeft + '</span><span class="dp-step">' + esc(L.step) + ' ' + d.step + (d.total ? '/' + d.total : '') + ' · ' + esc(L.hits) + ' ' + d.hits + '</span></div>' +
-      '<div class="dp-main"><span class="dp-lbl mono">' + esc(L.play) + '</span> <span class="dp-chord">' + esc(task.key.id) + '</span> <span class="dp-inv">' + esc(task.label) + '</span></div>' +
-      '<div class="dp-notes mono">' + vc.names.join(' – ') + '</div>';
+      '<div class="dp-main">' + mainHTML + '</div>' + subHTML;
     v.appendChild(card);
     if (d.timerOn) { if (!d.deadline) d.deadline = Date.now() + DRILL_SECONDS * 1000; const remain = Math.max(0, d.deadline - Date.now()); const tb = el('div', 'drill-timer'); tb.innerHTML = '<div class="dt-track"><div id="bassBar" class="dt-bar"></div></div>'; v.appendChild(tb); setTimeout(function () { const f = $('bassBar'); if (f) { f.style.transition = 'none'; f.style.width = (remain / (DRILL_SECONDS * 1000) * 100) + '%'; void f.offsetWidth; f.style.transition = 'width ' + (remain / 1000) + 's linear'; f.style.width = '0%'; } }, 20); }
     // Board

@@ -27,6 +27,10 @@
 /* Aufgabe: Zieltöne als Text. */
 .basstrainer .dp-notes { margin-top: 12px; font-size: 16px; letter-spacing: 0.04em; color: var(--ink-soft); font-weight: 700; }
 
+/* Nashville-Stufen: große Stufenzahl in Grün, Mapping-Zeile darunter. */
+.basstrainer .dp-degree { color: var(--green); }
+.basstrainer .dp-deg-eq { margin-top: 10px; font-size: 15px; font-weight: 700; letter-spacing: 0.02em; color: var(--green); }
+
 /* ============================ Übersicht: Voicing-Zeilen ============================ */
 .basstrainer .ov-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .basstrainer .ov-keys { flex-basis: 100%; margin-top: 16px; }

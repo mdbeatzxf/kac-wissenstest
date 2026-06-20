@@ -111,13 +111,19 @@
     { name: 'Quintfall', degs: [0, 3, 6, 2, 5, 1, 4, 0] },     // I–IV–vii°–iii–vi–ii–V–I
     { name: 'Quintanstieg', degs: [0, 4, 1, 5, 2, 6, 3, 0] }   // I–V–ii–vi–iii–vii°–IV–I
   ];
-  const PROGS_CLASSIC = [
-    { name: 'I–IV–V–I', degs: [0, 3, 4, 0] },
-    { name: 'ii–V–I', degs: [1, 4, 0] },
-    { name: 'I–V–vi–IV', degs: [0, 4, 5, 3] },
-    { name: 'vi–IV–I–V', degs: [5, 3, 0, 4] },
-    { name: 'I–vi–IV–V', degs: [0, 5, 3, 4] }
+  // 28 gängige Folgen — Namen automatisch aus den Stufen (Stimmführung wählt die Lagen).
+  const ROMAN_DEG = ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii°'];
+  const CLASSIC_DEGS = [
+    [0, 3, 4, 0], [1, 4, 0], [0, 4, 5, 3], [5, 3, 0, 4], [0, 5, 3, 4],
+    [0, 3, 5, 4], [0, 5, 1, 4], [0, 4, 3, 4], [3, 4, 0], [0, 2, 5, 3],
+    [1, 4, 0, 5], [5, 1, 4, 0], [0, 3, 1, 4], [0, 2, 3, 4], [5, 4, 3, 0],
+    [0, 3, 4, 5], [0, 4, 1, 3], [2, 5, 1, 4], [0, 5, 2, 3], [3, 0, 4, 5],
+    [0, 1, 2, 3], [5, 3, 4, 0], [0, 3, 0, 4], [1, 3, 4, 0], [0, 5, 3, 4, 0],
+    [3, 4, 5, 0], [1, 5, 3, 4], [0, 3, 4, 5, 0]
   ];
+  const PROGS_CLASSIC = CLASSIC_DEGS.map(function (degs) {
+    return { name: degs.map(function (d) { return ROMAN_DEG[d]; }).join('–'), degs: degs };
+  });
 
   /* ----------------------------------------------------------------
      2) UI-TEXTE
