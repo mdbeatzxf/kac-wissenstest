@@ -57,6 +57,14 @@
         },
         {
           "type": "sub",
+          "title": { "de": "Die vier Optionen auf der Klaviatur (in C)", "en": "The four options on the keyboard (in C)" }
+        },
+        { "type": "keyboard", "notes": [0], "names": ["C"], "bass": 0, "caption": { "de": "Grundton — nur C. Schlank und klar.", "en": "Root — just C. Lean and clear." } },
+        { "type": "keyboard", "notes": [0, 12], "names": ["C", "C"], "bass": 0, "caption": { "de": "Oktave — C + C. Kräftiger, mehr Fundament.", "en": "Octave — C + C. Stronger, more foundation." } },
+        { "type": "keyboard", "notes": [0, 7], "names": ["C", "G"], "bass": 0, "caption": { "de": "Shell — C + G (Quinte, keine Terz). Offen, tief nicht düster.", "en": "Shell — C + G (fifth, no third). Open, not dark down low." } },
+        { "type": "keyboard", "notes": [0, 7, 16], "names": ["C", "G", "E"], "bass": 0, "caption": { "de": "Voll — C + G + E (Terz eine Oktave höher). Warm und komplett.", "en": "Full — C + G + E (third an octave higher). Warm and complete." } },
+        {
+          "type": "sub",
           "title": { "de": "Dieselben Optionen in mehreren Tonarten", "en": "The same options in several keys" }
         },
         {
@@ -73,7 +81,16 @@
             [ { "de": "F", "en": "F" }, { "de": "F", "en": "F" }, { "de": "F + F", "en": "F + F" }, { "de": "F + C", "en": "F + C" }, { "de": "F + C + A", "en": "F + C + A" } ],
             [ { "de": "G", "en": "G" }, { "de": "G", "en": "G" }, { "de": "G + G", "en": "G + G" }, { "de": "G + D", "en": "G + D" }, { "de": "G + D + B", "en": "G + D + B" } ]
           ]
-        }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Dur oder Moll — nur die Terz wandert", "en": "Major or minor — only the third moves" },
+          "text": {
+            "de": "Grundton, Oktave und Shell haben keine Terz und bleiben in Moll identisch. Nur beim vollen Voicing rückt die Terz einen Halbton herunter (in C: E → Eb).",
+            "en": "Root, octave and shell have no third and stay identical in minor. Only in the full voicing the third moves down a semitone (in C: E → Eb)."
+          }
+        },
+        { "type": "keyboard", "notes": [0, 7, 15], "names": ["C", "G", "Eb"], "bass": 0, "tone": "minor", "caption": { "de": "Voll in C-Moll — C + G + Eb. Gleiche Lage, kleine Terz.", "en": "Full in C minor — C + G + Eb. Same register, minor third." } }
       ]
     },
     {
@@ -121,6 +138,13 @@
             [ { "de": "G – E – C", "en": "G – E – C" }, { "de": "G", "en": "G" }, { "de": "am höchsten, hell, schwebend", "en": "highest, bright, floating" }, { "de": "für sanfte Übergänge", "en": "for smooth transitions" } ]
           ]
         },
+        {
+          "type": "sub",
+          "title": { "de": "Die drei Umkehrungen auf der Klaviatur", "en": "The three inversions on the keyboard" }
+        },
+        { "type": "keyboard", "notes": [0, 7, 16], "names": ["C", "G", "E"], "bass": 0, "caption": { "de": "Grundstellung — Bass C. Breit und satt (Standard-Lage).", "en": "Root position — bass C. Broad and full (standard)." } },
+        { "type": "keyboard", "notes": [4, 12, 19], "names": ["E", "C", "G"], "bass": 4, "caption": { "de": "1. Umkehrung — Bass E. Höher startend, weicher.", "en": "1st inversion — bass E. Starts higher, softer." } },
+        { "type": "keyboard", "notes": [7, 12, 16], "names": ["G", "C", "E"], "bass": 7, "caption": { "de": "2. Umkehrung — Bass G. Am höchsten, hell, schwebend.", "en": "2nd inversion — bass G. Highest, bright, floating." } },
         {
           "type": "note",
           "text": {

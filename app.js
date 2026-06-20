@@ -752,6 +752,37 @@ function makeCheck(id, label, checks) {
     </button>`;
 }
 
+/* --- statisches Klaviatur-Diagramm (Lernbereich Bass) als Inline-SVG ---
+   notes = Halbton-Positionen (0 = unteres C), names = Beschriftung je Note,
+   bass  = Position des Basstons (Punkt-Markierung), keys = Anzahl Tasten. */
+const KBD_BLACK_PC = [1, 3, 6, 8, 10];
+function keyboardSVG(notes, names, bass, keys) {
+  keys = keys || 24;
+  const WW = 26, WH = 104, BW = 16, BH = 66, GREEN = '#2e8b57', INK = '#16150f';
+  const label = {};
+  (notes || []).forEach(function (p, i) { label[p] = (names && names[i] != null) ? String(names[i]) : ''; });
+  function dot(cx) { return '<circle cx="' + cx + '" cy="13" r="4.2" fill="' + INK + '" stroke="#fff" stroke-width="1.6"/>'; }
+  let whites = '', blacks = '', w = 0; const blackData = [];
+  for (let p = 0; p < keys; p++) {
+    const isB = KBD_BLACK_PC.indexOf(((p % 12) + 12) % 12) !== -1;
+    if (!isB) {
+      const x = w * WW, isT = Object.prototype.hasOwnProperty.call(label, p);
+      whites += '<rect x="' + x + '" y="0" width="' + WW + '" height="' + WH + '" rx="2" fill="' + (isT ? GREEN : '#faf9f5') + '" stroke="' + INK + '" stroke-width="1.4"/>';
+      if (isT && label[p]) whites += '<text x="' + (x + WW / 2) + '" y="' + (WH - 11) + '" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="11" font-weight="700" fill="#fff">' + escapeHTML(label[p]) + '</text>';
+      if (p === bass) whites += dot(x + WW / 2);
+      w++;
+    } else { blackData.push({ p: p, x: w * WW - BW / 2 }); }
+  }
+  const totalW = w * WW;
+  blackData.forEach(function (bk) {
+    const isT = Object.prototype.hasOwnProperty.call(label, bk.p);
+    blacks += '<rect x="' + bk.x + '" y="0" width="' + BW + '" height="' + BH + '" rx="1.5" fill="' + (isT ? GREEN : INK) + '"/>';
+    if (isT && label[bk.p]) blacks += '<text x="' + (bk.x + BW / 2) + '" y="' + (BH - 8) + '" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="9" font-weight="700" fill="#fff">' + escapeHTML(label[bk.p]) + '</text>';
+    if (bk.p === bass) blacks += dot(bk.x + BW / 2);
+  });
+  return '<svg class="g-kbd-svg" viewBox="-1 -1 ' + (totalW + 2) + ' ' + (WH + 2) + '" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">' + whites + blacks + '</svg>';
+}
+
 /* --- render one content block to HTML --- */
 function renderBlock(b, ctx) {
   const { tx, checks, guideId, path, L } = ctx;
@@ -817,6 +848,12 @@ function renderBlock(b, ctx) {
           <image-slot id="${sid}" class="g-slot" placeholder="${cap}" shape="rect"${imgSrc}${fit} style="width:100%;height:auto;aspect-ratio:${ar}"></image-slot>
           <figcaption class="g-figcap mono">${cap}</figcaption>
         </figure>`;
+    }
+    case 'keyboard': {
+      const svg = keyboardSVG(b.notes || [], b.names || [], (typeof b.bass === 'number' ? b.bass : -1), b.keys || 24);
+      const cap = b.caption ? escapeHTML(tx(b.caption)) : '';
+      const tone = b.tone === 'minor' ? ' is-minor' : '';
+      return `<figure class="g-fig g-kbd-fig${tone}">${svg}${cap ? `<figcaption class="g-figcap mono">${cap}</figcaption>` : ''}</figure>`;
     }
     case 'note':
       return `<div class="callout"><span class="callout-mark mono">!</span><span>${escapeHTML(tx(b.text))}</span></div>`;

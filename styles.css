@@ -712,6 +712,12 @@ h1.display {
   color: var(--ink-soft); padding-left: 14px; border-left: 2px solid var(--red);
 }
 
+/* Statische Klaviatur-Diagramme im Lernbereich (Bass = grün, Moll = blau). */
+.g-kbd-fig { max-width: 430px; }
+.g-kbd-svg { display: block; width: 100%; height: auto; }
+.g-kbd-fig .g-figcap { border-left-color: #2e8b57; }
+.g-kbd-fig.is-minor .g-figcap { border-left-color: #2a63b0; }
+
 /* ============================================================
    Interaktives Arbeitsblatt (Music Academy)
    ============================================================ */
