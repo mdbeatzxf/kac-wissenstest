@@ -125,7 +125,7 @@
   const I18N = {
     de: {
       kicker: 'Music Academy · Übung',
-      title: 'Inversionen am Klavier',
+      title: 'Akkorde & Umkehrungen am Klavier',
       subtitle: 'Diatonische Dreiklänge in jeder Tonart und jeder Umkehrung — sehen, vergleichen, am Klavier üben.',
       keyLabel: 'Tonart (Key)',
       hintToggle: '7. Stufe: 5/7-Hinweis',
@@ -167,7 +167,7 @@
     },
     en: {
       kicker: 'Music Academy · Practice',
-      title: 'Inversions on the piano',
+      title: 'Chords & Inversions on the piano',
       subtitle: 'Diatonic triads in every key and every inversion — see, compare, practise on the piano.',
       keyLabel: 'Key',
       hintToggle: '7th degree: 5/7 hint',

@@ -163,29 +163,6 @@
       "group": "theorie"
     },
     {
-      "id": "inversionen-praxis",
-      "area": "academy",
-      "group": "praxis",
-      "module": "inversion-praxis",
-      "updated": "Juni 2026",
-      "title": {
-        "de": "Inversionen — Praxis",
-        "en": "Inversions — Practice"
-      },
-      "subtitle": {
-        "de": "Akkorde & Umkehrungen in jeder Tonart",
-        "en": "Chords & inversions in any key"
-      },
-      "intro": {
-        "de": "Wähle Tonart, Stufe und Umkehrung — die Klaviatur zeigt die Zieltöne. Tippe die Tasten und prüfe. (MIDI folgt.)",
-        "en": "Pick key, degree and inversion — the keyboard shows the target notes. Tap the keys and check. (MIDI coming.)"
-      },
-      "meta": {
-        "de": "Interaktiv · alle Stufen & Umkehrungen",
-        "en": "Interactive · all degrees & inversions"
-      }
-    },
-    {
       "id": "tonleitern-praxis",
       "area": "academy",
       "group": "praxis",
@@ -206,6 +183,29 @@
       "meta": {
         "de": "Interaktiv · Dur & Moll · Fingersatz",
         "en": "Interactive · major & minor · fingering"
+      }
+    },
+    {
+      "id": "inversionen-praxis",
+      "area": "academy",
+      "group": "praxis",
+      "module": "inversion-praxis",
+      "updated": "Juni 2026",
+      "title": {
+        "de": "Akkorde & Umkehrungen — Praxis",
+        "en": "Chords & Inversions — Practice"
+      },
+      "subtitle": {
+        "de": "Dreiklänge & Umkehrungen in jeder Tonart",
+        "en": "Triads & inversions in any key"
+      },
+      "intro": {
+        "de": "Übersicht, üben und abfragen — Tonart, Stufe und Umkehrung am Klavier, mit MIDI und Klang.",
+        "en": "Overview, practise and test — key, degree and inversion at the piano, with MIDI and sound."
+      },
+      "meta": {
+        "de": "Interaktiv · alle Stufen & Umkehrungen",
+        "en": "Interactive · all degrees & inversions"
       }
     },
     {
