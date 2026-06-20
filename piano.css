@@ -11,17 +11,19 @@
   --ink:      #16150f;
   --ink-soft: #6b6a62;
   --hair:     rgba(22, 21, 15, 0.16);
-  --red:      #e02718;
-  --blue:     #2a63b0;
-  --good:     #1f8a4d;
+  --red:      #e02718;       /* Dur */
+  --blue:     #2a63b0;       /* Moll */
+  --green:    #2e8b57;       /* linke Hand / Bass (Waldgrün-Mint) */
+  --good:     #1f8a4d;       /* "richtig"-Feedback */
 
   /* --- Akkordqualität: Zell-Hintergründe + Punkt --- */
-  --q-maj-bg: #f7e9e7;       /* Dur (Stufe 1/4/5): ganz leicht rosa */
-  --q-min-bg: #eae8df;
-  --q-dim-bg: #e2dfd4;
+  /* Global: Dur = rot, Moll = blau, vermindert = dunkleres Blau. */
+  --q-maj-bg: #f7e9e7;       /* Dur: ganz leicht rosa */
+  --q-min-bg: #e7ecf4;       /* Moll: ganz leicht blau */
+  --q-dim-bg: #e2dfd4;       /* vermindert: neutral */
   --q-dot-maj: var(--red);   /* Dur: rot */
-  --q-dot-min: #8a887e;      /* Moll: neutral grau */
-  --q-dot-dim: var(--blue);  /* vermindert: blau */
+  --q-dot-min: var(--blue);  /* Moll: blau */
+  --q-dot-dim: #1a3f70;      /* vermindert: dunkleres Blau */
 
   /* --- Klaviatur --- */
   --key-white:  #fbfaf6;
