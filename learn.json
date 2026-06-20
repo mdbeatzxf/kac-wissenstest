@@ -190,6 +190,33 @@
       "group": "theorie"
     },
     {
+      "id": "bass-uebungen",
+      "file": "guides/bass-uebungen.json",
+      "area": "academy",
+      "kicker": {
+        "de": "Music Academy · Übungen",
+        "en": "Music Academy · Exercises"
+      },
+      "meta": {
+        "de": "6 Übungen mit Lösungen · linke Hand",
+        "en": "6 exercises with solutions · left hand"
+      },
+      "updated": "Juni 2026",
+      "title": {
+        "de": "Bass linke Hand — Übungen",
+        "en": "Left-hand bass — exercises"
+      },
+      "subtitle": {
+        "de": "6 Übungen zu Optionen, Umkehrungen, Dur/Moll und Stimmführung",
+        "en": "6 exercises on options, inversions, major/minor and voice leading"
+      },
+      "intro": {
+        "de": "Hier übst du die linke Hand schriftlich — von den vier Optionen über die Umkehrungen des vollen Voicings bis zu Dur/Moll und Stimmführung. Töne mit Komma trennen (Reihenfolge egal); die erste Zeile jeder Übung ist ein Beispiel. Tippe deine Antworten direkt ein, prüfe sie und blende bei Bedarf die Lösung ein.",
+        "en": "Here you practise the left hand on paper — from the four options and the inversions of the full voicing to major/minor and voice leading. Separate notes with a comma (order doesn't matter); the first row of each exercise is an example. Type your answers directly, check them and reveal the solution if needed."
+      },
+      "group": "theorie"
+    },
+    {
       "id": "tonleitern-praxis",
       "area": "academy",
       "group": "praxis",

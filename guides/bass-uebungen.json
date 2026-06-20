@@ -1,0 +1,221 @@
+{
+  "sections": [
+    {
+      "title": { "de": "Spickzettel", "en": "Cheat sheet" },
+      "blocks": [
+        {
+          "type": "note",
+          "text": {
+            "de": "Vier Optionen, von schlank zu voll: Grundton · Oktave (Grundton + Grundton) · Shell (Grundton + Quinte) · Voll (Grundton + Quinte + Terz, Terz eine Oktave höher). Je tiefer, desto weniger Töne. Umkehrungen des vollen Voicings: Grundstellung = Grundton im Bass · 1. Umkehrung = Terz im Bass · 2. Umkehrung = Quinte im Bass. Bei Moll wird nur die Terz im vollen Voicing einen Halbton kleiner. Mehrere Töne mit Komma trennen — die Reihenfolge ist egal. Die erste Zeile jeder Übung ist ein Beispiel.",
+            "en": "Four options, lean to full: root · octave (root + root) · shell (root + fifth) · full (root + fifth + third, third an octave higher). The lower, the fewer notes. Inversions of the full voicing: root position = root in the bass · 1st inversion = third in the bass · 2nd inversion = fifth in the bass. In minor only the third of the full voicing drops a semitone. Separate several notes with a comma — order doesn't matter. The first row of each exercise is an example."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 1: Welche Option passt?", "en": "Exercise 1: which option fits?" },
+      "intro": { "de": "Lies die Situation und wähl die beste Bass-Option (Grundton, Oktave, Shell oder Voll).", "en": "Read the situation and pick the best bass option (root, octave, shell or full)." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Lage / Wunsch","en":"Register / wish"},{"de":"beste Option","en":"best option"} ],
+          "rows": [
+            [ {"de":"Sehr tief — nur ein Ton","en":"Very low — just one note"},{"de":"Grundton","en":"Root"} ],
+            [ {"de":"Tief, mehr Wucht — zwei Töne, gleicher Name","en":"Low, more weight — two notes, same name"},{"de":"","en":""} ],
+            [ {"de":"Tief und offen, ohne Terz","en":"Low and open, no third"},{"de":"","en":""} ],
+            [ {"de":"Mittig, warm und komplett","en":"Mid, warm and complete"},{"de":"","en":""} ],
+            [ {"de":"Ganz unten, soll nicht matschen","en":"Right at the bottom, must not get muddy"},{"de":"","en":""} ],
+            [ {"de":"Höhere Lage, voller Klang erlaubt","en":"Higher register, full sound allowed"},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Lage / Wunsch","en":"Register / wish"},{"de":"beste Option","en":"best option"} ],
+            "rows": [
+              [ {"de":"Sehr tief — nur ein Ton","en":"Very low — just one note"},{"de":"Grundton","en":"Root"} ],
+              [ {"de":"Tief, mehr Wucht — zwei Töne, gleicher Name","en":"Low, more weight — two notes, same name"},{"de":"Oktave","en":"Octave"} ],
+              [ {"de":"Tief und offen, ohne Terz","en":"Low and open, no third"},{"de":"Shell","en":"Shell"} ],
+              [ {"de":"Mittig, warm und komplett","en":"Mid, warm and complete"},{"de":"Voll","en":"Full"} ],
+              [ {"de":"Ganz unten, soll nicht matschen","en":"Right at the bottom, must not get muddy"},{"de":"Grundton","en":"Root"} ],
+              [ {"de":"Höhere Lage, voller Klang erlaubt","en":"Higher register, full sound allowed"},{"de":"Voll","en":"Full"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 2: Die vier Optionen in jeder Tonart", "en": "Exercise 2: the four options in each key" },
+      "intro": { "de": "Schreib für jede Tonart die Töne der vier Optionen (Töne mit Komma trennen).", "en": "Write the notes of the four options for each key (separate notes with a comma)." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Tonart","en":"Key"},{"de":"Grundton","en":"Root"},{"de":"Oktave","en":"Octave"},{"de":"Shell","en":"Shell"},{"de":"Voll","en":"Full"} ],
+          "rows": [
+            [ {"de":"C","en":"C"},{"de":"C","en":"C"},{"de":"C, C","en":"C, C"},{"de":"C, G","en":"C, G"},{"de":"C, G, E","en":"C, G, E"} ],
+            [ {"de":"F","en":"F"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"G","en":"G"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"D","en":"D"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A","en":"A"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"Bb","en":"Bb"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"Eb","en":"Eb"},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Tonart","en":"Key"},{"de":"Grundton","en":"Root"},{"de":"Oktave","en":"Octave"},{"de":"Shell","en":"Shell"},{"de":"Voll","en":"Full"} ],
+            "rows": [
+              [ {"de":"C","en":"C"},{"de":"C","en":"C"},{"de":"C, C","en":"C, C"},{"de":"C, G","en":"C, G"},{"de":"C, G, E","en":"C, G, E"} ],
+              [ {"de":"F","en":"F"},{"de":"F","en":"F"},{"de":"F, F","en":"F, F"},{"de":"F, C","en":"F, C"},{"de":"F, C, A","en":"F, C, A"} ],
+              [ {"de":"G","en":"G"},{"de":"G","en":"G"},{"de":"G, G","en":"G, G"},{"de":"G, D","en":"G, D"},{"de":"G, D, B","en":"G, D, B"} ],
+              [ {"de":"D","en":"D"},{"de":"D","en":"D"},{"de":"D, D","en":"D, D"},{"de":"D, A","en":"D, A"},{"de":"D, A, F#","en":"D, A, F#"} ],
+              [ {"de":"A","en":"A"},{"de":"A","en":"A"},{"de":"A, A","en":"A, A"},{"de":"A, E","en":"A, E"},{"de":"A, E, C#","en":"A, E, C#"} ],
+              [ {"de":"Bb","en":"Bb"},{"de":"Bb","en":"Bb"},{"de":"Bb, Bb","en":"Bb, Bb"},{"de":"Bb, F","en":"Bb, F"},{"de":"Bb, F, D","en":"Bb, F, D"} ],
+              [ {"de":"Eb","en":"Eb"},{"de":"Eb","en":"Eb"},{"de":"Eb, Eb","en":"Eb, Eb"},{"de":"Eb, Bb","en":"Eb, Bb"},{"de":"Eb, Bb, G","en":"Eb, Bb, G"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 3: Welcher Ton liegt im Bass?", "en": "Exercise 3: which note is in the bass?" },
+      "intro": { "de": "Beim vollen Voicing: welcher Ton ist bei dieser Umkehrung der tiefste?", "en": "For the full voicing: which note is the lowest in this inversion?" },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Akkord","en":"Chord"},{"de":"Umkehrung","en":"Inversion"},{"de":"tiefster Ton (Bass)","en":"lowest note (bass)"} ],
+          "rows": [
+            [ {"de":"C","en":"C"},{"de":"Grundstellung","en":"Root position"},{"de":"C","en":"C"} ],
+            [ {"de":"C","en":"C"},{"de":"1. Umkehrung","en":"1st inversion"},{"de":"","en":""} ],
+            [ {"de":"C","en":"C"},{"de":"2. Umkehrung","en":"2nd inversion"},{"de":"","en":""} ],
+            [ {"de":"F","en":"F"},{"de":"1. Umkehrung","en":"1st inversion"},{"de":"","en":""} ],
+            [ {"de":"F","en":"F"},{"de":"2. Umkehrung","en":"2nd inversion"},{"de":"","en":""} ],
+            [ {"de":"G","en":"G"},{"de":"1. Umkehrung","en":"1st inversion"},{"de":"","en":""} ],
+            [ {"de":"G","en":"G"},{"de":"2. Umkehrung","en":"2nd inversion"},{"de":"","en":""} ],
+            [ {"de":"D","en":"D"},{"de":"1. Umkehrung","en":"1st inversion"},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Akkord","en":"Chord"},{"de":"Umkehrung","en":"Inversion"},{"de":"tiefster Ton (Bass)","en":"lowest note (bass)"} ],
+            "rows": [
+              [ {"de":"C","en":"C"},{"de":"Grundstellung","en":"Root position"},{"de":"C","en":"C"} ],
+              [ {"de":"C","en":"C"},{"de":"1. Umkehrung","en":"1st inversion"},{"de":"E","en":"E"} ],
+              [ {"de":"C","en":"C"},{"de":"2. Umkehrung","en":"2nd inversion"},{"de":"G","en":"G"} ],
+              [ {"de":"F","en":"F"},{"de":"1. Umkehrung","en":"1st inversion"},{"de":"A","en":"A"} ],
+              [ {"de":"F","en":"F"},{"de":"2. Umkehrung","en":"2nd inversion"},{"de":"C","en":"C"} ],
+              [ {"de":"G","en":"G"},{"de":"1. Umkehrung","en":"1st inversion"},{"de":"B","en":"B"} ],
+              [ {"de":"G","en":"G"},{"de":"2. Umkehrung","en":"2nd inversion"},{"de":"D","en":"D"} ],
+              [ {"de":"D","en":"D"},{"de":"1. Umkehrung","en":"1st inversion"},{"de":"F#","en":"F#"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 4: Dur oder Moll — das volle Voicing", "en": "Exercise 4: major or minor — the full voicing" },
+      "intro": { "de": "Schreib das volle Voicing (Grundton, Quinte, Terz) in Dur und in Moll. Nur die Terz ändert sich.", "en": "Write the full voicing (root, fifth, third) in major and in minor. Only the third changes." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"Tonart","en":"Key"},{"de":"Voll (Dur)","en":"Full (major)"},{"de":"Voll (Moll)","en":"Full (minor)"} ],
+          "rows": [
+            [ {"de":"C","en":"C"},{"de":"C, G, E","en":"C, G, E"},{"de":"C, G, Eb","en":"C, G, Eb"} ],
+            [ {"de":"F","en":"F"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"G","en":"G"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"D","en":"D"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A","en":"A"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"E","en":"E"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Tonart","en":"Key"},{"de":"Voll (Dur)","en":"Full (major)"},{"de":"Voll (Moll)","en":"Full (minor)"} ],
+            "rows": [
+              [ {"de":"C","en":"C"},{"de":"C, G, E","en":"C, G, E"},{"de":"C, G, Eb","en":"C, G, Eb"} ],
+              [ {"de":"F","en":"F"},{"de":"F, C, A","en":"F, C, A"},{"de":"F, C, Ab","en":"F, C, Ab"} ],
+              [ {"de":"G","en":"G"},{"de":"G, D, B","en":"G, D, B"},{"de":"G, D, Bb","en":"G, D, Bb"} ],
+              [ {"de":"D","en":"D"},{"de":"D, A, F#","en":"D, A, F#"},{"de":"D, A, F","en":"D, A, F"} ],
+              [ {"de":"A","en":"A"},{"de":"A, E, C#","en":"A, E, C#"},{"de":"A, E, C","en":"A, E, C"} ],
+              [ {"de":"E","en":"E"},{"de":"E, B, G#","en":"E, B, G#"},{"de":"E, B, G","en":"E, B, G"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 5: Der nächste Bass (Stimmführung)", "en": "Exercise 5: the nearest bass (voice leading)" },
+      "intro": { "de": "Du kommst von einem Bass-Ton und wechselst den Akkord. Welche Umkehrung des Ziel-Akkords liegt am nächsten? Schreib den nächsten Bass-Ton und die Umkehrung.", "en": "You come from one bass note and change the chord. Which inversion of the target chord is closest? Write the nearest bass note and the inversion." },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ {"de":"voriger Bass","en":"previous bass"},{"de":"Ziel-Akkord","en":"target chord"},{"de":"nächster Bass","en":"nearest bass"},{"de":"Umkehrung","en":"inversion"} ],
+          "rows": [
+            [ {"de":"G","en":"G"},{"de":"C","en":"C"},{"de":"G","en":"G"},{"de":"2. Umkehrung","en":"2nd inversion"} ],
+            [ {"de":"B","en":"B"},{"de":"C","en":"C"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"C","en":"C"},{"de":"F","en":"F"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"A","en":"A"},{"de":"F","en":"F"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"","en":""},{"de":"","en":""} ],
+            [ {"de":"C","en":"C"},{"de":"G","en":"G"},{"de":"","en":""},{"de":"","en":""} ]
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"voriger Bass","en":"previous bass"},{"de":"Ziel-Akkord","en":"target chord"},{"de":"nächster Bass","en":"nearest bass"},{"de":"Umkehrung","en":"inversion"} ],
+            "rows": [
+              [ {"de":"G","en":"G"},{"de":"C","en":"C"},{"de":"G","en":"G"},{"de":"2. Umkehrung","en":"2nd inversion"} ],
+              [ {"de":"B","en":"B"},{"de":"C","en":"C"},{"de":"C","en":"C"},{"de":"Grundstellung","en":"Root position"} ],
+              [ {"de":"C","en":"C"},{"de":"F","en":"F"},{"de":"C","en":"C"},{"de":"2. Umkehrung","en":"2nd inversion"} ],
+              [ {"de":"A","en":"A"},{"de":"F","en":"F"},{"de":"A","en":"A"},{"de":"1. Umkehrung","en":"1st inversion"} ],
+              [ {"de":"F","en":"F"},{"de":"G","en":"G"},{"de":"G","en":"G"},{"de":"Grundstellung","en":"Root position"} ],
+              [ {"de":"C","en":"C"},{"de":"G","en":"G"},{"de":"B","en":"B"},{"de":"1. Umkehrung","en":"1st inversion"} ]
+            ]
+          }]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Übung 6: Richtig oder falsch?", "en": "Exercise 6: true or false?" },
+      "intro": { "de": "Stimmt die Aussage? Bei „falsch“ steht die richtige Antwort in der Lösung.", "en": "Is the statement correct? For “false” the right answer is in the solution." },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Beim vollen Voicing spielst du die Terz eine Oktave höher.", "en": "In the full voicing you play the third an octave higher." },
+            { "de": "Ganz tief klingt ein voller Dreiklang am besten.", "en": "A full triad sounds best right down low." },
+            { "de": "Shell heißt Grundton + Quinte, ohne Terz.", "en": "Shell means root + fifth, without the third." },
+            { "de": "Bei Moll wird auch die Quinte einen Halbton kleiner.", "en": "In minor the fifth also drops a semitone." },
+            { "de": "In der 1. Umkehrung liegt die Terz im Bass.", "en": "In the 1st inversion the third is in the bass." },
+            { "de": "Eine Umkehrung ändert, welche Töne im Akkord sind.", "en": "An inversion changes which notes are in the chord." },
+            { "de": "Grundton, Oktave und Shell klingen in Dur und Moll gleich.", "en": "Root, octave and shell sound the same in major and minor." }
+          ]
+        },
+        {
+          "type": "solution", "label": { "de": "Lösungen anzeigen", "en": "Show solutions" },
+          "blocks": [{
+            "type": "table",
+            "head": [ {"de":"Aussage","en":"Statement"},{"de":"richtig / falsch","en":"true / false"},{"de":"richtig ist…","en":"correct is…"} ],
+            "rows": [
+              [ {"de":"Terz im vollen Voicing eine Oktave höher","en":"Third in the full voicing an octave higher"},{"de":"richtig","en":"true"},{"de":"–","en":"–"} ],
+              [ {"de":"Voller Dreiklang ganz tief am besten","en":"Full triad best very low"},{"de":"falsch","en":"false"},{"de":"tief lieber Grundton oder Shell — voll wird matschig","en":"low → rather root or shell — full gets muddy"} ],
+              [ {"de":"Shell = Grundton + Quinte, ohne Terz","en":"Shell = root + fifth, no third"},{"de":"richtig","en":"true"},{"de":"–","en":"–"} ],
+              [ {"de":"Bei Moll wird die Quinte kleiner","en":"In minor the fifth gets smaller"},{"de":"falsch","en":"false"},{"de":"nur die Terz wird kleiner (kleine Terz)","en":"only the third gets smaller (minor third)"} ],
+              [ {"de":"1. Umkehrung: Terz im Bass","en":"1st inversion: third in bass"},{"de":"richtig","en":"true"},{"de":"–","en":"–"} ],
+              [ {"de":"Umkehrung ändert die Töne","en":"Inversion changes the notes"},{"de":"falsch","en":"false"},{"de":"gleiche Töne, anderer Bass / andere Lage","en":"same notes, different bass / position"} ],
+              [ {"de":"Grundton/Oktave/Shell: Dur = Moll","en":"Root/octave/shell: major = minor"},{"de":"richtig","en":"true"},{"de":"– (keine Terz enthalten)","en":"– (no third in them)"} ]
+            ]
+          }]
+        }
+      ]
+    }
+  ]
+}
