@@ -103,6 +103,89 @@
   }
 
   /* ----------------------------------------------------------------
+     1b) STIMMFÜHRUNG  (smarte Akkordfolgen, kleinste Bewegung)
+     Diatonische Dur-/Moll-Dreiklänge; für jeden Folge-Akkord wird die
+     Umkehrung des vollen Voicings gewählt, die am wenigsten Bewegung
+     zum vorigen Akkord braucht — z. B. E–C–G  →  F–C–A.
+     ---------------------------------------------------------------- */
+  const PCNAME = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
+  function toneName(pc) { return PCNAME[(((pc % 12) + 12) % 12)]; }
+  // Dur-Tonleiter: Halbton-Abstände + diatonische Qualität je Stufe (vii° wird gemieden).
+  const MAJ_OFFS = [0, 2, 4, 5, 7, 9, 11];
+  const MAJ_QUAL = ['maj', 'min', 'min', 'maj', 'maj', 'min', 'dim'];
+  const BASS_PROGS = [
+    { name: 'I–IV–V–I', degs: [0, 3, 4, 0] },
+    { name: 'I–V–vi–IV', degs: [0, 4, 5, 3] },
+    { name: 'vi–IV–I–V', degs: [5, 3, 0, 4] },
+    { name: 'ii–V–I', degs: [1, 4, 0] },
+    { name: 'I–vi–IV–V', degs: [0, 5, 3, 4] }
+  ];
+  // Die drei vollen Voicings (Grundstellung/1./2. Umkehrung) als Positionen,
+  // bezogen auf den Akkord-Grundton R (0..11), t3 = 4 (Dur) / 3 (Moll).
+  function bassInvPositions(R, t3, inv) {
+    if (inv === 0) return [R, R + 7, R + t3 + 12];        // Bass = Grundton
+    if (inv === 1) return [R + t3, R + 12, R + 19];       // Bass = Terz
+    return [R + 7, R + 12, R + t3 + 12];                  // Bass = Quinte
+  }
+  const VL_PERMS = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
+  function vlCost(a, b) {
+    let best = Infinity;
+    for (let x = 0; x < VL_PERMS.length; x++) {
+      let s = 0; for (let k = 0; k < 3; k++) s += Math.abs(a[k] - b[VL_PERMS[x][k]]);
+      if (s < best) best = s;
+    }
+    return best;
+  }
+  function invNameOf(bassPc, R, t3) {
+    if (bassPc === ((R % 12) + 12) % 12) return 'inv0';
+    if (bassPc === (((R + t3) % 12) + 12) % 12) return 'inv1';
+    return 'inv2';
+  }
+  function stepVoicing(positions, R, t3, quality) {
+    const sorted = positions.slice().sort(function (a, b) { return a - b; });
+    const names = sorted.map(function (p) { return toneName(p); });
+    const pcs = sorted.map(function (p) { return ((p % 12) + 12) % 12; });
+    const bassPc = pcs[0];
+    return {
+      positions: sorted, names: names, pcs: pcs, bassPc: bassPc, checkBass: true,
+      label: toneName(R) + (quality === 'min' ? 'm' : ''),
+      invId: invNameOf(bassPc, R, t3), quality: quality
+    };
+  }
+  function makeProgression(keyPc) {
+    const prog = BASS_PROGS[Math.floor(Math.random() * BASS_PROGS.length)];
+    const chords = prog.degs.map(function (d) {
+      const q = MAJ_QUAL[d]; const t3 = q === 'min' ? 3 : 4;
+      return { R: (((keyPc + MAJ_OFFS[d]) % 12) + 12) % 12, t3: t3, quality: q === 'dim' ? 'maj' : q };
+    });
+    const steps = [];
+    let prev = null;
+    chords.forEach(function (c) {
+      let chosen;
+      if (prev === null) {
+        let pos = bassInvPositions(c.R, c.t3, 0);
+        while (pos[0] < 4) pos = pos.map(function (p) { return p + 12; });
+        while (pos[0] > 15) pos = pos.map(function (p) { return p - 12; });
+        chosen = pos;
+      } else {
+        let best = null;
+        for (let inv = 0; inv < 3; inv++) {
+          for (let k = -2; k <= 2; k++) {
+            const pos = bassInvPositions(c.R, c.t3, inv).map(function (p) { return p + k * 12; });
+            if (Math.min.apply(null, pos) < 0 || Math.max.apply(null, pos) > 35) continue;
+            const cost = vlCost(prev, pos);
+            if (!best || cost < best.cost) best = { pos: pos, cost: cost };
+          }
+        }
+        chosen = best.pos;
+      }
+      prev = chosen.slice().sort(function (a, b) { return a - b; });
+      steps.push(stepVoicing(chosen, c.R, c.t3, c.quality));
+    });
+    return { name: prog.name + ' · ' + toneName(keyPc), steps: steps, idx: 0 };
+  }
+
+  /* ----------------------------------------------------------------
      2) I18N
      ---------------------------------------------------------------- */
   const I18N = {
@@ -143,8 +226,10 @@
       setOpts: {
         options: { t: 'Fülle-Optionen', d: 'Grundton · Oktave · Shell · Voll — welche Lage passt zur Höhe.' },
         inversions: { t: 'Umkehrungen', d: 'Dasselbe Voicing mit verschiedenem Bass (C–G–E / E–C–G / G–E–C).' },
-        mixed: { t: 'Gemischt', d: 'Optionen und Umkehrungen gemischt.' }
+        mixed: { t: 'Gemischt', d: 'Optionen und Umkehrungen gemischt.' },
+        progression: { t: 'Stimmführung', d: 'Akkordfolgen mit kleinster Bewegung — die passende Umkehrung kommt von selbst (z. B. E–C–G → F–C–A).' }
       },
+      progStep: 'Akkord',
       randomKey: 'Zufall',
       timerSwitch: 'Timer 15 s pro Aufgabe',
       timerLockedTitle: 'Timer 15 s pro Aufgabe — beim Quiz immer an.',
@@ -197,8 +282,10 @@
       setOpts: {
         options: { t: 'Fullness options', d: 'Root · octave · shell · full — which fits the register.' },
         inversions: { t: 'Inversions', d: 'Same voicing, different bass (C–G–E / E–C–G / G–E–C).' },
-        mixed: { t: 'Mixed', d: 'Options and inversions mixed.' }
+        mixed: { t: 'Mixed', d: 'Options and inversions mixed.' },
+        progression: { t: 'Voice leading', d: 'Chord progressions with the least movement — the right inversion follows by itself (e.g. E–C–G → F–C–A).' }
       },
+      progStep: 'Chord',
       randomKey: 'Random',
       timerSwitch: 'Timer 15 s per task',
       timerLockedTitle: 'Timer 15 s per task — always on in the quiz.',
@@ -420,7 +507,7 @@
     // Was üben?
     v.appendChild(blockLabel(L.blockSet));
     const opts = el('div', 'opts');
-    ['options', 'inversions', 'mixed'].forEach(function (s, i) { opts.appendChild(optionCard(s, L.setOpts[s].t, L.setOpts[s].d, i + 1, state.cfg.set === s, function () { state.cfg.set = s; render(); })); });
+    ['options', 'inversions', 'mixed', 'progression'].forEach(function (s, i) { opts.appendChild(optionCard(s, L.setOpts[s].t, L.setOpts[s].d, i + 1, state.cfg.set === s, function () { state.cfg.set = s; render(); })); });
     v.appendChild(wrapBlock(opts));
     // Tonart
     const hint = el('span', 'hint mono'); hint.textContent = state.cfg.key === 'random' ? L.randomKey : state.cfg.key;
@@ -431,14 +518,16 @@
       b.addEventListener('click', function () { state.cfg.key = it.id; render(); }); chips.appendChild(b);
     });
     v.appendChild(wrapBlock(chips));
-    // Klang (Dur / Moll / Gemischt)
-    v.appendChild(blockLabel(L.blockQuality));
-    const qseg = el('div', 'seg quality-seg');
-    ['major', 'minor', 'both'].forEach(function (q) {
-      const b = el('button', 'seg-btn mono' + (state.cfg.quality === q ? ' is-active' : '') + (q === 'minor' ? ' is-minor' : '')); b.type = 'button'; b.textContent = L.qualityOpts[q];
-      b.addEventListener('click', function () { state.cfg.quality = q; render(); }); qseg.appendChild(b);
-    });
-    v.appendChild(wrapBlock(qseg));
+    // Klang (Dur / Moll / Gemischt) — bei Stimmführung irrelevant (diatonische Folge).
+    if (state.cfg.set !== 'progression') {
+      v.appendChild(blockLabel(L.blockQuality));
+      const qseg = el('div', 'seg quality-seg');
+      ['major', 'minor', 'both'].forEach(function (q) {
+        const b = el('button', 'seg-btn mono' + (state.cfg.quality === q ? ' is-active' : '') + (q === 'minor' ? ' is-minor' : '')); b.type = 'button'; b.textContent = L.qualityOpts[q];
+        b.addEventListener('click', function () { state.cfg.quality = q; render(); }); qseg.appendChild(b);
+      });
+      v.appendChild(wrapBlock(qseg));
+    }
     // Timer
     v.appendChild(blockLabel(L.blockTimer));
     const timer = el('div', 'timer');
@@ -466,8 +555,24 @@
   /* ----------------------------------------------------------------
      7) AUFGABEN-POOL + DRILL
      ---------------------------------------------------------------- */
+  function buildProgressionTask() {
+    const d = state.drill, cfg = state.cfg, L = t();
+    if (!d.prog || d.prog.idx >= d.prog.steps.length) {
+      const keyPc = cfg.key === 'random' ? Math.floor(Math.random() * 12) : findKey(cfg.key).pc;
+      d.prog = makeProgression(keyPc);
+    }
+    const step = d.prog.steps[d.prog.idx]; const pos = d.prog.idx + 1, total = d.prog.steps.length;
+    d.prog.idx += 1;
+    const vc = { positions: step.positions, names: step.names, pcs: step.pcs, bassPc: step.bassPc, checkBass: true };
+    return {
+      key: { id: step.label }, def: { id: step.invId }, set: 'progression', quality: step.quality,
+      label: L.invNames[step.invId], voicing: vc, bassName: step.names[0],
+      prog: { name: d.prog.name, pos: pos, total: total }
+    };
+  }
   function buildTask() {
     const cfg = state.cfg;
+    if (cfg.set === 'progression') return buildProgressionTask();
     const key = cfg.key === 'random' ? KEYS[Math.floor(Math.random() * KEYS.length)] : findKey(cfg.key);
     let set = cfg.set; if (set === 'mixed') set = Math.random() < 0.5 ? 'options' : 'inversions';
     let quality = cfg.quality || 'major'; if (quality === 'both') quality = Math.random() < 0.5 ? 'major' : 'minor';
@@ -481,7 +586,7 @@
   }
   function startDrill() {
     ensureAudio(); initMidi();
-    state.drill = { step: 1, hits: 0, total: state.mode === 'quiz' ? 20 : null, timerOn: state.mode === 'quiz' ? true : state.cfg.timerOn, task: null, tap: new Set(), solved: false, msg: null, deadline: null, timerId: null };
+    state.drill = { step: 1, hits: 0, total: state.mode === 'quiz' ? 20 : null, timerOn: state.mode === 'quiz' ? true : state.cfg.timerOn, task: null, tap: new Set(), solved: false, msg: null, deadline: null, timerId: null, prog: null };
     nextTask(true);
     state.view = 'drill'; render(); window.scrollTo(0, 0);
   }
@@ -517,7 +622,10 @@
     v.appendChild(backBtn(L.configTitle, 'config'));
     // Aufgabe
     const card = el('div', 'drill-prompt');
-    card.innerHTML = '<div class="dp-top mono"><span>' + esc(task.key.id) + (task.set === 'inversions' ? ' · ' + esc(L.tiles.overview.t) : '') + '</span><span class="dp-step">' + esc(L.step) + ' ' + d.step + (d.total ? '/' + d.total : '') + ' · ' + esc(L.hits) + ' ' + d.hits + '</span></div>' +
+    let topLeft = esc(task.key.id);
+    if (task.set === 'inversions') topLeft += ' · ' + esc(L.tiles.overview.t);
+    else if (task.set === 'progression') topLeft = esc(task.prog.name) + ' · ' + esc(L.progStep) + ' ' + task.prog.pos + '/' + task.prog.total;
+    card.innerHTML = '<div class="dp-top mono"><span>' + topLeft + '</span><span class="dp-step">' + esc(L.step) + ' ' + d.step + (d.total ? '/' + d.total : '') + ' · ' + esc(L.hits) + ' ' + d.hits + '</span></div>' +
       '<div class="dp-main"><span class="dp-lbl mono">' + esc(L.play) + '</span> <span class="dp-chord">' + esc(task.key.id) + '</span> <span class="dp-inv">' + esc(task.label) + '</span></div>' +
       '<div class="dp-notes mono">' + vc.names.join(' – ') + '</div>';
     v.appendChild(card);
@@ -539,7 +647,7 @@
     const playedSet = new Set(); currentInput().forEach(function (n) { const pc = ((n % 12) + 12) % 12; const hit = vc.positions.find(function (p) { return ((p % 12) + 12) % 12 === pc; }); playedSet.add(hit !== undefined ? hit : pc); });
     const feedback = d.solved ? { correct: new Set(vc.positions) } : null;
     host.innerHTML = '';
-    host.appendChild(buildKeyboard(vc.positions, { whiteW: 34, keys: 36, interactive: true, labels: true, nameMap: nameMapOf(vc), played: playedSet, feedback: feedback, bassPos: (d.task.set === 'inversions' ? vc.positions[0] : undefined), onTap: onTap }));
+    host.appendChild(buildKeyboard(vc.positions, { whiteW: 34, keys: 36, interactive: true, labels: true, nameMap: nameMapOf(vc), played: playedSet, feedback: feedback, bassPos: (vc.checkBass ? vc.positions[0] : undefined), onTap: onTap }));
     const msg = $('bassMsg'); if (msg) { const L = t(); if (d.solved) { msg.className = 'drill-msg is-ok'; msg.textContent = '✓ ' + L.correct; } else if (d.msg) { msg.className = 'drill-msg is-bad'; msg.textContent = d.msg; } else { msg.className = 'drill-msg'; msg.textContent = L.tapHint; } }
     updateMidiStatus();
   }
