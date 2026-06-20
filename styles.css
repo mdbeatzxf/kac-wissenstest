@@ -714,6 +714,11 @@ h1.display {
 
 /* Statische Klaviatur-Diagramme im Lernbereich (Bass = grün, Moll = blau). */
 .g-kbd-fig { max-width: 430px; }
+.g-kbd-fig.g-kbd-multi { max-width: 680px; }
+.g-kbd-boards { display: flex; gap: 20px 28px; flex-wrap: wrap; align-items: flex-end; }
+.g-kbd-board { flex: 1 1 auto; min-width: 0; }
+.g-kbd-multi .g-kbd-board { flex: 1 1 240px; max-width: 320px; }
+.g-kbd-board-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 7px; }
 .g-kbd-svg { display: block; width: 100%; height: auto; }
 .g-kbd-fig .g-figcap { border-left-color: #2e8b57; }
 .g-kbd-fig.is-minor .g-figcap { border-left-color: #2a63b0; }

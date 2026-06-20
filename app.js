@@ -753,34 +753,57 @@ function makeCheck(id, label, checks) {
 }
 
 /* --- statisches Klaviatur-Diagramm (Lernbereich Bass) als Inline-SVG ---
-   notes = Halbton-Positionen (0 = unteres C), names = Beschriftung je Note,
-   bass  = Position des Basstons (Punkt-Markierung), keys = Anzahl Tasten. */
+   board = { notes:[Halbton-Positionen], names:[…], bass, ghost:{pos,name},
+   octaveUp:[vonPos,zuPos] }. ghost = Naturlage der Terz (schraffiert), der
+   Pfeil zeigt, dass sie eine Oktave höher gespielt wird. keys = Anzahl Tasten. */
 const KBD_BLACK_PC = [1, 3, 6, 8, 10];
-function keyboardSVG(notes, names, bass, keys) {
+let kbdSvgSeq = 0;
+function keyboardSVG(board, keys) {
   keys = keys || 24;
   const WW = 26, WH = 104, BW = 16, BH = 66, GREEN = '#2e8b57', INK = '#16150f';
+  const notes = board.notes || [], names = board.names || [];
+  const bass = (typeof board.bass === 'number') ? board.bass : -1;
+  const ghost = board.ghost || null;          // { pos, name } — Naturlage der Terz
+  const link = board.octaveUp || null;        // [vonPos, zuPos] — Oktav-Pfeil
+  const uid = 'kh' + (kbdSvgSeq++);
   const label = {};
-  (notes || []).forEach(function (p, i) { label[p] = (names && names[i] != null) ? String(names[i]) : ''; });
-  function dot(cx) { return '<circle cx="' + cx + '" cy="13" r="4.2" fill="' + INK + '" stroke="#fff" stroke-width="1.6"/>'; }
-  let whites = '', blacks = '', w = 0; const blackData = [];
+  notes.forEach(function (p, i) { label[p] = (names[i] != null) ? String(names[i]) : ''; });
+  const TOP = link ? 36 : 12;                  // Kopfraum für den Oktav-Pfeil
+  function isT(p) { return Object.prototype.hasOwnProperty.call(label, p); }
+  function isG(p) { return ghost && ghost.pos === p && !isT(p); }
+  // Mitte-x je Taste vorab bestimmen (weiß + schwarz)
+  const cx = {}; const whites = []; const blacks = []; let w = 0;
   for (let p = 0; p < keys; p++) {
     const isB = KBD_BLACK_PC.indexOf(((p % 12) + 12) % 12) !== -1;
-    if (!isB) {
-      const x = w * WW, isT = Object.prototype.hasOwnProperty.call(label, p);
-      whites += '<rect x="' + x + '" y="0" width="' + WW + '" height="' + WH + '" rx="2" fill="' + (isT ? GREEN : '#faf9f5') + '" stroke="' + INK + '" stroke-width="1.4"/>';
-      if (isT && label[p]) whites += '<text x="' + (x + WW / 2) + '" y="' + (WH - 11) + '" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="11" font-weight="700" fill="#fff">' + escapeHTML(label[p]) + '</text>';
-      if (p === bass) whites += dot(x + WW / 2);
-      w++;
-    } else { blackData.push({ p: p, x: w * WW - BW / 2 }); }
+    if (!isB) { cx[p] = w * WW + WW / 2; whites.push(p); w++; }
+    else { cx[p] = w * WW; blacks.push(p); }
   }
   const totalW = w * WW;
-  blackData.forEach(function (bk) {
-    const isT = Object.prototype.hasOwnProperty.call(label, bk.p);
-    blacks += '<rect x="' + bk.x + '" y="0" width="' + BW + '" height="' + BH + '" rx="1.5" fill="' + (isT ? GREEN : INK) + '"/>';
-    if (isT && label[bk.p]) blacks += '<text x="' + (bk.x + BW / 2) + '" y="' + (BH - 8) + '" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="9" font-weight="700" fill="#fff">' + escapeHTML(label[bk.p]) + '</text>';
-    if (bk.p === bass) blacks += dot(bk.x + BW / 2);
+  function dot(x) { return '<circle cx="' + x + '" cy="' + (TOP + 13) + '" r="4.2" fill="' + INK + '" stroke="#fff" stroke-width="1.6"/>'; }
+  function txt(x, y, s, fill, size) { return '<text x="' + x + '" y="' + y + '" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="' + size + '" font-weight="700" fill="' + fill + '">' + escapeHTML(s) + '</text>'; }
+  let svg = ghost ? '<defs><pattern id="' + uid + '" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#eef5f0"/><line x1="0" y1="0" x2="0" y2="6" stroke="' + GREEN + '" stroke-width="2.4"/></pattern></defs>' : '';
+  whites.forEach(function (p) {
+    const x = cx[p] - WW / 2, g = isG(p);
+    const fill = isT(p) ? GREEN : (g ? 'url(#' + uid + ')' : '#faf9f5');
+    svg += '<rect x="' + x + '" y="' + TOP + '" width="' + WW + '" height="' + WH + '" rx="2" fill="' + fill + '" stroke="' + (g ? GREEN : INK) + '" stroke-width="' + (g ? 1.8 : 1.4) + '"' + (g ? ' stroke-dasharray="4 3"' : '') + '/>';
+    if (isT(p) && label[p]) svg += txt(cx[p], TOP + WH - 11, label[p], '#fff', 11);
+    else if (g && ghost.name) svg += txt(cx[p], TOP + WH - 11, ghost.name, GREEN, 11);
+    if (p === bass) svg += dot(cx[p]);
   });
-  return '<svg class="g-kbd-svg" viewBox="-1 -1 ' + (totalW + 2) + ' ' + (WH + 2) + '" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">' + whites + blacks + '</svg>';
+  blacks.forEach(function (p) {
+    const x = cx[p] - BW / 2, g = isG(p);
+    const fill = isT(p) ? GREEN : (g ? 'url(#' + uid + ')' : INK);
+    svg += '<rect x="' + x + '" y="' + TOP + '" width="' + BW + '" height="' + BH + '" rx="1.5" fill="' + fill + '"' + (g ? ' stroke="' + GREEN + '" stroke-width="1.6" stroke-dasharray="4 3"' : '') + '/>';
+    if (isT(p) && label[p]) svg += txt(cx[p], TOP + BH - 8, label[p], '#fff', 9);
+    else if (g && ghost.name) svg += txt(cx[p], TOP + BH - 8, ghost.name, '#fff', 9);
+    if (p === bass) svg += dot(cx[p]);
+  });
+  if (link && cx[link[0]] != null && cx[link[1]] != null) {
+    const x0 = cx[link[0]], x1 = cx[link[1]], midX = (x0 + x1) / 2;
+    svg += '<path d="M ' + x0 + ' ' + (TOP - 2) + ' Q ' + midX + ' 2 ' + x1 + ' ' + (TOP - 2) + '" fill="none" stroke="' + INK + '" stroke-width="1.6" stroke-dasharray="5 4"/>';
+    svg += '<path d="M ' + (x1 - 4.5) + ' ' + (TOP - 7) + ' L ' + x1 + ' ' + (TOP + 1) + ' L ' + (x1 + 4.5) + ' ' + (TOP - 7) + '" fill="' + INK + '"/>';
+  }
+  return '<svg class="g-kbd-svg" viewBox="-1 -1 ' + (totalW + 2) + ' ' + (TOP + WH + 2) + '" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img">' + svg + '</svg>';
 }
 
 /* --- render one content block to HTML --- */
@@ -850,10 +873,16 @@ function renderBlock(b, ctx) {
         </figure>`;
     }
     case 'keyboard': {
-      const svg = keyboardSVG(b.notes || [], b.names || [], (typeof b.bass === 'number' ? b.bass : -1), b.keys || 24);
-      const cap = b.caption ? escapeHTML(tx(b.caption)) : '';
+      const keys = b.keys || 24;
+      const boards = b.boards || [{ notes: b.notes, names: b.names, bass: b.bass, ghost: b.ghost, octaveUp: b.octaveUp, label: b.label }];
       const tone = b.tone === 'minor' ? ' is-minor' : '';
-      return `<figure class="g-fig g-kbd-fig${tone}">${svg}${cap ? `<figcaption class="g-figcap mono">${cap}</figcaption>` : ''}</figure>`;
+      const multi = boards.length > 1 ? ' g-kbd-multi' : '';
+      const boardsHTML = boards.map(bd => {
+        const lab = bd.label ? `<div class="g-kbd-board-label mono">${escapeHTML(tx(bd.label))}</div>` : '';
+        return `<div class="g-kbd-board">${lab}${keyboardSVG(bd, keys)}</div>`;
+      }).join('');
+      const cap = b.caption ? escapeHTML(tx(b.caption)) : '';
+      return `<figure class="g-fig g-kbd-fig${tone}${multi}"><div class="g-kbd-boards">${boardsHTML}</div>${cap ? `<figcaption class="g-figcap mono">${cap}</figcaption>` : ''}</figure>`;
     }
     case 'note':
       return `<div class="callout"><span class="callout-mark mono">!</span><span>${escapeHTML(tx(b.text))}</span></div>`;

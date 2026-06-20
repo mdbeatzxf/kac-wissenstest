@@ -57,12 +57,24 @@
         },
         {
           "type": "sub",
-          "title": { "de": "Die vier Optionen auf der Klaviatur (in C)", "en": "The four options on the keyboard (in C)" }
+          "title": { "de": "Die vier Optionen auf der Klaviatur (in C und F)", "en": "The four options on the keyboard (in C and F)" }
         },
-        { "type": "keyboard", "notes": [0], "names": ["C"], "bass": 0, "caption": { "de": "Grundton — nur C. Schlank und klar.", "en": "Root — just C. Lean and clear." } },
-        { "type": "keyboard", "notes": [0, 12], "names": ["C", "C"], "bass": 0, "caption": { "de": "Oktave — C + C. Kräftiger, mehr Fundament.", "en": "Octave — C + C. Stronger, more foundation." } },
-        { "type": "keyboard", "notes": [0, 7], "names": ["C", "G"], "bass": 0, "caption": { "de": "Shell — C + G (Quinte, keine Terz). Offen, tief nicht düster.", "en": "Shell — C + G (fifth, no third). Open, not dark down low." } },
-        { "type": "keyboard", "notes": [0, 7, 16], "names": ["C", "G", "E"], "bass": 0, "caption": { "de": "Voll — C + G + E (Terz eine Oktave höher). Warm und komplett.", "en": "Full — C + G + E (third an octave higher). Warm and complete." } },
+        { "type": "keyboard", "keys": 24, "boards": [
+          { "label": { "de": "C", "en": "C" }, "notes": [0], "names": ["C"], "bass": 0 },
+          { "label": { "de": "F", "en": "F" }, "notes": [5], "names": ["F"], "bass": 5 }
+        ], "caption": { "de": "Grundton — nur der Grundton (C bzw. F). Schlank und klar.", "en": "Root — just the root (C / F). Lean and clear." } },
+        { "type": "keyboard", "keys": 24, "boards": [
+          { "label": { "de": "C", "en": "C" }, "notes": [0, 12], "names": ["C", "C"], "bass": 0 },
+          { "label": { "de": "F", "en": "F" }, "notes": [5, 17], "names": ["F", "F"], "bass": 5 }
+        ], "caption": { "de": "Oktave — Grundton + Oktave. Kräftiger, mehr Fundament.", "en": "Octave — root + octave. Stronger, more foundation." } },
+        { "type": "keyboard", "keys": 24, "boards": [
+          { "label": { "de": "C", "en": "C" }, "notes": [0, 7], "names": ["C", "G"], "bass": 0 },
+          { "label": { "de": "F", "en": "F" }, "notes": [5, 12], "names": ["F", "C"], "bass": 5 }
+        ], "caption": { "de": "Shell — Grundton + Quinte (keine Terz). Offen, tief nicht düster.", "en": "Shell — root + fifth (no third). Open, not dark down low." } },
+        { "type": "keyboard", "keys": 24, "boards": [
+          { "label": { "de": "C", "en": "C" }, "notes": [0, 7, 16], "names": ["C", "G", "E"], "bass": 0, "ghost": { "pos": 4, "name": "E" }, "octaveUp": [4, 16] },
+          { "label": { "de": "F", "en": "F" }, "notes": [5, 12, 21], "names": ["F", "C", "A"], "bass": 5, "ghost": { "pos": 9, "name": "A" }, "octaveUp": [9, 21] }
+        ], "caption": { "de": "Voll — Grundton + Quinte + Terz. Die schraffierte Terz (E bzw. A) wird eine Oktave höher gespielt (Pfeil). Warm und komplett.", "en": "Full — root + fifth + third. The hatched third (E / A) is played an octave higher (arrow). Warm and complete." } },
         {
           "type": "sub",
           "title": { "de": "Dieselben Optionen in mehreren Tonarten", "en": "The same options in several keys" }
@@ -90,7 +102,10 @@
             "en": "Root, octave and shell have no third and stay identical in minor. Only in the full voicing the third moves down a semitone (in C: E → Eb)."
           }
         },
-        { "type": "keyboard", "notes": [0, 7, 15], "names": ["C", "G", "Eb"], "bass": 0, "tone": "minor", "caption": { "de": "Voll in C-Moll — C + G + Eb. Gleiche Lage, kleine Terz.", "en": "Full in C minor — C + G + Eb. Same register, minor third." } }
+        { "type": "keyboard", "keys": 24, "tone": "minor", "boards": [
+          { "label": { "de": "C-Moll", "en": "C minor" }, "notes": [0, 7, 15], "names": ["C", "G", "Eb"], "bass": 0, "ghost": { "pos": 3, "name": "Eb" }, "octaveUp": [3, 15] },
+          { "label": { "de": "F-Moll", "en": "F minor" }, "notes": [5, 12, 20], "names": ["F", "C", "Ab"], "bass": 5, "ghost": { "pos": 8, "name": "Ab" }, "octaveUp": [8, 20] }
+        ], "caption": { "de": "Voll in Moll — nur die Terz ist kleiner (C-Moll: Eb · F-Moll: Ab). Die schraffierte Terz wird wieder eine Oktave höher gespielt (Pfeil).", "en": "Full in minor — only the third is smaller (C minor: Eb · F minor: Ab). The hatched third is again played an octave higher (arrow)." } }
       ]
     },
     {
@@ -142,9 +157,9 @@
           "type": "sub",
           "title": { "de": "Die drei Umkehrungen auf der Klaviatur", "en": "The three inversions on the keyboard" }
         },
-        { "type": "keyboard", "notes": [0, 7, 16], "names": ["C", "G", "E"], "bass": 0, "caption": { "de": "Grundstellung — Bass C. Breit und satt (Standard-Lage).", "en": "Root position — bass C. Broad and full (standard)." } },
-        { "type": "keyboard", "notes": [4, 12, 19], "names": ["E", "C", "G"], "bass": 4, "caption": { "de": "1. Umkehrung — Bass E. Höher startend, weicher.", "en": "1st inversion — bass E. Starts higher, softer." } },
-        { "type": "keyboard", "notes": [7, 12, 16], "names": ["G", "C", "E"], "bass": 7, "caption": { "de": "2. Umkehrung — Bass G. Am höchsten, hell, schwebend.", "en": "2nd inversion — bass G. Highest, bright, floating." } },
+        { "type": "keyboard", "keys": 29, "notes": [0, 7, 16], "names": ["C", "G", "E"], "bass": 0, "caption": { "de": "Grundstellung — Bass C (C – G – E). Breit und satt (Standard-Lage).", "en": "Root position — bass C (C – G – E). Broad and full (standard)." } },
+        { "type": "keyboard", "keys": 29, "notes": [4, 12, 19], "names": ["E", "C", "G"], "bass": 4, "caption": { "de": "1. Umkehrung — Bass E (E – C – G). Höher startend, weicher.", "en": "1st inversion — bass E (E – C – G). Starts higher, softer." } },
+        { "type": "keyboard", "keys": 29, "notes": [7, 16, 24], "names": ["G", "E", "C"], "bass": 7, "caption": { "de": "2. Umkehrung — Bass G (G – E – C). Das C liegt ganz oben, eine Oktave höher. Am höchsten, hell, schwebend.", "en": "2nd inversion — bass G (G – E – C). The C sits right on top, an octave higher. Highest, bright, floating." } },
         {
           "type": "note",
           "text": {

@@ -42,9 +42,9 @@
   ];
   // Die 3 Umkehrungen des vollen Voicings (Bass = unterster Ton)
   const INVERSIONS = [
-    { id: 'inv0', bass: 'root',  parts: ['root', 'fifth', 'third8'] },   // C – G – E
-    { id: 'inv1', bass: 'third', parts: ['third', 'root8', 'fifth8'] },  // E – C – G
-    { id: 'inv2', bass: 'fifth', parts: ['fifth', 'third8', 'root8'] }   // G – E – C
+    { id: 'inv0', bass: 'root',  parts: ['root', 'fifth', 'third8'] },    // C – G – E
+    { id: 'inv1', bass: 'third', parts: ['third', 'root8', 'fifth8'] },   // E – C – G
+    { id: 'inv2', bass: 'fifth', parts: ['fifth', 'third8', 'root16'] }   // G – E – C (C eine Oktave höher)
   ];
 
   function partPos(key, part, quality) {
@@ -52,6 +52,7 @@
     switch (part) {
       case 'root':   return key.pc;
       case 'root8':  return key.pc + 12;
+      case 'root16': return key.pc + 24;
       case 'fifth':  return key.pc + 7;
       case 'fifth8': return key.pc + 7 + 12;
       case 'third':  return key.pc + t3;
@@ -60,7 +61,7 @@
     }
   }
   function partName(key, part, quality) {
-    if (part === 'root' || part === 'root8') return key.id;
+    if (part === 'root' || part === 'root8' || part === 'root16') return key.id;
     if (part === 'fifth' || part === 'fifth8') return key.fifth;
     return quality === 'minor' ? key.thirdm : key.third;
   }
@@ -123,9 +124,9 @@
   // Die drei vollen Voicings (Grundstellung/1./2. Umkehrung) als Positionen,
   // bezogen auf den Akkord-Grundton R (0..11), t3 = 4 (Dur) / 3 (Moll).
   function bassInvPositions(R, t3, inv) {
-    if (inv === 0) return [R, R + 7, R + t3 + 12];        // Bass = Grundton
-    if (inv === 1) return [R + t3, R + 12, R + 19];       // Bass = Terz
-    return [R + 7, R + 12, R + t3 + 12];                  // Bass = Quinte
+    if (inv === 0) return [R, R + 7, R + t3 + 12];        // Bass = Grundton (C–G–E)
+    if (inv === 1) return [R + t3, R + 12, R + 19];       // Bass = Terz   (E–C–G)
+    return [R + 7, R + t3 + 12, R + 24];                  // Bass = Quinte (G–E–C, C eine Oktave höher)
   }
   const VL_PERMS = [[0, 1, 2], [0, 2, 1], [1, 0, 2], [1, 2, 0], [2, 0, 1], [2, 1, 0]];
   function vlCost(a, b) {
