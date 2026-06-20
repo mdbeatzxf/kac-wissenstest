@@ -787,9 +787,50 @@
     const expectPc = ((scale.positions[d.seq[d.seqIdx]] % 12) + 12) % 12;
     if (pc === expectPc) {
       d.seqIdx += 1;
-      if (d.seqIdx >= d.seq.length) { d.done = true; d.hits += 1; render(); setTimeout(nextTask, 750); }
-      else render();
+      if (d.seqIdx >= d.seq.length) { d.done = true; d.hits += 1; }
+      updateDrillProgress();                 // gezielt aktualisieren, KEIN Neuaufbau (kein Flackern)
+      if (d.done) setTimeout(nextTask, 750);
     }
+  }
+
+  // Aktualisiert nur Tasten / Status / Hände / Treffer — ohne die ganze Ansicht
+  // neu zu rendern (verhindert das Springen bei jedem gespielten Ton).
+  function updateDrillProgress() {
+    const d = state.drill;
+    const L = t();
+    const scale = computeScale(d.type, findKey(d.type, d.key), d.minorForm);
+    const idx = Math.min(d.seqIdx, d.seq.length - 1);
+    const curScaleIdx = d.seq[idx];
+    const curPos = d.done ? -1 : scale.positions[curScaleIdx];
+    const playedPos = new Set();
+    for (let i = 0; i < d.seqIdx; i++) playedPos.add(scale.positions[d.seq[i]]);
+
+    const kb = document.querySelector('#stView .drill-kbd .pkbd');
+    if (kb) kb.querySelectorAll('.pkey').forEach(function (e) {
+      const p = parseInt(e.dataset.pos, 10);
+      e.classList.toggle('is-played', playedPos.has(p));
+      e.classList.toggle('is-current', p === curPos);
+    });
+
+    const st = document.querySelector('#stView .drill-cur');
+    if (st) st.innerHTML = d.done
+      ? '<span class="cur-readout cur-ok"><b>✓ ' + esc(L.scaleDone) + '</b></span>'
+      : '<span class="cur-readout">' + esc(L.playNext) + ' <b>' + esc(scale.names[curScaleIdx]) + '</b> · ' + esc(L.step) + ' ' + (idx + 1) + '/' + d.seq.length + '</span>';
+
+    const hitsEl = document.querySelector('#stView .dt-stats .dt-stat:last-child .dt-stat-n');
+    if (hitsEl) hitsEl.textContent = d.hits;
+
+    const rFinger = d.done ? null : (scale.fingering ? scale.fingering.r[curScaleIdx] : null);
+    const lFinger = d.done ? null : (scale.fingering ? scale.fingering.l[curScaleIdx] : null);
+    const pair = document.querySelector('#stView .drill-hands .ph-pair');
+    if (pair && pair._hands && window.PianoHands) {
+      window.PianoHands.setActive(pair._hands.right, rFinger);
+      window.PianoHands.setActive(pair._hands.left, lFinger);
+    }
+    const dhCur = document.querySelector('#stView .drill-hands .dh-current');
+    if (dhCur) dhCur.innerHTML = '<span class="dh-dot mono">' + scale.degrees[curScaleIdx] + '</span>' +
+      esc(L.handsCurrent) + ' <b>' + esc(scale.names[curScaleIdx]) + '</b>' +
+      (scale.fingering ? ' · R ' + (rFinger == null ? '–' : rFinger) + ' · L ' + (lFinger == null ? '–' : lFinger) : '');
   }
 
   function renderDrill() {
