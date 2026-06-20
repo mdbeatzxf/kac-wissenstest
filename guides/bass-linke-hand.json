@@ -1,0 +1,154 @@
+{
+  "sections": [
+    {
+      "title": { "de": "Worum es geht", "en": "What it's about" },
+      "blocks": [
+        {
+          "type": "lead",
+          "text": {
+            "de": "Die linke Hand spielt beim Begleiten oft nur den Bass. Wie viele Töne du nimmst und welche, hängt von zwei Dingen ab.",
+            "en": "When accompanying, the left hand often just plays the bass. How many notes you take, and which ones, depends on two things."
+          }
+        },
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Gewünschter Sound: schlank und klar — oder voll und warm?", "en": "Desired sound: lean and clear — or full and warm?" },
+            { "de": "Lage auf der Klaviatur: tief lieber dünn, mittig oder heller darf voller sein.", "en": "Register on the keyboard: low → keep it thin, mid or higher → may be fuller." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Grundgedanke: Je tiefer du spielst, desto weniger Töne. Tiefe, dichte Akkorde klingen schnell matschig und düster.",
+            "en": "Core idea: the lower you play, the fewer notes. Low, dense chords quickly sound muddy and dark."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Die vier Bass-Optionen", "en": "The four bass options" },
+      "intro": {
+        "de": "Vier typische Möglichkeiten für die linke Hand, vom Schlanksten zum Vollsten — Beispiel in C (Töne aus dem C-Akkord: C, E, G).",
+        "en": "Four typical options for the left hand, from leanest to fullest — example in C (notes from the C chord: C, E, G)."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            { "de": "Option", "en": "Option" },
+            { "de": "Töne (in C)", "en": "Notes (in C)" },
+            { "de": "Klang", "en": "Sound" },
+            { "de": "Typische Lage", "en": "Typical register" }
+          ],
+          "rows": [
+            [ { "de": "Grundton", "en": "Root" }, { "de": "C", "en": "C" }, { "de": "schlank, klar, neutral", "en": "lean, clear, neutral" }, { "de": "überall, gerade sehr tief", "en": "anywhere, especially very low" } ],
+            [ { "de": "Oktave", "en": "Octave" }, { "de": "C + C", "en": "C + C" }, { "de": "kräftiger, mehr Fundament", "en": "stronger, more foundation" }, { "de": "tief bis mittig", "en": "low to mid" } ],
+            [ { "de": "Shell (offene Quinte)", "en": "Shell (open fifth)" }, { "de": "C + G", "en": "C + G" }, { "de": "offen, voll ohne Matsch", "en": "open, full without mud" }, { "de": "tief, wenn mehr als nur Grundton", "en": "low, when more than just the root" } ],
+            [ { "de": "Voll", "en": "Full" }, { "de": "C + G + E*", "en": "C + G + E*" }, { "de": "warm, hell, komplett", "en": "warm, bright, complete" }, { "de": "mittig bis höher", "en": "mid to higher" } ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "*Beim vollen Voicing wird die Terz (E) eine Oktave höher gespielt — so klingt es offen und tief nicht matschig. Egal welche Option: du spielst nur Töne aus dem Akkord (in C: C, E, G). Es bleibt derselbe Akkord — nur die Fülle ändert sich.",
+            "en": "*In the full voicing the third (E) is played an octave higher — so it stays open and not muddy down low. Whatever the option: you only play notes from the chord (in C: C, E, G). It stays the same chord — only the fullness changes."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Dieselben Optionen in mehreren Tonarten", "en": "The same options in several keys" }
+        },
+        {
+          "type": "table",
+          "head": [
+            { "de": "Tonart", "en": "Key" },
+            { "de": "Grundton", "en": "Root" },
+            { "de": "Oktave", "en": "Octave" },
+            { "de": "Shell", "en": "Shell" },
+            { "de": "Voll", "en": "Full" }
+          ],
+          "rows": [
+            [ { "de": "C", "en": "C" }, { "de": "C", "en": "C" }, { "de": "C + C", "en": "C + C" }, { "de": "C + G", "en": "C + G" }, { "de": "C + G + E", "en": "C + G + E" } ],
+            [ { "de": "F", "en": "F" }, { "de": "F", "en": "F" }, { "de": "F + F", "en": "F + F" }, { "de": "F + C", "en": "F + C" }, { "de": "F + C + A", "en": "F + C + A" } ],
+            [ { "de": "G", "en": "G" }, { "de": "G", "en": "G" }, { "de": "G + G", "en": "G + G" }, { "de": "G + D", "en": "G + D" }, { "de": "G + D + B", "en": "G + D + B" } ]
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Faustregel: wann was?", "en": "Rule of thumb: when to use what?" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": { "de": "Lass die Lage entscheiden. Je tiefer, desto dünner:", "en": "Let the register decide. The lower, the thinner:" }
+        },
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Sehr tief: nur Grundton oder Oktave.", "en": "Very low: root or octave only." },
+            { "de": "Tief, etwas mehr: Shell (Grundton + Quinte), keine Terz.", "en": "Low, a bit more: shell (root + fifth), no third." },
+            { "de": "Mittig oder höher: jetzt darf die Terz dazu — das volle Voicing.", "en": "Mid or higher: now the third may join — the full voicing." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merksatz: Die Terz erst, wenn du hoch genug bist. Tief gespielt macht die Terz den Klang matschig.",
+            "en": "Remember: the third only once you're high enough. Played low, the third makes the sound muddy."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Umkehrungen des vollen Voicings", "en": "Inversions of the full voicing" },
+      "intro": {
+        "de": "Das volle Voicing besteht aus den Tönen C – E – G. Du kannst dieselben drei Töne mit verschiedenem Bass spielen — der unterste Ton bestimmt Lage und Farbe.",
+        "en": "The full voicing is made of the notes C – E – G. You can play the same three notes with a different bass — the lowest note sets the register and colour."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            { "de": "Voicing", "en": "Voicing" },
+            { "de": "Bass", "en": "Bass" },
+            { "de": "Lage / Farbe", "en": "Register / colour" },
+            { "de": "Wann praktisch", "en": "When useful" }
+          ],
+          "rows": [
+            [ { "de": "C – G – E", "en": "C – G – E" }, { "de": "C", "en": "C" }, { "de": "breit, satt, klarer Grund", "en": "broad, full, clear foundation" }, { "de": "Standard-Lage", "en": "standard position" } ],
+            [ { "de": "E – C – G", "en": "E – C – G" }, { "de": "E", "en": "E" }, { "de": "höher startend, weicher", "en": "starts higher, softer" }, { "de": "wenn die vorige Lage höher war", "en": "when the previous voicing was higher" } ],
+            [ { "de": "G – E – C", "en": "G – E – C" }, { "de": "G", "en": "G" }, { "de": "am höchsten, hell, schwebend", "en": "highest, bright, floating" }, { "de": "für sanfte Übergänge", "en": "for smooth transitions" } ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Wichtig: Egal welcher Ton unten liegt (C, E oder G) — solange du C, E und G spielst, bleibt es ein C-Akkord. Es ändert sich nur die Umkehrung bzw. Lage, nicht der Akkord selbst.",
+            "en": "Important: whichever note is at the bottom (C, E or G) — as long as you play C, E and G, it stays a C chord. Only the inversion / register changes, not the chord itself."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Tipp zur Stimmführung: Wähl die Umkehrung, deren Bass am nächsten an deiner vorigen Lage liegt. So bewegst du dich in kleinen Schritten statt in großen Sprüngen — das klingt flüssiger und spielt sich sicherer.",
+            "en": "Voice-leading tip: choose the inversion whose bass is closest to your previous voicing. That way you move in small steps instead of big leaps — it sounds smoother and plays more securely."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Zum Selberprobieren", "en": "Try it yourself" },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            { "de": "Spiel in C alle vier Optionen nacheinander (Grundton → Oktave → Shell → Voll) und hör den Unterschied.", "en": "In C, play all four options in turn (root → octave → shell → full) and hear the difference." },
+            { "de": "Spiel das volle Voicing in allen drei Lagen (C–G–E, E–C–G, G–E–C) und achte auf den wechselnden Bass.", "en": "Play the full voicing in all three positions (C–G–E, E–C–G, G–E–C) and notice the changing bass." },
+            { "de": "Wechsle C → F → G und nimm jedes Mal die Lage mit dem kleinsten Sprung (Stimmführung).", "en": "Move C → F → G and each time pick the voicing with the smallest leap (voice leading)." }
+          ]
+        }
+      ]
+    }
+  ]
+}

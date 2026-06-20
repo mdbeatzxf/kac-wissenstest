@@ -136,6 +136,33 @@
       "group": "lernen"
     },
     {
+      "id": "bass-linke-hand",
+      "file": "guides/bass-linke-hand.json",
+      "area": "academy",
+      "kicker": {
+        "de": "Music Academy · Linke Hand",
+        "en": "Music Academy · Left hand"
+      },
+      "meta": {
+        "de": "Bass-Optionen + Umkehrungen",
+        "en": "Bass options + inversions"
+      },
+      "updated": "Juni 2026",
+      "title": {
+        "de": "Bass in der linken Hand",
+        "en": "Bass in the left hand"
+      },
+      "subtitle": {
+        "de": "Welche Töne die linke Hand spielt — und wann",
+        "en": "Which notes the left hand plays — and when"
+      },
+      "intro": {
+        "de": "Die linke Hand spielt oft nur den Bass. Vier Optionen vom Grundton bis zum vollen Voicing, die passende Lage und die Umkehrungen — wann du was nimmst.",
+        "en": "The left hand often just plays the bass. Four options from the root to the full voicing, the right register, and the inversions — when to use what."
+      },
+      "group": "lernen"
+    },
+    {
       "id": "inversionen-uebungen",
       "file": "guides/inversionen-uebungen.json",
       "area": "academy",
