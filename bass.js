@@ -12,18 +12,18 @@
      1) ENGINE  (Dur-Dreiklang je Grundton; Voicings als Positionen 0..23)
      ---------------------------------------------------------------- */
   const KEYS = [
-    { id: 'C',  pc: 0,  third: 'E',  fifth: 'G' },
-    { id: 'Db', pc: 1,  third: 'F',  fifth: 'Ab' },
-    { id: 'D',  pc: 2,  third: 'F#', fifth: 'A' },
-    { id: 'Eb', pc: 3,  third: 'G',  fifth: 'Bb' },
-    { id: 'E',  pc: 4,  third: 'G#', fifth: 'B' },
-    { id: 'F',  pc: 5,  third: 'A',  fifth: 'C' },
-    { id: 'F#', pc: 6,  third: 'A#', fifth: 'C#' },
-    { id: 'G',  pc: 7,  third: 'B',  fifth: 'D' },
-    { id: 'Ab', pc: 8,  third: 'C',  fifth: 'Eb' },
-    { id: 'A',  pc: 9,  third: 'C#', fifth: 'E' },
-    { id: 'Bb', pc: 10, third: 'D',  fifth: 'F' },
-    { id: 'B',  pc: 11, third: 'D#', fifth: 'F#' }
+    { id: 'C',  pc: 0,  third: 'E',  thirdm: 'Eb', fifth: 'G' },
+    { id: 'Db', pc: 1,  third: 'F',  thirdm: 'E',  fifth: 'Ab' },
+    { id: 'D',  pc: 2,  third: 'F#', thirdm: 'F',  fifth: 'A' },
+    { id: 'Eb', pc: 3,  third: 'G',  thirdm: 'Gb', fifth: 'Bb' },
+    { id: 'E',  pc: 4,  third: 'G#', thirdm: 'G',  fifth: 'B' },
+    { id: 'F',  pc: 5,  third: 'A',  thirdm: 'Ab', fifth: 'C' },
+    { id: 'F#', pc: 6,  third: 'A#', thirdm: 'A',  fifth: 'C#' },
+    { id: 'G',  pc: 7,  third: 'B',  thirdm: 'Bb', fifth: 'D' },
+    { id: 'Ab', pc: 8,  third: 'C',  thirdm: 'B',  fifth: 'Eb' },
+    { id: 'A',  pc: 9,  third: 'C#', thirdm: 'C',  fifth: 'E' },
+    { id: 'Bb', pc: 10, third: 'D',  thirdm: 'Db', fifth: 'F' },
+    { id: 'B',  pc: 11, third: 'D#', thirdm: 'D',  fifth: 'F#' }
   ];
   const BLACK_PC = [1, 3, 6, 8, 10];
 
@@ -47,28 +47,29 @@
     { id: 'inv2', bass: 'fifth', parts: ['fifth', 'third8', 'root8'] }   // G – E – C
   ];
 
-  function partPos(key, part) {
+  function partPos(key, part, quality) {
+    const t3 = quality === 'minor' ? 3 : 4;   // kleine Terz bei Moll, große bei Dur
     switch (part) {
       case 'root':   return key.pc;
       case 'root8':  return key.pc + 12;
       case 'fifth':  return key.pc + 7;
       case 'fifth8': return key.pc + 7 + 12;
-      case 'third':  return key.pc + 4;
-      case 'third8': return key.pc + 4 + 12;
+      case 'third':  return key.pc + t3;
+      case 'third8': return key.pc + t3 + 12;
       default: return key.pc;
     }
   }
-  function partName(key, part) {
+  function partName(key, part, quality) {
     if (part === 'root' || part === 'root8') return key.id;
     if (part === 'fifth' || part === 'fifth8') return key.fifth;
-    return key.third;
+    return quality === 'minor' ? key.thirdm : key.third;
   }
 
   // Voicing berechnen → { positions(asc, im 0..23-Fenster), names(asc),
   //   pcs, bassPc, kind('option'|'inv'), id }.
-  function computeVoicing(key, def) {
-    let positions = def.parts.map(function (p) { return partPos(key, p); });
-    let names = def.parts.map(function (p) { return partName(key, p); });
+  function computeVoicing(key, def, quality) {
+    let positions = def.parts.map(function (p) { return partPos(key, p, quality); });
+    let names = def.parts.map(function (p) { return partName(key, p, quality); });
     // ins 0..23-Fenster schieben (unterster Ton in untere Oktave)
     const lo = Math.min.apply(null, positions);
     const shift = -12 * Math.floor(lo / 12);
@@ -133,9 +134,12 @@
         inv1: 'Bass = Terz (E–C–G). Höher startend, weicher.',
         inv2: 'Bass = Quinte (G–E–C). Am höchsten, hell, schwebend.'
       },
+      qualityLabel: { major: 'Dur', minor: 'Moll' },
+      qualityNote: { major: 'Dur — große Terz.', minor: 'Moll — kleine Terz (nur das volle Voicing ändert sich; Grundton, Oktave und Shell bleiben gleich).' },
       // Konfig
       configKicker: 'Modus', configTitle: 'Konfiguration',
-      blockSet: 'Was üben?', blockKey: 'Tonart', blockTimer: 'Timer',
+      blockSet: 'Was üben?', blockKey: 'Tonart', blockQuality: 'Klang', blockTimer: 'Timer',
+      qualityOpts: { major: 'Dur', minor: 'Moll', both: 'Gemischt' },
       setOpts: {
         options: { t: 'Fülle-Optionen', d: 'Grundton · Oktave · Shell · Voll — welche Lage passt zur Höhe.' },
         inversions: { t: 'Umkehrungen', d: 'Dasselbe Voicing mit verschiedenem Bass (C–G–E / E–C–G / G–E–C).' },
@@ -185,8 +189,11 @@
         inv1: 'Bass = third (E–C–G). Starts higher, softer.',
         inv2: 'Bass = fifth (G–E–C). Highest, bright, floating.'
       },
+      qualityLabel: { major: 'Major', minor: 'Minor' },
+      qualityNote: { major: 'Major — major third.', minor: 'Minor — minor third (only the full voicing changes; root, octave and shell stay the same).' },
       configKicker: 'Mode', configTitle: 'Configuration',
-      blockSet: 'Practise what?', blockKey: 'Key', blockTimer: 'Timer',
+      blockSet: 'Practise what?', blockKey: 'Key', blockQuality: 'Quality', blockTimer: 'Timer',
+      qualityOpts: { major: 'Major', minor: 'Minor', both: 'Mixed' },
       setOpts: {
         options: { t: 'Fullness options', d: 'Root · octave · shell · full — which fits the register.' },
         inversions: { t: 'Inversions', d: 'Same voicing, different bass (C–G–E / E–C–G / G–E–C).' },
@@ -215,9 +222,9 @@
   const DRILL_SECONDS = 15;
   const state = {
     lang: 'de', view: 'home',
-    overviewKey: 'C',
+    overviewKey: 'C', overviewQuality: 'major',   // major | minor
     mode: 'practice',                 // practice | quiz
-    cfg: { set: 'options', key: 'random', timerOn: true },
+    cfg: { set: 'options', key: 'random', quality: 'major', timerOn: true },
     drill: null
   };
   function t() { return I18N[state.lang]; }
@@ -309,8 +316,9 @@
       if (opts.interactive) { k.type = 'button'; k.addEventListener('click', function () { (opts.onTap || function () {})(p); }); }
       return k;
     }
+    const N = opts.keys || 24;   // 3 Oktaven (36) im Bass, damit gespreizte Voicings passen
     let w = 0; const blacks = [];
-    for (let p = 0; p < 24; p++) { const isB = BLACK_PC.indexOf(p % 12) !== -1; if (!isB) { wrap.appendChild(makeKey(p, 'w', whiteW, whiteH)); w++; } else blacks.push({ p: p, left: w * whiteW - blackW / 2 }); }
+    for (let p = 0; p < N; p++) { const isB = BLACK_PC.indexOf(p % 12) !== -1; if (!isB) { wrap.appendChild(makeKey(p, 'w', whiteW, whiteH)); w++; } else blacks.push({ p: p, left: w * whiteW - blackW / 2 }); }
     wrap.style.width = (w * whiteW) + 'px'; wrap.style.height = whiteH + 'px';
     blacks.forEach(function (b) { const k = makeKey(b.p, 'b', blackW, blackH); k.style.left = b.left + 'px'; wrap.appendChild(k); });
     return wrap;
@@ -366,31 +374,42 @@
     v.appendChild(backBtn(L.title, 'home'));
     const head = el('div', 'ov-head');
     head.innerHTML = '<div><div class="kicker">' + esc(L.kicker) + ' · ' + esc(L.overviewTitle) + '</div><h1 class="title">' + esc(L.overviewTitle) + '</h1><p class="sub">' + esc(L.overviewSub) + '</p></div>';
+    // Dur/Moll-Umschalter
+    head.appendChild(qualityToggle(state.overviewQuality, function (q) { state.overviewQuality = q; render(); }));
     // Tonart-Chips
     const chips = el('div', 'chips ov-keys');
     KEYS.forEach(function (k) { const b = el('button', 'chip mono' + (k.id === state.overviewKey ? ' is-active' : '')); b.type = 'button'; b.textContent = k.id; b.addEventListener('click', function () { state.overviewKey = k.id; render(); }); chips.appendChild(b); });
     head.appendChild(chips); v.appendChild(head);
+    const qnote = el('p', 'voic-qnote mono'); qnote.textContent = L.qualityNote[state.overviewQuality]; v.appendChild(qnote);
 
-    const key = findKey(state.overviewKey);
+    const key = findKey(state.overviewKey), q = state.overviewQuality;
     // Optionen
     v.appendChild(sectionLabel(L.colOptions));
     const optRows = el('div', 'voic-list');
-    OPTIONS.forEach(function (def) { optRows.appendChild(voicRow(key, computeVoicing(key, def), L.optNames[def.id], L.optDesc[def.id])); });
+    OPTIONS.forEach(function (def) { optRows.appendChild(voicRow(key, computeVoicing(key, def, q), L.optNames[def.id], L.optDesc[def.id])); });
     v.appendChild(optRows);
     // Umkehrungen
     v.appendChild(sectionLabel(L.colInversions));
     const invRows = el('div', 'voic-list');
-    INVERSIONS.forEach(function (def) { const vc = computeVoicing(key, def); vc.bassPc = ((partPos(key, def.bass) % 12) + 12) % 12; invRows.appendChild(voicRow(key, vc, L.invNames[def.id], L.invDesc[def.id], def.bass)); });
+    INVERSIONS.forEach(function (def) { invRows.appendChild(voicRow(key, computeVoicing(key, def, q), L.invNames[def.id], L.invDesc[def.id], true)); });
     v.appendChild(invRows);
     return v;
   }
+  function qualityToggle(current, onPick) {
+    const L = t(); const seg = el('div', 'seg quality-seg');
+    [['major', L.qualityLabel.major], ['minor', L.qualityLabel.minor]].forEach(function (d) {
+      const b = el('button', 'seg-btn mono' + (current === d[0] ? ' is-active' : '') + (d[0] === 'minor' ? ' is-minor' : '')); b.type = 'button'; b.textContent = d[1];
+      b.addEventListener('click', function () { onPick(d[0]); }); seg.appendChild(b);
+    });
+    return seg;
+  }
   function sectionLabel(text) { const d = el('div', 'block-label voic-label'); d.innerHTML = '<span>' + esc(text) + '</span>'; return d; }
-  function voicRow(key, vc, name, desc, bassPart) {
+  function voicRow(key, vc, name, desc, showBass) {
     const row = el('div', 'voic-row');
-    const bassPos = (typeof bassPart === 'string') ? (function () { const bp = ((partPos(key, bassPart) % 12) + 12) % 12; return vc.positions.find(function (p) { return ((p % 12) + 12) % 12 === bp; }); })() : undefined;
+    const bassPos = showBass ? vc.positions[0] : undefined;
     row.innerHTML = '<div class="voic-info"><div class="voic-name">' + esc(name) + '</div><div class="voic-notes mono">' + vc.names.join(' – ') + '</div><div class="voic-desc">' + esc(desc) + '</div></div>';
     const kbWrap = el('div', 'voic-kbd');
-    kbWrap.appendChild(buildKeyboard(vc.positions, { whiteW: 17, bassPos: bassPos }));
+    kbWrap.appendChild(buildKeyboard(vc.positions, { whiteW: 15, keys: 36, bassPos: bassPos }));
     row.appendChild(kbWrap); return row;
   }
 
@@ -412,6 +431,14 @@
       b.addEventListener('click', function () { state.cfg.key = it.id; render(); }); chips.appendChild(b);
     });
     v.appendChild(wrapBlock(chips));
+    // Klang (Dur / Moll / Gemischt)
+    v.appendChild(blockLabel(L.blockQuality));
+    const qseg = el('div', 'seg quality-seg');
+    ['major', 'minor', 'both'].forEach(function (q) {
+      const b = el('button', 'seg-btn mono' + (state.cfg.quality === q ? ' is-active' : '') + (q === 'minor' ? ' is-minor' : '')); b.type = 'button'; b.textContent = L.qualityOpts[q];
+      b.addEventListener('click', function () { state.cfg.quality = q; render(); }); qseg.appendChild(b);
+    });
+    v.appendChild(wrapBlock(qseg));
     // Timer
     v.appendChild(blockLabel(L.blockTimer));
     const timer = el('div', 'timer');
@@ -443,13 +470,14 @@
     const cfg = state.cfg;
     const key = cfg.key === 'random' ? KEYS[Math.floor(Math.random() * KEYS.length)] : findKey(cfg.key);
     let set = cfg.set; if (set === 'mixed') set = Math.random() < 0.5 ? 'options' : 'inversions';
-    let def, label, checkBass = false, bassPart = null;
+    let quality = cfg.quality || 'major'; if (quality === 'both') quality = Math.random() < 0.5 ? 'major' : 'minor';
+    let def, label, checkBass = false;
     const L = t();
     if (set === 'options') { def = OPTIONS[Math.floor(Math.random() * OPTIONS.length)]; label = L.optNames[def.id]; }
-    else { def = INVERSIONS[Math.floor(Math.random() * INVERSIONS.length)]; label = L.invNames[def.id]; checkBass = true; bassPart = def.bass; }
-    const vc = computeVoicing(key, def);
-    vc.checkBass = checkBass; if (checkBass) vc.bassPc = ((partPos(key, bassPart) % 12) + 12) % 12;
-    return { key: key, def: def, set: set, label: label, voicing: vc, bassName: checkBass ? partName(key, bassPart) : null };
+    else { def = INVERSIONS[Math.floor(Math.random() * INVERSIONS.length)]; label = L.invNames[def.id]; checkBass = true; }
+    const vc = computeVoicing(key, def, quality);
+    vc.checkBass = checkBass;   // bassPc ist bereits der tiefste Ton (aus computeVoicing)
+    return { key: key, def: def, set: set, quality: quality, label: label, voicing: vc, bassName: checkBass ? vc.names[0] : null };
   }
   function startDrill() {
     ensureAudio(); initMidi();
@@ -511,7 +539,7 @@
     const playedSet = new Set(); currentInput().forEach(function (n) { const pc = ((n % 12) + 12) % 12; const hit = vc.positions.find(function (p) { return ((p % 12) + 12) % 12 === pc; }); playedSet.add(hit !== undefined ? hit : pc); });
     const feedback = d.solved ? { correct: new Set(vc.positions) } : null;
     host.innerHTML = '';
-    host.appendChild(buildKeyboard(vc.positions, { whiteW: 40, interactive: true, labels: true, nameMap: nameMapOf(vc), played: playedSet, feedback: feedback, bassPos: (d.task.set === 'inversions' ? vc.positions[0] : undefined), onTap: onTap }));
+    host.appendChild(buildKeyboard(vc.positions, { whiteW: 34, keys: 36, interactive: true, labels: true, nameMap: nameMapOf(vc), played: playedSet, feedback: feedback, bassPos: (d.task.set === 'inversions' ? vc.positions[0] : undefined), onTap: onTap }));
     const msg = $('bassMsg'); if (msg) { const L = t(); if (d.solved) { msg.className = 'drill-msg is-ok'; msg.textContent = '✓ ' + L.correct; } else if (d.msg) { msg.className = 'drill-msg is-bad'; msg.textContent = d.msg; } else { msg.className = 'drill-msg'; msg.textContent = L.tapHint; } }
     updateMidiStatus();
   }
