@@ -185,6 +185,9 @@
       playHint: 'Ton vorspielen', playNext: 'Spiel:', scaleDone: 'Tonleiter gespielt!',
       midiOn: 'MIDI verbunden: ', midiOff: 'Kein MIDI-Gerät — tippen geht auch.',
       midiNo: 'Dieser Browser kann kein Web-MIDI (am besten Chrome/Edge). Tippen geht trotzdem.',
+      resultTitle: 'Auswertung', resultAgain: 'Nochmal', resultBack: 'Zur Startseite',
+      resultMeta: function (h, t) { return h + ' von ' + t + ' Tonleitern komplett gespielt'; },
+      savedLocal: 'Ergebnis lokal gespeichert.',
       showFingers: 'Fingersatz einblenden',
       notation: 'Internationale Schreibweise (B statt deutschem H). Fingersätze nach gängigem Standard.'
     },
@@ -241,6 +244,9 @@
       playHint: 'Play the note', playNext: 'Play:', scaleDone: 'Scale played!',
       midiOn: 'MIDI connected: ', midiOff: 'No MIDI device — tapping works too.',
       midiNo: 'This browser has no Web MIDI (use Chrome/Edge). Tapping still works.',
+      resultTitle: 'Result', resultAgain: 'Again', resultBack: 'Back to start',
+      resultMeta: function (h, t) { return h + ' of ' + t + ' scales played in full'; },
+      savedLocal: 'Result saved locally.',
       showFingers: 'Show fingering',
       notation: 'International notation (B, not the German H). Fingerings follow common standard.'
     }
@@ -359,7 +365,7 @@
   }
 
   function render() {
-    if (state.view === 'drill' && !state.drill) state.view = 'home';
+    if ((state.view === 'drill' || state.view === 'result') && !state.drill) state.view = 'home';
     applyStaticChrome();
     const root = $('stView');
     if (!root) return;
@@ -368,6 +374,7 @@
     else if (state.view === 'overview') root.appendChild(renderOverview());
     else if (state.view === 'config') root.appendChild(renderConfig());
     else if (state.view === 'drill') root.appendChild(renderDrill());
+    else if (state.view === 'result') root.appendChild(renderResult());
   }
 
   function applyStaticChrome() {
@@ -652,13 +659,14 @@
     state.drill = {
       type: cfg.type, minorForm: cfg.minorForm, key: keyId, pattern: cfg.pattern,
       dir: cfg.pattern === 'down' ? 'down' : 'up',
-      step: 1, hits: 0, total: state.mode === 'quiz' ? 20 : null,
-      seq: null, seqIdx: 0, done: false, deadline: null,
+      step: 1, hits: 0, misses: 0, total: state.mode === 'quiz' ? 20 : null,
+      seq: null, seqIdx: 0, done: false, deadline: null, timerId: null,
       timerOn: state.mode === 'quiz' ? true : cfg.timerOn
     };
-    state.drill.seq = buildSeq(cfg.pattern, state.drill.dir);
     ensureAudio(); initMidi();
-    go('drill');
+    state.view = 'drill';
+    startTask();
+    window.scrollTo(0, 0);
   }
 
   function randomKeyId(type) {
@@ -747,10 +755,28 @@
     if (pattern === 'thirds') { const b = [0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 7]; return dir === 'down' ? b.slice().reverse() : b; }
     const up = [0, 1, 2, 3, 4, 5, 6, 7]; return dir === 'down' ? up.slice().reverse() : up;
   }
+  function clearTaskTimer() {
+    if (state.drill && state.drill.timerId) { clearInterval(state.drill.timerId); state.drill.timerId = null; }
+  }
+  function startTimer() {
+    clearTaskTimer();
+    const d = state.drill;
+    if (!d.timerOn) { d.deadline = null; return; }
+    d.deadline = Date.now() + 15000;
+    d.timerId = setInterval(function () {
+      if (state.view !== 'drill' || !state.drill || state.drill.done) { clearTaskTimer(); return; }
+      if (Date.now() >= state.drill.deadline) { clearTaskTimer(); onTimeout(); }
+    }, 200);
+  }
+  function onTimeout() {
+    if (state.mode === 'quiz') { state.drill.misses = (state.drill.misses || 0) + 1; nextTask(); }
+    else { startTask(); }   // Üben: gleiche Aufgabe nochmal
+  }
   function startTask() {
     const d = state.drill;
     d.seq = buildSeq(d.pattern, d.dir);
-    d.seqIdx = 0; d.done = false; d.deadline = null;
+    d.seqIdx = 0; d.done = false;
+    startTimer();
     render();
   }
   // Gespielter Ton (Pitchclass) → gegen den nächsten erwarteten Ton der Reihe prüfen.
@@ -899,9 +925,45 @@
   function nextTask() {
     const d = state.drill;
     d.step += 1;
-    if (d.total && d.step > d.total) { go('config'); return; }   // Quiz-Ende (Auswertung folgt)
+    if (d.total && d.step > d.total) { clearTaskTimer(); saveScaleResult(); go('result'); return; }
     if (state.cfg.key === 'random') d.key = randomKeyId(d.type);
     startTask();
+  }
+  function saveScaleResult() {
+    try {
+      const d = state.drill;
+      let name = ''; try { const u = JSON.parse(sessionStorage.getItem('tt_user') || 'null'); if (u && u.vorname) name = (u.vorname + ' ' + (u.nachname || '')).trim(); } catch (e) {}
+      const rec = { ts: Date.now(), name: name, kind: 'scales', type: d.type, minorForm: d.minorForm, pattern: d.pattern, total: d.total, hits: d.hits };
+      const k = 'tt_scale_results', arr = JSON.parse(localStorage.getItem(k) || '[]');
+      arr.push(rec); while (arr.length > 100) arr.shift();
+      localStorage.setItem(k, JSON.stringify(arr));
+    } catch (e) {}
+  }
+  function renderResult() {
+    const L = t(), d = state.drill;
+    const total = (d && d.total) || 0, hits = (d && d.hits) || 0, pct = total ? Math.round(hits / total * 100) : 0;
+    const v = el('section', 'screen');
+    const back = el('button', 'backlink mono'); back.type = 'button';
+    back.innerHTML = '<span class="arrow">←</span> ' + esc(L.title);
+    back.addEventListener('click', function () { go('home'); });
+    v.appendChild(back);
+    const panel = el('div', 'drill-result');
+    panel.innerHTML =
+      '<div class="kicker" style="margin-top:4px">' + esc(L.resultTitle) + '</div>' +
+      '<div class="res-score"><span class="res-big">' + hits + '<span class="res-tot">/' + total + '</span></span>' +
+      '<span class="res-pct mono">' + pct + '%</span></div>' +
+      '<div class="res-meta mono">' + esc(L.resultMeta(hits, total)) + '</div>' +
+      '<div class="res-saved mono">' + esc(L.savedLocal) + '</div>' +
+      '<div class="modal-actions res-actions">' +
+        '<button class="btn btn-primary" id="resAgain" type="button">' + esc(L.resultAgain) + '</button>' +
+        '<button class="btn btn-ghost" id="resHome" type="button">' + esc(L.resultBack) + '</button>' +
+      '</div>';
+    v.appendChild(panel);
+    setTimeout(function () {
+      const a = $('resAgain'); if (a) a.addEventListener('click', function () { ensureAudio(); startDrill(); });
+      const h = $('resHome'); if (h) h.addEventListener('click', function () { go('home'); });
+    }, 0);
+    return v;
   }
 
   /* ----------------------------------------------------------------
