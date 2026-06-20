@@ -329,3 +329,9 @@
 /* Moll-Form-Unterauswahl (Übersicht-Kopf) */
 .invtrainer .seg-sub .seg-btn { padding: 9px 14px; font-size: 12px; }
 .invtrainer .ov-head .seg { align-self: flex-end; }
+
+/* Drill: "Tonleiter gespielt" + grüne gespielte Tasten */
+.invtrainer .cur-readout.cur-ok { color: var(--good); }
+.invtrainer .drill-kbd .pkey.is-played { background: var(--good); border-color: var(--good); }
+.invtrainer .drill-kbd .bkey.is-played { background: var(--good); border-color: var(--good); }
+.invtrainer .drill-kbd .pkey.is-played .pkey-deg { color: #fff; }

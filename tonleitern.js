@@ -182,6 +182,9 @@
       handsCurrent: 'Aktuell:',
       dirLeft: 'links', dirRight: 'rechts',
       tip: 'Tipp: nächster Finger', next: 'Weiter',
+      playHint: 'Ton vorspielen', playNext: 'Spiel:', scaleDone: 'Tonleiter gespielt!',
+      midiOn: 'MIDI verbunden: ', midiOff: 'Kein MIDI-Gerät — tippen geht auch.',
+      midiNo: 'Dieser Browser kann kein Web-MIDI (am besten Chrome/Edge). Tippen geht trotzdem.',
       showFingers: 'Fingersatz einblenden',
       notation: 'Internationale Schreibweise (B statt deutschem H). Fingersätze nach gängigem Standard.'
     },
@@ -235,6 +238,9 @@
       handsCurrent: 'Current:',
       dirLeft: 'left', dirRight: 'right',
       tip: 'Hint: next finger', next: 'Next',
+      playHint: 'Play the note', playNext: 'Play:', scaleDone: 'Scale played!',
+      midiOn: 'MIDI connected: ', midiOff: 'No MIDI device — tapping works too.',
+      midiNo: 'This browser has no Web MIDI (use Chrome/Edge). Tapping still works.',
       showFingers: 'Show fingering',
       notation: 'International notation (B, not the German H). Fingerings follow common standard.'
     }
@@ -647,10 +653,11 @@
       type: cfg.type, minorForm: cfg.minorForm, key: keyId, pattern: cfg.pattern,
       dir: cfg.pattern === 'down' ? 'down' : 'up',
       step: 1, hits: 0, total: state.mode === 'quiz' ? 20 : null,
-      cur: 0,
-      played: new Set(), showFingers: false,
+      seq: null, seqIdx: 0, done: false, deadline: null,
       timerOn: state.mode === 'quiz' ? true : cfg.timerOn
     };
+    state.drill.seq = buildSeq(cfg.pattern, state.drill.dir);
+    ensureAudio(); initMidi();
     go('drill');
   }
 
@@ -659,11 +666,112 @@
     return list[Math.floor(Math.random() * list.length)].id;
   }
 
+  /* ----------------------------------------------------------------
+     9b) KLAVIER-SOUND + WEB-MIDI + SEQUENZ-PRÜFUNG
+     ---------------------------------------------------------------- */
+  let audioCtx = null, masterGain = null;
+  const voices = {};
+  function ensureAudio() {
+    try {
+      if (!audioCtx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return false;
+        audioCtx = new AC();
+        masterGain = audioCtx.createGain(); masterGain.gain.value = 0.22; masterGain.connect(audioCtx.destination);
+      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      return true;
+    } catch (e) { return false; }
+  }
+  function midiToFreq(n) { return 440 * Math.pow(2, (n - 69) / 12); }
+  function playNote(n, dur) {
+    if (!ensureAudio()) return;
+    if (voices[n]) releaseVoice(n, 0.02);
+    const T = audioCtx.currentTime, f = midiToFreq(n), life = dur || 1.6;
+    const osc = audioCtx.createOscillator(); osc.type = 'triangle'; osc.frequency.setValueAtTime(f, T);
+    const part = audioCtx.createOscillator(); part.type = 'sine'; part.frequency.setValueAtTime(f * 2, T);
+    const pg = audioCtx.createGain(); pg.gain.value = 0.14;
+    const g = audioCtx.createGain();
+    g.gain.setValueAtTime(0.0001, T);
+    g.gain.exponentialRampToValueAtTime(0.7, T + 0.006);
+    g.gain.exponentialRampToValueAtTime(0.12, T + 0.9);
+    g.gain.exponentialRampToValueAtTime(0.0001, T + life);
+    osc.connect(g); part.connect(pg); pg.connect(g); g.connect(masterGain);
+    osc.start(T); part.start(T);
+    const stopAt = T + life + 0.05; osc.stop(stopAt); part.stop(stopAt);
+    const v = { osc: osc, part: part, g: g };
+    osc.onended = function () { if (voices[n] === v) delete voices[n]; };
+    voices[n] = v;
+  }
+  function releaseVoice(n, rel) {
+    const v = voices[n]; if (!v || !audioCtx) return;
+    const T = audioCtx.currentTime;
+    try {
+      v.g.gain.cancelScheduledValues(T); v.g.gain.setValueAtTime(Math.max(v.g.gain.value, 0.0001), T);
+      v.g.gain.exponentialRampToValueAtTime(0.0001, T + (rel || 0.13));
+      v.osc.stop(T + (rel || 0.13) + 0.03); v.part.stop(T + (rel || 0.13) + 0.03);
+    } catch (e) {}
+    delete voices[n];
+  }
+  function stopNote(n) { releaseVoice(n, 0.14); }
+
+  const midi = { requested: false, deviceName: '', supported: typeof navigator !== 'undefined' && !!navigator.requestMIDIAccess };
+  function initMidi() {
+    if (midi.requested) return;
+    midi.requested = true;
+    if (!navigator.requestMIDIAccess) { midi.supported = false; updateMidiStatus(); return; }
+    navigator.requestMIDIAccess().then(function (access) {
+      function bind() {
+        const names = [];
+        access.inputs.forEach(function (inp) { inp.onmidimessage = handleMidi; if (inp.name) names.push(inp.name); });
+        midi.deviceName = names.join(', '); updateMidiStatus();
+      }
+      bind(); access.onstatechange = bind;
+    }).catch(function () { midi.supported = false; updateMidiStatus(); });
+  }
+  function handleMidi(msg) {
+    const cmd = msg.data[0] & 0xf0, note = msg.data[1], vel = msg.data[2];
+    if (cmd === 0x90 && vel > 0) { playNote(note); onPlayNote(((note % 12) + 12) % 12); }
+    else if (cmd === 0x80 || (cmd === 0x90 && vel === 0)) { stopNote(note); }
+  }
+  function updateMidiStatus() {
+    const e = $('stMidi'); if (!e) return;
+    const L = t();
+    if (!midi.supported) { e.textContent = L.midiNo; e.className = 'midi-status mono is-no'; }
+    else if (midi.deviceName) { e.textContent = '🎹 ' + L.midiOn + midi.deviceName; e.className = 'midi-status mono is-on'; }
+    else { e.textContent = L.midiOff; e.className = 'midi-status mono'; }
+  }
+
+  // Reihenfolge der Skalen-Indizes (0..7) je Pattern/Richtung.
+  function buildSeq(pattern, dir) {
+    if (pattern === 'thirds') { const b = [0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 7]; return dir === 'down' ? b.slice().reverse() : b; }
+    const up = [0, 1, 2, 3, 4, 5, 6, 7]; return dir === 'down' ? up.slice().reverse() : up;
+  }
+  function startTask() {
+    const d = state.drill;
+    d.seq = buildSeq(d.pattern, d.dir);
+    d.seqIdx = 0; d.done = false; d.deadline = null;
+    render();
+  }
+  // Gespielter Ton (Pitchclass) → gegen den nächsten erwarteten Ton der Reihe prüfen.
+  function onPlayNote(pc) {
+    const d = state.drill;
+    if (!d || state.view !== 'drill' || d.done || !d.seq) return;
+    const scale = computeScale(d.type, findKey(d.type, d.key), d.minorForm);
+    const expectPc = ((scale.positions[d.seq[d.seqIdx]] % 12) + 12) % 12;
+    if (pc === expectPc) {
+      d.seqIdx += 1;
+      if (d.seqIdx >= d.seq.length) { d.done = true; d.hits += 1; render(); setTimeout(nextTask, 750); }
+      else render();
+    }
+  }
+
   function renderDrill() {
     const L = t();
     const d = state.drill;
     const key = findKey(d.type, d.key);
     const scale = computeScale(d.type, key, d.minorForm);
+    if (!d.seq) { d.seq = buildSeq(d.pattern, d.dir); d.seqIdx = 0; }
     const v = el('section', 'screen' + (d.type === 'minor' ? ' is-minor' : ''));
 
     // Zurück
@@ -680,7 +788,8 @@
       '<div class="dt-left">' +
         '<div class="kicker">' + esc(L.drillKicker) + '</div>' +
         '<div class="dt-headline"><span class="dt-play mono">' + esc(L.play) + '</span> ' +
-          '<span class="dt-scale">' + esc(key.id) + ' ' + esc(L.typeToggle[d.type]) + '</span>' +
+          '<span class="dt-scale">' + esc(key.id) + ' ' + esc(L.typeToggle[d.type]) +
+            (d.type === 'minor' && d.minorForm && d.minorForm !== 'natural' ? ' (' + esc(L.minorForms[d.minorForm]) + ')' : '') + '</span>' +
           '<span class="dt-dir">' + (d.dir === 'down' ? '↓' : '↑') + ' ' + esc(patLabel) + '</span>' +
         '</div>' +
       '</div>' +
@@ -690,95 +799,91 @@
       '</div>';
     v.appendChild(task);
 
-    // Timer-Balken
+    // Timer-Balken (deadline-basiert, übersteht Re-Renders)
     if (d.timerOn) {
+      if (!d.deadline) d.deadline = Date.now() + 15000;
+      const remain = Math.max(0, d.deadline - Date.now());
       const tb = el('div', 'timerbar');
       tb.innerHTML = '<span class="timerbar-fill" id="timerFill"></span>';
       v.appendChild(tb);
       setTimeout(function () {
         const f = $('timerFill');
-        if (f) { f.style.transition = 'none'; f.style.width = '100%'; void f.offsetWidth;
-          f.style.transition = 'width 15s linear'; f.style.width = '0%'; }
-      }, 30);
+        if (f) { f.style.transition = 'none'; f.style.width = (remain / 15000 * 100) + '%'; void f.offsetWidth;
+          f.style.transition = 'width ' + (remain / 1000) + 's linear'; f.style.width = '0%'; }
+      }, 20);
     }
 
-    // Richtungs-Indikator
-    const dir = el('div', 'drill-dir');
-    dir.innerHTML =
-      '<button class="dir-btn mono' + (d.dir === 'up' ? ' is-active' : '') + '" type="button" data-dir="up">↑ ' + esc(L.dirUp) + '</button>' +
-      '<button class="dir-btn mono' + (d.dir === 'down' ? ' is-active' : '') + '" type="button" data-dir="down">↓ ' + esc(L.dirDown) + '</button>';
-    dir.querySelectorAll('.dir-btn').forEach(function (b) {
-      b.addEventListener('click', function () { d.dir = this.dataset.dir; render(); });
-    });
-    if (d.pattern !== 'thirds') v.appendChild(dir);
+    // Richtungs-Indikator (für aufwärts/abwärts)
+    if (d.pattern !== 'thirds') {
+      const dir = el('div', 'drill-dir');
+      dir.innerHTML =
+        '<button class="dir-btn mono' + (d.dir === 'up' ? ' is-active' : '') + '" type="button" data-dir="up">↑ ' + esc(L.dirUp) + '</button>' +
+        '<button class="dir-btn mono' + (d.dir === 'down' ? ' is-active' : '') + '" type="button" data-dir="down">↓ ' + esc(L.dirDown) + '</button>';
+      dir.querySelectorAll('.dir-btn').forEach(function (b) {
+        b.addEventListener('click', function () { d.dir = this.dataset.dir; startTask(); });
+      });
+      v.appendChild(dir);
+    }
 
-    // Legende (Stufen auf den Tasten)
+    // aktueller / gespielter Zustand
+    const idx = Math.min(d.seqIdx, d.seq.length - 1);
+    const curScaleIdx = d.seq[idx];
+    const curPos = scale.positions[curScaleIdx];
+    const rFinger = scale.fingering ? scale.fingering.r[curScaleIdx] : null;
+    const lFinger = scale.fingering ? scale.fingering.l[curScaleIdx] : null;
+    const playedPos = new Set();
+    for (let i = 0; i < d.seqIdx; i++) playedPos.add(scale.positions[d.seq[i]]);
+
+    // Legende
     const lg = el('div', 'drill-legend');
     lg.innerHTML =
       '<span class="dl-item"><span class="dl-chip dl-deg mono">1</span>' + esc(L.legendDeg) + '</span>' +
-      '<span class="dl-item"><span class="dl-chip dl-fing mono">2</span>' + esc(L.legendFinger) + ' → ' + esc(L.handsHint) + '</span>';
+      '<span class="dl-item"><span class="dl-chip dl-fing mono">R</span>' + esc(L.legendFinger) + ' → ' + esc(L.handsHint) + '</span>';
     v.appendChild(lg);
 
-    // Aktuell fälliger Ton
-    const cur = d.cur || 0;
-    const curPos = scale.positions[cur];
-    const rFinger = scale.fingering ? scale.fingering.r[cur] : null;
-    const lFinger = scale.fingering ? scale.fingering.l[cur] : null;
-
-    // Große Klaviatur (Hauptorientierung) — nur Stufenzahlen
+    // Große Klaviatur — Stufen; aktueller Ton markiert; gespielte Töne grün
     const kbWrap = el('div', 'drill-kbd');
-    const kb = buildKeyboard(scale.positions, {
-      whiteW: 50, interactive: true, played: d.played,
-      showDeg: true, currentPos: curPos,
+    kbWrap.appendChild(buildKeyboard(scale.positions, {
+      whiteW: 50, interactive: true, played: playedPos,
+      showDeg: true, currentPos: d.done ? null : curPos,
       degreeMap: degreeMapOf(scale),
-      onSelect: function (p) {
-        const idx = scale.positions.indexOf(p);
-        if (idx !== -1) { d.cur = idx; render(); }
-      }
-    });
-    kbWrap.appendChild(kb);
+      onSelect: function (p) { ensureAudio(); playNote(60 + p); onPlayNote(((p % 12) + 12) % 12); }
+    }));
     v.appendChild(kbWrap);
 
-    // Schritt-Stepper für den aktuellen Ton
-    const stepper = el('div', 'drill-cur');
-    stepper.innerHTML =
-      '<button class="cur-step" type="button" data-d="-1">‹</button>' +
-      '<button class="cur-step" type="button" data-d="1">›</button>' +
-      '<span class="cur-readout"><b>' + esc(scale.names[cur]) + '</b> · ' + esc(L.step) + ' ' + (cur + 1) + '/8</span>';
-    stepper.querySelectorAll('.cur-step').forEach(function (b) {
-      b.addEventListener('click', function () {
-        const dir = parseInt(this.dataset.d, 10);
-        d.cur = (cur + dir + 8) % 8;
-        render();
-      });
-    });
-    v.appendChild(stepper);
+    // Status / Fortschritt
+    const status = el('div', 'drill-cur');
+    if (d.done) status.innerHTML = '<span class="cur-readout cur-ok"><b>✓ ' + esc(L.scaleDone) + '</b></span>';
+    else status.innerHTML = '<span class="cur-readout">' + esc(L.playNext) + ' <b>' + esc(scale.names[curScaleIdx]) + '</b> · ' + esc(L.step) + ' ' + (idx + 1) + '/' + d.seq.length + '</span>';
+    v.appendChild(status);
 
-    // Hände-Grafik (Fingersatz, aktiver Finger leuchtet rot)
+    // Hände-Grafik (aktiver Finger leuchtet rot)
     const handsBox = el('div', 'drill-hands');
     const hhead = el('div', 'drill-hands-head');
     hhead.innerHTML =
       '<span class="dh-title">' + esc(L.legendFinger) + '</span>' +
-      '<span class="dh-current"><span class="dh-dot mono">' + scale.degrees[cur] + '</span>' +
-        esc(L.handsCurrent) + ' <b>' + esc(scale.names[cur]) + '</b>' +
+      '<span class="dh-current"><span class="dh-dot mono">' + scale.degrees[curScaleIdx] + '</span>' +
+        esc(L.handsCurrent) + ' <b>' + esc(scale.names[curScaleIdx]) + '</b>' +
         (scale.fingering ? ' · R ' + rFinger + ' · L ' + lFinger : '') + '</span>';
     handsBox.appendChild(hhead);
     if (window.PianoHands) {
-      const pair = window.PianoHands.buildPair({
+      handsBox.appendChild(window.PianoHands.buildPair({
         leftLabel: L.fingerL + ' · ' + L.dirLeft,
         rightLabel: L.fingerR + ' · ' + L.dirRight,
-        active: { right: rFinger, left: lFinger }
-      });
-      handsBox.appendChild(pair);
+        active: { right: d.done ? null : rFinger, left: d.done ? null : lFinger }
+      }));
     }
     v.appendChild(handsBox);
+
+    // MIDI-Status
+    const ms = el('div', 'midi-status mono'); ms.id = 'stMidi'; v.appendChild(ms);
 
     // Aktionen
     const actions = el('div', 'drill-actions');
     const tip = el('button', 'btn btn-ghost');
     tip.type = 'button';
-    tip.textContent = L.tip;
-    tip.addEventListener('click', function () { d.cur = (cur + 1) % 8; render(); });
+    tip.textContent = L.playHint;
+    tip.addEventListener('click', function () { ensureAudio(); playNote(60 + scale.positions[curScaleIdx]); });
     const next = el('button', 'btn btn-primary drill-next');
     next.type = 'button';
     next.innerHTML = esc(L.next) + ' <span class="arrow">→</span>';
@@ -787,20 +892,16 @@
     actions.appendChild(next);
     v.appendChild(actions);
 
+    setTimeout(function () { initMidi(); updateMidiStatus(); }, 0);
     return v;
   }
 
-  function renderDrillStats() { /* Platzhalter für Live-Trefferzählung (MIDI später) */ }
-
   function nextTask() {
     const d = state.drill;
-    d.hits += 1;
     d.step += 1;
-    if (d.total && d.step > d.total) { go('config'); return; }
+    if (d.total && d.step > d.total) { go('config'); return; }   // Quiz-Ende (Auswertung folgt)
     if (state.cfg.key === 'random') d.key = randomKeyId(d.type);
-    d.played = new Set();
-    d.cur = 0;
-    render();
+    startTask();
   }
 
   /* ----------------------------------------------------------------
