@@ -170,9 +170,41 @@
       invId: invNameOf(bassPc, R, t3), quality: quality
     };
   }
+  // Funktionale Harmonik (Dur, Stufen I ii iii IV V vi): der Body bewegt sich
+  // durch Tonika-Vertreter (vi, iii) und Subdominanten (ii, IV) vorwärts; die
+  // Dominante V bleibt der Schluss-Kadenz vorbehalten, damit nichts pendelt.
+  const NEXT_DEG = {
+    0: [[3, 3], [1, 2], [5, 3], [2, 2]],   // I   → IV ii vi iii
+    1: [[3, 4], [5, 1]],                    // ii  → IV (stark), vi
+    2: [[5, 4], [3, 2]],                    // iii → vi (Quintfall), IV
+    3: [[1, 3], [5, 2], [2, 1]],            // IV  → ii, vi, iii
+    5: [[1, 3], [3, 3], [2, 2]]             // vi  → ii, IV, iii
+  };
+  function genDegs() {
+    const bodyLen = 2 + Math.floor(Math.random() * 3);   // 2..4 Akkorde (Tonika-/Subdominant-Zone)
+    const seq = [0];                                     // Start auf I
+    for (let i = 0; i < bodyLen; i++) {
+      const cur = seq[seq.length - 1], back2 = seq.length >= 2 ? seq[seq.length - 2] : -1;
+      let opts = NEXT_DEG[cur].filter(function (o) { return o[0] !== back2; });   // kein Pendeln (A–B–A)
+      if (!opts.length) opts = NEXT_DEG[cur];
+      let total = 0; for (let j = 0; j < opts.length; j++) total += opts[j][1];
+      let r = Math.random() * total, acc = 0, pick = opts[0][0];
+      for (let j = 0; j < opts.length; j++) { acc += opts[j][1]; if (r < acc) { pick = opts[j][0]; break; } }
+      seq.push(pick);
+    }
+    // Kadenz auf I: meist authentisch V → I, nach IV gelegentlich plagal IV → I.
+    const last = seq[seq.length - 1];
+    if (last === 3 && Math.random() < 0.3) seq.push(0);
+    else seq.push(4, 0);
+    return seq;
+  }
   function makeProgression(keyPc) {
-    const prog = BASS_PROGS[Math.floor(Math.random() * BASS_PROGS.length)];
-    const chords = prog.degs.map(function (d) {
+    // 35% bekannte Klassiker (Wiedererkennung), 65% frisch generiert (Varianz).
+    const degs = Math.random() < 0.35
+      ? BASS_PROGS[Math.floor(Math.random() * BASS_PROGS.length)].degs
+      : genDegs();
+    const progName = degs.map(function (d) { return ROMAN[d]; }).join('–');
+    const chords = degs.map(function (d) {
       const q = MAJ_QUAL[d]; const t3 = q === 'min' ? 3 : 4;
       return { R: (((keyPc + MAJ_OFFS[d]) % 12) + 12) % 12, t3: t3, quality: q === 'dim' ? 'maj' : q };
     });
@@ -200,7 +232,7 @@
       prev = chosen.slice().sort(function (a, b) { return a - b; });
       steps.push(stepVoicing(chosen, c.R, c.t3, c.quality));
     });
-    return { name: prog.name + ' · ' + toneName(keyPc), steps: steps, idx: 0 };
+    return { name: progName + ' · ' + toneName(keyPc), steps: steps, idx: 0 };
   }
 
   /* ----------------------------------------------------------------

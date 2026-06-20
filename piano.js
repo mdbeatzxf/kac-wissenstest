@@ -124,6 +124,32 @@
   const PROGS_CLASSIC = CLASSIC_DEGS.map(function (degs) {
     return { name: degs.map(function (d) { return ROMAN_DEG[d]; }).join('–'), degs: degs };
   });
+  // Generator für frische, funktional korrekte Folgen (Body über Tonika-Vertreter
+  // + Subdominanten, V nur in der Schluss-Kadenz → kein Pendeln). ~100 Muster/Tonart.
+  const NEXT_DEG = {
+    0: [[3, 3], [1, 2], [5, 3], [2, 2]],
+    1: [[3, 4], [5, 1]],
+    2: [[5, 4], [3, 2]],
+    3: [[1, 3], [5, 2], [2, 1]],
+    5: [[1, 3], [3, 3], [2, 2]]
+  };
+  function genDegs() {
+    const bodyLen = 2 + Math.floor(rnd() * 3);
+    const seq = [0];
+    for (let i = 0; i < bodyLen; i++) {
+      const cur = seq[seq.length - 1], back2 = seq.length >= 2 ? seq[seq.length - 2] : -1;
+      let opts = NEXT_DEG[cur].filter(function (o) { return o[0] !== back2; });
+      if (!opts.length) opts = NEXT_DEG[cur];
+      let total = 0; for (let j = 0; j < opts.length; j++) total += opts[j][1];
+      let r = rnd() * total, acc = 0, pick2 = opts[0][0];
+      for (let j = 0; j < opts.length; j++) { acc += opts[j][1]; if (r < acc) { pick2 = opts[j][0]; break; } }
+      seq.push(pick2);
+    }
+    const last = seq[seq.length - 1];
+    if (last === 3 && rnd() < 0.3) seq.push(0);
+    else seq.push(4, 0);
+    return seq;
+  }
 
   /* ----------------------------------------------------------------
      2) UI-TEXTE
@@ -636,9 +662,10 @@
       d.progName = key.id + ' · ' + prog.name;
       return smartSteps(key, prog.degs, Math.floor(rnd() * 3));   // zufällige Start-Umkehrung → Varianz
     }
-    const prog = pick(PROGS_CLASSIC);
-    d.progName = key.id + ' · ' + prog.name;
-    return smartSteps(key, prog.degs, 0);
+    // 35% bekannte Klassiker (Wiedererkennung), 65% frisch generiert (Varianz).
+    const degs = rnd() < 0.35 ? pick(CLASSIC_DEGS) : genDegs();
+    d.progName = key.id + ' · ' + degs.map(function (x) { return ROMAN_DEG[x]; }).join('–');
+    return smartSteps(key, degs, 0);
   }
 
   function startDrill() {
