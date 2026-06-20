@@ -326,3 +326,6 @@
   .invtrainer .opt .opt-no { display: none; }
   .invtrainer .btn { flex: 1 1 auto; }
   .invtrainer .drill-next { margin-left: 0; }}
+/* Moll-Form-Unterauswahl (Übersicht-Kopf) */
+.invtrainer .seg-sub .seg-btn { padding: 9px 14px; font-size: 12px; }
+.invtrainer .ov-head .seg { align-self: flex-end; }

@@ -97,29 +97,32 @@
     return list.find(function (k) { return k.id === id; }) || list[0];
   }
 
+  // Moll-Form → scales.js-Modus.
+  function modeKeyFor(type, minorForm) {
+    if (type !== 'minor') return 'major';
+    return (minorForm === 'harmonic' || minorForm === 'melodic') ? minorForm : 'natural';
+  }
+
   // Tonleiter berechnen: 8 Töne (inkl. Oktave), Positionen 0..23, Halbton-Lücken.
-  function computeScale(type, key) {
-    const offs = OFFS[type];
-    const positions = [];
-    const names = [];
-    const degrees = [];
-    for (let i = 0; i < 7; i++) {
-      positions.push(key.pc + offs[i]);
-      names.push(key.scale[i]);
-      degrees.push(i + 1);
-    }
-    // Oktavton
-    positions.push(key.pc + 12);
-    names.push(key.scale[0]);
-    degrees.push(8);
+  // Buchstabierung kommt aus scales.js (alle 3 Moll-Formen, korrekte Enharmonik).
+  function computeScale(type, key, minorForm) {
+    const mode = modeKeyFor(type, minorForm);
+    const sc = (window.ScaleEngine ? window.ScaleEngine.buildScale(key.id, mode) : null);
+    const formula = sc ? sc.formula : OFFS[type];
+    const spell = sc ? sc.names : key.scale;
+    const positions = [], names = [], degrees = [];
+    for (let i = 0; i < 7; i++) { positions.push(key.pc + formula[i]); names.push(spell[i]); degrees.push(i + 1); }
+    positions.push(key.pc + 12); names.push(spell[0]); degrees.push(8);
+    // Halbton-Indizes dynamisch aus der Formel (nach Index i folgt ein Halbtonschritt).
+    const halfsteps = [];
+    for (let i = 0; i < 7; i++) { const a = formula[i], b = (i < 6 ? formula[i + 1] : 12); if (b - a === 1) halfsteps.push(i); }
+    // Fingersatz: Dur → major; Moll (alle Formen) → minor-Tabelle (Standard-Default).
+    const fkey = (type === 'minor') ? 'minor' : 'major';
     return {
-      type: type,
-      keyId: key.id,
-      positions: positions,   // 8 Werte 0..23
-      names: names,           // 8 Namen
-      degrees: degrees,       // 1..8
-      halfsteps: HALFSTEPS[type],
-      fingering: (FINGERING[type] && FINGERING[type][key.id]) || null
+      type: type, minorForm: (type === 'minor' ? mode : null), keyId: key.id,
+      positions: positions, names: names, degrees: degrees,
+      halfsteps: halfsteps,
+      fingering: (FINGERING[fkey] && FINGERING[fkey][key.id]) || null
     };
   }
 
@@ -150,6 +153,8 @@
       configKicker: 'Modus',
       configTitle: 'Konfiguration',
       blockType: 'Tonleiter-Typ',
+      blockMinorForm: 'Moll-Form',
+      minorForms: { natural: 'natürlich', harmonic: 'harmonisch', melodic: 'melodisch' },
       blockPattern: 'Richtung / Pattern',
       blockKey: 'Tonart',
       blockTimer: 'Timer',
@@ -202,6 +207,8 @@
       configKicker: 'Mode',
       configTitle: 'Configuration',
       blockType: 'Scale type',
+      blockMinorForm: 'Minor form',
+      minorForms: { natural: 'natural', harmonic: 'harmonic', melodic: 'melodic' },
       blockPattern: 'Direction / pattern',
       blockKey: 'Key',
       blockTimer: 'Timer',
@@ -240,9 +247,10 @@
     lang: 'de',
     view: 'home',          // home | overview | config | drill
     overviewType: 'major',
+    overviewMinorForm: 'natural',
     ov: { open: null, cur: 0 },
     mode: 'practice',      // practice | quiz
-    cfg: { type: 'major', pattern: 'up', key: 'random', timerOn: true },
+    cfg: { type: 'major', minorForm: 'natural', pattern: 'up', key: 'random', timerOn: true },
     drill: null            // { type, key, pattern, step, hits, played:Set, showFingers, dir }
   };
 
@@ -426,6 +434,18 @@
       toggle.appendChild(b);
     });
     head.appendChild(toggle);
+    // Moll-Form-Umschalter (nur bei Moll)
+    if (state.overviewType === 'minor') {
+      const mfSeg = el('div', 'seg seg-sub');
+      ['natural', 'harmonic', 'melodic'].forEach(function (mf) {
+        const b = el('button', 'seg-btn' + (state.overviewMinorForm === mf ? ' is-active' : ''));
+        b.type = 'button';
+        b.textContent = L.minorForms[mf];
+        b.addEventListener('click', function () { state.overviewMinorForm = mf; render(); });
+        mfSeg.appendChild(b);
+      });
+      head.appendChild(mfSeg);
+    }
     v.appendChild(head);
 
     // Legende
@@ -446,7 +466,7 @@
 
   function overviewRow(type, key) {
     const L = t();
-    const scale = computeScale(type, key);
+    const scale = computeScale(type, key, state.overviewMinorForm);
 
     const row = el('div', 'ov-row');
 
@@ -516,6 +536,20 @@
       }));
     });
     v.appendChild(wrapBlock(typeOpts));
+
+    // Block: Moll-Form (nur bei Moll)
+    if (state.cfg.type === 'minor') {
+      v.appendChild(blockLabel(L.blockMinorForm));
+      const mfSeg = el('div', 'seg');
+      ['natural', 'harmonic', 'melodic'].forEach(function (mf) {
+        const b = el('button', 'seg-btn' + (state.cfg.minorForm === mf ? ' is-active' : ''));
+        b.type = 'button';
+        b.textContent = L.minorForms[mf];
+        b.addEventListener('click', function () { state.cfg.minorForm = mf; render(); });
+        mfSeg.appendChild(b);
+      });
+      v.appendChild(wrapBlock(mfSeg));
+    }
 
     // Block: Pattern
     v.appendChild(blockLabel(L.blockPattern));
@@ -610,7 +644,7 @@
     const cfg = state.cfg;
     const keyId = cfg.key === 'random' ? randomKeyId(cfg.type) : cfg.key;
     state.drill = {
-      type: cfg.type, key: keyId, pattern: cfg.pattern,
+      type: cfg.type, minorForm: cfg.minorForm, key: keyId, pattern: cfg.pattern,
       dir: cfg.pattern === 'down' ? 'down' : 'up',
       step: 1, hits: 0, total: state.mode === 'quiz' ? 20 : null,
       cur: 0,
@@ -629,7 +663,7 @@
     const L = t();
     const d = state.drill;
     const key = findKey(d.type, d.key);
-    const scale = computeScale(d.type, key);
+    const scale = computeScale(d.type, key, d.minorForm);
     const v = el('section', 'screen' + (d.type === 'minor' ? ' is-minor' : ''));
 
     // Zurück
