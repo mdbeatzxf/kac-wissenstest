@@ -395,21 +395,21 @@
       {
         "id": "PP07",
         "bereich": "projection",
-        "frage": "Was machst du zuerst, wenn du eine Bibelstelle anzeigen willst?",
-        "frage_en": "What do you do first when you want to show a Bible passage?",
+        "frage": "Wie zeigst du normalerweise eine Bibelstelle an?",
+        "frage_en": "How do you normally show a Bible passage?",
         "optionen": [
-          "Zuerst die Stelle eingeben, dann die Übersetzung wählen",
-          "Zuerst ein Thema anwenden",
-          "Zuerst die Übersetzung wählen, dann die Stelle eingeben",
-          "Zuerst die Stelle als Bild exportieren"
+          "Immer zuerst die Übersetzung neu wählen, dann die Stelle eingeben",
+          "Einfach die Bibelstelle eingeben und Enter — die Übersetzung ist in der Regel schon ausgewählt",
+          "Zuerst ein Thema anwenden, dann die Stelle",
+          "Die Stelle als Bild exportieren und einfügen"
         ],
         "optionen_en": [
-          "Enter the passage first, then choose the translation",
-          "Apply a theme first",
-          "Choose the translation first, then enter the passage",
-          "Export the passage as an image first"
+          "Always choose the translation again first, then enter the passage",
+          "Just type the Bible reference and press Enter — the translation is usually already selected",
+          "Apply a theme first, then the passage",
+          "Export the passage as an image and insert it"
         ],
-        "antwortIndex": 2,
+        "antwortIndex": 1,
         "quelle": "ProPresenter – Überblick, Abschnitt 6"
       },
       {

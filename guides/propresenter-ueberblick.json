@@ -172,17 +172,17 @@
         {
           "type": "steps",
           "items": [
-            { "de": "Links zuerst die Übersetzung wählen (nur installierte Übersetzungen erscheinen).", "en": "First choose the translation on the left (only installed translations appear)." },
-            { "de": "Die Stelle eingeben (z. B. „Johannes 3,1-36“) und Enter drücken. Kurzformen funktionieren auch (z. B. „Matt 1 2 3“ für Matthäus 1,2-3).", "en": "Enter the passage (e.g. “John 3,1-36”) and press Enter. Short forms also work (e.g. “Matt 1 2 3” for Matthew 1,2-3)." },
+            { "de": "Die Bibelstelle eingeben (z. B. „Johannes 3,1-36“) und Enter drücken — die Übersetzung ist in der Regel schon ausgewählt. Kurzformen funktionieren auch (z. B. „Matt 1 2 3“ für Matthäus 1,2-3).", "en": "Enter the Bible reference (e.g. “John 3,1-36”) and press Enter — the translation is usually already selected. Short forms also work (e.g. “Matt 1 2 3” for Matthew 1,2-3)." },
             { "de": "Die Verse erscheinen als Folien — du klickst sie wie gewohnt an.", "en": "The verses appear as slides — you click them as usual." },
-            { "de": "Mit Verse / Verse unten blätterst du Vers für Vers vor und zurück.", "en": "With Verse / Verse at the bottom you page verse by verse forward and back." }
+            { "de": "Mit Verse / Verse unten blätterst du Vers für Vers vor und zurück.", "en": "With Verse / Verse at the bottom you page verse by verse forward and back." },
+            { "de": "Nur falls du eine andere Übersetzung brauchst: links die Übersetzung wechseln (nur installierte erscheinen).", "en": "Only if you need a different translation: switch the translation on the left (only installed ones appear)." }
           ]
         },
         {
           "type": "note",
           "text": {
-            "de": "Erst Übersetzung wählen, dann Stelle eingeben. Über das + kannst du mehrere Übersetzungen gleichzeitig auf einer Folie zeigen.",
-            "en": "Choose the translation first, then enter the passage. Via the + you can show several translations on one slide at once."
+            "de": "Normalfall: Die Übersetzung ist schon gewählt — du gibst nur die Stelle ein und drückst Enter. Über das + kannst du mehrere Übersetzungen gleichzeitig auf einer Folie zeigen.",
+            "en": "Normal case: the translation is already selected — you just enter the passage and press Enter. Via the + you can show several translations on one slide at once."
           }
         }
       ]
