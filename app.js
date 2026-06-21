@@ -102,6 +102,12 @@ const I18N = {
     learn_kicker: 'Lernbereich',
     learn_title: 'Lernen',
     learn_intro: 'Anleitungen und Checklisten für das Team. Frei zugänglich — kein Login nötig.',
+    learn_pick_intro: 'Wähle dein Team. Manche Inhalte (z. B. Rollen & Ablauf) gelten für beide.',
+    learn_pick_projection: 'Projection',
+    learn_pick_projection_sub: 'ProPresenter, Equipment & Ablauf',
+    learn_pick_sound: 'Sound',
+    learn_pick_sound_sub: 'Signale, Kabel, Mischpult, PA & mehr',
+    learn_pick_both_note: 'Rollen & Ablauf (Auf- und Abbau) gilt für beide Teams und erscheint in beiden Bereichen.',
     learn_empty: 'Aktuell sind keine Inhalte hinterlegt.',
     back: 'Zurück',
     back_home: 'Startseite',
@@ -220,6 +226,12 @@ const I18N = {
     learn_kicker: 'Learning area',
     learn_title: 'Learn',
     learn_intro: 'Guides and checklists for the team. Freely accessible — no login needed.',
+    learn_pick_intro: 'Choose your team. Some content (e.g. Roles & Workflow) applies to both.',
+    learn_pick_projection: 'Projection',
+    learn_pick_projection_sub: 'ProPresenter, equipment & workflow',
+    learn_pick_sound: 'Sound',
+    learn_pick_sound_sub: 'Signals, cables, mixer, PA & more',
+    learn_pick_both_note: 'Roles & Workflow (setup and teardown) applies to both teams and appears in both areas.',
     learn_empty: 'No content available yet.',
     back: 'Back',
     back_home: 'Home',
@@ -369,6 +381,7 @@ function rerenderCurrent() {
   else if (currentScreen === 'scalepraxis') { const g = ((state.learn && state.learn.guides) || []).find(x => x.id === state.currentGuide); if (g) renderScalePraxis(g); }
   else if (currentScreen === 'basspraxis') { const g = ((state.learn && state.learn.guides) || []).find(x => x.id === state.currentGuide); if (g) renderBassPraxis(g); }
   else if (currentScreen === 'home') renderHome();
+  else if (currentScreen === 'learnPick') renderLearnPick();
   else if (currentScreen === 'learn') renderLearnHome();
   else if (currentScreen === 'guide') renderGuide(state.currentGuide, true);
   else if (currentScreen === 'login') renderLogin(true);
@@ -510,7 +523,7 @@ function renderHome() {
   const gc = document.getElementById('goCheck');
   if (gc) gc.addEventListener('click', () => { state.area = 'production'; state.guideFrom = 'home'; renderGuide(CONFIG.CHECKLIST_GUIDE); });
   const gl = document.getElementById('goLearn');
-  if (gl) gl.addEventListener('click', () => { state.area = 'production'; renderLearnHome(); });
+  if (gl) gl.addEventListener('click', () => { state.area = 'production'; renderLearnPick(); });
   document.getElementById('goTest').addEventListener('click', () => {
     state.participant ? renderSelect() : renderLogin();
   });
@@ -670,6 +683,42 @@ function renderAcademyHome() {
   rows.forEach(r => document.getElementById(r.id).addEventListener('click', () => { state.academyGroup = r.group; renderLearnHome(); }));
 }
 
+/* Production-Lernbereich: zuerst Team wählen (Projection / Sound) — wie die Kacheln im Üben. */
+function renderLearnPick() {
+  currentScreen = 'learnPick';
+  app.classList.remove('app--wide');
+  state.area = 'production';
+  const L = t();
+  const guides = ((state.learn && state.learn.guides) || []).filter(g => (g.area || 'production') === 'production');
+  const rows = [
+    { id: 'lpProjection', bereich: 'projection', name: L.learn_pick_projection, sub: L.learn_pick_projection_sub },
+    { id: 'lpSound', bereich: 'sound', name: L.learn_pick_sound, sub: L.learn_pick_sound_sub }
+  ].filter(r => guides.some(g => (g.bereiche || []).includes(r.bereich)));
+  const rowsHTML = rows.map((r, i) => `
+        <button class="test-row" type="button" id="${r.id}">
+          <span class="idx mono">${String(i + 1).padStart(2, '0')}</span>
+          <span>
+            <span class="name">${escapeHTML(r.name)}</span><br>
+            <span class="meta">${escapeHTML(r.sub)}</span>
+          </span>
+          <span class="arrow">→</span>
+        </button>`).join('');
+  app.innerHTML = `
+    <section class="screen">
+      <button class="backlink" id="lpBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_areas)}</button>
+      <div class="kicker">${escapeHTML(L.learn_kicker)}</div>
+      <h1 class="display">${escapeHTML(L.learn_title)}</h1>
+      <p style="margin:20px 0 0;color:var(--ink-soft);max-width:42ch">${escapeHTML(L.learn_pick_intro)}</p>
+      <div class="test-list">${rowsHTML}
+      </div>
+      <p class="notice" style="animation:none;margin-top:18px;max-width:46ch">${escapeHTML(L.learn_pick_both_note)}</p>
+      <div class="spacer"></div>
+      <div class="brandline mono">${escapeHTML(L.brand)}</div>
+    </section>`;
+  document.getElementById('lpBack').addEventListener('click', () => renderHome());
+  rows.forEach(r => document.getElementById(r.id).addEventListener('click', () => { state.learnBereich = r.bereich; renderLearnHome(); }));
+}
+
 function renderLearnHome() {
   currentScreen = 'learn';
   app.classList.remove('app--wide');
@@ -679,9 +728,14 @@ function renderLearnHome() {
   const acKicker = grp === 'theorie' ? L.learn_theorie_kicker : grp === 'praxis' ? L.learn_praxis_kicker : L.learn_academy_kicker;
   const acTitle = grp === 'theorie' ? L.learn_theorie_title : grp === 'praxis' ? L.learn_praxis_title : L.learn_academy_title;
   const acIntro = grp === 'theorie' ? L.learn_theorie_intro : grp === 'praxis' ? L.learn_praxis_intro : L.learn_academy_intro;
+  const bName = state.learnBereich === 'sound' ? L.learn_pick_sound : L.learn_pick_projection;
+  const prodKicker = L.learn_kicker + (state.learnBereich ? ' · ' + bName : '');
+  const prodTitle = state.learnBereich ? bName : L.learn_title;
   const guides = ((state.learn && state.learn.guides) || []).filter(g =>
     (g.area || 'production') === state.area &&
-    (!isAcademy || (g.group || 'lernen') === state.academyGroup));
+    (isAcademy
+      ? (g.group || 'lernen') === state.academyGroup
+      : (!state.learnBereich || (g.bereiche || []).includes(state.learnBereich))));
   const lang = state.lang;
   const tx = (o) => o ? (o[lang] ?? o.de ?? '') : '';
 
@@ -706,15 +760,15 @@ function renderLearnHome() {
   app.innerHTML = `
     <section class="screen">
       <button class="backlink" id="learnBack" type="button"><span class="backarrow">←</span> ${escapeHTML(L.back_areas)}</button>
-      <div class="kicker">${escapeHTML(isAcademy ? acKicker : L.learn_kicker)}</div>
-      <h1 class="display">${escapeHTML(isAcademy ? acTitle : L.learn_title)}</h1>
+      <div class="kicker">${escapeHTML(isAcademy ? acKicker : prodKicker)}</div>
+      <h1 class="display">${escapeHTML(isAcademy ? acTitle : prodTitle)}</h1>
       <p style="margin:20px 0 0;color:var(--ink-soft);max-width:42ch">${escapeHTML(isAcademy ? acIntro : L.learn_intro)}</p>
       ${rows}
       <div class="spacer"></div>
       <div class="brandline mono">${escapeHTML(isAcademy ? L.brand_academy : L.brand)}</div>
     </section>`;
 
-  document.getElementById('learnBack').addEventListener('click', () => isAcademy ? renderAcademyHome() : renderHome());
+  document.getElementById('learnBack').addEventListener('click', () => isAcademy ? renderAcademyHome() : renderLearnPick());
   app.querySelectorAll('.test-row[data-guide]').forEach(b =>
     b.addEventListener('click', () => { state.guideFrom = 'learn'; renderGuide(b.dataset.guide); }));
 }
