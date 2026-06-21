@@ -18,7 +18,7 @@
             { "de": "Erst jetzt den Laptop einschalten.", "en": "Only now switch the laptop on." },
             { "de": "ProPresenter öffnen.", "en": "Open ProPresenter." },
             { "de": "Bildschirme prüfen — richtiges Bild auf dem richtigen Screen.", "en": "Check the screens — right image on the right screen." },
-            { "de": "In ProPresenter alles für den Gottesdienst vorbereiten — fertig.", "en": "Prepare everything for the service in ProPresenter — done." }
+            { "de": "In ProPresenter den Service vorbereiten — siehe nächster Abschnitt.", "en": "Prepare the service in ProPresenter — see the next section." }
           ]
         },
         {
@@ -26,6 +26,35 @@
           "text": {
             "de": "Reihenfolge zählt: erst alles anschließen (Dock → Bildschirme → Strom → Laptop), dann den Laptop einschalten.",
             "en": "Order matters: connect everything first (dock → screens → power → laptop), then switch the laptop on."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "projection",
+      "title": { "de": "Projection — Vorbereitung (in ProPresenter)", "en": "Projection — Preparation (in ProPresenter)" },
+      "intro": {
+        "de": "Steht die Technik, bereitest du in ProPresenter den Gottesdienst vor. Details zur Oberfläche stehen im Guide „ProPresenter — Überblick“.",
+        "en": "Once the tech is up, you prepare the service in ProPresenter. Details on the interface are in the “ProPresenter — Overview” guide."
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            { "de": "ProPresenter im Show-Modus öffnen.", "en": "Open ProPresenter in Show mode." },
+            { "de": "Die Playlist für den heutigen Service öffnen bzw. anlegen — die Items in der richtigen Reihenfolge (z. B. Pre Service → Lieder → Predigt → After Sermon).", "en": "Open or create the playlist for today's service — the items in the right order (e.g. Pre Service → songs → sermon → after sermon)." },
+            { "de": "Lieder prüfen: sind alle Lieder der Setlist da und in der richtigen Reihenfolge? Fehlt eins → Cmd + F zum Suchen, sonst Cmd + N und selbst anlegen.", "en": "Check the songs: are all songs from the setlist there and in the right order? Missing one → Cmd + F to search, otherwise Cmd + N and create it yourself." },
+            { "de": "Predigt-Folien prüfen — vorhanden und aktuell?", "en": "Check the sermon slides — present and up to date?" },
+            { "de": "Ankündigungen bereitstellen — der Announcements-Loop läuft vor dem Service automatisch durch.", "en": "Get the announcements ready — the announcements loop runs automatically before the service." },
+            { "de": "Bibel: die richtige Übersetzung vorab wählen.", "en": "Bible: select the correct translation in advance." },
+            { "de": "Beide Bildschirme prüfen — Audience (Gemeinde) und Stage (Bühne) zeigen das Richtige.", "en": "Check both screens — Audience (congregation) and Stage show the right thing." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Vor dem Start: einmal „Clear“ und die Ankündigungen laufen lassen — so ist die Leinwand sauber und die Gemeinde sieht schon etwas.",
+            "en": "Before the start: hit “Clear” once and let the announcements run — that way the screen is clean and the congregation already sees something."
           }
         }
       ]
