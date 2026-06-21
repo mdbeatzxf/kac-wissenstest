@@ -271,6 +271,266 @@
         ],
         "antwortIndex": 2,
         "quelle": "Equipment-Übersicht, S.5"
+      },
+      {
+        "id": "PP01",
+        "bereich": "projection",
+        "frage": "Was passiert in ProPresenter, wenn du eine Folie anklickst?",
+        "frage_en": "What happens in ProPresenter when you click a slide?",
+        "optionen": [
+          "Sie wird zur Playlist hinzugefügt",
+          "Sie erscheint auf der Leinwand",
+          "Sie wird gelöscht",
+          "Sie wird als Bild exportiert"
+        ],
+        "optionen_en": [
+          "It gets added to the playlist",
+          "It appears on the screen",
+          "It gets deleted",
+          "It gets exported as an image"
+        ],
+        "antwortIndex": 1,
+        "quelle": "ProPresenter – Überblick, Abschnitt 1"
+      },
+      {
+        "id": "PP02",
+        "bereich": "projection",
+        "frage": "Zeigen die Gemeinde-Leinwand und der Stage-Monitor dasselbe Bild?",
+        "frage_en": "Do the congregation screen and the stage monitor show the same image?",
+        "optionen": [
+          "Ja, immer exakt dasselbe",
+          "Der Stage-Monitor bleibt immer schwarz",
+          "Nein – die Gemeinde sieht die Folie, das Team z. B. die aktuelle und nächste Zeile",
+          "Nur der Stage-Monitor zeigt etwas an"
+        ],
+        "optionen_en": [
+          "Yes, always exactly the same",
+          "The stage monitor always stays black",
+          "No – the congregation sees the slide, the team e.g. the current and next line",
+          "Only the stage monitor shows anything"
+        ],
+        "antwortIndex": 2,
+        "quelle": "ProPresenter – Überblick, Abschnitt 1"
+      },
+      {
+        "id": "PP03",
+        "bereich": "projection",
+        "frage": "Wo findest du in ProPresenter die Bibliothek und die Playlists?",
+        "frage_en": "Where do you find the library and the playlists in ProPresenter?",
+        "optionen": [
+          "Links",
+          "Rechts bei der Vorschau",
+          "Unten im Media Bin",
+          "Oben in der Werkzeugleiste"
+        ],
+        "optionen_en": [
+          "On the left",
+          "On the right by the preview",
+          "At the bottom in the Media Bin",
+          "At the top in the toolbar"
+        ],
+        "antwortIndex": 0,
+        "quelle": "ProPresenter – Überblick, Abschnitt 2 & 4"
+      },
+      {
+        "id": "PP04",
+        "bereich": "projection",
+        "frage": "Was ist der Unterschied zwischen Bibliothek und Playlist?",
+        "frage_en": "What is the difference between the library and a playlist?",
+        "optionen": [
+          "Bibliothek = ein einzelner Service; Playlist = alle Inhalte",
+          "Beides ist genau dasselbe",
+          "Die Playlist enthält nur Videos",
+          "Bibliothek = alles, was wir je gebaut haben; Playlist = der Ablauf für genau einen Service"
+        ],
+        "optionen_en": [
+          "Library = a single service; playlist = all content",
+          "They are exactly the same",
+          "The playlist only contains videos",
+          "Library = everything we have ever built; playlist = the running order for one service"
+        ],
+        "antwortIndex": 3,
+        "quelle": "ProPresenter – Überblick, Abschnitt 4"
+      },
+      {
+        "id": "PP05",
+        "bereich": "projection",
+        "frage": "In welchem Modus fährst du den Gottesdienst?",
+        "frage_en": "Which mode do you run the service in?",
+        "optionen": [
+          "Edit",
+          "Show",
+          "Reflow",
+          "Bible"
+        ],
+        "optionen_en": [
+          "Edit",
+          "Show",
+          "Reflow",
+          "Bible"
+        ],
+        "antwortIndex": 1,
+        "quelle": "ProPresenter – Überblick, Abschnitt 3"
+      },
+      {
+        "id": "PP06",
+        "bereich": "projection",
+        "frage": "Wofür sind die Knöpfe Audience und Stage in der Werkzeugleiste?",
+        "frage_en": "What are the Audience and Stage buttons in the toolbar for?",
+        "optionen": [
+          "Die Bildschirme (Saal / Bühne) an- und ausschalten",
+          "Die Lautstärke regeln",
+          "Eine neue Playlist anlegen",
+          "Die eingebaute Bibel öffnen"
+        ],
+        "optionen_en": [
+          "Turn the screens (hall / stage) on and off",
+          "Control the volume",
+          "Create a new playlist",
+          "Open the built-in Bible"
+        ],
+        "antwortIndex": 0,
+        "quelle": "ProPresenter – Überblick, Abschnitt 3"
+      },
+      {
+        "id": "PP07",
+        "bereich": "projection",
+        "frage": "Was machst du zuerst, wenn du eine Bibelstelle anzeigen willst?",
+        "frage_en": "What do you do first when you want to show a Bible passage?",
+        "optionen": [
+          "Zuerst die Stelle eingeben, dann die Übersetzung wählen",
+          "Zuerst ein Thema anwenden",
+          "Zuerst die Übersetzung wählen, dann die Stelle eingeben",
+          "Zuerst die Stelle als Bild exportieren"
+        ],
+        "optionen_en": [
+          "Enter the passage first, then choose the translation",
+          "Apply a theme first",
+          "Choose the translation first, then enter the passage",
+          "Export the passage as an image first"
+        ],
+        "antwortIndex": 2,
+        "quelle": "ProPresenter – Überblick, Abschnitt 6"
+      },
+      {
+        "id": "PP08",
+        "bereich": "projection",
+        "frage": "Wie zeigst du mehrere Übersetzungen gleichzeitig auf einer Folie?",
+        "frage_en": "How do you show several translations on one slide at once?",
+        "optionen": [
+          "Über das + eine weitere Übersetzung hinzufügen",
+          "Das geht in ProPresenter nicht",
+          "Zwei ProPresenter-Fenster nebeneinander öffnen",
+          "Die Folie zweimal hintereinander anklicken"
+        ],
+        "optionen_en": [
+          "Add another translation via the +",
+          "That isn't possible in ProPresenter",
+          "Open two ProPresenter windows side by side",
+          "Click the slide twice in a row"
+        ],
+        "antwortIndex": 0,
+        "quelle": "ProPresenter – Überblick, Abschnitt 6"
+      },
+      {
+        "id": "PP09",
+        "bereich": "projection",
+        "frage": "Was legt ein Thema (Theme) fest?",
+        "frage_en": "What does a theme define?",
+        "optionen": [
+          "Den Text der Folie",
+          "Die Reihenfolge der Playlist",
+          "Welche Übersetzung die Bibel nutzt",
+          "Das Aussehen der Folie (Schrift, Farbe, Position, Hintergrund) — der Text bleibt davon getrennt"
+        ],
+        "optionen_en": [
+          "The text of the slide",
+          "The order of the playlist",
+          "Which translation the Bible uses",
+          "The look of the slide (font, colour, position, background) — the text stays separate from it"
+        ],
+        "antwortIndex": 3,
+        "quelle": "ProPresenter – Überblick, Abschnitt 7"
+      },
+      {
+        "id": "PP10",
+        "bereich": "projection",
+        "frage": "Was machen die Clear-Knöpfe rechts?",
+        "frage_en": "What do the Clear buttons on the right do?",
+        "optionen": [
+          "Die ganze Playlist löschen",
+          "Die Leinwand leeren — alles, nur den Text oder nur den Hintergrund",
+          "Den Mac neu starten",
+          "Alle Folien einer Präsentation löschen"
+        ],
+        "optionen_en": [
+          "Delete the whole playlist",
+          "Clear the screen — everything, only the text or only the background",
+          "Restart the Mac",
+          "Delete all slides of a presentation"
+        ],
+        "antwortIndex": 1,
+        "quelle": "ProPresenter – Überblick, Abschnitt 8"
+      },
+      {
+        "id": "PP11",
+        "bereich": "projection",
+        "frage": "Wie benutzt du ein Bild oder Video aus dem Media Bin?",
+        "frage_en": "How do you use an image or video from the Media Bin?",
+        "optionen": [
+          "Per Drag-and-Drop an die richtige Stelle ziehen",
+          "Es wird automatisch angezeigt",
+          "Über die Bibel-Suche finden",
+          "Doppelklick löscht es"
+        ],
+        "optionen_en": [
+          "Drag it by drag-and-drop to the right place",
+          "It is shown automatically",
+          "Find it via the Bible search",
+          "Double-click deletes it"
+        ],
+        "antwortIndex": 0,
+        "quelle": "ProPresenter – Überblick, Abschnitt 9"
+      },
+      {
+        "id": "PP12",
+        "bereich": "projection",
+        "frage": "Du suchst ein Lied und findest es nirgends. Was tust du?",
+        "frage_en": "You search for a song and can't find it anywhere. What do you do?",
+        "optionen": [
+          "Cmd + Q — ProPresenter beenden",
+          "Nichts, ohne das Lied geht es nicht",
+          "Cmd + N — eine neue Präsentation anlegen und das Lied selbst erstellen",
+          "Cmd + W — das Fenster schließen"
+        ],
+        "optionen_en": [
+          "Cmd + Q — quit ProPresenter",
+          "Nothing, it can't be done without the song",
+          "Cmd + N — create a new presentation and build the song yourself",
+          "Cmd + W — close the window"
+        ],
+        "antwortIndex": 2,
+        "quelle": "ProPresenter – Überblick, Abschnitt 10"
+      },
+      {
+        "id": "PP13",
+        "bereich": "projection",
+        "frage": "Womit blätterst du eine Folie vor und zurück?",
+        "frage_en": "How do you move one slide forward and back?",
+        "optionen": [
+          "Mit den Pfeiltasten ← / →",
+          "Mit Cmd + S",
+          "Mit der Leertaste und Enter",
+          "Gar nicht, nur über das Menü"
+        ],
+        "optionen_en": [
+          "With the arrow keys ← / →",
+          "With Cmd + S",
+          "With the space bar and Enter",
+          "Not at all, only via the menu"
+        ],
+        "antwortIndex": 0,
+        "quelle": "ProPresenter – Überblick, Abschnitt 10"
       }
     ],
 

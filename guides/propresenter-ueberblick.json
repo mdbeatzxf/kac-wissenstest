@@ -1,0 +1,281 @@
+{
+  "sections": [
+    {
+      "title": { "de": "Was ist ProPresenter?", "en": "What is ProPresenter?" },
+      "blocks": [
+        {
+          "type": "lead",
+          "text": {
+            "de": "ProPresenter ist die Software, mit der wir im Gottesdienst alles auf die Leinwand bringen: Liedtexte, Bibelstellen, Predigt-Folien und Ankündigungen.",
+            "en": "ProPresenter is the software we use to put everything on the screen during the service: song lyrics, Bible passages, sermon slides and announcements."
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "ProPresenter läuft bei uns auf dem Mac und steuert, was die Gemeinde auf der Leinwand sieht. Das Grundprinzip ist einfach: Du klickst eine Folie an, und sie erscheint auf der Leinwand. Mit den Pfeiltasten gehst du eine Folie vor und zurück. Du musst keine Angst haben, etwas „kaputt“ zu machen — im Kern wählst du nur aus, was gerade dran ist, und schickst es raus.",
+            "en": "ProPresenter runs on the Mac and controls what the congregation sees on the screen. The basic idea is simple: you click a slide and it appears on the screen. With the arrow keys you move one slide forward or back. There's no need to be afraid of breaking anything — at its core you just pick what's next and send it out."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Folie anklicken = sie geht auf die Leinwand. Mehr ist es im Kern nicht.",
+            "en": "Click a slide = it goes on the screen. At its core, that's all it is."
+          }
+        },
+        {
+          "type": "figure",
+          "aspect": "1100 / 450",
+          "fit": "contain",
+          "image": "images/KAC_pp_ausgabe.svg",
+          "image_en": "images/KAC_pp_ausgabe_EN.svg",
+          "caption": {
+            "de": "Der Computer sendet an Beamer/Fernseher (für die Gemeinde) und an den Stage-Monitor (für das Team) — beide zeigen unterschiedliche Inhalte.",
+            "en": "The computer sends to the projector/TV (for the congregation) and to the stage monitor (for the team) — each shows different content."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Wichtig: Gemeinde-Leinwand und Stage-Monitor zeigen nicht dasselbe. Die Gemeinde sieht die Folie, das Team auf der Bühne z. B. die aktuelle und nächste Zeile.",
+            "en": "Important: the congregation screen and the stage monitor do not show the same thing. The congregation sees the slide; the team on stage sees e.g. the current and next line."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Der Hauptbildschirm", "en": "The main screen" },
+      "intro": {
+        "de": "Die Oberfläche ist in feste Bereiche aufgeteilt. Wenn du diese kennst, findest du dich überall zurecht.",
+        "en": "The interface is divided into fixed areas. Once you know them, you'll find your way around everywhere."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1100 / 680",
+          "fit": "contain",
+          "image": "images/KAC_pp_oberflaeche.svg",
+          "image_en": "images/KAC_pp_oberflaeche_EN.svg",
+          "caption": {
+            "de": "Die ProPresenter-Oberfläche im Überblick — fünf feste Bereiche.",
+            "en": "The ProPresenter interface at a glance — five fixed areas."
+          }
+        },
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Werkzeugleiste (oben): Schnellzugriff auf Suche, Text, Themen und die verschiedenen Ansichten.", "en": "Toolbar (top): quick access to search, text, themes and the different views." },
+            { "de": "Bibliothek & Playlists (links): die Sammlung aller Präsentationen — und der Ablauf des Services.", "en": "Library & Playlists (left): the collection of all presentations — and the running order of the service." },
+            { "de": "Folienbereich (Mitte): hier siehst du die Folien und klickst sie zum Anzeigen an.", "en": "Slide area (centre): here you see the slides and click them to show them." },
+            { "de": "Media Bin (unten): Bilder und Videos.", "en": "Media Bin (bottom): images and videos." },
+            { "de": "Vorschau & Steuerung (rechts): zeigt, was gerade live ist — mit Bildschirmen an/aus und „Clear“.", "en": "Preview & Controls (right): shows what is currently live — with screens on/off and “Clear”." }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Die Werkzeugleiste (oben)", "en": "The toolbar (top)" },
+      "intro": {
+        "de": "Über die Leiste am oberen Rand kommst du schnell überall hin. Die wichtigsten Knöpfe:",
+        "en": "The bar along the top gets you everywhere quickly. The most important buttons:"
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Suche: ein Lied oder eine Präsentation finden.", "en": "Search: find a song or a presentation." },
+            { "de": "Text: Schrift der ausgewählten Folien anpassen (Größe, Ausrichtung).", "en": "Text: adjust the font of the selected slides (size, alignment)." },
+            { "de": "Theme: ein Layout/Aussehen anwenden.", "en": "Theme: apply a layout/look." },
+            { "de": "Show / Edit / Reflow / Bible: zwischen den Arbeitsmodi umschalten.", "en": "Show / Edit / Reflow / Bible: switch between the working modes." },
+            { "de": "Media: den Media Bin ein- oder ausblenden.", "en": "Media: show or hide the Media Bin." },
+            { "de": "Audience / Stage: die Bildschirme (Saal / Bühne) an- und ausschalten.", "en": "Audience / Stage: turn the screens (hall / stage) on and off." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Show ist der Modus, in dem wir den Service fahren. Edit dient zum Bauen/Bearbeiten der Folien.",
+            "en": "Show is the mode in which we run the service. Edit is for building/editing the slides."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Bibliothek & Playlists (links)", "en": "Library & Playlists (left)" },
+      "intro": {
+        "de": "Links siehst du oben deine Bibliotheken und Playlists, darunter den Inhalt des gerade ausgewählten Eintrags.",
+        "en": "On the left you see your libraries and playlists at the top, with the content of the selected entry below."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": { "de": "Bibliothek", "en": "Library" },
+          "text": {
+            "de": "Die Sammlung aller Präsentationen und Lieder, die wir je gebaut haben. Bei uns heißt sie KAC Libary.",
+            "en": "The collection of all presentations and songs we have ever built. Ours is called KAC Libary."
+          }
+        },
+        {
+          "type": "sub",
+          "title": { "de": "Playlist", "en": "Playlist" },
+          "text": {
+            "de": "Eine kleine Zusammenstellung für einen bestimmten Service — die Inhalte in der Reihenfolge, in der wir sie brauchen.",
+            "en": "A small selection for a particular service — the content in the order we need it."
+          }
+        },
+        {
+          "type": "figure",
+          "aspect": "1100 / 540",
+          "fit": "contain",
+          "image": "images/KAC_pp_bibliothek.svg",
+          "image_en": "images/KAC_pp_bibliothek_EN.svg",
+          "caption": {
+            "de": "Aus der Bibliothek (alle Inhalte) ziehst du Einzelnes in die Playlist für genau einen Service — dort liegen die Items in Reihenfolge.",
+            "en": "From the Library (all content) you drag individual items into the Playlist for exactly one service — there the items are in order."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Bibliothek = alles, was wir je gebaut haben. Playlist = der Ablauf für genau diesen einen Service.",
+            "en": "Library = everything we have ever built. Playlist = the running order for this one service."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Folien-Arten", "en": "Types of slide" },
+      "intro": {
+        "de": "Im Folienbereich liegen die Inhalte als einzelne Folien. Auf der Leinwand zeigen wir vor allem vier Dinge:",
+        "en": "In the slide area the content sits as individual slides. On the screen we mainly show four things:"
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Lied-Folien: die Liedtexte für die Worship-Zeit — meist kurze Abschnitte, die du im Takt umblätterst.", "en": "Song slides: the lyrics for the worship time — usually short sections you page through in time." },
+            { "de": "Sermon-Slides: Folien zur Predigt (Punkte, Stichworte, Bibelstellen).", "en": "Sermon slides: slides for the sermon (points, keywords, Bible passages)." },
+            { "de": "Announcements: Ankündigungen, die vor dem Service automatisch durchlaufen.", "en": "Announcements: announcements that loop automatically before the service." },
+            { "de": "Bibelstellen: über die eingebaute Bibel gesucht und direkt angezeigt.", "en": "Bible passages: searched via the built-in Bible and shown directly." }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Bibelstellen anzeigen", "en": "Showing Bible passages" },
+      "intro": {
+        "de": "ProPresenter hat eine eingebaute Bibel. Damit kannst du eine Stelle suchen und direkt anzeigen. Geöffnet wird sie über den Bibel-Knopf in der Werkzeugleiste.",
+        "en": "ProPresenter has a built-in Bible. With it you can search a passage and show it directly. You open it via the Bible button in the toolbar."
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            { "de": "Links zuerst die Übersetzung wählen (nur installierte Übersetzungen erscheinen).", "en": "First choose the translation on the left (only installed translations appear)." },
+            { "de": "Die Stelle eingeben (z. B. „Johannes 3,1-36“) und Enter drücken. Kurzformen funktionieren auch (z. B. „Matt 1 2 3“ für Matthäus 1,2-3).", "en": "Enter the passage (e.g. “John 3,1-36”) and press Enter. Short forms also work (e.g. “Matt 1 2 3” for Matthew 1,2-3)." },
+            { "de": "Die Verse erscheinen als Folien — du klickst sie wie gewohnt an.", "en": "The verses appear as slides — you click them as usual." },
+            { "de": "Mit Verse / Verse unten blätterst du Vers für Vers vor und zurück.", "en": "With Verse / Verse at the bottom you page verse by verse forward and back." }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Erst Übersetzung wählen, dann Stelle eingeben. Über das + kannst du mehrere Übersetzungen gleichzeitig auf einer Folie zeigen.",
+            "en": "Choose the translation first, then enter the passage. Via the + you can show several translations on one slide at once."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Themen — das Aussehen der Folien", "en": "Themes — how the slides look" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Ein Thema (Theme) legt fest, wie eine Folie aussieht: Schriftart, Größe, Farbe, Position und Hintergrund. Wir haben dafür fertige Themen, damit alle Folien einheitlich aussehen — du musst das Layout also nicht selbst bauen, nur den Text eintippen.",
+            "en": "A theme defines how a slide looks: font, size, colour, position and background. We have ready-made themes so all slides look consistent — so you don't have to build the layout yourself, just type the text."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Inhalt und Aussehen sind getrennt: Du tippst den Text, das Thema macht das Layout.",
+            "en": "Content and appearance are separate: you type the text, the theme does the layout."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Vorschau & Steuerung (rechts)", "en": "Preview & Controls (right)" },
+      "intro": {
+        "de": "Rechts siehst du die Vorschau — also genau das, was gerade live auf der Leinwand ist. Daneben liegen die wichtigen Steuer-Knöpfe:",
+        "en": "On the right you see the preview — exactly what is currently live on the screen. Next to it are the important control buttons:"
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            { "de": "Clear-Knöpfe: die Leinwand leeren — entweder alles, oder nur den Text, oder nur den Hintergrund.", "en": "Clear buttons: clear the screen — either everything, or only the text, or only the background." },
+            { "de": "Bildschirme an/aus: über die Punkte bei Audience und Stage.", "en": "Screens on/off: via the dots at Audience and Stage." },
+            { "de": "Wiedergabe-Leiste: für Videos und Timer (abspielen, vor- und zurückspringen).", "en": "Playback bar: for videos and timers (play, skip forward and back)." }
+          ]
+        }
+      ]
+    },
+    {
+      "title": { "de": "Media Bin (unten)", "en": "Media Bin (bottom)" },
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "de": "Im Media Bin unten liegen alle Bilder und Videos, sortiert in Ordnern (z. B. Hintergründe oder „Announcements“). Wenn du etwas anzeigen willst, ziehst du es per Drag-and-Drop an die richtige Stelle — als eigene Folie oder als Hintergrund.",
+            "en": "In the Media Bin at the bottom are all images and videos, sorted into folders (e.g. backgrounds or “Announcements”). To show something, you drag it by drag-and-drop to the right place — as its own slide or as a background."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Merke: Bilder/Videos liegen im Media Bin und werden per Drag-and-Drop benutzt.",
+            "en": "Remember: images/videos live in the Media Bin and are used via drag-and-drop."
+          }
+        }
+      ]
+    },
+    {
+      "title": { "de": "Nützliche Tastenkürzel (Mac)", "en": "Useful keyboard shortcuts (Mac)" },
+      "intro": {
+        "de": "Diese paar Kürzel machen das Arbeiten deutlich schneller:",
+        "en": "These few shortcuts make working noticeably faster:"
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [ { "de": "Kürzel", "en": "Shortcut" }, { "de": "Funktion", "en": "Function" } ],
+          "rows": [
+            [ { "de": "Cmd + F", "en": "Cmd + F" }, { "de": "Suchen — ein Lied / einen Text in der Bibliothek finden.", "en": "Search — find a song / text in the library." } ],
+            [ { "de": "Cmd + N", "en": "Cmd + N" }, { "de": "Neue Präsentation — ein Lied spontan selbst anlegen, wenn du es nirgends findest.", "en": "New presentation — quickly create a song yourself if you can't find it anywhere." } ],
+            [ { "de": "Cmd + Enter", "en": "Cmd + Enter" }, { "de": "Hinzufügen — das in der Suche gefundene Lied direkt zur aktuellen Playlist hinzufügen.", "en": "Add — add the song found in search straight to the current playlist." } ],
+            [ { "de": "Cmd + A", "en": "Cmd + A" }, { "de": "Alles auswählen — z. B. alle Folien eines Liedes, um ein Thema auf einmal anzuwenden.", "en": "Select all — e.g. all slides of a song, to apply a theme at once." } ],
+            [ { "de": "Cmd + C · Cmd + V", "en": "Cmd + C · Cmd + V" }, { "de": "Kopieren / Einfügen.", "en": "Copy / Paste." } ],
+            [ { "de": "← / →", "en": "← / →" }, { "de": "Eine Folie vor / zurück.", "en": "One slide forward / back." } ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Lied gesucht und nicht gefunden? Cmd + F zum Suchen, sonst Cmd + N und das Lied selbst anlegen.",
+            "en": "Searched for a song and didn't find it? Cmd + F to search, otherwise Cmd + N and create the song yourself."
+          }
+        },
+        {
+          "type": "closing",
+          "text": {
+            "de": "Das hier ist nur der Überblick. Wie man konkret einen Service aufbaut, Vorlagen nutzt, Lieder importiert und Ankündigungen einrichtet, steht in den jeweiligen spezifischen Dokumenten.",
+            "en": "This is just the overview. How to actually build a service, use templates, import songs and set up announcements is covered in the respective specific documents."
+          }
+        }
+      ]
+    }
+  ]
+}

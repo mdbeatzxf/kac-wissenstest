@@ -413,6 +413,27 @@
       }
     },
     {
+      "id": "propresenter-ueberblick",
+      "file": "guides/propresenter-ueberblick.json",
+      "area": "production",
+      "bereiche": [
+        "projection"
+      ],
+      "updated": "Juni 2026",
+      "title": {
+        "de": "ProPresenter — Überblick",
+        "en": "ProPresenter — Overview"
+      },
+      "subtitle": {
+        "de": "Für das Projection-Team",
+        "en": "For the Projection team"
+      },
+      "intro": {
+        "de": "ProPresenter ist die Software, mit der wir alles auf die Leinwand bringen. Dieser Überblick zeigt dir die Oberfläche: die fünf Bereiche, Bibliothek vs. Playlist, Folien-Arten, die eingebaute Bibel, Themen und die wichtigsten Tastenkürzel.",
+        "en": "ProPresenter is the software we use to put everything on the screen. This overview shows you the interface: the five areas, library vs. playlist, slide types, the built-in Bible, themes and the most important keyboard shortcuts."
+      }
+    },
+    {
       "id": "projection-equipment",
       "file": "guides/projection-equipment.json",
       "area": "production",
