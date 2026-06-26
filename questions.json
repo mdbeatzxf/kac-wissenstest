@@ -35,7 +35,7 @@
     { "vorname": "Jude", "nachname": "Asamoah", "bereiche": ["projection", "sound"] },
     { "vorname": "Beverly", "nachname": "Armah", "bereiche": ["projection", "sound"] },
     { "vorname": "Amelia", "nachname": "Dakossi", "bereiche": ["projection", "sound"] },
-    { "vorname": "Christabell", "nachname": "Twusami", "bereiche": ["projection", "sound"] },
+    { "vorname": "Christabell", "nachname": "Twumasi", "bereiche": ["projection", "sound"] },
     { "vorname": "Deborah", "nachname": "Köpping", "bereiche": ["projection", "sound"] }
   ],
   "_teilnehmer_hinweis": "Diese Liste durch die echten Namen ersetzen. 'bereiche' = welche Tests die Person machen darf (Werte: 'projection' und/oder 'sound'). Login matcht vorname+nachname (gross-/kleinschreibungs-, leerzeichen- und umlaut-tolerant) gegen diese Liste.",
