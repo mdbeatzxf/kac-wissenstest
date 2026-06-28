@@ -36,6 +36,7 @@
             "type": "table",
             "head": [ {"de":"Ton","en":"Note"},{"de":"Tonart","en":"Key"},{"de":"Stufe","en":"Number"},{"de":"Klang","en":"Sound"} ],
             "rows": [
+              [ {"de":"E","en":"E"},{"de":"C-Dur","en":"C major"},{"de":"3","en":"3"},{"de":"Moll","en":"Minor"} ],
               [ {"de":"G","en":"G"},{"de":"C-Dur","en":"C major"},{"de":"5","en":"5"},{"de":"Dur","en":"Major"} ],
               [ {"de":"C","en":"C"},{"de":"G-Dur","en":"G major"},{"de":"4","en":"4"},{"de":"Dur","en":"Major"} ],
               [ {"de":"D","en":"D"},{"de":"A-Dur","en":"A major"},{"de":"4","en":"4"},{"de":"Dur","en":"Major"} ],
@@ -72,6 +73,7 @@
             "type": "table",
             "head": [ {"de":"Tonart","en":"Key"},{"de":"Stufe","en":"Number"},{"de":"Akkord","en":"Chord"},{"de":"Klang","en":"Sound"} ],
             "rows": [
+              [ {"de":"C-Dur","en":"C major"},{"de":"6","en":"6"},{"de":"Am","en":"Am"},{"de":"Moll","en":"Minor"} ],
               [ {"de":"G-Dur","en":"G major"},{"de":"5","en":"5"},{"de":"D","en":"D"},{"de":"Dur","en":"Major"} ],
               [ {"de":"D-Dur","en":"D major"},{"de":"4","en":"4"},{"de":"G","en":"G"},{"de":"Dur","en":"Major"} ],
               [ {"de":"A-Dur","en":"A major"},{"de":"2","en":"2"},{"de":"Bm","en":"Bm"},{"de":"Moll","en":"Minor"} ],
@@ -105,6 +107,7 @@
             "type": "table",
             "head": [ {"de":"Tonart","en":"Key"},{"de":"Folge (Stufen)","en":"Progression (numbers)"},{"de":"Akkorde","en":"Chords"} ],
             "rows": [
+              [ {"de":"G-Dur","en":"G major"},{"de":"1 – 5 – 6 – 4","en":"1 – 5 – 6 – 4"},{"de":"G – D – Em – C","en":"G – D – Em – C"} ],
               [ {"de":"D-Dur","en":"D major"},{"de":"1 – 4 – 5","en":"1 – 4 – 5"},{"de":"D – G – A","en":"D – G – A"} ],
               [ {"de":"C-Dur","en":"C major"},{"de":"6 – 4 – 1 – 5","en":"6 – 4 – 1 – 5"},{"de":"Am – F – C – G","en":"Am – F – C – G"} ],
               [ {"de":"A-Dur","en":"A major"},{"de":"1 – 6 – 4 – 5","en":"1 – 6 – 4 – 5"},{"de":"A – F#m – D – E","en":"A – F#m – D – E"} ],
@@ -135,6 +138,7 @@
             "type": "table",
             "head": [ {"de":"Tonart","en":"Key"},{"de":"Akkorde","en":"Chords"},{"de":"Stufen","en":"Numbers"} ],
             "rows": [
+              [ {"de":"C-Dur","en":"C major"},{"de":"C – G – Am – F","en":"C – G – Am – F"},{"de":"1 – 5 – 6 – 4","en":"1 – 5 – 6 – 4"} ],
               [ {"de":"G-Dur","en":"G major"},{"de":"Em – C – G – D","en":"Em – C – G – D"},{"de":"6 – 4 – 1 – 5","en":"6 – 4 – 1 – 5"} ],
               [ {"de":"D-Dur","en":"D major"},{"de":"D – A – Bm – G","en":"D – A – Bm – G"},{"de":"1 – 5 – 6 – 4","en":"1 – 5 – 6 – 4"} ],
               [ {"de":"A-Dur","en":"A major"},{"de":"A – E – F#m – D","en":"A – E – F#m – D"},{"de":"1 – 5 – 6 – 4","en":"1 – 5 – 6 – 4"} ],
@@ -164,6 +168,7 @@
             "type": "table",
             "head": [ {"de":"Folge (Ausgangstonart)","en":"Progression (source key)"},{"de":"nach","en":"to"},{"de":"neue Folge","en":"new progression"} ],
             "rows": [
+              [ {"de":"C – Am – F – G (in C)","en":"C – Am – F – G (in C)"},{"de":"G-Dur","en":"G major"},{"de":"G – Em – C – D","en":"G – Em – C – D"} ],
               [ {"de":"G – D – Em – C (in G)","en":"G – D – Em – C (in G)"},{"de":"D-Dur","en":"D major"},{"de":"D – A – Bm – G","en":"D – A – Bm – G"} ],
               [ {"de":"D – A – G (in D)","en":"D – A – G (in D)"},{"de":"A-Dur","en":"A major"},{"de":"A – E – D","en":"A – E – D"} ],
               [ {"de":"C – F – G – C (in C)","en":"C – F – G – C (in C)"},{"de":"F-Dur","en":"F major"},{"de":"F – Bb – C – F","en":"F – Bb – C – F"} ]
@@ -191,6 +196,7 @@
             "type": "table",
             "head": [ {"de":"Tonart","en":"Key"},{"de":"1","en":"1"},{"de":"2","en":"2"},{"de":"3","en":"3"},{"de":"4","en":"4"},{"de":"5","en":"5"},{"de":"6","en":"6"},{"de":"7","en":"7"} ],
             "rows": [
+              [ {"de":"G","en":"G"},{"de":"G","en":"G"},{"de":"Am","en":"Am"},{"de":"Bm","en":"Bm"},{"de":"C","en":"C"},{"de":"D","en":"D"},{"de":"Em","en":"Em"},{"de":"D/F#","en":"D/F#"} ],
               [ {"de":"F","en":"F"},{"de":"F","en":"F"},{"de":"Gm","en":"Gm"},{"de":"Am","en":"Am"},{"de":"Bb","en":"Bb"},{"de":"C","en":"C"},{"de":"Dm","en":"Dm"},{"de":"C/E","en":"C/E"} ],
               [ {"de":"A","en":"A"},{"de":"A","en":"A"},{"de":"Bm","en":"Bm"},{"de":"C#m","en":"C#m"},{"de":"D","en":"D"},{"de":"E","en":"E"},{"de":"F#m","en":"F#m"},{"de":"E/G#","en":"E/G#"} ]
             ]
@@ -221,6 +227,7 @@
             "type": "table",
             "head": [ {"de":"Tonart","en":"Key"},{"de":"Funktion","en":"Function"},{"de":"Akkord","en":"Chord"} ],
             "rows": [
+              [ {"de":"C-Dur","en":"C major"},{"de":"Tonika (1)","en":"Tonic (1)"},{"de":"C","en":"C"} ],
               [ {"de":"C-Dur","en":"C major"},{"de":"Subdominante (4)","en":"Subdominant (4)"},{"de":"F","en":"F"} ],
               [ {"de":"C-Dur","en":"C major"},{"de":"Dominante (5)","en":"Dominant (5)"},{"de":"G","en":"G"} ],
               [ {"de":"G-Dur","en":"G major"},{"de":"Dominante (5)","en":"Dominant (5)"},{"de":"D","en":"D"} ],
