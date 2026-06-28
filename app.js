@@ -585,9 +585,16 @@ function onLogin(e) {
   const last = document.getElementById('nachname').value;
   if (!first.trim() || !last.trim()) { showNotice(L.need_both); return; }
 
+  // Toleranter Abgleich: Vor-/Nachname werden zusammengezogen, damit es egal ist,
+  // WIE jemand seinen (oft mehrteiligen) Namen auf die zwei Felder aufteilt –
+  // z. B. "Emmanuel Atta" + "Gyamfi" vs. "Emmanuel" + "Atta Gyamfi". Auch
+  // vertauschte Reihenfolge (Nachname zuerst) wird erkannt.
   const nf = normalizeName(first), nl = normalizeName(last);
-  const match = state.data.teilnehmer.find(p =>
-    normalizeName(p.vorname) === nf && normalizeName(p.nachname) === nl);
+  const inFwd = nf + nl, inRev = nl + nf;
+  const match = state.data.teilnehmer.find(p => {
+    const s = normalizeName(p.vorname) + normalizeName(p.nachname);
+    return s === inFwd || s === inRev;
+  });
 
   if (!match) { showNotice(L.not_found); return; }
 
