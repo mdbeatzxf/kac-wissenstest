@@ -1,0 +1,982 @@
+{
+  "sections": [
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Was Routing wirklich ist",
+        "en": "What routing really is"
+      },
+      "intro": {
+        "de": "Auf einem Digitalpult sind die Buchsen (wo du einsteckst) und die Kanäle (wo du mischst) komplett voneinander getrennt. Routing ist alles, was dazwischen verbindet: welche Buchse auf welchen Kanal kommt, welcher Kanal in welchen Mix geht und welcher Mix aus welcher Buchse wieder rauskommt.",
+        "en": "On a digital console the sockets (where you plug in) and the channels (where you mix) are completely separate. Routing is everything that connects them: which socket lands on which channel, which channel feeds which mix, and which mix comes out of which socket."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 580",
+          "caption": {
+            "de": "Die drei Ebenen: Input-Patch → Kanäle & Busse → Output-Patch",
+            "en": "The three layers: input patch → channels & buses → output patch"
+          },
+          "image": "images/KAC_ro_ueberblick.svg",
+          "image_en": "images/KAC_ro_ueberblick_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Ebene",
+              "en": "Layer"
+            },
+            {
+              "de": "Frage",
+              "en": "Question"
+            },
+            {
+              "de": "Beispiel",
+              "en": "Example"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Input-Patch",
+                "en": "Input patch"
+              },
+              {
+                "de": "Welche Buchse kommt auf welchen Kanal?",
+                "en": "Which socket goes to which channel?"
+              },
+              {
+                "de": "Kanal 1 ← Stagebox Eingang 1 (Kick)",
+                "en": "Channel 1 ← stagebox input 1 (kick)"
+              }
+            ],
+            [
+              {
+                "de": "Internes Routing",
+                "en": "Internal routing"
+              },
+              {
+                "de": "Welcher Kanal geht in welchen Bus — und wie viel?",
+                "en": "Which channel feeds which bus — and how much?"
+              },
+              {
+                "de": "Kanal 1 → Main LR + Aux 3 (Drummer-In-Ear)",
+                "en": "Channel 1 → main LR + aux 3 (drummer in-ear)"
+              }
+            ],
+            [
+              {
+                "de": "Output-Patch",
+                "en": "Output patch"
+              },
+              {
+                "de": "Welcher Bus / welches Signal kommt aus welcher Buchse?",
+                "en": "Which bus / signal comes out of which socket?"
+              },
+              {
+                "de": "Aux 3 → Stagebox Ausgang 5 → IEM-Sender",
+                "en": "Aux 3 → stagebox output 5 → IEM transmitter"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Begriffe, die du kennen solltest",
+            "en": "Terms you should know"
+          },
+          "items": [
+            {
+              "de": "Quelle (Source) / Ziel (Destination): Routing verbindet immer eine Quelle mit einem Ziel. Eine Quelle kann viele Ziele haben — ein Ziel aber nur eine Quelle.",
+              "en": "Source / destination: routing always connects a source to a destination. A source can feed many destinations — a destination only has one source."
+            },
+            {
+              "de": "Bus: ein Sammelweg im Pult (Main LR, Aux / Mix, Gruppe, Matrix, FX).",
+              "en": "Bus: a collecting path inside the console (main LR, aux / mix, group, matrix, FX)."
+            },
+            {
+              "de": "Matrix: ein Mix aus Bussen — z. B. Main LR + etwas Ambience für Stream oder Foyer.",
+              "en": "Matrix: a mix made of buses — e.g. main LR + some ambience for the stream or lobby."
+            },
+            {
+              "de": "Tap Point (Abgriffspunkt): an welcher Stelle im Kanal ein Signal abgezweigt wird (Pre-Preamp, Post-Preamp, Pre-Fader, Post-Fader …).",
+              "en": "Tap point: where in the channel a signal is taken off (pre-preamp, post-preamp, pre-fader, post-fader …)."
+            },
+            {
+              "de": "Block: X32 / M32 routen meist in 8er-Blöcken (1–8, 9–16 …). Das SQ patcht jede Buchse einzeln.",
+              "en": "Block: the X32 / M32 mostly route in blocks of 8 (1–8, 9–16 …). The SQ patches every socket individually."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Steckt etwas in der richtigen Buchse, kommt aber nicht an? Fast immer ist es der Patch — nicht das Kabel.",
+            "en": "Plugged into the right socket but nothing arrives? It is almost always the patch — not the cable."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Die digitale Stagebox",
+        "en": "The digital stagebox"
+      },
+      "intro": {
+        "de": "Früher lief jedes Mikro über ein eigenes Kabel im dicken Multicore von der Bühne zum Pult. Eine digitale Stagebox wandelt die Signale direkt auf der Bühne in digitale Daten um und schickt alle Kanäle über ein einziges Netzwerkkabel zum Pult — und die Ausgänge (Monitore, In-Ears, PA) auf demselben Kabel zurück.",
+        "en": "In the past every mic ran down its own pair in a heavy multicore from the stage to the console. A digital stagebox converts the signals to digital right on stage and sends every channel to the console over a single network cable — and the outputs (monitors, in-ears, PA) come back down the same cable."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "",
+              "en": ""
+            },
+            {
+              "de": "Analoges Multicore",
+              "en": "Analogue multicore"
+            },
+            {
+              "de": "Digitale Stagebox",
+              "en": "Digital stagebox"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Kabel",
+                "en": "Cable"
+              },
+              {
+                "de": "dick, schwer, ein Paar pro Kanal",
+                "en": "thick, heavy, one pair per channel"
+              },
+              {
+                "de": "ein Cat5e-Kabel für alles",
+                "en": "one Cat5e cable for everything"
+              }
+            ],
+            [
+              {
+                "de": "Preamps (Gain)",
+                "en": "Preamps (gain)"
+              },
+              {
+                "de": "im Pult",
+                "en": "in the console"
+              },
+              {
+                "de": "in der Stagebox — ferngesteuert vom Pult",
+                "en": "in the stagebox — remote-controlled from the console"
+              }
+            ],
+            [
+              {
+                "de": "48 V",
+                "en": "48 V"
+              },
+              {
+                "de": "vom Pult",
+                "en": "from the console"
+              },
+              {
+                "de": "von der Stagebox, ferngesteuert",
+                "en": "from the stagebox, remote-controlled"
+              }
+            ],
+            [
+              {
+                "de": "Störungen / Brummen",
+                "en": "Interference / hum"
+              },
+              {
+                "de": "möglich bei langen Wegen",
+                "en": "possible over long runs"
+              },
+              {
+                "de": "praktisch keine (digital)",
+                "en": "practically none (digital)"
+              }
+            ],
+            [
+              {
+                "de": "Wenn das Kabel ausfällt",
+                "en": "If the cable fails"
+              },
+              {
+                "de": "einzelne Kanäle fallen aus",
+                "en": "single channels drop out"
+              },
+              {
+                "de": "ALLE Kanäle sind weg",
+                "en": "ALL channels are gone"
+              }
+            ],
+            [
+              {
+                "de": "Kompatibel",
+                "en": "Compatible"
+              },
+              {
+                "de": "mit jedem Pult",
+                "en": "with any console"
+              },
+              {
+                "de": "nur mit dem passenden System",
+                "en": "only with the matching system"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "Der Gain sitzt in der Stagebox auf der Bühne, auch wenn du ihn am Pult drehst. Das Pult schickt nur den Befehl.",
+              "en": "The gain sits in the stagebox on stage, even though you turn it at the console. The console only sends the command."
+            },
+            {
+              "de": "Teilen sich zwei Pulte eine Stagebox (z. B. FOH und Monitor), darf nur EIN Pult die Preamps (Gain, 48 V) steuern. Das andere arbeitet mit dem digitalen Trim.",
+              "en": "If two consoles share a stagebox (e.g. FOH and monitor), only ONE console may control the preamps (gain, 48 V). The other works with its digital trim."
+            },
+            {
+              "de": "Es gibt nur einen Taktgeber (Clock). Stimmt die Synchronisation nicht, gibt es Knackser oder Aussetzer.",
+              "en": "There is only one clock master. If the sync is wrong, you get clicks or dropouts."
+            },
+            {
+              "de": "Das Stagebox-Kabel ist eine Single Point of Failure: sauber verlegen, nicht knicken, Ersatzkabel bereithalten.",
+              "en": "The stagebox cable is a single point of failure: lay it carefully, don't kink it, keep a spare cable ready."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Eine digitale Stagebox ist eine Verlängerung des Pults auf der Bühne — ein Kabel, alle Kanäle.",
+            "en": "A digital stagebox is an extension of the console on stage — one cable, every channel."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "X32 / M32: AES50 A und B",
+        "en": "X32 / M32: AES50 A and B"
+      },
+      "intro": {
+        "de": "Behringer X32 und Midas M32 haben zwei AES50-Anschlüsse: A und B. Darüber laufen digitale Stageboxen wie unsere Midas DL32. Jeder Port überträgt bis zu 48 Kanäle zum Pult und 48 Kanäle zurück.",
+        "en": "The Behringer X32 and Midas M32 have two AES50 ports: A and B. Digital stageboxes like our Midas DL32 run over them. Each port carries up to 48 channels to the console and 48 channels back."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 670",
+          "caption": {
+            "de": "AES50 A = Haupt-Stagebox · AES50 B = zweite Box oder Monitorpult · Karte = Recording",
+            "en": "AES50 A = main stagebox · AES50 B = second box or monitor console · card = recording"
+          },
+          "image": "images/KAC_ro_aes50.svg",
+          "image_en": "images/KAC_ro_aes50_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Port",
+              "en": "Port"
+            },
+            {
+              "de": "Typische Nutzung",
+              "en": "Typical use"
+            },
+            {
+              "de": "Im Routing heißt es",
+              "en": "In the routing it's called"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "AES50 A",
+                "en": "AES50 A"
+              },
+              {
+                "de": "Haupt-Stagebox auf der Bühne (z. B. DL32: 32 In / 16 Out)",
+                "en": "main stagebox on stage (e.g. DL32: 32 in / 16 out)"
+              },
+              {
+                "de": "Quellen „AES50 A 1–8 …“, Ziel-Tab „AES50-A“",
+                "en": "sources “AES50 A 1–8 …”, destination tab “AES50-A”"
+              }
+            ],
+            [
+              {
+                "de": "AES50 B",
+                "en": "AES50 B"
+              },
+              {
+                "de": "zweite Stagebox (z. B. DL16 am Drumriser), Monitorpult oder ein zweites X32/M32",
+                "en": "second stagebox (e.g. DL16 at the drum riser), monitor console or a second X32/M32"
+              },
+              {
+                "de": "„AES50 B 1–8 …“, Tab „AES50-B“",
+                "en": "“AES50 B 1–8 …”, tab “AES50-B”"
+              }
+            ],
+            [
+              {
+                "de": "Card",
+                "en": "Card"
+              },
+              {
+                "de": "X-USB (32×32 zum Computer), X-Dante (Netzwerk), X-Live (SD-Karten-Aufnahme)",
+                "en": "X-USB (32×32 to a computer), X-Dante (network), X-Live (SD card recording)"
+              },
+              {
+                "de": "„Card 1–8 …“, Tab „Card Out“",
+                "en": "“Card 1–8 …”, tab “Card Out”"
+              }
+            ],
+            [
+              {
+                "de": "Ultranet",
+                "en": "Ultranet"
+              },
+              {
+                "de": "16 Kanäle für persönliche In-Ear-Mixer (Behringer P16)",
+                "en": "16 channels for personal in-ear mixers (Behringer P16)"
+              },
+              {
+                "de": "Tab „P16 Out“",
+                "en": "tab “P16 Out”"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "So läuft das Routing am X32 / M32",
+            "en": "How routing works on the X32 / M32"
+          },
+          "items": [
+            {
+              "de": "Taste ROUTING → Tab „Home“: Hier legst du fest, welcher 8er-Block auf welche Kanäle kommt (z. B. Inputs 1–8 ← AES50 A 1–8).",
+              "en": "ROUTING button → “Home” tab: here you set which block of 8 lands on which channels (e.g. inputs 1–8 ← AES50 A 1–8)."
+            },
+            {
+              "de": "Tab „AES50-A“ / „AES50-B“: Was das Pult zur Stagebox zurückschickt — also was an den Stagebox-Ausgängen rauskommt (z. B. Aux 1–6 für Monitore).",
+              "en": "“AES50-A” / “AES50-B” tab: what the console sends back to the stagebox — i.e. what comes out of the stagebox outputs (e.g. aux 1–6 for monitors)."
+            },
+            {
+              "de": "Tab „Card Out“: Was an die Karte geht (Recording / Dante).",
+              "en": "“Card Out” tab: what goes to the card (recording / Dante)."
+            },
+            {
+              "de": "Setup → Config → Synchronisation: Clock-Quelle. Das Pult ist normalerweise Master (intern 48 kHz), die Stagebox folgt.",
+              "en": "Setup → Config → synchronisation: clock source. The console is normally the master (internal 48 kHz), the stagebox follows."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Das Kabel",
+            "en": "The cable"
+          },
+          "items": [
+            {
+              "de": "Geschirmtes Cat5e (SF/UTP) mit Ethercon-Steckern — am besten die empfohlenen Kabel (z. B. Klark Teknik / Midas).",
+              "en": "Shielded Cat5e (SF/UTP) with etherCON connectors — ideally the recommended cables (e.g. Klark Teknik / Midas)."
+            },
+            {
+              "de": "Maximal ca. 100 m. AES50 ist Punkt-zu-Punkt: KEIN Switch, kein Router, keine Netzwerkdose dazwischen.",
+              "en": "Max. approx. 100 m. AES50 is point-to-point: NO switch, no router, no wall network socket in between."
+            },
+            {
+              "de": "Status-LEDs an Pult und Stagebox zeigen, ob die Verbindung steht und synchron ist.",
+              "en": "Status LEDs on the console and stagebox show whether the link is up and in sync."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "AES50 sieht aus wie Netzwerk, ist aber keins: direktes Kabel von Pult zu Stagebox — sonst nichts dazwischen.",
+            "en": "AES50 looks like networking but isn't: a direct cable from console to stagebox — nothing in between."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Allen & Heath SQ: SLink, I/O-Port & USB",
+        "en": "Allen & Heath SQ: SLink, I/O port & USB"
+      },
+      "intro": {
+        "de": "Beim SQ heißt das Gegenstück zu AES50 „SLink“. Allen & Heath nutzt ein eigenes System — darum passen Midas-/Behringer-Stageboxen (wie die DL32) nicht ans SQ und umgekehrt.",
+        "en": "On the SQ the counterpart to AES50 is called “SLink”. Allen & Heath use their own system — so Midas/Behringer stageboxes (like the DL32) don't work with the SQ and vice versa."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 670",
+          "caption": {
+            "de": "SQ: SLink zur Stagebox, I/O-Port für Karten, USB für Aufnahme",
+            "en": "SQ: SLink to the stagebox, I/O port for cards, USB for recording"
+          },
+          "image": "images/KAC_ro_sq.svg",
+          "image_en": "images/KAC_ro_sq_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Anschluss",
+              "en": "Connection"
+            },
+            {
+              "de": "Wofür",
+              "en": "What for"
+            },
+            {
+              "de": "Hinweis",
+              "en": "Note"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "SLink",
+                "en": "SLink"
+              },
+              {
+                "de": "Stageboxen: DX168 (16 In / 8 Out), GX4816 (48 In / 16 Out), dSnake-Boxen — oder ein zweites A&H-Pult (gigaACE)",
+                "en": "stageboxes: DX168 (16 in / 8 out), GX4816 (48 in / 16 out), dSnake boxes — or a second A&H console (gigaACE)"
+              },
+              {
+                "de": "ein Port; das SQ erkennt das angeschlossene System",
+                "en": "one port; the SQ detects the connected system"
+              }
+            ],
+            [
+              {
+                "de": "I/O-Port",
+                "en": "I/O port"
+              },
+              {
+                "de": "Optionskarte, z. B. Dante 64×64, Waves, MADI",
+                "en": "option card, e.g. Dante 64×64, Waves, MADI"
+              },
+              {
+                "de": "für Netzwerk-Audio und große Recording-Setups",
+                "en": "for network audio and large recording setups"
+              }
+            ],
+            [
+              {
+                "de": "USB-B (hinten)",
+                "en": "USB-B (rear)"
+              },
+              {
+                "de": "32×32 Audio-Interface zum Computer (Mac / Windows)",
+                "en": "32×32 audio interface to a computer (Mac / Windows)"
+              },
+              {
+                "de": "Multitrack-Aufnahme und Virtual Soundcheck",
+                "en": "multitrack recording and virtual soundcheck"
+              }
+            ],
+            [
+              {
+                "de": "USB-A (vorne)",
+                "en": "USB-A (front)"
+              },
+              {
+                "de": "Stick oder SSD: Stereo-Aufnahme / -Wiedergabe, SQ-Drive (mehrspurig, je nach Firmware)",
+                "en": "stick or SSD: stereo record / playback, SQ-Drive (multitrack, depending on firmware)"
+              },
+              {
+                "de": "Stick vorher am Pult formatieren",
+                "en": "format the stick on the console first"
+              }
+            ],
+            [
+              {
+                "de": "Lokale I/O",
+                "en": "Local I/O"
+              },
+              {
+                "de": "XLR-Ein- und -Ausgänge hinten am Pult",
+                "en": "XLR inputs and outputs on the back of the console"
+              },
+              {
+                "de": "siehe Patchliste „Local Inputs“",
+                "en": "see patch list “Local Inputs”"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Unterschied zum X32 / M32",
+            "en": "Difference from the X32 / M32"
+          },
+          "items": [
+            {
+              "de": "Kein 8er-Block-Routing: Im I/O-Patch (Raster aus Quellen und Zielen) wird jede Buchse einzeln einem Kanal oder Ausgang zugewiesen.",
+              "en": "No block-of-8 routing: in the I/O patch (a grid of sources and destinations) every socket is assigned to a channel or output individually."
+            },
+            {
+              "de": "Darum braucht das SQ auch kein „User In / User Out“ — es ist von Haus aus frei patchbar.",
+              "en": "That's why the SQ doesn't need “User In / User Out” — it can be patched freely out of the box."
+            },
+            {
+              "de": "Für Ausgänge an USB / Dante lässt sich einstellen, wo im Kanal abgegriffen wird (z. B. Post-Preamp oder Post-Fader).",
+              "en": "For outputs to USB / Dante you can set where in the channel the signal is taken from (e.g. post-preamp or post-fader)."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "X32 / M32 = AES50. SQ = SLink. Die Systeme sind nicht kompatibel — immer die passende Stagebox mitnehmen.",
+            "en": "X32 / M32 = AES50. SQ = SLink. The systems aren't compatible — always bring the matching stagebox."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "User In & User Out (X32 / M32)",
+        "en": "User In & User Out (X32 / M32)"
+      },
+      "intro": {
+        "de": "Am X32 / M32 wird normalerweise in 8er-Blöcken geroutet: Eingänge 1–8 einer Quelle landen auf Kanälen 1–8. Das ist schnell, aber starr. Mit „User In“ und „User Out“ baust du dir eigene Blöcke — Slot für Slot, mit jeder beliebigen Buchse.",
+        "en": "On the X32 / M32 routing normally happens in blocks of 8: inputs 1–8 of one source land on channels 1–8. That's quick, but rigid. With “User In” and “User Out” you build your own blocks — slot by slot, with any socket you like."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 640",
+          "caption": {
+            "de": "Block-Routing vs. User In: jeder Slot wählt seine eigene Quelle",
+            "en": "Block routing vs. User In: each slot picks its own source"
+          },
+          "image": "images/KAC_ro_userin.svg",
+          "image_en": "images/KAC_ro_userin_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "User In — so geht's",
+            "en": "User In — how it works"
+          },
+          "text": {
+            "de": "Im Tab „User In“ hat jeder Slot (bis 48) eine eigene Quelle: Slot 1 = Local 3, Slot 2 = AES50 A 17, Slot 3 = AES50 B 5 … Danach legst du im Tab „Home“ z. B. „User In 1–8“ als Block auf die Kanäle 1–8.",
+            "en": "In the “User In” tab each slot (up to 48) has its own source: slot 1 = local 3, slot 2 = AES50 A 17, slot 3 = AES50 B 5 … Then, in the “Home” tab, you route e.g. “User In 1–8” as a block to channels 1–8."
+          }
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "ROUTING → Tab „User In“ öffnen.",
+              "en": "ROUTING → open the “User In” tab."
+            },
+            {
+              "de": "Für jeden Slot die gewünschte Buchse wählen (Local, AES50 A/B, Card …).",
+              "en": "Pick the socket you want for each slot (local, AES50 A/B, card …)."
+            },
+            {
+              "de": "ROUTING → „Home“: die Kanal-Blöcke auf „User In 1–8“, „9–16“ … stellen.",
+              "en": "ROUTING → “Home”: set the channel blocks to “User In 1–8”, “9–16” …"
+            },
+            {
+              "de": "Kanalnamen prüfen und die Szene speichern.",
+              "en": "Check the channel names and save the scene."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Wofür User In?",
+            "en": "What is User In for?"
+          },
+          "items": [
+            {
+              "de": "Gleiche Kanalbelegung in jeder Location, egal wo etwas eingesteckt ist (Kanal 1 ist immer Kick).",
+              "en": "The same channel layout at every location, wherever things are plugged in (channel 1 is always the kick)."
+            },
+            {
+              "de": "Quellen von zwei Stageboxen (A und B) und lokal gemischt auf einer Kanalseite.",
+              "en": "Sources from two stageboxes (A and B) and local inputs mixed on one channel page."
+            },
+            {
+              "de": "Eine Buchse spontan auf einen anderen Kanal legen, ohne umzustecken.",
+              "en": "Move a socket to another channel on the fly without re-plugging."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "User Out — dasselbe für Ausgänge",
+            "en": "User Out — the same for outputs"
+          },
+          "text": {
+            "de": "Im Tab „User Out“ wählst du pro Slot ein beliebiges Signal (Main LR, ein Aux, eine Matrix, ein Direct Out …). Diese Slots routest du dann als Block auf einen Ausgang — z. B. auf die Karte (für den Stream: Main LR + Ambience-Mikros + Predigt) oder auf AES50 B.",
+            "en": "In the “User Out” tab you pick any signal per slot (main LR, an aux, a matrix, a direct out …). You then route these slots as a block to an output — e.g. to the card (for the stream: main LR + ambience mics + sermon) or to AES50 B."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Mit User In bleibt Kanal 1 immer Kanal 1 — egal, in welcher Buchse das Mikro steckt.",
+            "en": "With User In, channel 1 always stays channel 1 — whichever socket the mic is plugged into."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Recording: USB & Dante",
+        "en": "Recording: USB & Dante"
+      },
+      "intro": {
+        "de": "Aufnehmen heißt: Signale aus dem Pult an ein Aufnahmeziel routen. Wichtig ist nicht nur WOHIN, sondern auch, an welcher Stelle im Kanal abgegriffen wird — das entscheidet, was am Ende in der Aufnahme ist.",
+        "en": "Recording means routing signals from the console to a recording destination. What matters is not just WHERE, but also where in the channel the signal is taken off — that decides what ends up in the recording."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 640",
+          "caption": {
+            "de": "Drei Arten aufzunehmen — und der Virtual Soundcheck",
+            "en": "Three ways to record — and the virtual soundcheck"
+          },
+          "image": "images/KAC_ro_recording.svg",
+          "image_en": "images/KAC_ro_recording_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Weg",
+              "en": "Path"
+            },
+            {
+              "de": "Was du bekommst",
+              "en": "What you get"
+            },
+            {
+              "de": "Gut für",
+              "en": "Good for"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "USB-Stick (Stereo)",
+                "en": "USB stick (stereo)"
+              },
+              {
+                "de": "Main LR als Stereo-Datei — genau der Saal-Mix",
+                "en": "main LR as a stereo file — exactly the room mix"
+              },
+              {
+                "de": "schnelle Mitschnitte, Predigt-Archiv",
+                "en": "quick recordings, sermon archive"
+              }
+            ],
+            [
+              {
+                "de": "USB-Multitrack",
+                "en": "USB multitrack"
+              },
+              {
+                "de": "jeder Kanal als eigene Spur auf dem Computer (X-USB / SQ USB-B: 32×32)",
+                "en": "every channel as its own track on the computer (X-USB / SQ USB-B: 32×32)"
+              },
+              {
+                "de": "Nachmischen, Virtual Soundcheck",
+                "en": "remixing, virtual soundcheck"
+              }
+            ],
+            [
+              {
+                "de": "SD-Karte (X-Live)",
+                "en": "SD card (X-Live)"
+              },
+              {
+                "de": "bis 32 Spuren direkt im Pult, ohne Computer",
+                "en": "up to 32 tracks right in the console, no computer"
+              },
+              {
+                "de": "einfacher Multitrack-Mitschnitt",
+                "en": "simple multitrack recording"
+              }
+            ],
+            [
+              {
+                "de": "Dante",
+                "en": "Dante"
+              },
+              {
+                "de": "viele Kanäle über das Netzwerk an einen oder mehrere Computer / Geräte",
+                "en": "many channels over the network to one or several computers / devices"
+              },
+              {
+                "de": "Stream-Rechner, Recording, zweiter Raum",
+                "en": "stream computer, recording, second room"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Dante — was du wissen musst",
+            "en": "Dante — what you need to know"
+          },
+          "items": [
+            {
+              "de": "Dante ist echtes Netzwerk-Audio: Anders als AES50 darf (und muss oft) ein Switch dazwischen — Gigabit, am besten ein eigener oder ein eigenes VLAN.",
+              "en": "Dante is real network audio: unlike AES50, a switch may (and often must) sit in between — gigabit, ideally a dedicated one or its own VLAN."
+            },
+            {
+              "de": "Verbindungen („Subscriptions“) legst du am Computer mit der kostenlosen Software Dante Controller an: Sender-Kanal ↔ Empfänger-Kanal.",
+              "en": "You create connections (“subscriptions”) on a computer with the free Dante Controller software: transmitter channel ↔ receiver channel."
+            },
+            {
+              "de": "Am Computer wird Dante mit „Dante Virtual Soundcard“ (Lizenz) oder einem Dante-Interface zur Soundkarte für die DAW.",
+              "en": "On the computer, Dante becomes the DAW's sound card via “Dante Virtual Soundcard” (licence) or a Dante interface."
+            },
+            {
+              "de": "Alle Geräte auf dieselbe Abtastrate (meist 48 kHz). Es gibt einen Clock-Leader — Dante Controller zeigt, wer es ist.",
+              "en": "All devices at the same sample rate (usually 48 kHz). There is one clock leader — Dante Controller shows which device it is."
+            },
+            {
+              "de": "Nicht ins normale Gemeinde-WLAN-Netz hängen: Energiesparfunktionen (EEE) und viel fremder Datenverkehr stören Dante.",
+              "en": "Don't hang it on the normal church Wi-Fi network: energy-saving features (EEE) and lots of other traffic disturb Dante."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Virtual Soundcheck",
+            "en": "Virtual soundcheck"
+          },
+          "text": {
+            "de": "Du nimmst eine Probe oder einen Gottesdienst mehrspurig auf (post-Gain, also „trocken“). Später spielst du die Spuren ab und schaltest in den Kanälen die Quelle von „Stagebox“ auf „USB / Karte / Dante“ um. Jetzt klingt es, als würde die Band spielen — und du kannst EQ, Kompressor, Effekte und den Mix in Ruhe einstellen.",
+            "en": "You record a rehearsal or a service in multitrack (post-gain, i.e. “dry”). Later you play the tracks back and switch the channels' source from “stagebox” to “USB / card / Dante”. Now it sounds as if the band were playing — and you can set EQ, compressor, effects and the mix at your leisure."
+          }
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Aufnahme: Abgriff post-Preamp (vor Gate/EQ/Fader), jeder Kanal auf seine eigene Spur.",
+              "en": "Recording: tap post-preamp (before gate/EQ/fader), each channel to its own track."
+            },
+            {
+              "de": "Wiedergabe: DAW spielt die Spuren über USB / Dante zurück ins Pult.",
+              "en": "Playback: the DAW plays the tracks back into the console via USB / Dante."
+            },
+            {
+              "de": "Im Pult die Kanal-Quelle auf USB / Karte umschalten (X32: Routing → Home bzw. Card-Eingänge, SQ: I/O-Patch).",
+              "en": "Switch the channel source to USB / card in the console (X32: routing → home or card inputs, SQ: I/O patch)."
+            },
+            {
+              "de": "Mischen, als wäre die Band da.",
+              "en": "Mix as if the band were there."
+            },
+            {
+              "de": "Danach unbedingt zurück auf die echten Eingänge schalten — sonst hört man im Gottesdienst die Aufnahme statt der Band!",
+              "en": "Afterwards, be sure to switch back to the real inputs — otherwise the service will hear the recording instead of the band!"
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Stream-Mix",
+            "en": "Stream mix"
+          },
+          "text": {
+            "de": "Der Saal-Mix klingt im Stream oft falsch: Im Raum hörst du Schlagzeug, Bass-Amp und Gemeinde auch direkt — im Stream fehlt das. Darum bekommt der Stream einen eigenen Mix (eigener Bus oder Matrix), meist mit mehr Band, mehr Raum- / Crowd-Mikros und einem Limiter.",
+            "en": "The room mix often sounds wrong on a stream: in the room you also hear the drums, bass amp and congregation acoustically — on the stream that's missing. That's why the stream gets its own mix (its own bus or matrix), usually with more band, more room / crowd mics and a limiter."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Erst entscheiden, WAS du aufnehmen willst (Saal-Mix, Einzelspuren, Stream-Mix) — dann den passenden Abgriff und Weg wählen.",
+            "en": "Decide WHAT you want to record first (room mix, separate tracks, stream mix) — then choose the matching tap point and path."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Do & Don't",
+        "en": "Do & don't"
+      },
+      "intro": {
+        "de": "Die wichtigsten Regeln, damit Routing dir hilft statt dich im Gottesdienst zu überraschen:",
+        "en": "The most important rules so routing helps you rather than surprising you during the service:"
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": {
+            "de": "✓ Do",
+            "en": "✓ Do"
+          },
+          "items": [
+            {
+              "de": "Mit einer gespeicherten Szene / Show pro Location starten — Routing nicht jedes Mal neu bauen.",
+              "en": "Start from a saved scene / show per location — don't rebuild the routing every time."
+            },
+            {
+              "de": "Routing und Patchliste immer zusammen ändern. Was im Pult steht, muss auch auf dem Papier stehen.",
+              "en": "Always change the routing and the patch list together. What's in the console must also be on paper."
+            },
+            {
+              "de": "Kanäle sinnvoll und gleichbleibend benennen (Kick, Snare, Lead Vox …) — in jeder Szene gleich.",
+              "en": "Name channels sensibly and consistently (kick, snare, lead vox …) — the same in every scene."
+            },
+            {
+              "de": "Nach jeder Routing-Änderung testen: Line-Check auf den betroffenen Kanälen und Ausgängen.",
+              "en": "Test after every routing change: line check on the affected channels and outputs."
+            },
+            {
+              "de": "Das Stagebox-Kabel sauber verlegen und ein Ersatzkabel bereithalten.",
+              "en": "Lay the stagebox cable carefully and keep a spare ready."
+            },
+            {
+              "de": "Szenen-Recall-Filter (Safes) kennen: Damit lässt sich festlegen, dass z. B. Routing oder Preamps beim Laden einer Szene nicht überschrieben werden.",
+              "en": "Know the scene recall filters (safes): they let you make sure that e.g. routing or preamps are not overwritten when a scene is loaded."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "✗ Don't",
+            "en": "✗ Don't"
+          },
+          "items": [
+            {
+              "de": "Kein Routing während des Gottesdienstes ändern — außer im Notfall und mit Absprache.",
+              "en": "Don't change routing during the service — except in an emergency and after checking with the team."
+            },
+            {
+              "de": "Keinen Switch, Router oder keine Netzwerkdose in eine AES50- oder SLink-Leitung hängen.",
+              "en": "Don't put a switch, router or wall network socket into an AES50 or SLink line."
+            },
+            {
+              "de": "Dante nicht ins normale WLAN- / Büronetz hängen.",
+              "en": "Don't hang Dante on the normal Wi-Fi / office network."
+            },
+            {
+              "de": "Nicht zwei Pulte gleichzeitig die Preamps derselben Stagebox steuern lassen.",
+              "en": "Don't let two consoles control the preamps of the same stagebox at the same time."
+            },
+            {
+              "de": "Eine Quelle nicht doppelt patchen (zwei Kanäle mit demselben Mikro) — es sei denn, du willst das bewusst (z. B. getrennter Stream-Kanal).",
+              "en": "Don't patch a source twice (two channels with the same mic) — unless you mean to (e.g. a separate stream channel)."
+            },
+            {
+              "de": "Nach dem Virtual Soundcheck nicht vergessen, die Kanäle wieder auf die echten Eingänge zu schalten.",
+              "en": "After a virtual soundcheck, don't forget to switch the channels back to the real inputs."
+            },
+            {
+              "de": "Keine Szene einer anderen Location laden, ohne das Routing zu prüfen — Stagebox und Buchsen können anders sein.",
+              "en": "Don't load a scene from another location without checking the routing — the stagebox and sockets may be different."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Routing ändert man in Ruhe vor dem Gottesdienst — nie hektisch währenddessen.",
+            "en": "Change routing calmly before the service — never in a hurry during it."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Routing-Check vor dem Gottesdienst",
+        "en": "Routing check before the service"
+      },
+      "intro": {
+        "de": "Einmal durchgehen, bevor die Band kommt:",
+        "en": "Run through this once before the band arrives:"
+      },
+      "blocks": [
+        {
+          "type": "check",
+          "items": [
+            {
+              "de": "Richtige Szene / Show für diese Location geladen.",
+              "en": "The right scene / show for this location is loaded."
+            },
+            {
+              "de": "Stagebox verbunden: Status-LEDs grün, Clock synchron.",
+              "en": "Stagebox connected: status LEDs green, clock in sync."
+            },
+            {
+              "de": "Input-Patch stimmt mit der Patchliste überein (Stichprobe: Kick, Lead Vox, Predigt-Mikro).",
+              "en": "Input patch matches the patch list (spot check: kick, lead vox, sermon mic)."
+            },
+            {
+              "de": "Kanal-Quellen stehen auf den echten Eingängen — nicht auf USB / Karte vom letzten Virtual Soundcheck.",
+              "en": "Channel sources are set to the real inputs — not to USB / card from the last virtual soundcheck."
+            },
+            {
+              "de": "Output-Patch: Main LR → PA, jeder Aux → richtiger Monitor- / IEM-Weg.",
+              "en": "Output patch: main LR → PA, every aux → the right monitor / IEM path."
+            },
+            {
+              "de": "Recording-Weg geprüft: Spuren kommen an (Pegel in der DAW / am Stick sichtbar).",
+              "en": "Recording path checked: tracks are arriving (levels visible in the DAW / on the stick)."
+            },
+            {
+              "de": "Stream-Mix hat Signal (Matrix / Bus → Stream-Rechner).",
+              "en": "Stream mix has signal (matrix / bus → stream computer)."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Ein Routing-Fehler vor dem Gottesdienst kostet eine Minute. Im Gottesdienst kostet er die Aufmerksamkeit aller.",
+            "en": "A routing mistake before the service costs a minute. During the service it costs everyone's attention."
+          }
+        }
+      ]
+    }
+  ]
+}

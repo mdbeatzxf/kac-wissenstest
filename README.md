@@ -34,7 +34,7 @@ Nach dem Öffnen erscheint ein Menü mit drei Einträgen:
 - **02 · Lernen** — frei zugänglicher Lernbereich (**kein Login nötig**): Guides zu
   Rollen & Ablauf, Signalen/Kabeln, Patchlist, Mischpult, PA/Monitoren, Mixing
   Station, Soundcheck-Ablauf, Fehlersuche („Kein Ton — was tun?“), Gain-Staging &
-  Pegel, DCAs & Gruppen, Lautstärke im Saal und Projection-Equipment. Inhalte stehen in `learn.json` + `guides/*.json`.
+  Pegel, DCAs & Gruppen, Routing (Vertiefung), Lautstärke im Saal und Projection-Equipment. Inhalte stehen in `learn.json` + `guides/*.json`.
 - **03 · Test** — der Wissens-Test (Login → Projection/Sound → Quiz → Ergebnis).
 
 ### Bilder in den Guides

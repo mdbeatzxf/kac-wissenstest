@@ -497,6 +497,27 @@
       }
     },
     {
+      "id": "routing",
+      "file": "guides/routing.json",
+      "area": "production",
+      "bereiche": [
+        "sound"
+      ],
+      "updated": "Oktober 2026",
+      "title": {
+        "de": "Routing — Vertiefung",
+        "en": "Routing — Deep Dive"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team · Fortgeschritten",
+        "en": "For the Sound team · advanced"
+      },
+      "intro": {
+        "de": "Wie Signale im Digitalpult wirklich laufen: Input- und Output-Patch, digitale Stageboxen, AES50 A/B am X32/M32, SLink am SQ, User In / User Out, Recording über USB und Dante, Virtual Soundcheck — und die wichtigsten Do's and Don'ts.",
+        "en": "How signals really flow in a digital console: input and output patch, digital stageboxes, AES50 A/B on the X32/M32, SLink on the SQ, User In / User Out, recording via USB and Dante, virtual soundcheck — and the key do's and don'ts."
+      }
+    },
+    {
       "id": "lautstaerke-saal",
       "file": "guides/lautstaerke-saal.json",
       "area": "production",

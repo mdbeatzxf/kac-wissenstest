@@ -582,12 +582,159 @@ def ls_zeit():
     return s
 
 
+# ---------------------------------------------------------------- Routing
+def ro_ueberblick():
+    s = SVG(1500, 580)
+    s.text(750, 44, L("Routing: Buchsen und Kanäle sind getrennt — der Patch verbindet sie",
+                      "Routing: sockets and channels are separate — the patch connects them"), 26)
+    s.text(145, 92, L("BUCHSEN (physisch)", "SOCKETS (physical)"), 16, True, GREY)
+    s.text(730, 92, L("IM PULT (digital)", "INSIDE THE CONSOLE (digital)"), 16, True, GREY)
+    s.text(1335, 92, L("BUCHSEN (physisch)", "SOCKETS (physical)"), 16, True, GREY)
+    s.rect(300, 102, 860, 380, fill="#e9e7df", stroke="#d0cec4", sw=1.5, rx=16, dash="8,6")
+    ins = [L("Local In (Pult)", "Local in (console)"), L("Stagebox", "Stagebox"), L("USB / Karte", "USB / card"), "Dante"]
+    subs_in = [L("XLR / Klinke hinten", "XLR / jack on the back"), "AES50 · SLink", L("Wiedergabe", "playback"), L("Netzwerk", "network")]
+    outs = [L("Local Out (Pult)", "Local out (console)"), L("Stagebox Out", "Stagebox out"), L("USB / Karte", "USB / card"), "Dante"]
+    subs_out = ["PA · Wedges", L("Bühnen-Ausgänge", "stage outputs"), L("Aufnahme", "recording"), L("Recording · Stream", "recording · stream")]
+    for i in range(4):
+        y = 115 + i * 92
+        s.box(30, y, 230, 72, ins[i], subs_in[i], tsize=21, ssize=15, scol=GREY)
+        s.line(262, y + 36, 316, y + 36)
+        s.box(1240, y, 230, 72, outs[i], subs_out[i], tsize=21, ssize=15, scol=GREY)
+        s.line(1184, y + 36, 1236, y + 36)
+    s.box(320, 115, 160, 348, "Input-\nPatch", L("Buchse\n→ Kanal", "socket\n→ channel"), stroke=RED, sw=3, tsize=22, ssize=16)
+    s.box(540, 115, 170, 348, L("Kanäle", "Channels"), "Gain · EQ\nComp\nFader", tsize=22, ssize=16, scol=GREY)
+    s.box(770, 115, 170, 348, L("Busse", "Buses"), "Main LR\nAux · Matrix\nFX", fill=INK, tcol=BG, scol="#c9c7bd", tsize=22, ssize=16)
+    s.box(1000, 115, 180, 348, "Output-\nPatch", L("Bus / Signal\n→ Buchse", "bus / signal\n→ socket"), stroke=RED, sw=3, tsize=22, ssize=16)
+    s.line(482, 289, 536, 289); s.line(712, 289, 766, 289); s.line(942, 289, 996, 289)
+    s.text(750, 530, L("Ein Mikro steckt in einer Buchse. Auf welchem Kanal es landet und wohin der Mix geht, entscheidet allein der Patch.",
+                       "A mic is plugged into a socket. Which channel it lands on and where the mix goes is decided by the patch alone."), 19, False, GREY)
+    return s
+
+
+def console_star(s, title, sub, left, right, notes, below=None):
+    s.rect(30, 70, 520, 470, fill="#e9e7df", stroke="#d0cec4", sw=1.5, rx=16, dash="8,6")
+    s.text(290, 100, L("BÜHNE", "STAGE"), 17, True, GREY)
+    s.text(1210, 100, L("AUFNAHME · NETZWERK · EXTRAS", "RECORDING · NETWORK · EXTRAS"), 17, True, GREY)
+    s.box(610, 230, 300, 150, title, sub, fill=INK, tcol=BG, scol="#c9c7bd", tsize=26, ssize=17)
+    for i, (t, sb, lab) in enumerate(left):
+        y = 130 + i * 210 if len(left) > 1 else 240
+        s.box(60, y, 300, 130, t, sb, tsize=23, ssize=16, scol=GREY)
+        yc = y + 65; yt = (270 + i * 70) if len(left) > 1 else yc
+        s.path(f"M 606 {yt} L 470 {yt} L 470 {yc} L 362 {yc}", col=RED, sw=3.5, arrow=False)
+        s.text(488, yt - 12 if i == 0 else yt + 28, lab + "  ⇄", 19, True, RED, anchor="start")
+    if below:
+        s.box(610, 430, 300, 90, below[0], below[1], tsize=20, ssize=15, scol=GREY)
+        s.line(760, 382, 760, 426, col=GREY, sw=3, arrow=False)
+    for i, (t, sb, lab) in enumerate(right):
+        n = len(right); y = 120 + i * (420 / n)
+        h = 420 / n - 22
+        s.box(1130, y, 340, h, t, sb, tsize=21, ssize=15, scol=GREY)
+        yc = y + h / 2; yt = 255 + i * (100 / max(n - 1, 1))
+        s.path(f"M 912 {yt} L 1010 {yt} L 1010 {yc} L 1126 {yc}", col=GREY, sw=3)
+        s.text(1022, yc - 10, lab, 16, True, INK, anchor="start")
+    for i, n in enumerate(notes):
+        s.text(750, 590 + i * 30, n, 18, i == 0, INK if i == 0 else GREY)
+
+
+def ro_aes50():
+    s = SVG(1500, 670)
+    s.text(750, 44, L("Behringer X32 / Midas M32: AES50 A und B", "Behringer X32 / Midas M32: AES50 A and B"), 27)
+    console_star(s, "X32 / M32", "FOH",
+        [(L("Midas DL32", "Midas DL32"), L("Stagebox · 32 In / 16 Out\nPreamps + 48 V hier", "stagebox · 32 in / 16 out\npreamps + 48 V here"), "AES50 A"),
+         (L("2. Stagebox oder\nMonitorpult", "2nd stagebox or\nmonitor console"), L("z. B. DL16 · 2. X32/M32", "e.g. DL16 · 2nd X32/M32"), "AES50 B")],
+        [(L("Karte: X-USB", "Card: X-USB"), L("32×32 · Recording-PC", "32×32 · recording PC"), "Card"),
+         (L("Karte: X-Dante / X-Live", "Card: X-Dante / X-Live"), L("Netzwerk · SD-Aufnahme", "network · SD recording"), "Card"),
+         ("Ultranet", L("P16 In-Ear-Mixer", "P16 in-ear mixers"), "Ultranet")],
+        [L("AES50 = Punkt-zu-Punkt: geschirmtes Cat5e (SF/UTP), max. ca. 100 m, kein Switch dazwischen.",
+           "AES50 = point-to-point: shielded Cat5e (SF/UTP), max. approx. 100 m, no switch in between."),
+         L("Pro Port bis zu 48 Kanäle hin und 48 zurück · Nur eine Karte gleichzeitig steckbar.",
+           "Up to 48 channels each way per port · only one card can be fitted at a time.")])
+    return s
+
+
+def ro_sq():
+    s = SVG(1500, 670)
+    s.text(750, 44, L("Allen & Heath SQ: SLink, I/O-Port und USB", "Allen & Heath SQ: SLink, I/O port and USB"), 27)
+    console_star(s, "SQ-5", "FOH",
+        [(L("DX168 / GX4816", "DX168 / GX4816"), L("Stagebox · 16/8 bzw. 48/16\nPreamps + 48 V hier", "stagebox · 16/8 or 48/16\npreamps + 48 V here"), "SLink")],
+        [(L("I/O-Port: Dante-Karte", "I/O port: Dante card"), L("64×64 · Netzwerk", "64×64 · network"), "I/O"),
+         (L("USB-B (hinten)", "USB-B (rear)"), L("32×32 Multitrack · Computer", "32×32 multitrack · computer"), "USB-B"),
+         (L("USB-A (vorne)", "USB-A (front)"), L("Stick / SSD · Stereo + SQ-Drive", "stick / SSD · stereo + SQ-Drive"), "USB-A")],
+        [L("SLink: ein Port für A&H-Stageboxen (DX, dSnake) oder ein zweites A&H-Pult (gigaACE).",
+           "SLink: one port for A&H stageboxes (DX, dSnake) or a second A&H console (gigaACE)."),
+         L("Kein AES50: Die Midas DL32 passt nicht ans SQ — und DX-Boxen nicht ans X32/M32.",
+           "No AES50: the Midas DL32 doesn't work with the SQ — and DX boxes don't work with the X32/M32.")],
+        below=(L("Lokale I/O", "Local I/O"), L("XLR-Ein-/Ausgänge hinten am Pult", "XLR ins/outs on the back")))
+    return s
+
+
+def ro_userin():
+    s = SVG(1500, 640)
+    s.line(750, 70, 750, 600, col="#d0cec4", sw=2, arrow=False)
+    s.text(375, 50, L("Block-Routing (Standard)", "Block routing (default)"), 26, True, INK)
+    s.text(1125, 50, L("User In (frei, Kanal für Kanal)", "User In (free, channel by channel)"), 26, True, RED)
+    rows = [("AES50 A 1–8", L("Kanäle 1–8", "Channels 1–8")), ("AES50 A 9–16", L("Kanäle 9–16", "Channels 9–16")),
+            ("Local 1–8", L("Kanäle 17–24", "Channels 17–24")), ("Card 1–8", L("Kanäle 25–32", "Channels 25–32"))]
+    for i, (a, b) in enumerate(rows):
+        y = 100 + i * 100
+        s.box(50, y, 260, 70, a, tsize=22)
+        s.line(312, y + 35, 436, y + 35)
+        s.box(440, y, 260, 70, b, tsize=22, fill=INK, tcol=BG)
+    s.text(375, 535, L("Immer 8 Eingänge am Stück — schnell, aber starr.", "Always 8 inputs in one go — fast, but rigid."), 19, True, INK)
+    s.text(375, 565, L("Die Reihenfolge der Buchsen bestimmt die Reihenfolge der Kanäle.", "The order of the sockets sets the order of the channels."), 19, False, GREY)
+    slots = [("Local 3", "1", "Kick"), ("AES50 A 17", "2", "Snare"), ("AES50 B 5", "3", "Bass DI"),
+             ("Card 12", "4", "Playback L"), ("AES50 A 1", "5", "Lead Vox")]
+    s.text(905, 100, L("Quelle", "Source"), 16, True, GREY); s.text(1100, 100, "User In", 16, True, GREY)
+    s.text(1300, 100, L("→ Kanal", "→ channel"), 16, True, GREY)
+    for i, (src, slot, name) in enumerate(slots):
+        y = 115 + i * 66
+        s.box(800, y, 210, 50, src, tsize=19)
+        s.line(1012, y + 25, 1046, y + 25, sw=2.5)
+        s.box(1050, y, 100, 50, slot, tsize=19, stroke=RED, sw=2.5)
+        s.line(1152, y + 25, 1196, y + 25, sw=2.5)
+        s.box(1200, y, 250, 50, f"{L('Kanal', 'Ch')} {slot} · {name}", tsize=18, fill=INK, tcol=BG)
+    s.text(1125, 480, L("Jeder Slot holt sich eine beliebige Buchse.", "Each slot takes any socket you like."), 19, True, INK)
+    s.text(1125, 510, L("Dann: Kanäle 1–8 ← User In 1–8 (als Block).", "Then: channels 1–8 ← User In 1–8 (as a block)."), 19, False, GREY)
+    s.text(1125, 565, L("User Out = dasselbe für Ausgänge: Slot für Slot", "User Out = the same for outputs: slot by slot"), 19, True, RED)
+    s.text(1125, 592, L("ein Signal wählen, dann als Block auf Karte / AES50.", "pick a signal, then route as a block to card / AES50."), 19, False, GREY)
+    return s
+
+
+def ro_recording():
+    s = SVG(1500, 640)
+    s.text(750, 44, L("Recording: wo abgegriffen wird, entscheidet, was du aufnimmst", "Recording: the tap point decides what you record"), 26)
+    y, h = 120, 100
+    s.box(30, y, 230, h, L("Eingang", "Input"), L("Preamp + Gain", "preamp + gain"), tsize=23, ssize=16, scol=GREY)
+    s.box(360, y, 250, h, "Gate · Comp · EQ", tsize=22)
+    s.box(700, y, 160, h, "Fader", tsize=23)
+    s.box(990, y, 200, h, "Main LR", fill=INK, tcol=BG, tsize=24)
+    s.box(1290, y, 180, h, "PA", tsize=24)
+    cy = y + h / 2
+    s.line(262, cy, 356, cy); s.line(612, cy, 696, cy); s.line(862, cy, 986, cy); s.line(1192, cy, 1286, cy)
+    taps = [(305, RED, L("Multitrack pro Kanal", "Multitrack per channel"), L("post-Gain, „trocken“\nUSB · Karte · Dante", "post-gain, “dry”\nUSB · card · Dante"), 170),
+            (925, INK, L("Stream-Mix", "Stream mix"), L("eigener Bus / Matrix\n(post-Fader)", "own bus / matrix\n(post-fader)"), 760),
+            (1240, INK, L("Stereo-Mitschnitt", "Stereo recording"), L("Main LR → USB-Stick\n= genau der Saal-Mix", "main LR → USB stick\n= exactly the room mix"), 1170)]
+    for x, col, t, sb, bx in taps:
+        s.circle(x, cy, 10, fill=col, stroke=col)
+        s.path(f"M {x} {cy + 11} L {x} 316", col=col, sw=3)
+        s.box(bx - 110 if x != 305 else 170, 320, 280, 120, t, sb, tsize=21, ssize=16, scol=GREY, stroke=col, sw=3 if col == RED else 2)
+    # virtual soundcheck loop
+    s.path("M 310 442 L 310 520 L 100 520 L 100 226", col=RED, sw=3, dash="9,7")
+    s.text(330, 512, L("Virtual Soundcheck: Aufnahme abspielen und als Kanal-Quelle wählen —",
+                       "Virtual soundcheck: play the recording back and pick it as the channel source —"), 18, True, RED, anchor="start")
+    s.text(330, 540, L("Gain, EQ und Mix ohne Band einstellen.", "set gain, EQ and mix without the band."), 18, False, RED, anchor="start")
+    s.text(750, 605, L("Der Saal-Mix klingt im Stream oft falsch (Bühne und Raum fehlen) — darum ein eigener Stream-Mix.",
+                       "The room mix often sounds wrong on a stream (stage and room are missing) — hence a separate stream mix."), 18, False, GREY)
+    return s
+
+
 FIGS = {
     "gs_welle": gs_welle, "gs_kette": gs_kette, "gs_fader": gs_fader, "gs_prepost": gs_prepost, "gs_meter": gs_meter, "gs_fehler": gs_fehler,
     "dca_monitor": dca_monitor, "dca_doppelt": dca_doppelt, "dca_hall": dca_hall,
     "kt_flow": kt_flow, "kt_kette": kt_kette,
     "sc_ablauf": sc_ablauf, "sc_reihenfolge": sc_reihenfolge,
     "ls_skala": ls_skala, "ls_zeit": ls_zeit,
+    "ro_ueberblick": ro_ueberblick, "ro_aes50": ro_aes50, "ro_sq": ro_sq, "ro_userin": ro_userin, "ro_recording": ro_recording,
 }
 
 for name, fn in FIGS.items():
