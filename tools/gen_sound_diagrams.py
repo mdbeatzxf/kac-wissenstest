@@ -233,6 +233,84 @@ def vmeter(s, x, top, bot, peak_db, clip=False, w=70):
         s.line(x - 8, y(d), x, y(d), col=INK, sw=2, arrow=False)
 
 
+def wave_pts(x0, w, cy, amp, clip=None, noise=0.0, seed=1, n=420):
+    """Polyline points for a speech/music-like waveform (fixed shape, scaled by amp)."""
+    import math, random
+    rnd = random.Random(seed)
+    pts, clipped = [], []
+    for i in range(n + 1):
+        t = i / n
+        env = 0.35 + 0.65 * abs(math.sin(math.pi * (t * 1.6 + 0.1))) * (0.7 + 0.3 * math.sin(9 * t))
+        v = env * (0.62 * math.sin(2 * math.pi * 11 * t) + 0.28 * math.sin(2 * math.pi * 27 * t + 1.3)
+                   + 0.10 * math.sin(2 * math.pi * 53 * t + 0.4)) / 1.0
+        y = v * amp + (rnd.uniform(-1, 1) * noise)
+        hit = clip is not None and abs(y) > clip
+        if hit: y = clip if y > 0 else -clip
+        pts.append((x0 + t * w, cy - y)); clipped.append(hit)
+    return pts, clipped
+
+
+def draw_wave(s, pts, clipped, col=INK, ccol=RED, sw=2.4):
+    s.path("M " + " L ".join(f"{x:.1f} {y:.1f}" for x, y in pts), col=col, sw=sw, arrow=False)
+    seg = []
+    for (x, y), c in zip(pts, clipped):
+        if c: seg.append((x, y))
+        elif seg:
+            if len(seg) > 1: s.path("M " + " L ".join(f"{a:.1f} {b:.1f}" for a, b in seg), col=ccol, sw=6, arrow=False)
+            seg = []
+    if len(seg) > 1: s.path("M " + " L ".join(f"{a:.1f} {b:.1f}" for a, b in seg), col=ccol, sw=6, arrow=False)
+
+
+def gs_welle():
+    s = SVG(1500, 780)
+    s.text(750, 44, L("Was Gain mit der Wellenform macht", "What gain does to the waveform"), 27)
+    # --- top: Gain = zoom, same shape bigger
+    cy = 175
+    p, c = wave_pts(60, 360, cy, 26, seed=3)
+    s.rect(40, 95, 400, 160, fill=WHITE, stroke=GREY, sw=1.5, rx=10)
+    draw_wave(s, p, c)
+    s.text(240, 285, L("Mikrofon: schwaches Signal", "Mic: weak signal"), 20, True, INK)
+    s.line(452, cy, 586, cy)
+    s.circle(650, cy, 60, fill=INK, stroke=INK)
+    s.line(650, cy, 650 + 42 * 0.64, cy - 42 * 0.77, col=BG, sw=5, arrow=False)
+    s.text(650, cy + 92, "GAIN", 22, True, INK)
+    s.line(714, cy, 848, cy)
+    s.rect(860, 95, 600, 160, fill=WHITE, stroke=GREY, sw=1.5, rx=10)
+    p, c = wave_pts(880, 560, cy, 60, seed=3)
+    draw_wave(s, p, c)
+    s.text(1160, 285, L("gleiche Form — nur größer", "same shape — just bigger"), 20, True, INK)
+    s.text(750, 345, L("Gain verändert nicht den Klang, sondern nur die Größe der Welle — bevor irgendetwas anderes im Pult passiert.",
+                       "Gain doesn't change the sound, only the size of the wave — before anything else happens in the console."), 19, False, GREY)
+    # --- bottom: three cases
+    panels = [
+        (40, 20, None, L("Zu wenig Gain", "Too little gain"), INK,
+         L("Welle kaum größer als das Rauschen", "wave barely bigger than the noise"), L("→ später hochdrehen = Rauschen mit", "→ boosting later = noise comes along")),
+        (520, 64, None, L("Richtig", "Just right"), GREEN,
+         L("groß und sauber, mit Platz nach oben", "big and clean, with room above"), L("→ Headroom bis 0 dBFS", "→ headroom up to 0 dBFS")),
+        (1000, 330, 88, L("Zu viel Gain", "Too much gain"), RED,
+         L("Spitzen werden abgeschnitten (Clipping)", "peaks get chopped off (clipping)"), L("→ verzerrt, nicht reparierbar", "→ distorted, can't be repaired")),
+    ]
+    top, h = 420, 220
+    for x, amp, clip, title, col, d1, d2 in panels:
+        w = 460
+        mid = top + h / 2
+        s.text(x + w / 2, top - 18, title, 24, True, col)
+        s.rect(x, top, w, h, fill=WHITE, stroke=GREY, sw=1.5, rx=10)
+        # ceiling lines = 0 dBFS
+        for yy in (mid - 88, mid + 88):
+            s.line(x + 8, yy, x + w - 8, yy, col=RED, sw=1.6, arrow=False, dash="7,6")
+        s.text(x + w - 12, mid - 94, "0 dBFS", 14, True, RED, anchor="end")
+        # noise floor band
+        s.rect(x + 8, mid - 9, w - 16, 18, fill="#e4e2da", stroke="#e4e2da", sw=0, rx=3)
+        p, c = wave_pts(x + 14, w - 28, mid, amp, clip=clip, noise=5, seed=7)
+        draw_wave(s, p, c, sw=2)
+        s.text(x + w / 2, top + h + 34, d1, 18, True, INK)
+        s.text(x + w / 2, top + h + 60, d2, 18, False, GREY)
+    s.text(750, 765, L("Grauer Streifen = Grundrauschen · rote Linien = 0 dBFS, die Decke des Pults",
+                       "Grey band = noise floor · red lines = 0 dBFS, the console's ceiling"), 18, False, GREY)
+    return s
+
+
 def gs_fehler():
     s = SVG(1500, 600)
     cols = [
@@ -505,7 +583,7 @@ def ls_zeit():
 
 
 FIGS = {
-    "gs_kette": gs_kette, "gs_fader": gs_fader, "gs_prepost": gs_prepost, "gs_meter": gs_meter, "gs_fehler": gs_fehler,
+    "gs_welle": gs_welle, "gs_kette": gs_kette, "gs_fader": gs_fader, "gs_prepost": gs_prepost, "gs_meter": gs_meter, "gs_fehler": gs_fehler,
     "dca_monitor": dca_monitor, "dca_doppelt": dca_doppelt, "dca_hall": dca_hall,
     "kt_flow": kt_flow, "kt_kette": kt_kette,
     "sc_ablauf": sc_ablauf, "sc_reihenfolge": sc_reihenfolge,

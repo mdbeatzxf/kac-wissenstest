@@ -12,6 +12,17 @@
       },
       "blocks": [
         {
+          "type": "figure",
+          "aspect": "1500 / 780",
+          "caption": {
+            "de": "Gain macht die Welle größer — zu wenig rauscht, zu viel wird abgeschnitten",
+            "en": "Gain makes the wave bigger — too little hisses, too much gets chopped off"
+          },
+          "image": "images/KAC_gs_welle.svg",
+          "image_en": "images/KAC_gs_welle_EN.svg",
+          "fit": "contain"
+        },
+        {
           "type": "table",
           "head": [
             {
