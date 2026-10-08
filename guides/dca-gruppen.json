@@ -1,0 +1,496 @@
+{
+  "sections": [
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Zwei Wege, Kanäle zu bündeln",
+        "en": "Two ways to bundle channels"
+      },
+      "intro": {
+        "de": "DCAs und Gruppen fassen beide mehrere Kanäle zusammen — z. B. „alle Drums“ oder „alle Vocals“. Sie funktionieren aber völlig unterschiedlich: Ein DCA ist eine Fernbedienung, eine Gruppe ist ein echter Sammelweg für das Audio.",
+        "en": "DCAs and groups both bundle several channels — e.g. “all drums” or “all vocals”. But they work completely differently: a DCA is a remote control, a group is a real collecting path for the audio."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 540",
+          "caption": {
+            "de": "Ein DCA steuert nur Pegel/Mute — die Gruppe führt das Audio zusammen",
+            "en": "A DCA only controls level/mute — the group brings the audio together"
+          },
+          "image": "images/KAC_dca_gruppe.svg",
+          "image_en": "images/KAC_dca_gruppe_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "DCA — die Fernbedienung",
+            "en": "DCA — the remote control"
+          },
+          "text": {
+            "de": "Ein DCA-Fader bewegt die Fader der zugewiesenen Kanäle gemeinsam — wie eine Hand, die mehrere Fader gleichzeitig schiebt. Das Audio läuft dabei NICHT durch den DCA: Es bleibt in den Kanälen und geht von dort direkt zum Master.",
+            "en": "A DCA fader moves the faders of its assigned channels together — like a hand pushing several faders at once. The audio does NOT run through the DCA: it stays in the channels and goes from there straight to the master."
+          }
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Gruppe (Subgruppe) — der Sammelweg",
+            "en": "Group (subgroup) — the collecting path"
+          },
+          "text": {
+            "de": "Bei einer Gruppe fließt das Audio mehrerer Kanäle wirklich zusammen und wird zu einem Signal. Dieses Signal kannst du als Ganzes bearbeiten (EQ, Kompressor) und dann zum Master schicken.",
+            "en": "With a group, the audio of several channels really flows together and becomes one signal. You can process this signal as a whole (EQ, compressor) and then send it to the master."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "DCA = steuert nur (Pegel + Mute). Gruppe = Audio läuft zusammen und kann gemeinsam bearbeitet werden.",
+            "en": "DCA = only controls (level + mute). Group = audio flows together and can be processed together."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Vergleich: was geht, was nicht",
+        "en": "Comparison: what works, what doesn't"
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "",
+              "en": ""
+            },
+            {
+              "de": "DCA",
+              "en": "DCA"
+            },
+            {
+              "de": "Gruppe",
+              "en": "Group"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Audio fließt hindurch",
+                "en": "Audio flows through it"
+              },
+              {
+                "de": "✗ nein",
+                "en": "✗ no"
+              },
+              {
+                "de": "✓ ja",
+                "en": "✓ yes"
+              }
+            ],
+            [
+              {
+                "de": "Eigener EQ / Kompressor",
+                "en": "Own EQ / compressor"
+              },
+              {
+                "de": "✗ nein",
+                "en": "✗ no"
+              },
+              {
+                "de": "✓ ja",
+                "en": "✓ yes"
+              }
+            ],
+            [
+              {
+                "de": "Regelt die Lautstärke im Saal",
+                "en": "Controls the level in the room"
+              },
+              {
+                "de": "✓ ja",
+                "en": "✓ yes"
+              },
+              {
+                "de": "✓ ja",
+                "en": "✓ yes"
+              }
+            ],
+            [
+              {
+                "de": "Mute für alle Kanäle",
+                "en": "Mute for all channels"
+              },
+              {
+                "de": "✓ ja",
+                "en": "✓ yes"
+              },
+              {
+                "de": "✓ ja (am Gruppen-Ausgang)",
+                "en": "✓ yes (at the group output)"
+              }
+            ],
+            [
+              {
+                "de": "Wirkt auf Pre-Fader-Monitore",
+                "en": "Affects pre-fader monitors"
+              },
+              {
+                "de": "✗ Fader nein · Mute meist ja",
+                "en": "✗ fader no · mute usually yes"
+              },
+              {
+                "de": "✗ nein",
+                "en": "✗ no"
+              }
+            ],
+            [
+              {
+                "de": "Wirkt auf Post-Fader-Sends (Hall)",
+                "en": "Affects post-fader sends (reverb)"
+              },
+              {
+                "de": "✓ ja — Hall geht mit",
+                "en": "✓ yes — reverb follows"
+              },
+              {
+                "de": "✗ nein — Hall bleibt!",
+                "en": "✗ no — reverb stays!"
+              }
+            ],
+            [
+              {
+                "de": "Braucht einen Mix-Bus",
+                "en": "Needs a mix bus"
+              },
+              {
+                "de": "✗ nein",
+                "en": "✗ no"
+              },
+              {
+                "de": "✓ ja (einer weniger für Monitore)",
+                "en": "✓ yes (one fewer for monitors)"
+              }
+            ],
+            [
+              {
+                "de": "Kanal-Fader bewegen sich sichtbar",
+                "en": "Channel faders visibly move"
+              },
+              {
+                "de": "✗ nein — die Kanal-Fader bleiben stehen",
+                "en": "✗ no — the channel faders stay put"
+              },
+              {
+                "de": "✗ nein",
+                "en": "✗ no"
+              }
+            ],
+            [
+              {
+                "de": "Stereo",
+                "en": "Stereo"
+              },
+              {
+                "de": "egal",
+                "en": "doesn't matter"
+              },
+              {
+                "de": "muss Stereo sein, sonst geht das Panorama verloren",
+                "en": "must be stereo, otherwise the panning is lost"
+              }
+            ],
+            [
+              {
+                "de": "Typisch für",
+                "en": "Typical for"
+              },
+              {
+                "de": "schnelles Bedienen im Gottesdienst",
+                "en": "quick operation during the service"
+              },
+              {
+                "de": "gemeinsamer Klang (Drum-Bus, Backing Vocals), Stream-Mix",
+                "en": "shared tone (drum bus, backing vocals), stream mix"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Faustregel: Willst du nur bedienen → DCA. Willst du gemeinsam bearbeiten → Gruppe.",
+            "en": "Rule of thumb: just want to operate → DCA. Want to process together → group."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "DCA und die Monitore",
+        "en": "DCAs and the monitors"
+      },
+      "intro": {
+        "de": "Ein DCA bewegt die Kanal-Fader — nur unsichtbar. Monitor- und In-Ear-Mixe sind aber Pre-Fader, also VOR dem Kanal-Fader abgezweigt. Darum hören die Musiker vom DCA-Fader nichts.",
+        "en": "A DCA moves the channel faders — just invisibly. But monitor and in-ear mixes are pre-fader, i.e. tapped off BEFORE the channel fader. That's why the musicians don't hear anything of the DCA fader."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 620",
+          "caption": {
+            "de": "DCA-Fader: Saal ja, In-Ear nein — DCA-Mute: meist beides",
+            "en": "DCA fader: room yes, in-ear no — DCA mute: usually both"
+          },
+          "image": "images/KAC_dca_monitor.svg",
+          "image_en": "images/KAC_dca_monitor_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "DCA „Band“ runterziehen → der Saal wird leiser, die Band hört sich im In-Ear unverändert.",
+              "en": "Pull the “band” DCA down → the room gets quieter, the band hears itself unchanged in the in-ear."
+            },
+            {
+              "de": "DCA „Band“ muten → die Kanäle sind gemutet. Auf den meisten Pulten hört die Band sich dann auch im In-Ear nicht mehr!",
+              "en": "Mute the “band” DCA → the channels are muted. On most consoles the band then can't hear itself in the in-ear either!"
+            },
+            {
+              "de": "Darum: Während der Predigt die Band lieber per DCA-Fader runterziehen als per DCA-Mute — wenn die Musiker leise weiterspielen und sich hören sollen.",
+              "en": "So: during the sermon, pull the band down with the DCA fader rather than the DCA mute — if the musicians keep playing quietly and need to hear themselves."
+            },
+            {
+              "de": "Wie sich Mute genau verhält, ist je nach Pult etwas anders — einmal am eigenen Pult ausprobieren.",
+              "en": "Exactly how mute behaves differs slightly by console — try it once on your own console."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "DCA-Fader = nur der Saal. DCA-Mute = meist auch die Bühne.",
+            "en": "DCA fader = only the room. DCA mute = usually the stage too."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Zwei Fallen bei Gruppen",
+        "en": "Two pitfalls with groups"
+      },
+      "intro": {
+        "de": "Gruppen sind mächtig — aber zwei Fehler passieren immer wieder.",
+        "en": "Groups are powerful — but two mistakes happen again and again."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": {
+            "de": "Falle 1: doppelt geroutet",
+            "en": "Pitfall 1: routed twice"
+          },
+          "text": {
+            "de": "Ein Kanal geht auf die Gruppe UND zusätzlich direkt auf den Master. Dann kommt sein Signal zweimal im Master an: Es ist lauter als gedacht, der Klang verfärbt sich, und der Gruppen-Fader regelt den Kanal nicht mehr richtig.",
+            "en": "A channel goes to the group AND also directly to the master. Then its signal arrives at the master twice: it's louder than expected, the tone gets coloured, and the group fader no longer controls the channel properly."
+          }
+        },
+        {
+          "type": "figure",
+          "aspect": "1500 / 520",
+          "caption": {
+            "de": "Kanäle in einer Gruppe nicht zusätzlich direkt auf den Master routen",
+            "en": "Don't also route channels in a group directly to the master"
+          },
+          "image": "images/KAC_dca_doppelt.svg",
+          "image_en": "images/KAC_dca_doppelt_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Falle 2: Der Hall bleibt übrig",
+            "en": "Pitfall 2: the reverb is left behind"
+          },
+          "text": {
+            "de": "Der Hall-Send ist Post-Fader — er hängt am Kanal-Fader, nicht am Gruppen-Fader. Ziehst du die Gruppe runter, verschwindet das trockene Signal, aber der Hall ist noch zu hören. Beim DCA passiert das nicht, weil er den Kanal-Fader selbst bewegt.",
+            "en": "The reverb send is post-fader — it hangs off the channel fader, not the group fader. Pull the group down and the dry signal disappears, but the reverb is still audible. That doesn't happen with a DCA, because it moves the channel fader itself."
+          }
+        },
+        {
+          "type": "figure",
+          "aspect": "1500 / 560",
+          "caption": {
+            "de": "Gruppe runter: Hall bleibt · DCA runter: alles wird leiser",
+            "en": "Group down: reverb stays · DCA down: everything gets quieter"
+          },
+          "image": "images/KAC_dca_hall.svg",
+          "image_en": "images/KAC_dca_hall_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Zum Leiser- und Lauter-Machen ganzer Bereiche im Gottesdienst ist der DCA fast immer die bessere Wahl.",
+            "en": "For turning whole sections up and down during the service, the DCA is almost always the better choice."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "So nutzen wir DCAs (Vorschlag)",
+        "en": "How we use DCAs (suggestion)"
+      },
+      "intro": {
+        "de": "Feste DCAs machen das Mischen im Gottesdienst ruhig und schnell: Mit wenigen Fadern hast du den ganzen Mix in der Hand. Ein Vorschlag — an die Location und das Pult anpassen:",
+        "en": "Fixed DCAs make mixing during the service calm and quick: with just a few faders you have the whole mix in your hands. A suggestion — adapt it to the location and the console:"
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "DCA",
+              "en": "DCA"
+            },
+            {
+              "de": "Name",
+              "en": "Name"
+            },
+            {
+              "de": "Kanäle",
+              "en": "Channels"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "1",
+                "en": "1"
+              },
+              {
+                "de": "Drums",
+                "en": "Drums"
+              },
+              {
+                "de": "Kick, Snare, Toms, Overheads (oder E-Drums L/R)",
+                "en": "kick, snare, toms, overheads (or e-drums L/R)"
+              }
+            ],
+            [
+              {
+                "de": "2",
+                "en": "2"
+              },
+              {
+                "de": "Band",
+                "en": "Band"
+              },
+              {
+                "de": "Bass, Keys, Gitarren",
+                "en": "bass, keys, guitars"
+              }
+            ],
+            [
+              {
+                "de": "3",
+                "en": "3"
+              },
+              {
+                "de": "Vocals",
+                "en": "Vocals"
+              },
+              {
+                "de": "Lead + Backing Vocals",
+                "en": "lead + backing vocals"
+              }
+            ],
+            [
+              {
+                "de": "4",
+                "en": "4"
+              },
+              {
+                "de": "Sprache",
+                "en": "Speech"
+              },
+              {
+                "de": "Predigt, Moderation, Funkmikros",
+                "en": "sermon, hosting, wireless mics"
+              }
+            ],
+            [
+              {
+                "de": "5",
+                "en": "5"
+              },
+              {
+                "de": "Playback / Musik",
+                "en": "Playback / music"
+              },
+              {
+                "de": "Laptop, Bluetooth, Pre-Service-Musik",
+                "en": "laptop, Bluetooth, pre-service music"
+              }
+            ],
+            [
+              {
+                "de": "6",
+                "en": "6"
+              },
+              {
+                "de": "FX",
+                "en": "FX"
+              },
+              {
+                "de": "Hall- / Effekt-Returns",
+                "en": "reverb / effect returns"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "Behringer X-Air hat nur 4 DCAs → zusammenfassen, z. B. Drums+Band, Vocals, Sprache, Playback.",
+              "en": "Behringer X-Air has only 4 DCAs → combine, e.g. drums+band, vocals, speech, playback."
+            },
+            {
+              "de": "Allen & Heath SQ hat 8 DCAs — dort ist die volle Aufteilung möglich.",
+              "en": "Allen & Heath SQ has 8 DCAs — the full split is possible there."
+            },
+            {
+              "de": "Ein Kanal kann in mehreren DCAs sein (z. B. Lead-Vocal in „Vocals“ und in einem DCA „Alles Musik“).",
+              "en": "A channel can be in several DCAs (e.g. lead vocal in “vocals” and in an “all music” DCA)."
+            },
+            {
+              "de": "DCAs gut sichtbar beschriften und in der Szene speichern.",
+              "en": "Label DCAs clearly and save them in the scene."
+            },
+            {
+              "de": "Mute-Gruppen sind etwas anderes: Sie schalten nur stumm (z. B. „alle Band-Mikros aus“ während der Predigt) — ohne Fader.",
+              "en": "Mute groups are something else: they only mute (e.g. “all band mics off” during the sermon) — no fader."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Gain im Soundcheck · Kanal-Fader für die Feinarbeit · DCAs für den Gottesdienst.",
+            "en": "Gain in the soundcheck · channel faders for the fine work · DCAs for the service."
+          }
+        }
+      ]
+    }
+  ]
+}

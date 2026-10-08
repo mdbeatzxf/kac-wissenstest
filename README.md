@@ -33,7 +33,8 @@ Nach dem Öffnen erscheint ein Menü mit drei Einträgen:
   erscheint, steuert `CONFIG.CHECKLIST_GUIDE` in `app.js`.
 - **02 · Lernen** — frei zugänglicher Lernbereich (**kein Login nötig**): Guides zu
   Rollen & Ablauf, Signalen/Kabeln, Patchlist, Mischpult, PA/Monitoren, Mixing
-  Station und Projection-Equipment. Inhalte stehen in `learn.json` + `guides/*.json`.
+  Station, Soundcheck-Ablauf, Fehlersuche („Kein Ton — was tun?“), Gain-Staging &
+  Pegel, DCAs & Gruppen, Lautstärke im Saal und Projection-Equipment. Inhalte stehen in `learn.json` + `guides/*.json`.
 - **03 · Test** — der Wissens-Test (Login → Projection/Sound → Quiz → Ergebnis).
 
 ### Bilder in den Guides

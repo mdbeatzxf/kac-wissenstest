@@ -1,0 +1,324 @@
+{
+  "sections": [
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Wie laut ist laut?",
+        "en": "How loud is loud?"
+      },
+      "intro": {
+        "de": "Lautstärke messen wir in Dezibel (dB). Die Skala ist nicht linear: Schon wenige dB machen einen großen Unterschied — für den Eindruck und für die Ohren.",
+        "en": "We measure loudness in decibels (dB). The scale isn't linear: just a few dB make a big difference — to the impression and to the ears."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 580",
+          "caption": {
+            "de": "Schallpegel in dB(A) mit unseren Richtwerten",
+            "en": "Sound level in dB(A) with our guide values"
+          },
+          "image": "images/KAC_ls_skala.svg",
+          "image_en": "images/KAC_ls_skala_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "+3 dB = doppelte Schallenergie — hört man kaum, belastet die Ohren aber doppelt.",
+              "en": "+3 dB = double the sound energy — barely audible, but twice the strain on the ears."
+            },
+            {
+              "de": "+6 dB = deutlich lauter.",
+              "en": "+6 dB = clearly louder."
+            },
+            {
+              "de": "+10 dB ≈ wird als doppelt so laut empfunden.",
+              "en": "+10 dB ≈ perceived as twice as loud."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Wenige dB machen viel aus: 95 statt 92 dB(A) ist für die Ohren schon die doppelte Belastung.",
+            "en": "A few dB matter a lot: 95 instead of 92 dB(A) is already double the strain on the ears."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Unsere Richtwerte (Vorschlag)",
+        "en": "Our guide values (suggestion)"
+      },
+      "intro": {
+        "de": "Ein Vorschlag als Startpunkt — gemessen am FOH-Platz, als Durchschnitt über einen Song bzw. einige Minuten (LAeq). Die endgültigen Werte legt die Leitung fest.",
+        "en": "A suggestion as a starting point — measured at the FOH position, as an average over a song or a few minutes (LAeq). Leadership sets the final values."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Teil des Gottesdienstes",
+              "en": "Part of the service"
+            },
+            {
+              "de": "Richtwert dB(A)",
+              "en": "Guide value dB(A)"
+            },
+            {
+              "de": "Hinweis",
+              "en": "Note"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Musik vor dem Gottesdienst",
+                "en": "Pre-service music"
+              },
+              {
+                "de": "65–75",
+                "en": "65–75"
+              },
+              {
+                "de": "Gespräche müssen gut möglich sein",
+                "en": "people must be able to talk comfortably"
+              }
+            ],
+            [
+              {
+                "de": "Predigt / Moderation",
+                "en": "Sermon / hosting"
+              },
+              {
+                "de": "70–80",
+                "en": "70–80"
+              },
+              {
+                "de": "verständlich vor laut",
+                "en": "intelligible before loud"
+              }
+            ],
+            [
+              {
+                "de": "Lobpreis ruhig",
+                "en": "Worship, quiet"
+              },
+              {
+                "de": "78–85",
+                "en": "78–85"
+              },
+              {
+                "de": "die Gemeinde hört sich selbst singen",
+                "en": "the congregation hears itself sing"
+              }
+            ],
+            [
+              {
+                "de": "Lobpreis kräftig",
+                "en": "Worship, powerful"
+              },
+              {
+                "de": "85–92",
+                "en": "85–92"
+              },
+              {
+                "de": "kurze Spitzen höher ok — Durchschnitt nicht",
+                "en": "short peaks higher are OK — the average isn't"
+              }
+            ],
+            [
+              {
+                "de": "Obergrenze",
+                "en": "Upper limit"
+              },
+              {
+                "de": "max. ca. 95",
+                "en": "max. approx. 95"
+              },
+              {
+                "de": "darüber: runter",
+                "en": "above that: turn it down"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Zum Vergleich: Für Konzerte und Veranstaltungen gilt in Deutschland ein Grenzwert von 99 dB(A) im 30-Minuten-Mittel (DIN 15905-5). Ein Gottesdienst sollte deutlich darunter bleiben — hier sind Kinder, ältere Menschen und Leute, die einfach zuhören wollen.",
+            "en": "For comparison: in Germany concerts and events have a limit of 99 dB(A) averaged over 30 minutes (DIN 15905-5). A service should stay well below that — there are children, older people and people who simply want to listen."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Ziel: Die Gemeinde soll mitsingen und sich dabei selbst hören können.",
+            "en": "Goal: the congregation should be able to sing along and hear itself doing so."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Richtig messen",
+        "en": "Measuring properly"
+      },
+      "intro": {
+        "de": "Gefühl täuscht — Ohren gewöhnen sich an Lautstärke. Deshalb messen wir.",
+        "en": "Feelings deceive — ears get used to loudness. That's why we measure."
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Schallpegelmesser oder Handy-App nutzen (z. B. „NIOSH SLM“ für iPhone oder „Decibel X“). Handy-Apps sind nicht exakt, aber gut genug, um den Trend zu sehen.",
+              "en": "Use a sound level meter or a phone app (e.g. “NIOSH SLM” for iPhone or “Decibel X”). Phone apps aren't exact, but good enough to see the trend."
+            },
+            {
+              "de": "Einstellung: A-Bewertung — dB(A) — und „Slow“ bzw. den Durchschnittswert (LAeq).",
+              "en": "Setting: A-weighting — dB(A) — and “slow” or the average value (LAeq)."
+            },
+            {
+              "de": "Am FOH-Platz messen, das Handy auf Kopfhöhe, Mikro nach vorne zur Bühne.",
+              "en": "Measure at the FOH position, phone at head height, mic facing the stage."
+            },
+            {
+              "de": "Über einen ganzen Song messen — nicht nur eine laute Stelle.",
+              "en": "Measure over a whole song — not just one loud moment."
+            },
+            {
+              "de": "Ab und zu auch vorne und hinten im Saal messen: vorne ist es oft deutlich lauter.",
+              "en": "Now and then also measure at the front and back of the room: the front is often noticeably louder."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "dB(A) und dB(C) — kurz erklärt",
+            "en": "dB(A) and dB(C) — explained briefly"
+          },
+          "items": [
+            {
+              "de": "dB(A) bewertet wie unser Ohr bei normaler Lautstärke — Bass zählt dabei wenig. Standard für Richtwerte.",
+              "en": "dB(A) weights the way our ear does at normal volume — bass counts for little. The standard for guide values."
+            },
+            {
+              "de": "dB(C) zählt den Bass voll mit. Ist dB(C) viel höher als dB(A), ist der Bass (Subs) sehr dominant.",
+              "en": "dB(C) counts the bass fully. If dB(C) is much higher than dB(A), the bass (subs) is very dominant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Wie lange ist es sicher?",
+        "en": "How long is it safe?"
+      },
+      "intro": {
+        "de": "Ob Lautstärke den Ohren schadet, hängt von Pegel UND Dauer ab. Je lauter, desto kürzer die sichere Zeit.",
+        "en": "Whether loudness damages the ears depends on level AND duration. The louder it is, the shorter the safe time."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 550",
+          "caption": {
+            "de": "Sichere Zeit pro Tag — je +3 dB halbiert sie sich",
+            "en": "Safe time per day — halves with every +3 dB"
+          },
+          "image": "images/KAC_ls_zeit.svg",
+          "image_en": "images/KAC_ls_zeit_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "Das Team ist oft am längsten da (Soundcheck + Gottesdienst) — und bekommt die meiste Belastung ab.",
+              "en": "The team is often there the longest (soundcheck + service) — and gets the most exposure."
+            },
+            {
+              "de": "Drummer und Leute direkt an den Boxen: Gehörschutz (Musiker-Ohrstöpsel) nutzen.",
+              "en": "Drummers and people right next to the speakers: use hearing protection (musician's earplugs)."
+            },
+            {
+              "de": "Kinder sind empfindlicher: vorne an den Boxen besonders aufpassen; Kinder-Gehörschutz bereithalten.",
+              "en": "Children are more sensitive: be especially careful at the front near the speakers; keep children's ear defenders ready."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Gehörschäden sind dauerhaft. Lieber etwas leiser — niemand kommt wegen der Lautstärke in den Gottesdienst.",
+            "en": "Hearing damage is permanent. Better a bit quieter — nobody comes to the service for the volume."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Worauf du beim Mischen achtest",
+        "en": "What to watch while mixing"
+      },
+      "intro": {
+        "de": "Lautstärke ist nicht nur eine Zahl — ein paar Dinge machen den Unterschied:",
+        "en": "Loudness isn't just a number — a few things make the difference:"
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "Lautstärke-Kriechen: Die Ohren gewöhnen sich, und man dreht über den Abend immer lauter. Regelmäßig messen!",
+              "en": "Volume creep: the ears adapt, and you keep turning it up over the evening. Measure regularly!"
+            },
+            {
+              "de": "Ohren-Pausen: Zwischendurch kurz rausgehen oder leise Momente bewusst leise lassen.",
+              "en": "Ear breaks: step out briefly now and then, or deliberately keep quiet moments quiet."
+            },
+            {
+              "de": "Verständlich vor laut: Ist der Gesang nicht zu verstehen, hilft meist EQ / Mix — nicht mehr Lautstärke.",
+              "en": "Intelligible before loud: if the vocals aren't clear, EQ / mix usually helps — not more volume."
+            },
+            {
+              "de": "Die Bühne ist der Boden: Laute Wedges, Gitarren-Amps und akustische Drums machen den Saal laut, bevor die PA etwas tut. In-Ears helfen.",
+              "en": "The stage sets the floor: loud wedges, guitar amps and acoustic drums make the room loud before the PA does anything. In-ears help."
+            },
+            {
+              "de": "Übergänge: Von Musik zur Predigt (und zurück) keine Sprünge — Pegel vorher anpassen.",
+              "en": "Transitions: no jumps from music to sermon (and back) — adjust levels in advance."
+            },
+            {
+              "de": "Plötzliche Spitzen (Drum-Fill, Knall) vermeiden: Ein Limiter auf dem Master ist ein Sicherheitsnetz.",
+              "en": "Avoid sudden spikes (drum fill, bang): a limiter on the master is a safety net."
+            },
+            {
+              "de": "Bass: Zu viel Sub macht müde und dröhnt — mit dB(C) im Blick behalten.",
+              "en": "Bass: too much sub is tiring and boomy — keep an eye on it with dB(C)."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Messen, nicht schätzen — und lieber 2 dB leiser als 2 dB zu laut.",
+            "en": "Measure, don't guess — and better 2 dB quieter than 2 dB too loud."
+          }
+        }
+      ]
+    }
+  ]
+}

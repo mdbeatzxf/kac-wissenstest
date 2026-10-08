@@ -1,0 +1,673 @@
+{
+  "sections": [
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Gain vs. Volume — was ist der Unterschied?",
+        "en": "Gain vs. volume — what's the difference?"
+      },
+      "intro": {
+        "de": "Beide machen etwas „lauter“ — aber an ganz verschiedenen Stellen. Gain bestimmt, wie stark das Signal ins Pult hineinkommt. Volume (Fader, Master, Regler an der Box) bestimmt, wie laut es am Ende herauskommt.",
+        "en": "Both make something “louder” — but at completely different points. Gain decides how strong the signal comes into the console. Volume (fader, master, knob on the speaker) decides how loud it comes out at the end."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "",
+              "en": ""
+            },
+            {
+              "de": "Gain (Trim)",
+              "en": "Gain (trim)"
+            },
+            {
+              "de": "Volume (Fader / Master)",
+              "en": "Volume (fader / master)"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Wo",
+                "en": "Where"
+              },
+              {
+                "de": "ganz am Anfang, am Eingang",
+                "en": "at the very start, at the input"
+              },
+              {
+                "de": "am Ende des Kanals / des Pults",
+                "en": "at the end of the channel / console"
+              }
+            ],
+            [
+              {
+                "de": "Was es regelt",
+                "en": "What it controls"
+              },
+              {
+                "de": "wie stark das Signal ins Pult kommt",
+                "en": "how strong the signal comes into the console"
+              },
+              {
+                "de": "wie laut es im Mix / im Saal ist",
+                "en": "how loud it is in the mix / room"
+              }
+            ],
+            [
+              {
+                "de": "Wirkt auf",
+                "en": "Affects"
+              },
+              {
+                "de": "alles danach: Gate, Kompressor, EQ, Monitore, Aufnahme",
+                "en": "everything after it: gate, compressor, EQ, monitors, recording"
+              },
+              {
+                "de": "nur den Pegel im Mix (und Post-Fader-Sends)",
+                "en": "only the level in the mix (and post-fader sends)"
+              }
+            ],
+            [
+              {
+                "de": "Zu wenig",
+                "en": "Too little"
+              },
+              {
+                "de": "Rauschen",
+                "en": "hiss"
+              },
+              {
+                "de": "zu leise",
+                "en": "too quiet"
+              }
+            ],
+            [
+              {
+                "de": "Zu viel",
+                "en": "Too much"
+              },
+              {
+                "de": "Verzerrung (Clipping) — nicht reparierbar",
+                "en": "distortion (clipping) — can't be repaired"
+              },
+              {
+                "de": "zu laut / Feedback",
+                "en": "too loud / feedback"
+              }
+            ],
+            [
+              {
+                "de": "Wann einstellen",
+                "en": "When to set"
+              },
+              {
+                "de": "einmal im Soundcheck",
+                "en": "once in the soundcheck"
+              },
+              {
+                "de": "laufend im Gottesdienst",
+                "en": "continuously during the service"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Ein Vergleich: Fotografieren",
+            "en": "A comparison: photography"
+          },
+          "text": {
+            "de": "Gain ist wie die Belichtung beim Fotografieren: Ist das Foto zu dunkel, rauscht es, wenn du es später aufhellst. Ist es zu hell, sind die hellen Stellen weiß und für immer weg. Der Fader ist wie die Helligkeit am Bildschirm — die kannst du jederzeit ändern, aber ein schlecht belichtetes Foto wird dadurch nicht besser.",
+            "en": "Gain is like the exposure when taking a photo: if the photo is too dark, it gets grainy when you brighten it later. If it's too bright, the highlights are white and gone forever. The fader is like the brightness of the screen — you can change it any time, but it won't fix a badly exposed photo."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Gain = wie stark es reinkommt (einmal richtig einstellen). Volume = wie laut es rauskommt (laufend mischen).",
+            "en": "Gain = how strong it comes in (set once, properly). Volume = how loud it comes out (mix continuously)."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Die Pegel-Kette (Gain-Staging)",
+        "en": "The level chain (gain staging)"
+      },
+      "intro": {
+        "de": "Gain-Staging heißt: An jeder Station der Kette hat das Signal einen gesunden Pegel — nicht zu leise, nicht zu laut. Dann klingt alles sauber und du hast überall Spielraum.",
+        "en": "Gain staging means: at every stage of the chain the signal has a healthy level — not too quiet, not too loud. Then everything sounds clean and you have room to move everywhere."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 440",
+          "caption": {
+            "de": "Die Pegel-Kette vom Mikro bis zur Box",
+            "en": "The level chain from the mic to the speaker"
+          },
+          "image": "images/KAC_gs_kette.svg",
+          "image_en": "images/KAC_gs_kette_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Gain: so einstellen, dass die Spitzen bei etwa −18 bis −12 dBFS liegen.",
+              "en": "Gain: set it so the peaks sit around −18 to −12 dBFS."
+            },
+            {
+              "de": "Kanal-Fader: im Mix um 0 dB herum arbeiten.",
+              "en": "Channel fader: work around 0 dB in the mix."
+            },
+            {
+              "de": "Master: etwa bei 0 dB lassen.",
+              "en": "Master: leave it at about 0 dB."
+            },
+            {
+              "de": "PA / Box: Regler an Box oder Endstufe einmal festlegen und markieren — im Gottesdienst nicht anfassen.",
+              "en": "PA / speaker: set the knob on the speaker or amp once and mark it — don't touch it during the service."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Jede Station hat ihre Aufgabe. Wer an der falschen Stelle lauter macht, bekommt Rauschen oder Verzerrung.",
+            "en": "Every stage has its job. Turning things up in the wrong place gets you hiss or distortion."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Der Fader & die 0-dB-Marke (Unity)",
+        "en": "The fader & the 0 dB mark (unity)"
+      },
+      "intro": {
+        "de": "Auf jedem Fader gibt es eine Markierung „0“ (oft auch „U“ für Unity). Dort verändert der Fader das Signal nicht — es geht genau so durch, wie es reinkommt. Darüber wird es lauter, darunter leiser.",
+        "en": "Every fader has a “0” mark (often also “U” for unity). There the fader doesn't change the signal — it passes through exactly as it comes in. Above it gets louder, below it gets quieter."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 600",
+          "caption": {
+            "de": "0 dB = Unity · Arbeitsbereich etwa +5 bis −10 dB",
+            "en": "0 dB = unity · working range roughly +5 to −10 dB"
+          },
+          "image": "images/KAC_gs_fader.svg",
+          "image_en": "images/KAC_gs_fader_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "Die Fader-Skala ist um 0 dB am feinsten — dort kannst du am genauesten mischen.",
+              "en": "The fader scale is finest around 0 dB — that's where you can mix most precisely."
+            },
+            {
+              "de": "Steht ein Fader dauerhaft ganz oben oder ganz unten, stimmt der Gain nicht.",
+              "en": "If a fader sits permanently at the top or bottom, the gain is wrong."
+            },
+            {
+              "de": "Master: um 0 dB. Muss er weit runter, sind die Gains oder die PA zu laut eingestellt.",
+              "en": "Master: around 0 dB. If it has to go far down, the gains or the PA are set too loud."
+            },
+            {
+              "de": "Regler an der Aktivbox: einmal einstellen und mit Klebeband markieren.",
+              "en": "Knob on the active speaker: set it once and mark it with tape."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Gain richtig → Fader landen von selbst in der Nähe von 0 dB.",
+            "en": "Gain set right → faders end up near 0 dB on their own."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Pre-Fader & Post-Fader",
+        "en": "Pre-fader & post-fader"
+      },
+      "intro": {
+        "de": "Ein Kanal kann sein Signal zusätzlich an andere Wege schicken (Sends) — z. B. an einen Monitor-Mix oder an den Hall. Die Frage ist nur: Wird das Signal VOR oder NACH dem Fader abgezweigt?",
+        "en": "A channel can also send its signal to other paths (sends) — e.g. to a monitor mix or to the reverb. The only question is: is the signal tapped off BEFORE or AFTER the fader?"
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 600",
+          "caption": {
+            "de": "Pre-Fader zweigt vor dem Fader ab, Post-Fader danach",
+            "en": "Pre-fader taps off before the fader, post-fader after it"
+          },
+          "image": "images/KAC_gs_prepost.svg",
+          "image_en": "images/KAC_gs_prepost_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "",
+              "en": ""
+            },
+            {
+              "de": "Pre-Fader",
+              "en": "Pre-fader"
+            },
+            {
+              "de": "Post-Fader",
+              "en": "Post-fader"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Abgezweigt",
+                "en": "Tapped off"
+              },
+              {
+                "de": "vor dem Kanal-Fader",
+                "en": "before the channel fader"
+              },
+              {
+                "de": "nach dem Kanal-Fader",
+                "en": "after the channel fader"
+              }
+            ],
+            [
+              {
+                "de": "Fader bewegen",
+                "en": "Moving the fader"
+              },
+              {
+                "de": "ändert den Send NICHT",
+                "en": "does NOT change the send"
+              },
+              {
+                "de": "ändert den Send mit",
+                "en": "changes the send as well"
+              }
+            ],
+            [
+              {
+                "de": "Typisch für",
+                "en": "Typical for"
+              },
+              {
+                "de": "Monitore & In-Ears",
+                "en": "monitors & in-ears"
+              },
+              {
+                "de": "Hall, Effekte, ggf. Stream",
+                "en": "reverb, effects, stream if needed"
+              }
+            ],
+            [
+              {
+                "de": "Warum",
+                "en": "Why"
+              },
+              {
+                "de": "Die Band soll stabil hören, egal was FOH im Saal macht.",
+                "en": "The band should hear consistently, whatever FOH does in the room."
+              },
+              {
+                "de": "Der Hall soll mit dem Signal lauter und leiser werden.",
+                "en": "The reverb should get louder and quieter with the signal."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Was wirkt worauf?",
+            "en": "What affects what?"
+          },
+          "items": [
+            {
+              "de": "Gain drehen → ändert Saal UND alle Monitor-/In-Ear-Mixe.",
+              "en": "Turning the gain → changes the room AND every monitor/in-ear mix."
+            },
+            {
+              "de": "Kanal-Fader bewegen → ändert nur den Saal (und Post-Fader-Sends wie Hall).",
+              "en": "Moving the channel fader → changes only the room (and post-fader sends like reverb)."
+            },
+            {
+              "de": "Kanal muten → auf den meisten Pulten auch in den Monitoren stumm.",
+              "en": "Muting the channel → on most consoles also silent in the monitors."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Darum: Gain im Gottesdienst nicht drehen. Wenn es doch sein muss — vorher kurz mit der Monitor-Person absprechen.",
+            "en": "That's why: don't turn the gain during the service. If you really must — check with the monitor person first."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Messanzeigen (Meter) lesen",
+        "en": "Reading the meters"
+      },
+      "intro": {
+        "de": "Das Meter zeigt dir, wie stark ein Signal ist. Auf digitalen Pulten in dBFS: 0 dBFS ist das absolute Maximum — darüber geht nichts mehr, das Signal wird abgeschnitten (Clipping).",
+        "en": "The meter shows you how strong a signal is. On digital consoles in dBFS: 0 dBFS is the absolute maximum — nothing goes beyond it, the signal gets cut off (clipping)."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 620",
+          "caption": {
+            "de": "Farben, Zielbereich, Peak und Durchschnitt",
+            "en": "Colours, target range, peak and average"
+          },
+          "image": "images/KAC_gs_meter.svg",
+          "image_en": "images/KAC_gs_meter_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Farbe",
+              "en": "Colour"
+            },
+            {
+              "de": "Bedeutung",
+              "en": "Meaning"
+            },
+            {
+              "de": "Was tun",
+              "en": "What to do"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Grün",
+                "en": "Green"
+              },
+              {
+                "de": "Signal da, genug Reserve",
+                "en": "signal present, plenty of headroom"
+              },
+              {
+                "de": "Gut — Spitzen ruhig bis in den Zielbereich",
+                "en": "Good — peaks can reach the target range"
+              }
+            ],
+            [
+              {
+                "de": "Gelb",
+                "en": "Yellow"
+              },
+              {
+                "de": "kräftig, wenig Reserve",
+                "en": "strong, little headroom"
+              },
+              {
+                "de": "Kurz ok, nicht dauerhaft",
+                "en": "OK briefly, not all the time"
+              }
+            ],
+            [
+              {
+                "de": "Rot / Clip",
+                "en": "Red / clip"
+              },
+              {
+                "de": "Übersteuerung — verzerrt",
+                "en": "overload — distorted"
+              },
+              {
+                "de": "Sofort Gain runter",
+                "en": "Lower the gain immediately"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Peak und Durchschnitt",
+            "en": "Peak and average"
+          },
+          "items": [
+            {
+              "de": "Peak = die kurzen Spitzen, z. B. der Schlag auf die Snare. Wichtig gegen Clipping.",
+              "en": "Peak = the short spikes, e.g. the hit on the snare. What matters for clipping."
+            },
+            {
+              "de": "Durchschnitt (RMS) = der mittlere Pegel. So laut empfinden wir das Signal.",
+              "en": "Average (RMS) = the mean level. That's how loud we perceive the signal."
+            },
+            {
+              "de": "Drums haben hohe Spitzen, aber einen niedrigen Durchschnitt — Pads oder Gesang eher umgekehrt.",
+              "en": "Drums have high peaks but a low average — pads or vocals are more the other way round."
+            },
+            {
+              "de": "Peak-Hold: Eine Markierung bleibt kurz am höchsten Wert stehen — so siehst du auch schnelle Spitzen.",
+              "en": "Peak hold: a marker stays briefly at the highest value — so you also see fast peaks."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Welches Meter zeigt was?",
+            "en": "Which meter shows what?"
+          },
+          "items": [
+            {
+              "de": "Kanal-Meter (Eingang): was ins Pult kommt — reagiert auf den Gain, nicht auf den Fader.",
+              "en": "Channel meter (input): what comes into the console — reacts to the gain, not to the fader."
+            },
+            {
+              "de": "Bus-Meter: wie stark ein Monitor- / Aux-Mix ist.",
+              "en": "Bus meter: how strong a monitor / aux mix is."
+            },
+            {
+              "de": "Master-Meter: was zur PA geht. Nie in den roten Bereich.",
+              "en": "Master meter: what goes to the PA. Never into the red."
+            },
+            {
+              "de": "Gain-Reduction-Meter (beim Kompressor): wie viele dB der Kompressor gerade wegnimmt.",
+              "en": "Gain reduction meter (on the compressor): how many dB the compressor is currently taking away."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Die meisten Pult-Meter zeigen Peaks — darum stellst du den Gain nach den Spitzen ein, nicht nach dem Durchschnitt.",
+            "en": "Most console meters show peaks — so you set the gain by the peaks, not by the average."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Typische Fehlerbilder",
+        "en": "Typical symptoms"
+      },
+      "intro": {
+        "de": "Die meisten Pegel-Probleme sehen immer gleich aus. Wenn du sie erkennst, weißt du sofort, wo du ansetzen musst.",
+        "en": "Most level problems always look the same. Once you recognise them, you know straight away where to start."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 600",
+          "caption": {
+            "de": "Zu wenig Gain · richtig · zu viel Gain",
+            "en": "Too little gain · just right · too much gain"
+          },
+          "image": "images/KAC_gs_fehler.svg",
+          "image_en": "images/KAC_gs_fehler_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Symptom",
+              "en": "Symptom"
+            },
+            {
+              "de": "Ursache",
+              "en": "Cause"
+            },
+            {
+              "de": "Lösung",
+              "en": "Fix"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Es rauscht, Fader steht ganz oben",
+                "en": "It hisses, fader is at the top"
+              },
+              {
+                "de": "Gain zu niedrig",
+                "en": "gain too low"
+              },
+              {
+                "de": "Gain hoch, Fader zurück Richtung 0",
+                "en": "Raise the gain, bring the fader back towards 0"
+              }
+            ],
+            [
+              {
+                "de": "Klingt verzerrt, Clip-LED blinkt",
+                "en": "Sounds distorted, clip LED flashes"
+              },
+              {
+                "de": "Gain zu hoch",
+                "en": "gain too high"
+              },
+              {
+                "de": "Gain runter (ggf. PAD einschalten)",
+                "en": "Lower the gain (switch on the PAD if needed)"
+              }
+            ],
+            [
+              {
+                "de": "Fader fast ganz unten und trotzdem zu laut",
+                "en": "Fader almost at the bottom and still too loud"
+              },
+              {
+                "de": "Gain zu hoch",
+                "en": "gain too high"
+              },
+              {
+                "de": "Gain runter, Fader wieder hoch",
+                "en": "Lower the gain, bring the fader back up"
+              }
+            ],
+            [
+              {
+                "de": "Master muss weit runter",
+                "en": "Master has to go far down"
+              },
+              {
+                "de": "Gains oder PA-Regler zu hoch",
+                "en": "gains or PA knobs too high"
+              },
+              {
+                "de": "Gains prüfen, PA-Pegel neu festlegen",
+                "en": "Check the gains, re-set the PA level"
+              }
+            ],
+            [
+              {
+                "de": "Monitor-Mix ändert sich „von allein“",
+                "en": "Monitor mix changes “by itself”"
+              },
+              {
+                "de": "Jemand hat am Gain gedreht",
+                "en": "someone changed the gain"
+              },
+              {
+                "de": "Gain nur im Soundcheck ändern — oder absprechen",
+                "en": "Only change gain in the soundcheck — or coordinate"
+              }
+            ],
+            [
+              {
+                "de": "Kompressor arbeitet plötzlich viel stärker / gar nicht",
+                "en": "Compressor suddenly works much harder / not at all"
+              },
+              {
+                "de": "Gain geändert — der Threshold passt nicht mehr",
+                "en": "gain changed — the threshold no longer fits"
+              },
+              {
+                "de": "Threshold neu anpassen",
+                "en": "Re-adjust the threshold"
+              }
+            ],
+            [
+              {
+                "de": "Pfeifen beim Hochziehen des Faders",
+                "en": "Squealing when raising the fader"
+              },
+              {
+                "de": "Zu viel Pegel für diesen Raum / dieses Mikro",
+                "en": "too much level for this room / mic"
+              },
+              {
+                "de": "Abstand zum Mikro verringern, Mikro wegdrehen, EQ",
+                "en": "Get closer to the mic, turn the mic away, EQ"
+              }
+            ],
+            [
+              {
+                "de": "Sänger im Gottesdienst plötzlich verzerrt",
+                "en": "Singer suddenly distorted in the service"
+              },
+              {
+                "de": "Singt lauter als im Soundcheck",
+                "en": "singing louder than in the soundcheck"
+              },
+              {
+                "de": "Gain etwas runter — vorher Monitor informieren",
+                "en": "Lower the gain a little — tell the monitor person first"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Erst Gain prüfen, dann Fader — fast jedes Pegel-Problem beginnt am Eingang.",
+            "en": "Check the gain first, then the fader — nearly every level problem starts at the input."
+          }
+        }
+      ]
+    }
+  ]
+}

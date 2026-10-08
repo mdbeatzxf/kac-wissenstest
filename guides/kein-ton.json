@@ -1,0 +1,497 @@
+{
+  "sections": [
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Erst Ruhe — dann dem Signal folgen",
+        "en": "Stay calm first — then follow the signal"
+      },
+      "intro": {
+        "de": "Kein Ton ist der Klassiker. Fast immer ist die Ursache einfach: ein Mute, ein Kabel, ein falscher Patch. Wer systematisch vorgeht statt wild an allen Reglern zu drehen, findet den Fehler in Sekunden.",
+        "en": "No sound is the classic. The cause is almost always simple: a mute, a cable, a wrong patch. If you work systematically instead of randomly turning every knob, you'll find the fault in seconds."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": {
+            "de": "Zuerst eine Frage: Was genau fehlt?",
+            "en": "First one question: what exactly is missing?"
+          },
+          "items": [
+            {
+              "de": "Ein einzelner Kanal (z. B. ein Mikro)? → Signal dieses Kanals verfolgen.",
+              "en": "A single channel (e.g. one mic)? → Follow that channel's signal."
+            },
+            {
+              "de": "Gar nichts aus der PA? → Master und Ausgangsseite prüfen.",
+              "en": "Nothing at all from the PA? → Check the master and the output side."
+            },
+            {
+              "de": "Nur ein Monitor / In-Ear? → Den Monitor-Weg prüfen (siehe unten).",
+              "en": "Only one monitor / in-ear? → Check the monitor path (see below)."
+            }
+          ]
+        },
+        {
+          "type": "figure",
+          "aspect": "1500 / 800",
+          "caption": {
+            "de": "Die zwei Meter-Fragen zeigen dir sofort, auf welcher Seite der Fehler liegt",
+            "en": "The two meter questions tell you instantly which side the fault is on"
+          },
+          "image": "images/KAC_kt_flow.svg",
+          "image_en": "images/KAC_kt_flow_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Das Meter ist dein bester Freund: Es zeigt dir, ob ein Signal ankommt — auch wenn du nichts hörst.",
+            "en": "The meter is your best friend: it shows you whether a signal is arriving — even when you can't hear anything."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Die Signalkette — 10 Prüfpunkte",
+        "en": "The signal chain — 10 checkpoints"
+      },
+      "intro": {
+        "de": "Ein Signal läuft immer denselben Weg. Prüfe von vorne nach hinten: Wo ist das Signal zuletzt noch da?",
+        "en": "A signal always takes the same path. Check from front to back: where is the signal last still present?"
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 470",
+          "caption": {
+            "de": "Von der Quelle bis zur Box: dem Signal Punkt für Punkt folgen",
+            "en": "From the source to the speaker: follow the signal point by point"
+          },
+          "image": "images/KAC_kt_kette.svg",
+          "image_en": "images/KAC_kt_kette_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Punkt",
+              "en": "Point"
+            },
+            {
+              "de": "Typische Ursache",
+              "en": "Typical cause"
+            },
+            {
+              "de": "Prüfen / Lösung",
+              "en": "Check / fix"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "1 Quelle",
+                "en": "1 Source"
+              },
+              {
+                "de": "Instrument leise gedreht, Gerät aus, Funk-Akku leer, Mute-Schalter am Mikro",
+                "en": "Instrument turned down, device off, wireless battery flat, mute switch on the mic"
+              },
+              {
+                "de": "Lautstärke am Instrument, Akku, Schalter am Sender / Mikro",
+                "en": "Instrument volume, battery, switch on the transmitter / mic"
+              }
+            ],
+            [
+              {
+                "de": "2 Kabel / DI",
+                "en": "2 Cable / DI"
+              },
+              {
+                "de": "Stecker nicht eingerastet, Kabel defekt, DI falsch herum",
+                "en": "Connector not locked, faulty cable, DI the wrong way round"
+              },
+              {
+                "de": "Kabel tauschen; DI: Instrument in den Eingang, XLR-Ausgang zum Pult",
+                "en": "Swap the cable; DI: instrument into the input, XLR output to the desk"
+              }
+            ],
+            [
+              {
+                "de": "3 Eingang & Patch",
+                "en": "3 Input & patch"
+              },
+              {
+                "de": "Falsche Buchse, Stagebox nicht verbunden, Input-Patch im Pult falsch",
+                "en": "Wrong socket, stagebox not connected, input patch in the desk wrong"
+              },
+              {
+                "de": "Mit Patchliste vergleichen; Stagebox online? Input-Patch prüfen",
+                "en": "Compare with the patch list; stagebox online? Check the input patch"
+              }
+            ],
+            [
+              {
+                "de": "4 48 V",
+                "en": "4 48 V"
+              },
+              {
+                "de": "Kondensatormikro / aktive DI ohne Phantomspeisung",
+                "en": "Condenser mic / active DI without phantom power"
+              },
+              {
+                "de": "48 V am Kanal einschalten (vorher Kanal muten)",
+                "en": "Switch on 48 V for the channel (mute it first)"
+              }
+            ],
+            [
+              {
+                "de": "5 Gain & Meter",
+                "en": "5 Gain & meter"
+              },
+              {
+                "de": "Gain ganz unten, Gate zu (Threshold zu hoch)",
+                "en": "Gain all the way down, gate closed (threshold too high)"
+              },
+              {
+                "de": "Meter beobachten, Gain vorsichtig hoch, Gate prüfen",
+                "en": "Watch the meter, raise gain carefully, check the gate"
+              }
+            ],
+            [
+              {
+                "de": "6 Mute · Fader · DCA",
+                "en": "6 Mute · fader · DCA"
+              },
+              {
+                "de": "Kanal gemutet, Fader unten, DCA unten / gemutet, Mute-Gruppe aktiv",
+                "en": "Channel muted, fader down, DCA down / muted, mute group active"
+              },
+              {
+                "de": "Alle Mutes und Fader auf diesem Weg prüfen",
+                "en": "Check every mute and fader along this path"
+              }
+            ],
+            [
+              {
+                "de": "7 Routing / Bus",
+                "en": "7 Routing / bus"
+              },
+              {
+                "de": "Kanal nicht auf Main (LR) geroutet, Gruppe gemutet",
+                "en": "Channel not routed to main (LR), group muted"
+              },
+              {
+                "de": "Routing des Kanals: Main an? Gruppe offen?",
+                "en": "Channel routing: main on? group open?"
+              }
+            ],
+            [
+              {
+                "de": "8 Master",
+                "en": "8 Master"
+              },
+              {
+                "de": "Master gemutet oder unten, „Mute All“ aktiv",
+                "en": "Master muted or down, “mute all” active"
+              },
+              {
+                "de": "Master-Meter: Kommt dort Signal an?",
+                "en": "Master meter: is signal arriving there?"
+              }
+            ],
+            [
+              {
+                "de": "9 Output-Patch",
+                "en": "9 Output patch"
+              },
+              {
+                "de": "Main liegt auf dem falschen Ausgang / Stagebox-Ausgang",
+                "en": "Main assigned to the wrong output / stagebox output"
+              },
+              {
+                "de": "Output-Patch prüfen (Patchliste „Outputs“)",
+                "en": "Check the output patch (patch list “Outputs”)"
+              }
+            ],
+            [
+              {
+                "de": "10 Box / Endstufe",
+                "en": "10 Speaker / amp"
+              },
+              {
+                "de": "Box aus, kein Strom, Regler an der Box zu, Endstufe im Protect",
+                "en": "Speaker off, no power, knob on the speaker down, amp in protect"
+              },
+              {
+                "de": "Strom, LEDs, Regler an der Box, Steckdosenleiste an?",
+                "en": "Power, LEDs, knob on the speaker, power strip on?"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Signal da → weiter zum nächsten Punkt. Signal weg → der Fehler liegt zwischen dem letzten guten und diesem Punkt.",
+            "en": "Signal present → move to the next point. Signal gone → the fault lies between the last good point and this one."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Vorhören mit PFL / Solo",
+        "en": "Listening with PFL / solo"
+      },
+      "intro": {
+        "de": "Mit Kopfhörern am Pult und der PFL-/Solo-Taste hörst du einen Kanal direkt ab — ohne dass der Saal etwas hört. So prüfst du ein Signal schnell und unauffällig.",
+        "en": "With headphones at the console and the PFL/solo button you listen to a channel directly — without the room hearing anything. That's how you check a signal quickly and discreetly."
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "PFL = Pre-Fader-Listen: du hörst den Kanal, auch wenn sein Fader unten ist.",
+              "en": "PFL = pre-fader listen: you hear the channel even if its fader is down."
+            },
+            {
+              "de": "Allen & Heath SQ: Taste „PAFL“ · Behringer X-Air / Mixing Station: „Solo“.",
+              "en": "Allen & Heath SQ: “PAFL” button · Behringer X-Air / Mixing Station: “Solo”."
+            },
+            {
+              "de": "Hörst du es im Kopfhörer, aber nicht im Saal? → Der Fehler liegt hinter dem Kanal (Fader, DCA, Routing, Master, Ausgang).",
+              "en": "You hear it in the headphones but not in the room? → The fault is after the channel (fader, DCA, routing, master, output)."
+            },
+            {
+              "de": "Nach dem Prüfen PFL / Solo wieder ausschalten.",
+              "en": "Switch PFL / solo off again after checking."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Nur ein Monitor oder In-Ear ist stumm",
+        "en": "Only one monitor or in-ear is silent"
+      },
+      "intro": {
+        "de": "Wenn nur eine Person auf der Bühne nichts hört, liegt der Fehler fast immer auf ihrem Monitor-Weg.",
+        "en": "If only one person on stage can't hear anything, the fault is almost always on their monitor path."
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Richtigen Mix ausgewählt? Die Sends dieses Kanals in genau diesem Mix prüfen.",
+              "en": "Right mix selected? Check this channel's sends in exactly this mix."
+            },
+            {
+              "de": "Bus-Master des Mixes: hochgezogen und nicht gemutet?",
+              "en": "The mix's bus master: up and not muted?"
+            },
+            {
+              "de": "Output-Patch: Liegt der Mix auf dem richtigen Ausgang / Sender?",
+              "en": "Output patch: is the mix assigned to the right output / transmitter?"
+            },
+            {
+              "de": "In-Ear: Beltpack an, Lautstärke am Beltpack, Kanal / Frequenz synchron mit dem Sender, Akku voll, Kopfhörer eingesteckt?",
+              "en": "In-ear: beltpack on, volume on the beltpack, channel / frequency synced to the transmitter, battery full, earphones plugged in?"
+            },
+            {
+              "de": "Wedge: Box an, Strom, Kabel, Regler an der Box?",
+              "en": "Wedge: speaker on, power, cable, knob on the speaker?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Andere Fehlerbilder",
+        "en": "Other symptoms"
+      },
+      "intro": {
+        "de": "Nicht nur „kein Ton“ — auch diese Probleme kommen oft vor:",
+        "en": "Not just “no sound” — these problems are common too:"
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Symptom",
+              "en": "Symptom"
+            },
+            {
+              "de": "Häufige Ursache",
+              "en": "Common cause"
+            },
+            {
+              "de": "Was tun",
+              "en": "What to do"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Brummen",
+                "en": "Hum"
+              },
+              {
+                "de": "Masseschleife (z. B. Laptop am Netzteil, Keyboard)",
+                "en": "Ground loop (e.g. laptop on its charger, keyboard)"
+              },
+              {
+                "de": "Ground-Lift an der DI-Box, Geräte am selben Stromkreis",
+                "en": "Ground lift on the DI box, devices on the same power circuit"
+              }
+            ],
+            [
+              {
+                "de": "Rauschen",
+                "en": "Hiss"
+              },
+              {
+                "de": "Gain zu niedrig, Fader zu hoch",
+                "en": "Gain too low, fader too high"
+              },
+              {
+                "de": "Gain richtig einstellen, Fader Richtung 0 dB",
+                "en": "Set the gain properly, fader towards 0 dB"
+              }
+            ],
+            [
+              {
+                "de": "Verzerrt / kratzig",
+                "en": "Distorted / crackly"
+              },
+              {
+                "de": "Gain zu hoch (Clipping), Quelle zu laut",
+                "en": "Gain too high (clipping), source too loud"
+              },
+              {
+                "de": "Gain runter, ggf. PAD; Lautstärke an der Quelle senken",
+                "en": "Lower the gain, use the PAD if needed; reduce the source volume"
+              }
+            ],
+            [
+              {
+                "de": "Knacken, Aussetzer",
+                "en": "Crackles, dropouts"
+              },
+              {
+                "de": "Wackelkontakt, defektes Kabel",
+                "en": "Loose contact, faulty cable"
+              },
+              {
+                "de": "Kabel tauschen, Stecker prüfen",
+                "en": "Swap the cable, check the connectors"
+              }
+            ],
+            [
+              {
+                "de": "Funk setzt aus",
+                "en": "Wireless drops out"
+              },
+              {
+                "de": "Akku schwach, Antenne verdeckt, Störung",
+                "en": "Battery low, antenna blocked, interference"
+              },
+              {
+                "de": "Akku tauschen, Sichtlinie zum Empfänger, Frequenz prüfen",
+                "en": "Change the battery, line of sight to the receiver, check the frequency"
+              }
+            ],
+            [
+              {
+                "de": "Pfeifen (Feedback)",
+                "en": "Squealing (feedback)"
+              },
+              {
+                "de": "Mikro hört Lautsprecher, Pegel zu hoch",
+                "en": "Mic picks up the speaker, level too high"
+              },
+              {
+                "de": "Fader runter, Mikro wegdrehen, Frequenz mit EQ absenken",
+                "en": "Fader down, turn the mic away, cut the frequency with EQ"
+              }
+            ],
+            [
+              {
+                "de": "Lauter Knall",
+                "en": "Loud bang"
+              },
+              {
+                "de": "Stecken / Ziehen bei 48 V oder offenem Kanal",
+                "en": "Plugging / unplugging with 48 V or an open channel"
+              },
+              {
+                "de": "Vorher muten und 48 V aus",
+                "en": "Mute first and switch 48 V off"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Im Gottesdienst: die Notfall-Regeln",
+        "en": "During the service: the emergency rules"
+      },
+      "intro": {
+        "de": "Wenn es live passiert, zählt Ruhe mehr als Tempo.",
+        "en": "When it happens live, calm counts more than speed."
+      },
+      "blocks": [
+        {
+          "type": "check",
+          "items": [
+            {
+              "de": "Ruhe bewahren — nicht wild an allen Reglern drehen.",
+              "en": "Stay calm — don't turn every knob at random."
+            },
+            {
+              "de": "Erst aufs Meter schauen: Kommt ein Signal an? Dann weißt du, auf welcher Seite der Fehler liegt.",
+              "en": "Look at the meter first: is signal arriving? Then you know which side the fault is on."
+            },
+            {
+              "de": "Gain nie blind weit aufdrehen — kommt das Signal plötzlich zurück, gibt es einen Knall oder Feedback.",
+              "en": "Never blindly crank the gain — if the signal suddenly comes back, you get a bang or feedback."
+            },
+            {
+              "de": "Kommt das Mikro nicht in Sekunden zurück: Ersatz-Mikro geben (vorbereitet auf freiem Kanal).",
+              "en": "If the mic doesn't come back within seconds: hand over the spare mic (prepared on a free channel)."
+            },
+            {
+              "de": "Mit der Bühne kommunizieren: Handzeichen oder eine Person aus dem Team geht hin.",
+              "en": "Communicate with the stage: hand signals, or someone from the team goes over."
+            },
+            {
+              "de": "Danach notieren, was passiert ist — damit es beim nächsten Mal nicht wieder passiert.",
+              "en": "Note down afterwards what happened — so it doesn't happen again next time."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Ein vorbereitetes Ersatz-Mikro löst im Gottesdienst die meisten Probleme in Sekunden.",
+            "en": "A prepared spare mic solves most problems during a service in seconds."
+          }
+        }
+      ]
+    }
+  ]
+}

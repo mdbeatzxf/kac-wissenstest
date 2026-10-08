@@ -413,6 +413,111 @@
       }
     },
     {
+      "id": "soundcheck-ablauf",
+      "file": "guides/soundcheck-ablauf.json",
+      "area": "production",
+      "bereiche": [
+        "sound"
+      ],
+      "updated": "Oktober 2026",
+      "title": {
+        "de": "Soundcheck — Ablauf",
+        "en": "Soundcheck — Workflow"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team · Schritt für Schritt",
+        "en": "For the Sound team · step by step"
+      },
+      "intro": {
+        "de": "Vom Laden der Szene bis zum Speichern: In welcher Reihenfolge wir den Soundcheck machen — Line-Check, Gain, Monitore, Band, Sprache — und warum diese Reihenfolge Zeit und Nerven spart.",
+        "en": "From loading the scene to saving it: the order in which we run the soundcheck — line check, gain, monitors, band, speech — and why this order saves time and nerves."
+      }
+    },
+    {
+      "id": "kein-ton",
+      "file": "guides/kein-ton.json",
+      "area": "production",
+      "bereiche": [
+        "sound"
+      ],
+      "updated": "Oktober 2026",
+      "title": {
+        "de": "Kein Ton — was tun?",
+        "en": "No sound — what now?"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team · Fehlersuche",
+        "en": "For the Sound team · troubleshooting"
+      },
+      "intro": {
+        "de": "Kein Ton, Brummen, Rauschen, ein stummer In-Ear: So findest du den Fehler systematisch — mit zwei Meter-Fragen, zehn Prüfpunkten entlang der Signalkette und klaren Notfall-Regeln für den Gottesdienst.",
+        "en": "No sound, hum, hiss, a silent in-ear: how to find the fault systematically — with two meter questions, ten checkpoints along the signal chain and clear emergency rules for the service."
+      }
+    },
+    {
+      "id": "gain-staging",
+      "file": "guides/gain-staging.json",
+      "area": "production",
+      "bereiche": [
+        "sound"
+      ],
+      "updated": "Oktober 2026",
+      "title": {
+        "de": "Gain-Staging & Pegel",
+        "en": "Gain staging & levels"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team · Vertiefung",
+        "en": "For the Sound team · deep dive"
+      },
+      "intro": {
+        "de": "Was ist Gain — und was ist der Unterschied zu Volume? Wie die Pegel-Kette funktioniert, warum Fader und Master um 0 dB stehen, was Pre- und Post-Fader bedeuten, wie du Meter liest (Peak vs. Durchschnitt) und welche Fehlerbilder du kennen solltest.",
+        "en": "What is gain — and how is it different from volume? How the level chain works, why faders and master sit around 0 dB, what pre- and post-fader mean, how to read meters (peak vs. average) and which symptoms you should know."
+      }
+    },
+    {
+      "id": "dca-gruppen",
+      "file": "guides/dca-gruppen.json",
+      "area": "production",
+      "bereiche": [
+        "sound"
+      ],
+      "updated": "Oktober 2026",
+      "title": {
+        "de": "DCAs & Gruppen",
+        "en": "DCAs & Groups"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team · Vertiefung",
+        "en": "For the Sound team · deep dive"
+      },
+      "intro": {
+        "de": "DCA oder Gruppe? Beide bündeln Kanäle — aber ganz verschieden. Mit Vergleichstabelle, den Auswirkungen auf Monitore und Hall, den zwei typischen Fallen und einem Vorschlag, wie wir DCAs im Gottesdienst nutzen.",
+        "en": "DCA or group? Both bundle channels — but in very different ways. With a comparison table, the effects on monitors and reverb, the two typical pitfalls and a suggestion for how we use DCAs in the service."
+      }
+    },
+    {
+      "id": "lautstaerke-saal",
+      "file": "guides/lautstaerke-saal.json",
+      "area": "production",
+      "bereiche": [
+        "sound"
+      ],
+      "updated": "Oktober 2026",
+      "title": {
+        "de": "Lautstärke im Saal",
+        "en": "Volume in the room"
+      },
+      "subtitle": {
+        "de": "Für das Sound-Team · Richtwerte & Messen",
+        "en": "For the Sound team · guide values & measuring"
+      },
+      "intro": {
+        "de": "Wie laut darf es sein? Dezibel verständlich erklärt, unsere Richtwerte für Musik, Predigt und Lobpreis, richtig messen mit dem Handy, sichere Zeiten fürs Gehör und worauf du beim Mischen achtest.",
+        "en": "How loud may it be? Decibels explained simply, our guide values for music, sermon and worship, measuring properly with a phone, safe times for the ears and what to watch while mixing."
+      }
+    },
+    {
       "id": "projection-equipment",
       "file": "guides/projection-equipment.json",
       "area": "production",

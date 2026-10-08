@@ -1,0 +1,463 @@
+{
+  "sections": [
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Der Ablauf auf einen Blick",
+        "en": "The workflow at a glance"
+      },
+      "intro": {
+        "de": "Ein guter Soundcheck folgt immer derselben Reihenfolge: erst prüfen, ob alles ankommt — dann einstellen — dann sichern. Wer die Reihenfolge einhält, ist schneller fertig und hat im Gottesdienst weniger Überraschungen.",
+        "en": "A good soundcheck always follows the same order: first check everything arrives — then set it up — then save. Keep to the order and you'll be done faster and have fewer surprises during the service."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 470",
+          "caption": {
+            "de": "Soundcheck in 7 Schritten",
+            "en": "Soundcheck in 7 steps"
+          },
+          "image": "images/KAC_sc_ablauf.svg",
+          "image_en": "images/KAC_sc_ablauf_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Begriff",
+              "en": "Term"
+            },
+            {
+              "de": "Was passiert",
+              "en": "What happens"
+            },
+            {
+              "de": "Wer",
+              "en": "Who"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Line-Check",
+                "en": "Line check"
+              },
+              {
+                "de": "Prüfen, ob jeder Kanal überhaupt ankommt — ohne Band, Kanal für Kanal.",
+                "en": "Checking that every channel arrives at all — without the band, channel by channel."
+              },
+              {
+                "de": "Aufbau-Team + FOH",
+                "en": "Setup team + FOH"
+              }
+            ],
+            [
+              {
+                "de": "Soundcheck",
+                "en": "Soundcheck"
+              },
+              {
+                "de": "Mit den Musikern: Gain, Klang (EQ/Kompressor) und der Mix für den Saal.",
+                "en": "With the musicians: gain, tone (EQ/compressor) and the mix for the room."
+              },
+              {
+                "de": "FOH + Band",
+                "en": "FOH + band"
+              }
+            ],
+            [
+              {
+                "de": "Monitor-Check",
+                "en": "Monitor check"
+              },
+              {
+                "de": "Jede Person auf der Bühne bekommt ihren In-Ear-/Monitor-Mix.",
+                "en": "Everyone on stage gets their in-ear/monitor mix."
+              },
+              {
+                "de": "Monitor + Band",
+                "en": "Monitor + band"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Erst prüfen, ob alles ankommt — dann einstellen — dann sichern.",
+            "en": "First check that everything arrives — then set it up — then save."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "1 · Vorbereiten",
+        "en": "1 · Prepare"
+      },
+      "intro": {
+        "de": "Bevor die Band kommt, ist die Technik schon bereit. Das spart später am meisten Zeit.",
+        "en": "Before the band arrives, the tech is already ready. This saves the most time later on."
+      },
+      "blocks": [
+        {
+          "type": "check",
+          "items": [
+            {
+              "de": "Aufbau nach Patchliste ist fertig (siehe „Rollen & Ablauf“).",
+              "en": "Setup per patch list is complete (see “Roles & Workflow”)."
+            },
+            {
+              "de": "Die Szene / Show für diese Location am Pult laden — nicht bei null anfangen.",
+              "en": "Load the scene / show for this location on the console — don't start from zero."
+            },
+            {
+              "de": "Kanalnamen mit der Patchliste vergleichen — stimmt die Belegung?",
+              "en": "Compare channel names with the patch list — is the layout right?"
+            },
+            {
+              "de": "Alle Kanal-Fader unten, Master auf 0 dB.",
+              "en": "All channel faders down, master at 0 dB."
+            },
+            {
+              "de": "PA-Check: leise Musik über die PA — spielen alle Boxen (links, rechts, Subs)?",
+              "en": "PA check: quiet music through the PA — are all speakers playing (left, right, subs)?"
+            },
+            {
+              "de": "Monitore / In-Ear-Sender an, Funkmikros und Beltpacks mit frischen Akkus.",
+              "en": "Monitors / in-ear transmitters on, wireless mics and beltpacks with fresh batteries."
+            },
+            {
+              "de": "Talkback-Mikro funktioniert (damit FOH mit der Bühne reden kann).",
+              "en": "Talkback mic works (so FOH can talk to the stage)."
+            },
+            {
+              "de": "Kopfhörer am Pult — zum Vorhören mit PFL / Solo.",
+              "en": "Headphones at the console — for listening with PFL / solo."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Szene laden statt bei null anfangen: Dann sind Patch, Gains und Mixe schon grob richtig — du korrigierst nur noch.",
+            "en": "Load a scene instead of starting from zero: patch, gains and mixes are then roughly right already — you only correct them."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "2 · Line-Check",
+        "en": "2 · Line check"
+      },
+      "intro": {
+        "de": "Beim Line-Check geht es nur um eine Frage: Kommt jeder Kanal an? Noch kein Klang, noch kein Mix.",
+        "en": "The line check answers only one question: does every channel arrive? No tone shaping, no mix yet."
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Kanal für Kanal nach Patchliste vorgehen (Kanal 1, 2, 3 …).",
+              "en": "Go channel by channel following the patch list (channel 1, 2, 3 …)."
+            },
+            {
+              "de": "Eine Person auf der Bühne spricht ins Mikro, tippt das Instrument an oder spielt kurz.",
+              "en": "One person on stage speaks into the mic, taps the instrument or plays briefly."
+            },
+            {
+              "de": "FOH schaut aufs Meter und hört mit Kopfhörer + PFL/Solo vor. Kanal-Fader bleiben dabei unten.",
+              "en": "FOH watches the meter and listens with headphones + PFL/solo. Channel faders stay down."
+            },
+            {
+              "de": "Passt es? → „Nächster Kanal!“ Kommt nichts? → Sofort klären (siehe Guide „Kein Ton — was tun?“).",
+              "en": "All good? → “Next channel!” Nothing arriving? → Fix it right away (see the guide “No sound — what now?”)."
+            },
+            {
+              "de": "Auch die Ausgänge prüfen: jeder Monitor-/In-Ear-Weg kommt am richtigen Platz an.",
+              "en": "Check the outputs too: every monitor/in-ear path arrives at the right position."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Fehler jetzt finden — nicht während des Soundchecks mit der ganzen Band, und schon gar nicht im Gottesdienst.",
+            "en": "Find faults now — not during the soundcheck with the whole band, and certainly not in the service."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "3 · Gain & Klang — jede Quelle einzeln",
+        "en": "3 · Gain & tone — each source on its own"
+      },
+      "intro": {
+        "de": "Jetzt stellst du für jede Quelle den Gain ein und gibst ihr einen ersten Grundklang. Wichtig: immer nur eine Quelle gleichzeitig.",
+        "en": "Now you set the gain for each source and give it a basic tone. Important: only one source at a time."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 330",
+          "caption": {
+            "de": "Reihenfolge: vom Fundament (Drums, Bass) nach oben bis zur Sprache",
+            "en": "Order: from the foundation (drums, bass) up to speech"
+          },
+          "image": "images/KAC_sc_reihenfolge.svg",
+          "image_en": "images/KAC_sc_reihenfolge_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Die Person spielt / singt allein — so laut wie im Gottesdienst, am besten den lautesten Teil eines Songs.",
+              "en": "The person plays / sings alone — as loud as in the service, ideally the loudest part of a song."
+            },
+            {
+              "de": "Gain einstellen: Spitzen bei etwa −18 bis −12 dBFS (Details im Guide „Gain-Staging & Pegel“).",
+              "en": "Set the gain: peaks around −18 to −12 dBFS (details in the guide “Gain staging & levels”)."
+            },
+            {
+              "de": "Low-Cut / Hochpass setzen (Stimmen, Gitarren, Keys) — Rumpeln raus.",
+              "en": "Set the low cut / high-pass (vocals, guitars, keys) — remove the rumble."
+            },
+            {
+              "de": "Grob EQ und Kompressor — lieber wenig. Die Feinarbeit kommt im Band-Mix.",
+              "en": "Rough EQ and compressor — less is more. The fine-tuning comes in the band mix."
+            },
+            {
+              "de": "Kurz den Fader hochziehen und im Saal hören. Dann zur nächsten Quelle.",
+              "en": "Briefly bring the fader up and listen in the room. Then move to the next source."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Sänger singen im Gottesdienst fast immer lauter als im Soundcheck. Lass deshalb echt laut singen — oder lass beim Gain noch etwas Reserve.",
+            "en": "Singers almost always sing louder in the service than in the soundcheck. So have them really sing out — or leave a little extra headroom on the gain."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Gain wird jetzt eingestellt — und danach im Gottesdienst möglichst nicht mehr angefasst. Er verändert sonst alle Monitor-Mixe.",
+            "en": "Gain is set now — and ideally not touched again during the service. Otherwise it changes every monitor mix."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "4 · Monitore & In-Ears",
+        "en": "4 · Monitors & in-ears"
+      },
+      "intro": {
+        "de": "Erst wenn die Gains stehen, baust du die Monitor-Mixe. Wer vorher Monitore einstellt und danach am Gain dreht, macht die Arbeit doppelt.",
+        "en": "Only once the gains are set do you build the monitor mixes. If you set monitors first and then change the gain, you do the work twice."
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "Immer eine Person nach der anderen — nicht alle gleichzeitig rufen lassen.",
+              "en": "One person after the other — don't let everyone call out at once."
+            },
+            {
+              "de": "Basis-Mix pro Person: sich selbst + Lead-Gesang + das führende Instrument (oft Keys oder Gitarre) + ggf. Click.",
+              "en": "Basic mix per person: themselves + lead vocal + the leading instrument (often keys or guitar) + click if used."
+            },
+            {
+              "de": "Klare Sprache: „Mehr von mir“, „weniger Keys“ — mit Handzeichen, wenn es laut ist.",
+              "en": "Clear language: “more me”, “less keys” — with hand signals when it's loud."
+            },
+            {
+              "de": "Musiker können ihren Mix selbst per Mixing Station einstellen (Modus „Nur mein Monitor-Mix“).",
+              "en": "Musicians can set their own mix via Mixing Station (“only my monitor mix” mode)."
+            },
+            {
+              "de": "Wedges: Mikros nicht direkt auf den Monitor richten — und auf erstes Pfeifen achten.",
+              "en": "Wedges: don't point mics straight at the monitor — and listen for the first signs of feedback."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Gain zuerst, dann Monitore. Sonst stimmen die Monitor-Mixe nach jeder Gain-Änderung nicht mehr.",
+            "en": "Gain first, then monitors. Otherwise the monitor mixes are off again after every gain change."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "5 · Band zusammen — der Saal-Mix",
+        "en": "5 · Full band — the room mix"
+      },
+      "intro": {
+        "de": "Jetzt spielt die ganze Band einen Song — am besten einen mit lauten und leisen Stellen. Du baust den Mix für den Saal.",
+        "en": "Now the whole band plays a song — ideally one with loud and quiet parts. You build the mix for the room."
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Fundament zuerst: Kick und Bass.",
+              "en": "Foundation first: kick and bass."
+            },
+            {
+              "de": "Dann der Rest der Band darunter — Keys, Gitarren, Drums.",
+              "en": "Then the rest of the band underneath — keys, guitars, drums."
+            },
+            {
+              "de": "Lead-Gesang obendrauf: Er muss immer gut verständlich sein.",
+              "en": "Lead vocal on top: it must always be clearly intelligible."
+            },
+            {
+              "de": "Backing Vocals dazu — sie stützen, sie überdecken nicht.",
+              "en": "Add the backing vocals — they support, they don't cover."
+            },
+            {
+              "de": "Im Saal herumgehen: vorne, Mitte, hinten. Klingt es überall gut?",
+              "en": "Walk the room: front, middle, back. Does it sound good everywhere?"
+            },
+            {
+              "de": "Lautstärke messen (Guide „Lautstärke im Saal“).",
+              "en": "Measure the level (guide “Volume in the room”)."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Die Gemeinde soll mitsingen können: Der Gesang führt, die Band trägt.",
+            "en": "The congregation should be able to sing along: the vocals lead, the band carries."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "6 · Sprache — Predigt & Moderation",
+        "en": "6 · Speech — sermon & hosting"
+      },
+      "intro": {
+        "de": "Sprache ist im Gottesdienst genauso wichtig wie Musik — und wird oft vergessen.",
+        "en": "Speech matters just as much as music in the service — and is often forgotten."
+      },
+      "blocks": [
+        {
+          "type": "bullets",
+          "items": [
+            {
+              "de": "Predigt-Mikro / Headset mit der Person testen, die predigt — wenn möglich. Jede Stimme ist anders.",
+              "en": "Test the sermon mic / headset with the person who is preaching — if possible. Every voice is different."
+            },
+            {
+              "de": "In normaler Sprechlautstärke und im richtigen Abstand sprechen lassen (Headset: am Mundwinkel, Handmikro: eine Faust breit).",
+              "en": "Have them speak at normal volume and the right distance (headset: at the corner of the mouth, handheld: one fist away)."
+            },
+            {
+              "de": "Low-Cut an, verständlich vor laut. Sprache braucht meist weniger Pegel als Gesang.",
+              "en": "Low cut on, intelligible before loud. Speech usually needs less level than singing."
+            },
+            {
+              "de": "Funkmikros: Akku voll? Ersatz-Akkus und ein Ersatz-Mikro bereit?",
+              "en": "Wireless mics: battery full? Spare batteries and a spare mic ready?"
+            },
+            {
+              "de": "Moderation, Ankündigungen, Gebet — alle Sprechmikros einmal prüfen.",
+              "en": "Hosting, announcements, prayer — check every speech mic once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "7 · Abschluss — speichern & bereit sein",
+        "en": "7 · Finish — save & be ready"
+      },
+      "intro": {
+        "de": "Der Soundcheck ist erst fertig, wenn alles gesichert ist.",
+        "en": "The soundcheck is only finished once everything is saved."
+      },
+      "blocks": [
+        {
+          "type": "check",
+          "items": [
+            {
+              "de": "Szene / Show speichern — mit Datum im Namen.",
+              "en": "Save the scene / show — with the date in its name."
+            },
+            {
+              "de": "Mikros, die gerade nicht gebraucht werden, muten (z. B. Predigt-Mikro während des Lobpreises).",
+              "en": "Mute mics that aren't needed right now (e.g. the sermon mic during worship)."
+            },
+            {
+              "de": "Ersatz-Mikro bereit und auf einem freien Kanal vorbereitet.",
+              "en": "Spare mic ready and prepared on a free channel."
+            },
+            {
+              "de": "Pre-Service-Musik läuft in angenehmer Lautstärke.",
+              "en": "Pre-service music is playing at a comfortable level."
+            },
+            {
+              "de": "Kurze Absprache mit Monitor und Recording: Wer macht was?",
+              "en": "Quick check-in with monitor and recording: who does what?"
+            },
+            {
+              "de": "Notizen für nächstes Mal: Was hat gefehlt, was war kaputt?",
+              "en": "Notes for next time: what was missing, what was broken?"
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Regeln während des Soundchecks",
+            "en": "Rules during the soundcheck"
+          },
+          "items": [
+            {
+              "de": "Auf der Bühne ist es ruhig, während eine Quelle eingestellt wird — nicht dazwischen spielen.",
+              "en": "The stage stays quiet while a source is being set — no playing in between."
+            },
+            {
+              "de": "Eine Person spricht für die Band mit FOH (meist die musikalische Leitung).",
+              "en": "One person speaks to FOH for the band (usually the music lead)."
+            },
+            {
+              "de": "Der Soundcheck endet rechtzeitig vor Gottesdienst-Beginn — mit Puffer für Probleme.",
+              "en": "The soundcheck ends well before the service starts — with a buffer for problems."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Szene speichern nicht vergessen — sonst ist die ganze Arbeit beim nächsten Neustart weg.",
+            "en": "Don't forget to save the scene — otherwise all the work is gone the next time the console restarts."
+          }
+        }
+      ]
+    }
+  ]
+}
