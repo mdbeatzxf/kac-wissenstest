@@ -222,6 +222,150 @@
     {
       "tag": "sound",
       "title": {
+        "de": "Messen mit Laptop & Messmikro",
+        "en": "Measuring with a laptop & measurement mic"
+      },
+      "intro": {
+        "de": "Profis nutzen einen Schallpegelmesser (SPL-Meter). Eine günstige und genaue Alternative ist ein Laptop mit kostenloser Mess-Software und einem Messmikrofon. Wichtiger als die Software ist dabei das Mikrofon.",
+        "en": "Professionals use a sound level meter (SPL meter). A cheap and accurate alternative is a laptop with free measurement software and a measurement microphone. The microphone matters more than the software."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Programm",
+              "en": "Program"
+            },
+            {
+              "de": "Was es kann",
+              "en": "What it does"
+            },
+            {
+              "de": "Kosten",
+              "en": "Cost"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Room EQ Wizard (REW)",
+                "en": "Room EQ Wizard (REW)"
+              },
+              {
+                "de": "Eingebauter SPL-Meter mit dB(A) / dB(C), Fast / Slow und Durchschnitt (Leq); lässt sich kalibrieren. Mac, Windows, Linux.",
+                "en": "Built-in SPL meter with dB(A) / dB(C), fast / slow and average (Leq); can be calibrated. Mac, Windows, Linux."
+              },
+              {
+                "de": "kostenlos",
+                "en": "free"
+              }
+            ],
+            [
+              {
+                "de": "Open Sound Meter",
+                "en": "Open Sound Meter"
+              },
+              {
+                "de": "Open-Source-Analyse-Software zum Einmessen der PA, mit Pegelanzeigen. Mac, Windows, Linux.",
+                "en": "Open-source analysis software for tuning the PA, with level meters. Mac, Windows, Linux."
+              },
+              {
+                "de": "kostenlos",
+                "en": "free"
+              }
+            ],
+            [
+              {
+                "de": "Smaart",
+                "en": "Smaart"
+              },
+              {
+                "de": "Profi-Standard für Messung und PA-Einmessung.",
+                "en": "The professional standard for measurement and PA tuning."
+              },
+              {
+                "de": "kostenpflichtig",
+                "en": "paid"
+              }
+            ],
+            [
+              {
+                "de": "Handy-App (z. B. NIOSH SLM)",
+                "en": "Phone app (e.g. NIOSH SLM)"
+              },
+              {
+                "de": "Schnelle Kontrolle ohne Zusatzgerät, weniger genau.",
+                "en": "Quick check without extra gear, less accurate."
+              },
+              {
+                "de": "kostenlos",
+                "en": "free"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Das Mikrofon",
+            "en": "The microphone"
+          },
+          "items": [
+            {
+              "de": "Nicht das eingebaute Laptop-Mikro: Es regelt den Pegel automatisch und liefert falsche Werte.",
+              "en": "Not the laptop's built-in mic: it adjusts the level automatically and gives wrong readings."
+            },
+            {
+              "de": "USB-Messmikro (z. B. miniDSP UMIK-1): direkt per USB, mit eigener Kalibrierdatei, die REW einliest — die einfachste und genaueste Lösung.",
+              "en": "USB measurement mic (e.g. miniDSP UMIK-1): plugs straight into USB, comes with its own calibration file that REW reads — the simplest and most accurate option."
+            },
+            {
+              "de": "XLR-Messmikro (z. B. Behringer ECM8000): günstiger, braucht aber ein Audio-Interface mit 48 V und ohne Kalibrierung nur relative Werte (lauter / leiser).",
+              "en": "XLR measurement mic (e.g. Behringer ECM8000): cheaper, but needs an audio interface with 48 V and, without calibration, only gives relative values (louder / quieter)."
+            }
+          ]
+        },
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Messmikro an den FOH-Laptop anschließen, REW öffnen und die Kalibrierdatei des Mikros laden.",
+              "en": "Connect the measurement mic to the FOH laptop, open REW and load the mic's calibration file."
+            },
+            {
+              "de": "Den SPL-Meter in REW öffnen: A-Bewertung, Slow, Durchschnittswert (Leq) anzeigen lassen.",
+              "en": "Open the SPL meter in REW: A-weighting, slow, show the average (Leq)."
+            },
+            {
+              "de": "Das Mikro am FOH-Platz auf Kopfhöhe aufstellen, nach vorne zur Bühne gerichtet — nicht in der Hand halten.",
+              "en": "Place the mic at the FOH position at head height, pointing forward to the stage — don't hold it in your hand."
+            },
+            {
+              "de": "Den Leq über einen ganzen Song bzw. die Predigt ablesen und mit den Richtwerten vergleichen.",
+              "en": "Read the Leq over a whole song or the sermon and compare it with the guide values."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Ohne Kalibrierung keine echten dB-Werte. Am einfachsten: ein Messmikro mit Kalibrierdatei — oder einmal mit einem echten SPL-Meter abgleichen.",
+            "en": "No calibration, no real dB values. Easiest: a measurement mic with a calibration file — or match it once against a real SPL meter."
+          }
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Achtung: Plugins wie der kostenlose Youlean Loudness Meter messen die Lautheit (LUFS) des Signals im Pult oder in der Aufnahme — nicht die Lautstärke im Saal. Für den Stream nützlich, für den Saal nicht.",
+            "en": "Note: plugins like the free Youlean Loudness Meter measure the loudness (LUFS) of the signal in the console or recording — not the volume in the room. Useful for the stream, not for the room."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
         "de": "Wie lange ist es sicher?",
         "en": "How long is it safe?"
       },
