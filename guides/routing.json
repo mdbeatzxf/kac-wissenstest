@@ -124,6 +124,119 @@
     {
       "tag": "sound",
       "title": {
+        "de": "Ein Patch-Raster lesen",
+        "en": "Reading a patch grid"
+      },
+      "intro": {
+        "de": "Viele Pulte und Programme zeigen Routing als Raster (Matrix): Quellen auf der einen Achse, Ziele auf der anderen. Wer so ein Raster lesen kann, findet sich im SQ, im Dante Controller und in vielen anderen Geräten sofort zurecht.",
+        "en": "Many consoles and programs show routing as a grid (matrix): sources on one axis, destinations on the other. Once you can read a grid like this, you'll find your way around the SQ, Dante Controller and many other devices straight away."
+      },
+      "blocks": [
+        {
+          "type": "figure",
+          "aspect": "1500 / 640",
+          "caption": {
+            "de": "Quellen in den Spalten, Ziele in den Zeilen — jeder Punkt ist eine Verbindung",
+            "en": "Sources in the columns, destinations in the rows — every dot is a connection"
+          },
+          "image": "images/KAC_ro_raster.svg",
+          "image_en": "images/KAC_ro_raster_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Die drei Regeln",
+            "en": "The three rules"
+          },
+          "items": [
+            {
+              "de": "Punkt am Kreuzungspunkt = diese Quelle geht auf dieses Ziel.",
+              "en": "Dot at the crossing = this source feeds this destination."
+            },
+            {
+              "de": "Jedes Ziel hat höchstens EINE Quelle. Setzt du einen neuen Punkt, verschwindet der alte in dieser Zeile.",
+              "en": "Each destination has at most ONE source. Set a new dot and the old one in that row disappears."
+            },
+            {
+              "de": "Eine Quelle darf auf mehrere Ziele gehen (z. B. ein Mikro auf zwei Kanäle — einer für den Saal, einer für den Stream).",
+              "en": "One source may feed several destinations (e.g. one mic to two channels — one for the room, one for the stream)."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Gerät",
+              "en": "Device"
+            },
+            {
+              "de": "Wie es aussieht",
+              "en": "What it looks like"
+            },
+            {
+              "de": "Achtung",
+              "en": "Watch out"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Dante Controller",
+                "en": "Dante Controller"
+              },
+              {
+                "de": "echtes Raster: Sender (Transmitter) oben, Empfänger (Receiver) links. Geräte mit „+“ aufklappen, dann siehst du die einzelnen Kanäle.",
+                "en": "a real grid: transmitters across the top, receivers down the left. Expand devices with “+” to see the individual channels."
+              },
+              {
+                "de": "Grüner Haken = Verbindung steht. Gelbes Warnzeichen / rotes Kreuz = Verbindung gestört (Clock, Netzwerk, Abtastrate).",
+                "en": "Green tick = connection OK. Yellow warning / red cross = connection problem (clock, network, sample rate)."
+              }
+            ],
+            [
+              {
+                "de": "Allen & Heath SQ",
+                "en": "Allen & Heath SQ"
+              },
+              {
+                "de": "I/O-Patch als Raster: Quellen (Local, SLink, USB, I/O-Port) und Ziele (Kanäle bzw. Ausgänge). Tippen auf ein Feld setzt oder löscht die Verbindung.",
+                "en": "I/O patch as a grid: sources (local, SLink, USB, I/O port) and destinations (channels or outputs). Tapping a cell sets or clears the connection."
+              },
+              {
+                "de": "Erst die richtige Seite wählen (Eingänge oder Ausgänge) und auf die Achsenbeschriftung achten.",
+                "en": "Pick the right page first (inputs or outputs) and check the axis labels."
+              }
+            ],
+            [
+              {
+                "de": "Behringer X32 / Midas M32",
+                "en": "Behringer X32 / Midas M32"
+              },
+              {
+                "de": "KEIN Raster am Pult: 8er-Blöcke im Routing-Menü und bei User In / User Out eine Liste von Slots.",
+                "en": "NO grid on the console: blocks of 8 in the routing menu and, for User In / User Out, a list of slots."
+              },
+              {
+                "de": "Das Prinzip ist dasselbe — nur anders dargestellt. In Gedanken hilft das Raster trotzdem.",
+                "en": "The principle is the same — just shown differently. Thinking of it as a grid still helps."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Raster lesen: Spalte suchen (woher), Zeile suchen (wohin), Punkt prüfen (verbunden?).",
+            "en": "Reading a grid: find the column (from where), find the row (to where), check the dot (connected?)."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
         "de": "Die digitale Stagebox",
         "en": "The digital stagebox"
       },
@@ -578,6 +691,17 @@
           },
           "image": "images/KAC_ro_userin.svg",
           "image_en": "images/KAC_ro_userin_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "figure",
+          "aspect": "1500 / 620",
+          "caption": {
+            "de": "Dasselbe als Raster gedacht — am X32 / M32 siehst du es als Liste",
+            "en": "The same thought of as a grid — on the X32 / M32 you see it as a list"
+          },
+          "image": "images/KAC_ro_userin_raster.svg",
+          "image_en": "images/KAC_ro_userin_raster_EN.svg",
           "fit": "contain"
         },
         {

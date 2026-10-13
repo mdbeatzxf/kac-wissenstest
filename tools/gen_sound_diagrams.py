@@ -639,7 +639,7 @@ def console_star(s, title, sub, left, right, notes, below=None):
         s.path(f"M 606 {yt} L 470 {yt} L 470 {yc} L 362 {yc}", col=RED, sw=3.5, arrow=False)
         s.text(488, yt - 12 if i == 0 else yt + 28, lab + "  ⇄", 19, True, RED, anchor="start")
     if below:
-        s.box(610, 430, 300, 90, below[0], below[1], tsize=20, ssize=15, scol=GREY)
+        s.box(570, 430, 380, 90, below[0], below[1], tsize=20, ssize=15, scol=GREY)
         s.line(760, 382, 760, 426, col=GREY, sw=3, arrow=False)
     for i, (t, sb, lab) in enumerate(right):
         n = len(right); y = 120 + i * (420 / n)
@@ -656,7 +656,7 @@ def ro_aes50():
     s = SVG(1500, 670)
     s.text(750, 44, L("Behringer X32 / Midas M32: AES50 A und B", "Behringer X32 / Midas M32: AES50 A and B"), 27)
     console_star(s, "X32 / M32", "FOH",
-        [(L("Midas DL32", "Midas DL32"), L("Stagebox · 32 In / 16 Out\nPreamps + 48 V hier", "stagebox · 32 in / 16 out\npreamps + 48 V here"), "AES50 A"),
+        [(L("Midas DL32", "Midas DL32"), L("32 In / 16 Out · Preamps + 48 V\nOuts typisch: Wedges, In-Ears", "32 in / 16 out · preamps + 48 V\nouts typically: wedges, in-ears"), "AES50 A"),
          (L("2. Stagebox oder\nMonitorpult", "2nd stagebox or\nmonitor console"), L("z. B. DL16 · 2. X32/M32", "e.g. DL16 · 2nd X32/M32"), "AES50 B")],
         [(L("Karte: X-USB", "Card: X-USB"), L("32×32 · Recording-PC", "32×32 · recording PC"), "Card"),
          (L("Karte: X-Dante / X-Live", "Card: X-Dante / X-Live"), L("Netzwerk · SD-Aufnahme", "network · SD recording"), "Card"),
@@ -664,7 +664,8 @@ def ro_aes50():
         [L("AES50 = Punkt-zu-Punkt: geschirmtes Cat5e (SF/UTP), max. ca. 100 m, kein Switch dazwischen.",
            "AES50 = point-to-point: shielded Cat5e (SF/UTP), max. approx. 100 m, no switch in between."),
          L("Pro Port bis zu 48 Kanäle hin und 48 zurück · Nur eine Karte gleichzeitig steckbar.",
-           "Up to 48 channels each way per port · only one card can be fitted at a time.")])
+           "Up to 48 channels each way per port · only one card can be fitted at a time.")],
+        below=(L("Lokale I/O", "Local I/O"), L("XLR hinten am Pult · Outs typisch: Main PA", "XLR on the back · outs typically: main PA")))
     return s
 
 
@@ -672,7 +673,7 @@ def ro_sq():
     s = SVG(1500, 670)
     s.text(750, 44, L("Allen & Heath SQ: SLink, I/O-Port und USB", "Allen & Heath SQ: SLink, I/O port and USB"), 27)
     console_star(s, "SQ-5", "FOH",
-        [(L("DX168 / GX4816", "DX168 / GX4816"), L("Stagebox · 16/8 bzw. 48/16\nPreamps + 48 V hier", "stagebox · 16/8 or 48/16\npreamps + 48 V here"), "SLink")],
+        [(L("DX168 / GX4816", "DX168 / GX4816"), L("16/8 bzw. 48/16 · Preamps + 48 V\nOuts typisch: Wedges, In-Ears", "16/8 or 48/16 · preamps + 48 V\nouts typically: wedges, in-ears"), "SLink")],
         [(L("I/O-Port: Dante-Karte", "I/O port: Dante card"), L("64×64 · Netzwerk", "64×64 · network"), "I/O"),
          (L("USB-B (hinten)", "USB-B (rear)"), L("32×32 Multitrack · Computer", "32×32 multitrack · computer"), "USB-B"),
          (L("USB-A (vorne)", "USB-A (front)"), L("Stick / SSD · Stereo + SQ-Drive", "stick / SSD · stereo + SQ-Drive"), "USB-A")],
@@ -680,7 +681,7 @@ def ro_sq():
            "SLink: one port for A&H stageboxes (DX, dSnake) or a second A&H console (gigaACE)."),
          L("Kein AES50: Die Midas DL32 passt nicht ans SQ — und DX-Boxen nicht ans X32/M32.",
            "No AES50: the Midas DL32 doesn't work with the SQ — and DX boxes don't work with the X32/M32.")],
-        below=(L("Lokale I/O", "Local I/O"), L("XLR-Ein-/Ausgänge hinten am Pult", "XLR ins/outs on the back")))
+        below=(L("Lokale I/O", "Local I/O"), L("XLR hinten am Pult · Outs typisch: Main PA", "XLR on the back · outs typically: main PA")))
     return s
 
 
@@ -744,13 +745,74 @@ def ro_recording():
     return s
 
 
+def draw_grid(s, gx, gy, cols, rows, links, cw=120, rh=58, labw=270, colhead="", rowhead=""):
+    """Patch grid: columns = sources, rows = destinations, dot = connected."""
+    gw, gh = cw * len(cols), rh * len(rows)
+    s.text(gx + gw / 2, gy - 92, colhead, 18, True, GREY)
+    s.text(gx - labw, gy - 14, rowhead, 18, True, GREY, anchor="start")
+    s.rect(gx, gy, gw, gh, fill=WHITE, stroke=INK, sw=2, rx=6)
+    for i, c in enumerate(cols):
+        x = gx + i * cw
+        if i: s.line(x, gy, x, gy + gh, col="#d0cec4", sw=1.5, arrow=False)
+        s.text(x + cw / 2, gy - 44 + (0 if "\n" in c else 12), c, 17, True, INK)
+    for j, r in enumerate(rows):
+        y = gy + j * rh
+        if j: s.line(gx, y, gx + gw, y, col="#d0cec4", sw=1.5, arrow=False)
+        s.text(gx - 14, y + rh / 2 + 7, r, 18, True, INK, anchor="end")
+    for (ci, rj, col) in links:
+        s.circle(gx + ci * cw + cw / 2, gy + rj * rh + rh / 2, 13, fill=col, stroke=col)
+    return gw, gh
+
+
+def ro_raster():
+    s = SVG(1500, 640)
+    s.text(750, 44, L("Ein Patch-Raster lesen: Punkt = verbunden", "Reading a patch grid: dot = connected"), 27)
+    cols = [L("Stagebox\n1", "Stagebox\n1"), L("Stagebox\n2", "Stagebox\n2"), "Local\n1", "USB\n1", "Dante\n1"]
+    rows = [L("Kanal 1 · Kick", "Ch 1 · kick"), L("Kanal 2 · Snare", "Ch 2 · snare"), L("Kanal 3 · Pastor", "Ch 3 · pastor"),
+            L("Kanal 4 · Playback", "Ch 4 · playback"), L("Kanal 5 · Kick (Stream)", "Ch 5 · kick (stream)")]
+    links = [(0, 0, INK), (1, 1, INK), (2, 2, INK), (3, 3, INK), (0, 4, RED)]
+    draw_grid(s, 330, 200, cols, rows, links, colhead=L("QUELLEN →", "SOURCES →"), rowhead=L("ZIELE ↓", "DESTINATIONS ↓"))
+    ax = 1000
+    items = [
+        (L("Punkt = verbunden", "Dot = connected"), L("Quelle der Spalte geht auf das Ziel der Zeile.", "The column's source feeds the row's destination."), INK),
+        (L("Pro Ziel nur EIN Punkt", "Only ONE dot per destination"), L("Ein Kanal kann nur eine Quelle haben.", "A channel can only have one source."), INK),
+        (L("Eine Quelle — mehrere Ziele", "One source — several destinations"), L("Stagebox 1 geht auf Kanal 1 UND Kanal 5\n(z. B. eigener Kick-Kanal für den Stream).", "Stagebox 1 feeds channel 1 AND channel 5\n(e.g. a separate kick channel for the stream)."), RED),
+        (L("Leere Spalte", "Empty column"), L("Dante 1 ist nirgends verbunden — kommt nicht an.", "Dante 1 isn't connected anywhere — it doesn't arrive."), INK),
+    ]
+    y = 175
+    for head, body, col in items:
+        s.text(ax, y, head, 21, True, col, anchor="start")
+        s.text(ax, y + 28, body, 17, False, GREY, anchor="start")
+        y += 28 + (body.count("\n") + 1) * 22 + 38
+    s.text(750, 600, L("Welche Achse Quelle und welche Ziel ist, unterscheidet sich je nach Gerät — immer zuerst die Beschriftung lesen.",
+                       "Which axis is source and which is destination differs by device — always read the labels first."), 18, False, GREY)
+    return s
+
+
+def ro_userin_raster():
+    s = SVG(1500, 620)
+    s.text(750, 44, L("User In als Raster gedacht: jeder Slot holt sich genau eine Buchse", "User In thought of as a grid: each slot takes exactly one socket"), 25)
+    cols = ["Local\n3", "AES50 A\n1", "AES50 A\n17", "AES50 B\n5", "Card\n12"]
+    rows = [L("User In 1 · Kick", "User In 1 · kick"), L("User In 2 · Snare", "User In 2 · snare"), L("User In 3 · Bass DI", "User In 3 · bass DI"),
+            L("User In 4 · Playback L", "User In 4 · playback L"), L("User In 5 · Lead Vox", "User In 5 · lead vox")]
+    links = [(0, 0, INK), (2, 1, INK), (3, 2, INK), (4, 3, INK), (1, 4, INK)]
+    gw, gh = draw_grid(s, 330, 190, cols, rows, links, colhead=L("BUCHSEN (Quellen) →", "SOCKETS (sources) →"), rowhead=L("USER-IN-SLOTS ↓", "USER IN SLOTS ↓"))
+    s.line(330 + gw + 10, 190 + gh / 2, 1046, 190 + gh / 2, col=RED, sw=3)
+    s.box(1050, 190 + gh / 2 - 60, 420, 120, L("Kanäle 1–8", "Channels 1–8"), L("← User In 1–8 (als Block)", "← User In 1–8 (as a block)"), fill=INK, tcol=BG, scol="#ff8a7f", tsize=24, ssize=17)
+    s.text(750, 540, L("Am X32 / M32 siehst du das NICHT als Raster, sondern als Liste: pro Slot eine Quelle auswählen.",
+                       "On the X32 / M32 you DON'T see this as a grid but as a list: pick one source per slot."), 19, True, RED)
+    s.text(750, 572, L("Das Raster zeigt nur, was dahinter passiert — dasselbe Prinzip wie beim SQ oder bei Dante.",
+                       "The grid only shows what happens behind it — the same principle as on the SQ or in Dante."), 18, False, GREY)
+    return s
+
+
 FIGS = {
     "gs_welle": gs_welle, "gs_kette": gs_kette, "gs_fader": gs_fader, "gs_prepost": gs_prepost, "gs_meter": gs_meter, "gs_fehler": gs_fehler,
     "dca_monitor": dca_monitor, "dca_doppelt": dca_doppelt, "dca_hall": dca_hall,
     "kt_flow": kt_flow, "kt_kette": kt_kette,
     "sc_ablauf": sc_ablauf, "sc_reihenfolge": sc_reihenfolge,
     "ls_skala": ls_skala, "ls_zeit": ls_zeit,
-    "ro_ueberblick": ro_ueberblick, "ro_aes50": ro_aes50, "ro_sq": ro_sq, "ro_userin": ro_userin, "ro_recording": ro_recording,
+    "ro_ueberblick": ro_ueberblick, "ro_aes50": ro_aes50, "ro_sq": ro_sq, "ro_userin": ro_userin, "ro_recording": ro_recording, "ro_raster": ro_raster, "ro_userin_raster": ro_userin_raster,
 }
 
 for name, fn in FIGS.items():
