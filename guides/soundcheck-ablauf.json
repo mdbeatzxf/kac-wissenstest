@@ -7,19 +7,30 @@
         "en": "The workflow at a glance"
       },
       "intro": {
-        "de": "Ein guter Soundcheck folgt immer derselben Reihenfolge: erst prüfen, ob alles ankommt — dann einstellen — dann sichern. Wer die Reihenfolge einhält, ist schneller fertig und hat im Gottesdienst weniger Überraschungen.",
-        "en": "A good soundcheck always follows the same order: first check everything arrives — then set it up — then save. Keep to the order and you'll be done faster and have fewer surprises during the service."
+        "de": "Ein guter Soundcheck baut sich immer von klein nach groß auf: erst prüfen, ob alles ankommt — dann jede Quelle einzeln — dann Gruppen zusammen — dann alle. Wer diese Reihenfolge einhält, findet Probleme früh, ist schneller fertig und hat im Gottesdienst weniger Überraschungen.",
+        "en": "A good soundcheck always builds up from small to big: first check that everything arrives — then each source on its own — then groups together — then everyone. Keep to this order and you'll find problems early, finish faster and have fewer surprises during the service."
       },
       "blocks": [
         {
           "type": "figure",
-          "aspect": "1500 / 470",
+          "aspect": "1500 / 420",
           "caption": {
-            "de": "Soundcheck in 7 Schritten",
-            "en": "Soundcheck in 7 steps"
+            "de": "Soundcheck in 9 Schritten",
+            "en": "Soundcheck in 9 steps"
           },
           "image": "images/KAC_sc_ablauf.svg",
           "image_en": "images/KAC_sc_ablauf_EN.svg",
+          "fit": "contain"
+        },
+        {
+          "type": "figure",
+          "aspect": "1500 / 600",
+          "caption": {
+            "de": "Instrumente → Gesang → Full Band → Sprache: immer erst einzeln, dann zusammen",
+            "en": "Instruments → vocals → full band → speech: always solo first, then together"
+          },
+          "image": "images/KAC_sc_reihenfolge.svg",
+          "image_en": "images/KAC_sc_reihenfolge_EN.svg",
           "fit": "contain"
         },
         {
@@ -59,8 +70,8 @@
                 "en": "Soundcheck"
               },
               {
-                "de": "Mit den Musikern: Gain, Klang (EQ/Kompressor) und der Mix für den Saal.",
-                "en": "With the musicians: gain, tone (EQ/compressor) and the mix for the room."
+                "de": "Mit den Musikern: Gain, Klang (EQ / Kompressor) und der Mix für den Saal.",
+                "en": "With the musicians: gain, tone (EQ / compressor) and the mix for the room."
               },
               {
                 "de": "FOH + Band",
@@ -73,12 +84,26 @@
                 "en": "Monitor check"
               },
               {
-                "de": "Jede Person auf der Bühne bekommt ihren In-Ear-/Monitor-Mix.",
-                "en": "Everyone on stage gets their in-ear/monitor mix."
+                "de": "Jede Person auf der Bühne bekommt ihren In-Ear- / Monitor-Mix.",
+                "en": "Everyone on stage gets their in-ear / monitor mix."
               },
               {
                 "de": "Monitor + Band",
                 "en": "Monitor + band"
+              }
+            ],
+            [
+              {
+                "de": "Sprach-Check",
+                "en": "Speech check"
+              },
+              {
+                "de": "Pastor, Intercessor, Übersetzung und Moderation — jedes Sprechmikro mit der echten Person.",
+                "en": "Pastor, intercessor, translation and hosting — every speech mic with the actual person."
+              },
+              {
+                "de": "FOH + Sprecher",
+                "en": "FOH + speakers"
               }
             ]
           ]
@@ -86,8 +111,133 @@
         {
           "type": "note",
           "text": {
-            "de": "Erst prüfen, ob alles ankommt — dann einstellen — dann sichern.",
-            "en": "First check that everything arrives — then set it up — then save."
+            "de": "Von einzeln zu zusammen: Was allein nicht sauber klingt, wird im Full-Band-Mix nicht besser.",
+            "en": "From solo to together: what doesn't sound clean on its own won't get better in the full-band mix."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Rollen & Kommunikation",
+        "en": "Roles & communication"
+      },
+      "intro": {
+        "de": "Ein Soundcheck ist Teamarbeit. Wenn jeder weiß, wer was macht und wie geredet wird, geht es doppelt so schnell.",
+        "en": "A soundcheck is teamwork. When everyone knows who does what and how to communicate, it goes twice as fast."
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Rolle",
+              "en": "Role"
+            },
+            {
+              "de": "Aufgabe im Soundcheck",
+              "en": "Job during the soundcheck"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "FOH",
+                "en": "FOH"
+              },
+              {
+                "de": "leitet den Soundcheck, stellt Gain und Klang ein, baut den Saal-Mix, sagt an, wer dran ist",
+                "en": "runs the soundcheck, sets gain and tone, builds the room mix, calls who's next"
+              }
+            ],
+            [
+              {
+                "de": "Monitor",
+                "en": "Monitor"
+              },
+              {
+                "de": "baut die In-Ear- / Monitor-Mixe, ist Ansprechpartner für die Bühne",
+                "en": "builds the in-ear / monitor mixes, is the stage's point of contact"
+              }
+            ],
+            [
+              {
+                "de": "Bühne / Aufbau",
+                "en": "Stage / setup"
+              },
+              {
+                "de": "Line-Check auf der Bühne, tauscht Kabel / Mikros, hilft bei Problemen",
+                "en": "line check on stage, swaps cables / mics, helps with problems"
+              }
+            ],
+            [
+              {
+                "de": "Musikalische Leitung",
+                "en": "Music lead"
+              },
+              {
+                "de": "spricht für die Band mit FOH, gibt Songs vor, sorgt für Ruhe",
+                "en": "speaks for the band to FOH, picks the songs, keeps the stage quiet"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "So reden wir miteinander",
+            "en": "How we talk to each other"
+          },
+          "items": [
+            {
+              "de": "Talkback-Mikro am Pult: FOH spricht über die Monitore / In-Ears direkt mit der Bühne.",
+              "en": "Talkback mic at the console: FOH speaks to the stage directly through the monitors / in-ears."
+            },
+            {
+              "de": "Kurze, klare Ansagen: „Nur Kick, bitte.“ — „Danke, nächster: Snare.“ — „Jetzt alle Instrumente zusammen.“",
+              "en": "Short, clear calls: “Kick only, please.” — “Thanks, next: snare.” — “Now all instruments together.”"
+            },
+            {
+              "de": "Handzeichen, wenn es laut ist: Daumen hoch = passt, Finger nach oben = mehr, nach unten = weniger, auf sich zeigen = „mehr von mir“.",
+              "en": "Hand signals when it's loud: thumbs up = good, finger up = more, finger down = less, pointing at yourself = “more me”."
+            },
+            {
+              "de": "Eine Person spricht für die Band mit FOH — nicht alle gleichzeitig.",
+              "en": "One person speaks to FOH for the band — not everyone at once."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Regeln während des Soundchecks",
+            "en": "Rules during the soundcheck"
+          },
+          "items": [
+            {
+              "de": "Ruhe auf der Bühne, während eine Quelle eingestellt wird — nicht dazwischen spielen.",
+              "en": "Quiet on stage while a source is being set — no playing in between."
+            },
+            {
+              "de": "Nur wer aufgerufen wird, spielt oder singt.",
+              "en": "Only the person called plays or sings."
+            },
+            {
+              "de": "In echter Gottesdienst-Lautstärke spielen und singen — nicht leiser „zum Testen“.",
+              "en": "Play and sing at real service volume — not quieter “just to test”."
+            },
+            {
+              "de": "Der Soundcheck endet rechtzeitig vor Gottesdienst-Beginn — mit Puffer für Probleme.",
+              "en": "The soundcheck ends well before the service starts — with a buffer for problems."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Eine Stimme pro Seite: FOH für das Pult, die musikalische Leitung für die Band.",
+            "en": "One voice per side: FOH for the console, the music lead for the band."
           }
         }
       ]
@@ -131,12 +281,16 @@
               "en": "Monitors / in-ear transmitters on, wireless mics and beltpacks with fresh batteries."
             },
             {
-              "de": "Talkback-Mikro funktioniert (damit FOH mit der Bühne reden kann).",
-              "en": "Talkback mic works (so FOH can talk to the stage)."
+              "de": "Talkback-Mikro funktioniert.",
+              "en": "Talkback mic works."
             },
             {
               "de": "Kopfhörer am Pult — zum Vorhören mit PFL / Solo.",
               "en": "Headphones at the console — for listening with PFL / solo."
+            },
+            {
+              "de": "Setliste und Ablauf des Gottesdienstes liegen vor: Welche Songs? Wer predigt? Gibt es Gebet und Übersetzung?",
+              "en": "Set list and service running order are at hand: which songs? Who's preaching? Is there prayer and translation?"
             }
           ]
         },
@@ -172,16 +326,20 @@
               "en": "One person on stage speaks into the mic, taps the instrument or plays briefly."
             },
             {
-              "de": "FOH schaut aufs Meter und hört mit Kopfhörer + PFL/Solo vor. Kanal-Fader bleiben dabei unten.",
-              "en": "FOH watches the meter and listens with headphones + PFL/solo. Channel faders stay down."
+              "de": "FOH schaut aufs Meter und hört mit Kopfhörer + PFL / Solo vor. Kanal-Fader bleiben dabei unten.",
+              "en": "FOH watches the meter and listens with headphones + PFL / solo. Channel faders stay down."
             },
             {
               "de": "Passt es? → „Nächster Kanal!“ Kommt nichts? → Sofort klären (siehe Guide „Kein Ton — was tun?“).",
               "en": "All good? → “Next channel!” Nothing arriving? → Fix it right away (see the guide “No sound — what now?”)."
             },
             {
-              "de": "Auch die Ausgänge prüfen: jeder Monitor-/In-Ear-Weg kommt am richtigen Platz an.",
-              "en": "Check the outputs too: every monitor/in-ear path arrives at the right position."
+              "de": "Auch die Ausgänge prüfen: Jeder Monitor- / In-Ear-Weg kommt am richtigen Platz an (kurz Talkback oder Musik draufschicken).",
+              "en": "Check the outputs too: every monitor / in-ear path arrives at the right position (briefly send talkback or music to it)."
+            },
+            {
+              "de": "Sprechmikros (Pastor, Intercessor, Übersetzung, Moderation) und Funkmikros gehören auch zum Line-Check.",
+              "en": "Speech mics (pastor, intercessor, translation, hosting) and wireless mics are part of the line check too."
             }
           ]
         },
@@ -197,62 +355,207 @@
     {
       "tag": "sound",
       "title": {
-        "de": "3 · Gain & Klang — jede Quelle einzeln",
-        "en": "3 · Gain & tone — each source on its own"
+        "de": "3 · Instrumente einzeln",
+        "en": "3 · Instruments on their own"
       },
       "intro": {
-        "de": "Jetzt stellst du für jede Quelle den Gain ein und gibst ihr einen ersten Grundklang. Wichtig: immer nur eine Quelle gleichzeitig.",
-        "en": "Now you set the gain for each source and give it a basic tone. Important: only one source at a time."
+        "de": "Jetzt bekommt jedes Instrument seinen Gain und einen Grundklang. Immer nur ein Instrument gleichzeitig — alle anderen sind still.",
+        "en": "Now each instrument gets its gain and a basic tone. Only one instrument at a time — everyone else stays quiet."
       },
       "blocks": [
-        {
-          "type": "figure",
-          "aspect": "1500 / 330",
-          "caption": {
-            "de": "Reihenfolge: vom Fundament (Drums, Bass) nach oben bis zur Sprache",
-            "en": "Order: from the foundation (drums, bass) up to speech"
-          },
-          "image": "images/KAC_sc_reihenfolge.svg",
-          "image_en": "images/KAC_sc_reihenfolge_EN.svg",
-          "fit": "contain"
-        },
         {
           "type": "steps",
           "items": [
             {
-              "de": "Die Person spielt / singt allein — so laut wie im Gottesdienst, am besten den lautesten Teil eines Songs.",
-              "en": "The person plays / sings alone — as loud as in the service, ideally the loudest part of a song."
+              "de": "Reihenfolge vom Fundament nach oben: Drums → Bass → Keys → Gitarren → Playback.",
+              "en": "Order from the foundation up: drums → bass → keys → guitars → playback."
+            },
+            {
+              "de": "Die Person spielt allein — so laut wie im Gottesdienst, am besten den lautesten Teil eines Songs.",
+              "en": "The person plays alone — as loud as in the service, ideally the loudest part of a song."
             },
             {
               "de": "Gain einstellen: Spitzen bei etwa −18 bis −12 dBFS (Details im Guide „Gain-Staging & Pegel“).",
               "en": "Set the gain: peaks around −18 to −12 dBFS (details in the guide “Gain staging & levels”)."
             },
             {
-              "de": "Low-Cut / Hochpass setzen (Stimmen, Gitarren, Keys) — Rumpeln raus.",
-              "en": "Set the low cut / high-pass (vocals, guitars, keys) — remove the rumble."
+              "de": "Low-Cut / Hochpass setzen, wo kein Bass gebraucht wird (Gitarren, Keys-Pads, Overheads).",
+              "en": "Set the low cut / high-pass where no bass is needed (guitars, keys pads, overheads)."
             },
             {
-              "de": "Grob EQ und Kompressor — lieber wenig. Die Feinarbeit kommt im Band-Mix.",
-              "en": "Rough EQ and compressor — less is more. The fine-tuning comes in the band mix."
+              "de": "Grob EQ, Gate und Kompressor — lieber wenig. Die Feinarbeit kommt im Zusammenspiel.",
+              "en": "Rough EQ, gate and compressor — less is more. The fine-tuning comes when everyone plays."
             },
             {
-              "de": "Kurz den Fader hochziehen und im Saal hören. Dann zur nächsten Quelle.",
-              "en": "Briefly bring the fader up and listen in the room. Then move to the next source."
+              "de": "Kurz den Fader hochziehen und im Saal hören. Dann zum nächsten Instrument.",
+              "en": "Briefly bring the fader up and listen in the room. Then move to the next instrument."
             }
           ]
         },
         {
-          "type": "text",
-          "text": {
-            "de": "Sänger singen im Gottesdienst fast immer lauter als im Soundcheck. Lass deshalb echt laut singen — oder lass beim Gain noch etwas Reserve.",
-            "en": "Singers almost always sing louder in the service than in the soundcheck. So have them really sing out — or leave a little extra headroom on the gain."
-          }
+          "type": "table",
+          "head": [
+            {
+              "de": "Instrument",
+              "en": "Instrument"
+            },
+            {
+              "de": "So einzeln checken",
+              "en": "How to check it solo"
+            },
+            {
+              "de": "Worauf achten",
+              "en": "What to watch for"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Kick",
+                "en": "Kick"
+              },
+              {
+                "de": "gleichmäßige Schläge, dann ein Groove",
+                "en": "even hits, then a groove"
+              },
+              {
+                "de": "Wumms ohne Dröhnen; Gate gegen Übersprechen",
+                "en": "punch without boom; gate against bleed"
+              }
+            ],
+            [
+              {
+                "de": "Snare",
+                "en": "Snare"
+              },
+              {
+                "de": "normale Schläge + Rimshots + leise Ghost Notes",
+                "en": "normal hits + rimshots + quiet ghost notes"
+              },
+              {
+                "de": "Rimshots dürfen nicht clippen",
+                "en": "rimshots must not clip"
+              }
+            ],
+            [
+              {
+                "de": "Toms",
+                "en": "Toms"
+              },
+              {
+                "de": "jede Tom einzeln, dann ein Fill",
+                "en": "each tom on its own, then a fill"
+              },
+              {
+                "de": "Gate / Mute, wenn nicht gespielt — Toms klingen sonst mit",
+                "en": "gate / mute when not played — otherwise toms ring along"
+              }
+            ],
+            [
+              {
+                "de": "Overheads / Becken",
+                "en": "Overheads / cymbals"
+              },
+              {
+                "de": "Becken + ganzes Set",
+                "en": "cymbals + whole kit"
+              },
+              {
+                "de": "Low-Cut hoch; nicht zu hell",
+                "en": "high low cut; not too bright"
+              }
+            ],
+            [
+              {
+                "de": "E-Drums",
+                "en": "E-drums"
+              },
+              {
+                "de": "Groove mit allen Pads, L / R",
+                "en": "groove with all pads, L / R"
+              },
+              {
+                "de": "Lautstärke am Modul fest einstellen und nicht mehr ändern",
+                "en": "set the module volume once and don't change it again"
+              }
+            ],
+            [
+              {
+                "de": "Bass",
+                "en": "Bass"
+              },
+              {
+                "de": "tiefe Töne + Slap / laute Stellen",
+                "en": "low notes + slap / loud parts"
+              },
+              {
+                "de": "DI und ggf. Amp-Mikro; tiefe Töne gleichmäßig (Kompressor)",
+                "en": "DI and amp mic if used; low notes even (compressor)"
+              }
+            ],
+            [
+              {
+                "de": "Keys",
+                "en": "Keys"
+              },
+              {
+                "de": "lautester Sound (Piano, Pad, Synth) — L / R",
+                "en": "loudest sound (piano, pad, synth) — L / R"
+              },
+              {
+                "de": "Stereo; Sound-Wechsel dürfen nicht viel lauter werden",
+                "en": "stereo; sound changes must not jump much louder"
+              }
+            ],
+            [
+              {
+                "de": "E-Gitarre",
+                "en": "Electric guitar"
+              },
+              {
+                "de": "clean und verzerrt / Lead-Sound",
+                "en": "clean and distorted / lead sound"
+              },
+              {
+                "de": "Amp-Lautstärke auf der Bühne nicht zu hoch",
+                "en": "amp volume on stage not too high"
+              }
+            ],
+            [
+              {
+                "de": "Akustikgitarre",
+                "en": "Acoustic guitar"
+              },
+              {
+                "de": "Schlagen + Zupfen",
+                "en": "strumming + picking"
+              },
+              {
+                "de": "Feedback-Gefahr: Low-Cut, nicht zu laut im Wedge",
+                "en": "feedback risk: low cut, not too loud in the wedge"
+              }
+            ],
+            [
+              {
+                "de": "Playback / Click",
+                "en": "Playback / click"
+              },
+              {
+                "de": "ein Song vom Laptop",
+                "en": "one song from the laptop"
+              },
+              {
+                "de": "Click NIE auf die PA — nur in die In-Ears",
+                "en": "click NEVER to the PA — only to the in-ears"
+              }
+            ]
+          ]
         },
         {
           "type": "note",
           "text": {
-            "de": "Gain wird jetzt eingestellt — und danach im Gottesdienst möglichst nicht mehr angefasst. Er verändert sonst alle Monitor-Mixe.",
-            "en": "Gain is set now — and ideally not touched again during the service. Otherwise it changes every monitor mix."
+            "de": "Musiker brauchen schon hier einen groben Monitor („sich selbst hören“). Der richtige Monitor-Mix kommt erst, wenn alle Gains stehen.",
+            "en": "Musicians already need a rough monitor here (“hear yourself”). The proper monitor mix comes once all gains are set."
           }
         }
       ]
@@ -260,12 +563,159 @@
     {
       "tag": "sound",
       "title": {
-        "de": "4 · Monitore & In-Ears",
-        "en": "4 · Monitors & in-ears"
+        "de": "4 · Instrumente zusammen",
+        "en": "4 · Instruments together"
       },
       "intro": {
-        "de": "Erst wenn die Gains stehen, baust du die Monitor-Mixe. Wer vorher Monitore einstellt und danach am Gain dreht, macht die Arbeit doppelt.",
-        "en": "Only once the gains are set do you build the monitor mixes. If you set monitors first and then change the gain, you do the work twice."
+        "de": "Jetzt spielen alle Instrumente zusammen — noch ohne Gesang. So baust du die Band als Fundament, auf das später der Gesang kommt.",
+        "en": "Now all the instruments play together — still without vocals. This builds the band as the foundation the vocals will sit on later."
+      },
+      "blocks": [
+        {
+          "type": "steps",
+          "items": [
+            {
+              "de": "Die Band spielt einen Song (oder einen Teil) — mit lauten und leisen Stellen.",
+              "en": "The band plays a song (or part of one) — with loud and quiet parts."
+            },
+            {
+              "de": "Fundament zuerst: Kick und Bass müssen zusammen passen.",
+              "en": "Foundation first: kick and bass must sit together."
+            },
+            {
+              "de": "Dann Snare, Toms, Overheads, danach Keys und Gitarren darunter.",
+              "en": "Then snare, toms, overheads, then keys and guitars underneath."
+            },
+            {
+              "de": "Platz für den Gesang lassen: Die Band darf nicht schon „fertig laut“ sein.",
+              "en": "Leave room for the vocals: the band must not already be “full volume”."
+            },
+            {
+              "de": "Auf Frequenz-Konflikte hören: Bass gegen Kick, Keys gegen Gitarre — mit EQ Platz schaffen.",
+              "en": "Listen for frequency clashes: bass vs. kick, keys vs. guitar — make room with EQ."
+            },
+            {
+              "de": "Bühnenlautstärke prüfen: Ist es auf der Bühne schon zu laut (Amps, Wedges, Drums)?",
+              "en": "Check stage volume: is the stage already too loud (amps, wedges, drums)?"
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Die Band ist das Bett, der Gesang liegt obendrauf. Ist das Bett schon zu laut, hat der Gesang keinen Platz.",
+            "en": "The band is the bed, the vocals lie on top. If the bed is already too loud, the vocals have no room."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "5 · Gesang: Lead, Backing, zusammen",
+        "en": "5 · Vocals: lead, backing, together"
+      },
+      "intro": {
+        "de": "Der Gesang ist das Wichtigste im Lobpreis — die Gemeinde singt mit ihm. Darum bekommt er drei eigene Schritte.",
+        "en": "The vocals are the most important part of worship — the congregation sings along with them. That's why they get three steps of their own."
+      },
+      "blocks": [
+        {
+          "type": "sub",
+          "title": {
+            "de": "5a · Lead-Stimme einzeln",
+            "en": "5a · Lead vocal on its own"
+          },
+          "items": [
+            {
+              "de": "Die Lead-Stimme singt allein — den lautesten Teil eines Songs, in echter Lautstärke.",
+              "en": "The lead singer sings alone — the loudest part of a song, at real volume."
+            },
+            {
+              "de": "Gain einstellen, Low-Cut an, sanfter Kompressor (2:1 bis 4:1, ein paar dB Reduktion).",
+              "en": "Set the gain, low cut on, gentle compressor (2:1 to 4:1, a few dB of reduction)."
+            },
+            {
+              "de": "Mikrotechnik prüfen: Abstand etwa eine Faust, nicht den Mikrokorb umgreifen.",
+              "en": "Check mic technique: about one fist away, don't cup the mic grille."
+            },
+            {
+              "de": "Kurz in den Wedge / In-Ear geben und auf Feedback achten.",
+              "en": "Briefly send it to the wedge / in-ear and listen for feedback."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "5b · Backing Vocals einzeln",
+            "en": "5b · Backing vocals one by one"
+          },
+          "items": [
+            {
+              "de": "Jede Backing-Stimme nacheinander allein — nicht alle gleichzeitig.",
+              "en": "Each backing singer in turn, alone — not all at once."
+            },
+            {
+              "de": "Gain, Low-Cut und Kompressor wie bei der Lead-Stimme.",
+              "en": "Gain, low cut and compressor as for the lead vocal."
+            },
+            {
+              "de": "Backing-Sänger singen oft leiser als die Lead-Stimme: lieber etwas mehr Gain als zu wenig.",
+              "en": "Backing singers often sing quieter than the lead: a bit more gain rather than too little."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "5c · Lead + Backing zusammen",
+            "en": "5c · Lead + backing together"
+          },
+          "items": [
+            {
+              "de": "Alle Sänger singen zusammen eine Stelle mit Harmonien.",
+              "en": "All singers sing a passage with harmonies together."
+            },
+            {
+              "de": "Die Lead-Stimme führt, die Backing Vocals stützen — sie dürfen sie nicht überdecken.",
+              "en": "The lead leads, the backing vocals support — they must not cover it."
+            },
+            {
+              "de": "Auf Blend hören: Klingen die Stimmen wie ein Chor oder wie einzelne Personen?",
+              "en": "Listen for the blend: do the voices sound like a choir or like individuals?"
+            },
+            {
+              "de": "Die Sänger brauchen jetzt einen guten Monitor — wer sich nicht hört, singt falsch oder zu laut.",
+              "en": "The singers now need a good monitor — anyone who can't hear themselves sings out of tune or too loud."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": {
+            "de": "Sänger singen im Gottesdienst fast immer lauter als im Soundcheck. Lass deshalb echt laut singen — oder lass beim Gain etwas Reserve.",
+            "en": "Singers almost always sing louder in the service than in the soundcheck. So have them really sing out — or leave a little extra headroom on the gain."
+          }
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Lead allein → Backing einzeln → zusammen. Erst wenn jede Stimme allein sauber ist, klingt der Satz zusammen gut.",
+            "en": "Lead alone → backing one by one → together. Only when every voice is clean alone do they sound good together."
+          }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "6 · Monitore & In-Ears",
+        "en": "6 · Monitors & in-ears"
+      },
+      "intro": {
+        "de": "Jetzt stehen alle Gains — jetzt lohnt sich der richtige Monitor-Mix. Wer vorher Monitore einstellt und danach am Gain dreht, macht die Arbeit doppelt.",
+        "en": "Now all gains are set — now the proper monitor mix is worth doing. If you set monitors first and then change the gain, you do the work twice."
       },
       "blocks": [
         {
@@ -280,12 +730,20 @@
               "en": "Basic mix per person: themselves + lead vocal + the leading instrument (often keys or guitar) + click if used."
             },
             {
+              "de": "Drummer und Bass brauchen sich gegenseitig; Sänger brauchen vor allem sich selbst und die Akkorde (Keys / Gitarre).",
+              "en": "Drummer and bass need each other; singers mainly need themselves and the chords (keys / guitar)."
+            },
+            {
               "de": "Klare Sprache: „Mehr von mir“, „weniger Keys“ — mit Handzeichen, wenn es laut ist.",
               "en": "Clear language: “more me”, “less keys” — with hand signals when it's loud."
             },
             {
               "de": "Musiker können ihren Mix selbst per Mixing Station einstellen (Modus „Nur mein Monitor-Mix“).",
               "en": "Musicians can set their own mix via Mixing Station (“only my monitor mix” mode)."
+            },
+            {
+              "de": "In-Ears: nicht zu laut einstellen — lieber gut gemischt als laut. Talkback und ggf. Ambience-Mikros nicht vergessen.",
+              "en": "In-ears: don't set them too loud — well mixed beats loud. Don't forget talkback and ambience mics if used."
             },
             {
               "de": "Wedges: Mikros nicht direkt auf den Monitor richten — und auf erstes Pfeifen achten.",
@@ -305,24 +763,24 @@
     {
       "tag": "sound",
       "title": {
-        "de": "5 · Band zusammen — der Saal-Mix",
-        "en": "5 · Full band — the room mix"
+        "de": "7 · Full Band — alle zusammen",
+        "en": "7 · Full band — everyone together"
       },
       "intro": {
-        "de": "Jetzt spielt die ganze Band einen Song — am besten einen mit lauten und leisen Stellen. Du baust den Mix für den Saal.",
-        "en": "Now the whole band plays a song — ideally one with loud and quiet parts. You build the mix for the room."
+        "de": "Jetzt spielen und singen alle zusammen. Hier entsteht der Mix für den Saal — so, wie die Gemeinde ihn hören wird.",
+        "en": "Now everyone plays and sings together. This is where the mix for the room comes together — the way the congregation will hear it."
       },
       "blocks": [
         {
           "type": "steps",
           "items": [
             {
-              "de": "Fundament zuerst: Kick und Bass.",
-              "en": "Foundation first: kick and bass."
+              "de": "Einen Song wählen, der laute UND leise Stellen hat — am besten den anspruchsvollsten Song der Setliste.",
+              "en": "Choose a song that has loud AND quiet parts — ideally the most demanding song in the set list."
             },
             {
-              "de": "Dann der Rest der Band darunter — Keys, Gitarren, Drums.",
-              "en": "Then the rest of the band underneath — keys, guitars, drums."
+              "de": "Die Band als Fundament (aus Schritt 4) hochziehen.",
+              "en": "Bring up the band as the foundation (from step 4)."
             },
             {
               "de": "Lead-Gesang obendrauf: Er muss immer gut verständlich sein.",
@@ -333,12 +791,20 @@
               "en": "Add the backing vocals — they support, they don't cover."
             },
             {
-              "de": "Im Saal herumgehen: vorne, Mitte, hinten. Klingt es überall gut?",
-              "en": "Walk the room: front, middle, back. Does it sound good everywhere?"
+              "de": "Effekte (Hall / Delay) dezent dazu.",
+              "en": "Add effects (reverb / delay) subtly."
+            },
+            {
+              "de": "Im Saal herumgehen: vorne, Mitte, hinten. Klingt es überall gut? Ist der Gesang überall verständlich?",
+              "en": "Walk the room: front, middle, back. Does it sound good everywhere? Are the vocals intelligible everywhere?"
             },
             {
               "de": "Lautstärke messen (Guide „Lautstärke im Saal“).",
               "en": "Measure the level (guide “Volume in the room”)."
+            },
+            {
+              "de": "Übergänge prüfen: Song-Anfänge, ruhige Stellen, Wechsel zwischen Songs.",
+              "en": "Check transitions: song intros, quiet parts, changes between songs."
             }
           ]
         },
@@ -354,46 +820,161 @@
     {
       "tag": "sound",
       "title": {
-        "de": "6 · Sprache — Predigt & Moderation",
-        "en": "6 · Speech — sermon & hosting"
+        "de": "8 · Sprache: Pastor, Intercessor, Übersetzung",
+        "en": "8 · Speech: pastor, intercessor, translation"
       },
       "intro": {
-        "de": "Sprache ist im Gottesdienst genauso wichtig wie Musik — und wird oft vergessen.",
-        "en": "Speech matters just as much as music in the service — and is often forgotten."
+        "de": "Sprache ist im Gottesdienst genauso wichtig wie Musik — und wird oft vergessen. Jede Sprech-Rolle hat ihre eigenen Tücken. Wenn möglich: immer mit der echten Person testen.",
+        "en": "Speech matters just as much as music in the service — and is often forgotten. Every speaking role has its own pitfalls. Whenever possible: always test with the actual person."
       },
       "blocks": [
         {
-          "type": "bullets",
+          "type": "sub",
+          "title": {
+            "de": "Pastor / Predigt",
+            "en": "Pastor / sermon"
+          },
           "items": [
             {
-              "de": "Predigt-Mikro / Headset mit der Person testen, die predigt — wenn möglich. Jede Stimme ist anders.",
-              "en": "Test the sermon mic / headset with the person who is preaching — if possible. Every voice is different."
+              "de": "Headset oder Handmikro mit der Person testen, die predigt. Jede Stimme ist anders.",
+              "en": "Test the headset or handheld mic with the person who is preaching. Every voice is different."
             },
             {
-              "de": "In normaler Sprechlautstärke und im richtigen Abstand sprechen lassen (Headset: am Mundwinkel, Handmikro: eine Faust breit).",
-              "en": "Have them speak at normal volume and the right distance (headset: at the corner of the mouth, handheld: one fist away)."
+              "de": "Die ganze Bandbreite testen: leise und ruhig sprechen — und laut, so wie an den Höhepunkten der Predigt.",
+              "en": "Test the full range: speaking quietly and calmly — and loudly, as at the high points of the sermon."
             },
             {
-              "de": "Low-Cut an, verständlich vor laut. Sprache braucht meist weniger Pegel als Gesang.",
-              "en": "Low cut on, intelligible before loud. Speech usually needs less level than singing."
+              "de": "Kompressor hilft, leise und laute Stellen auszugleichen.",
+              "en": "A compressor helps even out quiet and loud parts."
             },
             {
-              "de": "Funkmikros: Akku voll? Ersatz-Akkus und ein Ersatz-Mikro bereit?",
-              "en": "Wireless mics: battery full? Spare batteries and a spare mic ready?"
+              "de": "Abstand: Headset am Mundwinkel, Handmikro etwa eine Faust vom Mund.",
+              "en": "Distance: headset at the corner of the mouth, handheld about one fist from the mouth."
             },
             {
-              "de": "Moderation, Ankündigungen, Gebet — alle Sprechmikros einmal prüfen.",
-              "en": "Hosting, announcements, prayer — check every speech mic once."
+              "de": "Bewegt sich die Person viel? Die Bühne ablaufen lassen und auf Feedback achten — vor allem vor den Boxen und Wedges.",
+              "en": "Does the person move around a lot? Have them walk the stage and listen for feedback — especially in front of the speakers and wedges."
+            },
+            {
+              "de": "Funk: Akku voll, Ersatz-Akku und Ersatz-Mikro bereit.",
+              "en": "Wireless: battery full, spare battery and spare mic ready."
             }
           ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Intercessor (Gebet / Fürbitte)",
+            "en": "Intercessor (prayer)"
+          },
+          "items": [
+            {
+              "de": "Oft betet die Person, während die Band leise weiterspielt (z. B. ein Pad). Die Stimme muss klar über der Musik liegen.",
+              "en": "Often the person prays while the band keeps playing softly (e.g. a pad). The voice must sit clearly above the music."
+            },
+            {
+              "de": "Gebet wird oft lauter und emotionaler als gedacht: Gain mit Reserve, Kompressor an.",
+              "en": "Prayer often gets louder and more emotional than expected: gain with headroom, compressor on."
+            },
+            {
+              "de": "Handmikro: Die Person darauf hinweisen, das Mikro nah am Mund zu halten — auch wenn sie sich bewegt oder die Hände hebt.",
+              "en": "Handheld mic: remind the person to keep the mic close to the mouth — even when they move or raise their hands."
+            },
+            {
+              "de": "Übergang vorbereiten: Wann kommt das Gebet? Das Mikro rechtzeitig öffnen — und danach wieder muten.",
+              "en": "Prepare the handover: when does the prayer come? Open the mic in time — and mute it again afterwards."
+            },
+            {
+              "de": "Wird das Mikro weitergereicht (mehrere Beter)? Dann mit leiser und lauter Stimme testen.",
+              "en": "Is the mic passed around (several people praying)? Then test with both a quiet and a loud voice."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Übersetzung",
+            "en": "Translation"
+          },
+          "items": [
+            {
+              "de": "Live auf der Bühne (abwechselnd): Pastor und Übersetzung sprechen im Wechsel. Beide Stimmen etwa gleich laut und ähnlich im Klang — am besten dasselbe Mikro-Modell.",
+              "en": "Live on stage (alternating): pastor and translator speak in turn. Both voices about equally loud and similar in tone — ideally the same mic model."
+            },
+            {
+              "de": "Die übersetzende Person muss den Pastor klar hören — ggf. eigener Wedge / In-Ear mit dem Pastor-Mikro.",
+              "en": "The translator must hear the pastor clearly — use their own wedge / in-ear with the pastor's mic if needed."
+            },
+            {
+              "de": "Schnelle Wechsel: Beide Mikros bleiben offen; nur so laut wie nötig, damit es nicht zum Feedback kommt.",
+              "en": "Quick changes: both mics stay open; only as loud as needed so it doesn't feed back."
+            },
+            {
+              "de": "Simultan über Kopfhörer: Die Übersetzung geht NICHT auf die PA, sondern über einen eigenen Bus an Empfänger / Kopfhörer oder in den Stream. Die übersetzende Person hört den Pastor über einen eigenen Mix.",
+              "en": "Simultaneous via headphones: the translation does NOT go to the PA but via its own bus to receivers / headphones or into the stream. The translator hears the pastor through their own mix."
+            },
+            {
+              "de": "Immer mit der echten übersetzenden Person testen — Stimme, Abstand und Tempo sind sehr verschieden.",
+              "en": "Always test with the actual translator — voice, distance and pace differ a lot."
+            }
+          ]
+        },
+        {
+          "type": "sub",
+          "title": {
+            "de": "Moderation & Ansagen",
+            "en": "Hosting & announcements"
+          },
+          "items": [
+            {
+              "de": "Jedes Mikro für Moderation, Ansagen und Kollekte einmal mit der Person testen.",
+              "en": "Test every mic for hosting, announcements and the offering once with the person."
+            },
+            {
+              "de": "Sprechmikros, die gerade nicht gebraucht werden, muten (z. B. Predigt-Mikro während des Lobpreises).",
+              "en": "Mute speech mics that aren't needed right now (e.g. the sermon mic during worship)."
+            }
+          ]
+        },
+        {
+          "type": "check",
+          "items": [
+            {
+              "de": "Pastor-Mikro mit der predigenden Person getestet (leise + laut).",
+              "en": "Pastor mic tested with the preacher (quiet + loud)."
+            },
+            {
+              "de": "Intercessor-Mikro getestet — auch über leiser Musik.",
+              "en": "Intercessor mic tested — over quiet music too."
+            },
+            {
+              "de": "Übersetzung getestet: beide Stimmen ausgeglichen, Übersetzer hört den Pastor.",
+              "en": "Translation tested: both voices balanced, translator hears the pastor."
+            },
+            {
+              "de": "Moderations- und Ansage-Mikros getestet.",
+              "en": "Hosting and announcement mics tested."
+            },
+            {
+              "de": "Ersatz-Mikro für Sprache bereit.",
+              "en": "Spare speech mic ready."
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "text": {
+            "de": "Verständlich vor laut: Bei Sprache zählt jedes Wort. Lieber etwas leiser und klar als laut und verwaschen.",
+            "en": "Intelligible before loud: with speech every word counts. Better a little quieter and clear than loud and muddy."
+          }
         }
       ]
     },
     {
       "tag": "sound",
       "title": {
-        "de": "7 · Abschluss — speichern & bereit sein",
-        "en": "7 · Finish — save & be ready"
+        "de": "9 · Abschluss — speichern & bereit sein",
+        "en": "9 · Finish — save & be ready"
       },
       "intro": {
         "de": "Der Soundcheck ist erst fertig, wenn alles gesichert ist.",
@@ -408,8 +989,8 @@
               "en": "Save the scene / show — with the date in its name."
             },
             {
-              "de": "Mikros, die gerade nicht gebraucht werden, muten (z. B. Predigt-Mikro während des Lobpreises).",
-              "en": "Mute mics that aren't needed right now (e.g. the sermon mic during worship)."
+              "de": "Mikros, die gerade nicht gebraucht werden, muten.",
+              "en": "Mute mics that aren't needed right now."
             },
             {
               "de": "Ersatz-Mikro bereit und auf einem freien Kanal vorbereitet.",
@@ -432,21 +1013,21 @@
         {
           "type": "sub",
           "title": {
-            "de": "Regeln während des Soundchecks",
-            "en": "Rules during the soundcheck"
+            "de": "Nach dem Soundcheck",
+            "en": "After the soundcheck"
           },
           "items": [
             {
-              "de": "Auf der Bühne ist es ruhig, während eine Quelle eingestellt wird — nicht dazwischen spielen.",
-              "en": "The stage stays quiet while a source is being set — no playing in between."
+              "de": "Gains werden nicht mehr verändert — außer es ist wirklich nötig, und dann mit Absprache mit Monitor.",
+              "en": "Gains are no longer changed — unless it's really necessary, and then only after checking with monitor."
             },
             {
-              "de": "Eine Person spricht für die Band mit FOH (meist die musikalische Leitung).",
-              "en": "One person speaks to FOH for the band (usually the music lead)."
+              "de": "Will jemand nachträglich noch etwas (z. B. ein anderes Instrument)? Kurz einzeln checken — nicht den ganzen Soundcheck neu.",
+              "en": "Someone wants something later (e.g. a different instrument)? Check it briefly on its own — don't redo the whole soundcheck."
             },
             {
-              "de": "Der Soundcheck endet rechtzeitig vor Gottesdienst-Beginn — mit Puffer für Probleme.",
-              "en": "The soundcheck ends well before the service starts — with a buffer for problems."
+              "de": "Niemand steckt mehr um, ohne FOH Bescheid zu sagen.",
+              "en": "Nobody re-plugs anything without telling FOH."
             }
           ]
         },
@@ -456,6 +1037,132 @@
             "de": "Szene speichern nicht vergessen — sonst ist die ganze Arbeit beim nächsten Neustart weg.",
             "en": "Don't forget to save the scene — otherwise all the work is gone the next time the console restarts."
           }
+        }
+      ]
+    },
+    {
+      "tag": "sound",
+      "title": {
+        "de": "Typische Fehler beim Soundcheck",
+        "en": "Typical soundcheck mistakes"
+      },
+      "blocks": [
+        {
+          "type": "table",
+          "head": [
+            {
+              "de": "Fehler",
+              "en": "Mistake"
+            },
+            {
+              "de": "Folge",
+              "en": "Consequence"
+            },
+            {
+              "de": "Besser",
+              "en": "Better"
+            }
+          ],
+          "rows": [
+            [
+              {
+                "de": "Alle spielen durcheinander",
+                "en": "Everyone plays at once"
+              },
+              {
+                "de": "Kein Kanal lässt sich sauber einstellen",
+                "en": "no channel can be set properly"
+              },
+              {
+                "de": "Eine Quelle nach der anderen, Rest still",
+                "en": "one source after another, the rest quiet"
+              }
+            ],
+            [
+              {
+                "de": "Zu leise „zum Testen“ gespielt / gesungen",
+                "en": "Played / sung too quietly “for testing”"
+              },
+              {
+                "de": "Im Gottesdienst übersteuert es",
+                "en": "it overloads in the service"
+              },
+              {
+                "de": "In echter Gottesdienst-Lautstärke",
+                "en": "at real service volume"
+              }
+            ],
+            [
+              {
+                "de": "Monitore vor dem Gain eingestellt",
+                "en": "Monitors set before the gain"
+              },
+              {
+                "de": "Monitor-Mixe stimmen danach nicht mehr",
+                "en": "monitor mixes are off afterwards"
+              },
+              {
+                "de": "Erst alle Gains, dann Monitore",
+                "en": "all gains first, then monitors"
+              }
+            ],
+            [
+              {
+                "de": "Gesang direkt im Full-Band-Mix eingestellt",
+                "en": "Vocals set straight in the full-band mix"
+              },
+              {
+                "de": "Stimme klingt nicht sauber, Feedback",
+                "en": "voice doesn't sound clean, feedback"
+              },
+              {
+                "de": "Lead und Backing zuerst einzeln",
+                "en": "lead and backing on their own first"
+              }
+            ],
+            [
+              {
+                "de": "Band schon zu laut, bevor der Gesang dazukommt",
+                "en": "Band already too loud before the vocals come in"
+              },
+              {
+                "de": "Gesang geht unter oder alles wird zu laut",
+                "en": "vocals get buried or everything gets too loud"
+              },
+              {
+                "de": "Platz für den Gesang lassen",
+                "en": "leave room for the vocals"
+              }
+            ],
+            [
+              {
+                "de": "Sprache vergessen",
+                "en": "Speech forgotten"
+              },
+              {
+                "de": "Predigt, Gebet oder Übersetzung klingen schlecht",
+                "en": "sermon, prayer or translation sound bad"
+              },
+              {
+                "de": "Jede Sprech-Rolle mit der echten Person testen",
+                "en": "test every speaking role with the actual person"
+              }
+            ],
+            [
+              {
+                "de": "Szene nicht gespeichert",
+                "en": "Scene not saved"
+              },
+              {
+                "de": "Arbeit weg nach Neustart",
+                "en": "work gone after a restart"
+              },
+              {
+                "de": "Am Ende immer speichern",
+                "en": "always save at the end"
+              }
+            ]
+          ]
         }
       ]
     }

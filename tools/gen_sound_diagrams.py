@@ -485,46 +485,62 @@ def kt_kette():
 
 # ---------------------------------------------------------------- Soundcheck
 def sc_ablauf():
-    s = SVG(1500, 470)
-    s.text(750, 44, L("Soundcheck in 7 Schritten", "Soundcheck in 7 steps"), 28)
+    s = SVG(1500, 420)
+    s.text(750, 44, L("Soundcheck in 9 Schritten", "Soundcheck in 9 steps"), 28)
     steps = [
-        (L("Vorbereiten", "Prepare"), L("Szene laden\nPA-Check\nAkkus", "load scene\nPA check\nbatteries")),
-        ("Line-Check", L("jeder Kanal\nkommt an?", "does every\nchannel arrive?")),
-        (L("Gain & Klang", "Gain & tone"), L("jede Quelle\neinzeln", "each source\non its own")),
+        (L("Vor-\nbereiten", "Pre-\npare"), L("Szene · PA\nAkkus", "scene · PA\nbatteries")),
+        ("Line-\nCheck", L("kommt jeder\nKanal an?", "does every\nchannel arrive?")),
+        (L("Instrumente\neinzeln", "Instruments\nsolo"), L("Gain &\nKlang", "gain &\ntone")),
+        (L("Instrumente\nzusammen", "Instruments\ntogether"), L("Band ohne\nGesang", "band without\nvocals")),
+        (L("Gesang", "Vocals"), L("Lead → BV\n→ zusammen", "lead → BV\n→ together")),
         (L("Monitore", "Monitors"), L("In-Ears &\nWedges", "in-ears &\nwedges")),
-        (L("Band zusammen", "Full band"), L("ein Song\nSaal-Mix", "one song\nroom mix")),
-        (L("Sprache", "Speech"), L("Predigt &\nModeration", "sermon &\nhosting")),
-        (L("Speichern", "Save"), L("Szene sichern\nMikros muten", "save scene\nmute mics")),
+        ("Full\nBand", L("alle + Gesang\nSaal-Mix", "everyone + vocals\nroom mix")),
+        (L("Sprache", "Speech"), L("Pastor · Gebet\nÜbersetzung", "pastor · prayer\ntranslation")),
+        (L("Speichern", "Save"), L("Szene sichern\nbereit sein", "save scene\nbe ready")),
     ]
-    n = len(steps); x0, x1, y = 120, 1380, 170
+    n = len(steps); x0, x1, y = 95, 1405, 150
     s.line(x0, y, x1, y, col=INK, sw=4, arrow=False)
     for i, (t, sub) in enumerate(steps):
         x = x0 + i * (x1 - x0) / (n - 1)
         last = i == n - 1
-        s.circle(x, y, 38, fill=RED if last else INK, stroke=RED if last else INK)
-        s.text(x, y + 12, str(i + 1), 32, True, WHITE)
-        s.text(x, y + 90, t, 23, True, INK)
-        s.text(x, y + 128, sub, 19, False, GREY)
-    s.text(750, 440, L("Erst prüfen, ob alles ankommt — dann einstellen — dann sichern.",
-                       "First check everything arrives — then set it up — then save."), 21, True, RED)
+        s.circle(x, y, 34, fill=RED if last else INK, stroke=RED if last else INK)
+        s.text(x, y + 11, str(i + 1), 30, True, WHITE)
+        s.text(x, y + 78, t, 20, True, INK)
+        s.text(x, y + 150, sub, 16, False, GREY)
+    s.text(750, 395, L("Erst prüfen, ob alles ankommt — dann von einzeln zu zusammen aufbauen — dann sichern.",
+                       "First check everything arrives — then build up from solo to together — then save."), 20, True, RED)
     return s
 
 
 def sc_reihenfolge():
-    s = SVG(1500, 330)
-    s.text(750, 44, L("Reihenfolge beim Gain-Einstellen: vom Fundament nach oben", "Order for setting gain: from the foundation up"), 26)
-    items = [("Drums", "Kick · Snare\nToms · OH"), ("Bass", "DI / Amp"), ("Keys", "L / R"),
-             (L("Gitarren", "Guitars"), L("E- & Akustik", "electric & acoustic")),
-             ("Playback", L("Laptop · Musik", "laptop · music")), ("Vocals", "Lead → Backing"),
-             (L("Sprache", "Speech"), L("Predigt · Funk", "sermon · wireless"))]
-    w, gap, x0 = 180, 30, 30
-    for i, (t, sub) in enumerate(items):
-        x = x0 + i * (w + gap)
-        s.box(x, 110, w, 110, t, sub, tsize=24, ssize=15, scol=GREY)
-        if i < len(items) - 1:
-            s.line(x + w + 2, 165, x + w + gap - 4, 165, sw=2.5)
-    s.text(750, 280, L("Jede Quelle allein, in Gottesdienst-Lautstärke — am lautesten Teil des Songs.",
-                       "Each source on its own, at service volume — at the loudest part of the song."), 21, False, INK)
+    s = SVG(1500, 600)
+    s.text(750, 44, L("Die Reihenfolge: erst einzeln, dann zusammen", "The order: first solo, then together"), 26)
+    rows = [
+        (L("INSTRUMENTE", "INSTRUMENTS"), ["Drums", "Bass", "Keys", L("Gitarren", "Guitars"), "Playback"],
+         L("Instrumente\nzusammen", "Instruments\ntogether")),
+        (L("GESANG", "VOCALS"), [L("Lead einzeln", "Lead solo"), L("Backing einzeln", "Backing solo")],
+         L("Lead + Backing\nzusammen", "Lead + backing\ntogether")),
+        (L("ALLE", "EVERYONE"), [], None),
+        (L("SPRACHE", "SPEECH"), ["Pastor", "Intercessor", L("Übersetzung", "Translation")], None),
+    ]
+    y = 90
+    for label, items, result in rows:
+        s.text(30, y + 50, label, 16, True, GREY, anchor="start")
+        if not items:
+            s.box(180, y, 1290, 80, L("FULL BAND — Instrumente + Gesang zusammen", "FULL BAND — instruments + vocals together"),
+                  L("ein Song mit lauten und leisen Stellen · Saal-Mix bauen", "one song with loud and quiet parts · build the room mix"),
+                  fill="#fbe3e0", stroke=RED, sw=2.5, tsize=21, ssize=16, scol=INK)
+            y += 130; continue
+        x = 180; w = 150 if len(items) > 3 else 190
+        for i, it in enumerate(items):
+            s.box(x, y, w, 80, it, tsize=19)
+            x += w
+            if i < len(items) - 1:
+                s.line(x + 2, y + 40, x + 24, y + 40, sw=2.5); x += 28
+        if result:
+            s.line(x + 4, y + 40, x + 60, y + 40, col=RED, sw=3)
+            s.box(x + 64, y, 220, 80, result, tsize=19, fill=INK, tcol=BG)
+        y += 130
     return s
 
 
